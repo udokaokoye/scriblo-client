@@ -17,6 +17,13 @@ function Form() {
         }, 15000);
       }
     }, [message])
+    function isValidEmail(email) {
+      // Regular expression pattern for validating email
+      var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+      // Check if the email matches the pattern
+      return emailPattern.test(email);
+    }
     
 
     const handleSubmit = () => {
@@ -24,6 +31,11 @@ function Form() {
         seterrormessage('please enter your email')
         return;
       }
+      if (!isValidEmail(email)) {
+        seterrormessage('please enter a valid email')
+        return;
+      }
+
       const formData = new FormData();
       formData.append('email', email);
       seterrormessage('')
