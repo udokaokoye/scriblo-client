@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 /* @import url('../app/Styles/main.css'); */
+=======
+@import url('../Styles/main.css');
+@import url('../Styles/navigation.css');
+@import url('../Styles/auth.css');
+>>>>>>> 274f065 (re arraqnged the files)

@@ -1,0 +1,14 @@
+.navigation {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 8vh;
+    z-index: 100;
+
+    .navigation__logo {
+        background: url(../images/logo.png) no-repeat center;
+    }
+}
