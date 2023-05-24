@@ -8,6 +8,7 @@ import Link from 'next/link';
 function Form() {
     const [email, setemail] = useState('')
     const [message, setmessage] = useState('')
+    const [message2, setmessage2] = useState('')
     const [errormessage, seterrormessage] = useState('')
 
     useEffect(() => {
@@ -46,7 +47,12 @@ function Form() {
         // console.log(data)
         if (data.status == 200) {
           setmessage("🎉 Thanks for joining 🎉")
-        } else {
+          setmessage2("you've officially become a part of the coolest gang in the blogosphere By joining our waitlist! 🌚")
+        } else if (data.status == 400) {
+          setmessage("you've already joined our waitlist! 🌚")
+          setmessage2("I know you're excited lad, but you can only join once! 😂")
+        }
+         else {
           setmessage("😢 something went wrong, please try again later")
         }
       }).catch((error) => {
@@ -58,7 +64,7 @@ function Form() {
         <div className="joinWaitlist">
         <h1>Join the wait list</h1>
         <p>Get notified when we launch.</p>
-        {message && (<div className='message'><p className='message_bold'>{message}</p> <p className='message_small'>you've officially become a part of the coolest gang in the blogosphere By joining our waitlist! 🌚</p></div>)}
+        {message && (<div className='message'><p className='message_bold'>{message}</p> <p className='message_small'>{message2}</p></div>)}
         {errormessage && (<p className='errMsg'>{errormessage}</p>)}
         <input value={email} onChange={(text) => setemail(text.target.value)} type="email" placeholder="example@mail.com" /><br />
 
