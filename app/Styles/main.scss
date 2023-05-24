@@ -56,6 +56,14 @@ button {
         padding: 20px 10px;
         background: #f1f1f1;
         border-radius: 8px;
+        font-weight: bold;
+        margin-bottom: 15px;
+
+        .message_small{
+            font-size: 15px;
+            font-weight: normal;
+            fontweight: 400;
+        }
     }
 
     input{ 
@@ -81,6 +89,13 @@ button {
         align-items: center;
         text-decoration: underline;
         cursor: pointer;
+        width: 320px;
+    }
+    .errMsg {
+        display: flex;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: red;
         width: 320px;
     }
   }
