@@ -1,3 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,700&display=swap");
+* {
+  margin: 0;
+}
+
+a {
+  color: initial;
+  text-decoration: inherit;
+}
+
+.brand_logo {
+  width: 200px;
+  height: 100px;
+  background: url("https://scriblo.s3.us-east-2.amazonaws.com/branding/Vector.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+button {
+  width: 325px;
+  height: 44px;
+  background-color: black;
+  color: white;
+  font-size: 14px;
+  border-radius: 4px;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
 .container {
   width: 100%;
   height: 100vh;
@@ -5,14 +36,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-.container .brand_logo {
-  width: 200px;
-  height: 100px;
-  background: url("https://scriblo.s3.us-east-2.amazonaws.com/branding/Vector.png");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 .container .joinWaitlist {
   width: 400px;
@@ -24,6 +47,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.container .joinWaitlist p {
+  margin: 10px 0px;
+}
+.container .joinWaitlist .message {
+  padding: 20px 10px;
+  background: #f1f1f1;
+  border-radius: 8px;
 }
 .container .joinWaitlist input {
   padding: 8px 12px;
@@ -37,16 +68,13 @@
 .container .joinWaitlist input:focus {
   outline: none;
 }
-.container .joinWaitlist button {
-  width: 325px;
-  height: 44px;
-  background-color: black;
-  color: white;
-  font-size: 14px;
-  border-radius: 4px;
-  border: none;
-  margin-top: 15px;
+.container .joinWaitlist .learnMore {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  text-decoration: underline;
   cursor: pointer;
+  width: 320px;
 }
 
 h1 {
@@ -54,4 +82,32 @@ h1 {
   font-weight: 600;
   font-size: 24px;
   margin-bottom: 0px;
+}
+
+.aboutContainer {
+  max-width: 400px;
+  min-width: 800px;
+  margin: 0 auto;
+  padding: 50px;
+  font-family: "Roboto";
+}
+.aboutContainer h1 {
+  margin: 10px 0px;
+  font-size: 35px;
+}
+.aboutContainer p {
+  color: #575757;
+  line-height: 29px;
+}
+.aboutContainer main, .aboutContainer section {
+  margin-top: 50px;
+}
+.aboutContainer h2 {
+  margin: 10px 0px;
+}
+.aboutContainer ol li {
+  margin-bottom: 10px;
+}
+.aboutContainer ul li {
+  margin-bottom: 10px;
 }/*# sourceMappingURL=main.css.map */

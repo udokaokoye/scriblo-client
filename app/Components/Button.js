@@ -1,9 +1,11 @@
-'use client'
 import React from 'react'
-
-function Button() {
+import Link from 'next/link'
+function Button({title, onClick, className, clickable=false, disabled=false, link}) {
   return (
-    <button onClick={() => alert('This App Is Currently In Development')}>Join</button>
+    <>
+    {clickable && (<Link href={link}><button className={className} onClick={onClick} disabled={disabled}>{title}</button></Link>)}
+    {!clickable && (<button className={className} onClick={onClick} disabled={disabled}>{title}</button>)}
+    </>
   )
 }
 

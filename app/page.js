@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Button from "./Components/Button";
+import Form from "./Components/Form";
 export default function Home() {
   return (
     <div className="container">
@@ -7,13 +7,7 @@ export default function Home() {
         <div className="brand_logo">
           
         </div>
-      <div className="joinWaitlist">
-        <h1>Join the wait list</h1>
-        <p>Get notified when we launch.</p>
-        <input type="email" placeholder="example@mail.com" /><br />
-
-        <Button />
-      </div>
+      <Form />
     </div>
   );
 }
