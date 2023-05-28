@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const API_URL = process.env.API_URL || "http://localhost:3000/api"
+const API_URL = 'http://localhost/scriblo-server/api'
 const nextConfig = {
   trailingSlash: true,
   images: {
