@@ -1,13 +1,41 @@
 .navigation {
   background: #fff;
-  border-bottom: 1px solid #eee;
-  padding: 0 20px;
+  border-bottom: 1px solid #8C9196;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
   height: 8vh;
   z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .navigation .navigation__logo {
-  background: url(../images/logo.png) no-repeat center;
+  width: 120px;
+  height: 100%;
+  background: url("https://scriblo.s3.us-east-2.amazonaws.com/branding/brand_logo_black.png") no-repeat center;
+  background-size: contain;
+  margin-left: 20px;
+}
+.navigation .navigation__menu {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-right: 20px;
+}
+.navigation .navigation__menu .authButtons .signInButton {
+  font-size: 14px;
+  font-weight: 400;
+  margin-right: 44px;
+  cursor: pointer;
+}
+.navigation .navigation__menu .authButtons .getStartedButton {
+  width: 111px;
+  height: 34px;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: transparent;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
 }/*# sourceMappingURL=navigation.css.map */

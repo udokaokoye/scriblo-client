@@ -1,7 +1,42 @@
-<<<<<<< HEAD
-/* @import url('../app/Styles/main.css'); */
-=======
 @import url('../Styles/main.css');
 @import url('../Styles/navigation.css');
 @import url('../Styles/auth.css');
->>>>>>> 274f065 (re arraqnged the files)
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.btn {
+    width: 325px;
+    height: 44px;
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    border-radius: 4px;
+    border: none;
+    /* margin-top: 10px; */
+    cursor: pointer;
+}
+
+.btnDisabled {
+    width: 325px;
+    height: 44px;
+    background-color: #e0e0e0;
+    color: white;
+    font-size: 14px;
+    border-radius: 4px;
+    border: none;
+    /* margin-top: 10px; */
+    cursor: pointer;
+}
+
+.bold {
+    font-weight: bold;
+    color: #929292;
+}
