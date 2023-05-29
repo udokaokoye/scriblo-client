@@ -1,12 +1,12 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import e from "express";
+
 const API_URL = process.env.API_URL || "http://localhost:3000/api";
 
 export const authOptions = {
-  session: {
-    strategy: "jwt",
+  jwt: {
+    secret: process.env.JWT_SECRET,
   },
   providers: [
     GoogleProvider({
@@ -29,30 +29,23 @@ export const authOptions = {
         );
         const response = await res.json();
         if (response.status == 200 && response.data) {
-          console.log(response.data);
-          const ses = {
-            user: {
-              ...response.data,
-            },
-          };
-          return ses;
+          return response.data;
         }
-        return false;
+        return null;
       },
     }),
   ],
   callbacks: {
-    async signIn(user, account) {
-      // make sure the provider is google
+    async signIn(user) {
       if (user.account.provider == "google") {
         const res = await fetch(
           `${API_URL}/users/checkIfUserExists.php?email=${user?.user?.email}`
         );
         const resJson = await res.json();
-        // console.log(resJson)
         if (resJson.message === false) {
           return `/signup?continue=true&email=${user?.user?.email}&name=${user?.user?.name}&image=${user?.user?.image}`;
-        } else {
+        } 
+        else {
           const response = await fetch(
             `${API_URL}/users/index.php?email=${user?.user?.email}&with=token`,
             {
@@ -63,41 +56,24 @@ export const authOptions = {
             }
           );
           const responseJson = await response.json();
-          if (responseJson.status == 200) {
-            // console.log(responseJson.data);
-            const sess= {
-              user: {
-                ...responseJson.data,
-              },
-            };
-            return Promise.resolve(sess);
-          } else {
+          if (responseJson.status !== 200) {
             return false;
           }
+          return {
+            ...responseJson.data,
+          };
         }
-
-        // return false;
-      } else {
-        return true;
       }
-    },
-    jwt({ token, user }) {
-      // console.log(user);
-      if (user) {
-        token = { ...token, ...user };
-      }
-      return Promise.resolve(token);
-    },
-    session: async ({ session, token, user }) => {
-      console.log(token);
-      console.log(user);
-      session = {
-        user: {
-          ...user,
-        },
+      return {
+        hello: "world"
       };
-
-      return Promise.resolve(session);
+    },
+    jwt: async ({ token, user }) => {
+      console.log(token, user)
+      return {...token, ...user}
+    },
+    session: async ({ session, token }) => {
+      return token;
     },
   },
 };
