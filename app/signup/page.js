@@ -1,8 +1,9 @@
 "use client";
 import Link from "next/link";
 import { signIn, signOut } from "next-auth/react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import moment from "moment";
+import { useRouter, useSearchParams } from "next/navigation";
 // import { ArrowBackIos } from '@mui/icons-material';
 function Signup() {
   const [useralreadyExists, setuseralreadyExists] = useState(false);
@@ -20,6 +21,22 @@ function Signup() {
   const [tokenError, settokenError] = useState("");
   const [fullNameError, setfullNameError] = useState("");
   const [selectedInterestsError, setselectedInterestsError] = useState("");
+
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    // i check if the user is coming from the sign in page because they dont have an account
+    if (searchParams.get("continue") === "true") {
+      // i take them to the personal information page
+      // i populate the email and name fields with the data from the sign in page
+      setstage(["", "personal-information"]);
+      setemail(searchParams.get("email"));
+      setfullName(searchParams.get("name"));
+      setavatar(searchParams.get("image"));
+    }
+    return () => {};
+  }, [searchParams]);
 
   const fetchDemo = async () => {
     // const res = await fetch(`/api/users/checkIfUserExists.php?email=leviokoye@gmail.com`, {method: "POST"})
@@ -169,6 +186,7 @@ function Signup() {
     // console.log(json);
     if (json.status == 200 && json.message == "Token verified") {
       if (useralreadyExists) {
+        console.log("login");
         signIn("credentials", {
           email,
           token: json.token,
@@ -403,6 +421,7 @@ function Signup() {
               name="firstName"
               placeholder="John Doe"
               onChange={(e) => setfullName(e.target.value)}
+              value={fullName}
             />
             {fullNameError && <p className="fullNameError">{fullNameError}</p>}
             <label>Email</label>

@@ -2,8 +2,10 @@
 import React, { useEffect } from "react";
 import { signOut, useSession } from 'next-auth/react'
 import Link from "next/link";
+import { useAppContex } from "../app/contex/store";
 function Navigation() {
   const { data: session } = useSession()
+  const {demo, setdemo} = useAppContex()
 
   useEffect(() => {
     console.log(session)
