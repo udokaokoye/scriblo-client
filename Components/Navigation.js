@@ -4,11 +4,11 @@ import { signOut, useSession } from 'next-auth/react'
 import Link from "next/link";
 import { useAppContex } from "../app/contex/store";
 function Navigation() {
-  const { data: session } = useSession()
+  const { data: session, update,  } = useSession()
   const {demo, setdemo} = useAppContex()
 
   useEffect(() => {
-    console.log(session)
+    console.log(session?.token)
   }, [session])
   return (
     <div className="navigation">
@@ -21,7 +21,7 @@ function Navigation() {
           <Link href={'/signup'}><button className="getStartedButton">Get Started</button></Link>
         </div>
 
-        <div className="userProfile">
+        <div className="userProfile" onClick={() => update()}>
           {session && (<p>{session?.name}</p>)}
           
         </div>

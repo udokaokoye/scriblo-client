@@ -5,9 +5,9 @@ import CredentialsProvider from "next-auth/providers/credentials";
 const API_URL = process.env.API_URL || "http://localhost:3000/api";
 
 export const authOptions = {
-  jwt: {
-    secret: process.env.JWT_SECRET,
-  },
+  session: {
+    strategy: 'jwt',
+},
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -45,32 +45,52 @@ export const authOptions = {
         if (resJson.message === false) {
           return `/signup?continue=true&email=${user?.user?.email}&name=${user?.user?.name}&image=${user?.user?.image}`;
         } 
-        else {
-          const response = await fetch(
-            `${API_URL}/users/index.php?email=${user?.user?.email}&with=token`,
-            {
-              method: "GET",
-              headers: {
-                Authorization: "Bearer " + resJson.token,
-              },
-            }
-          );
-          const responseJson = await response.json();
-          if (responseJson.status !== 200) {
-            return false;
-          }
-          return {
-            ...responseJson.data,
-          };
-        }
+        // console.log("ResJson " + resJson.message)
+        // else {
+          // const response = await fetch(
+          //   `${API_URL}/users/index.php?email=${user?.user?.email}&with=token`,
+          //   {
+          //     method: "GET",
+          //     headers: {
+          //       Authorization: "Bearer " + resJson.token,
+          //     },
+          //   }
+          // );
+          // const responseJson = await response.json();
+          // if (responseJson.status !== 200) {
+          //   return false;
+          // }
+          return true;
+        // }
       }
       return {
         hello: "world"
       };
     },
-    jwt: async ({ token, user }) => {
-      console.log(token, user)
-      return {...token, ...user}
+    jwt: async ({ token, user, trigger, session }) => {
+      // console.log("USER: " + user)
+      if (user) {
+        const response = await fetch(
+          `${API_URL}/users/index.php?email=${user?.email}&with=token`);
+        const responseJson = await response.json();
+        console.log("response: " + responseJson)
+        if (responseJson.status !== 200) {
+          return token;
+        }
+        token = {...token, ...responseJson.data};
+      }
+
+      if (trigger === "update" && token) {
+        console.log("Email: " + token?.id)
+        // const response = await fetch(
+        //   `${API_URL}/users/index.php?id=${token?.id}&with=token`);
+        // const responseJson = await response.json();
+        // if (responseJson.status !== 200) {
+        //   return token;
+        // }
+        // token = {...token, ...responseJson.data};
+      }
+      return token;
     },
     session: async ({ session, token }) => {
       return token;

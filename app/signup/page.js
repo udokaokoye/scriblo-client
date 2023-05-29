@@ -306,7 +306,7 @@ function Signup() {
               <br />
               <br />
               <button onClick={() => signIn("google", {
-                callbackUrl: "/",
+                callbackUrl: "http://localhost:3000/",
               })} className="socialbutton">
                 <span
                   style={{
