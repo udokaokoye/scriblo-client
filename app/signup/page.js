@@ -142,7 +142,15 @@ function Signup() {
       body: formData,
     });
     const json = await res.json();
-    console.log(json);
+    if (json.status == 200) {
+      signIn("credentials", {
+        email,
+        token: json.token,
+        callbackUrl: "/",
+      });
+    } else {
+      console.log(json);
+    }
 
   };
 
@@ -150,6 +158,7 @@ function Signup() {
     const formData = new FormData();
     formData.append("email", email);
     formData.append("token", token.join(""));
+    formData.append("withToken", useralreadyExists);
     const res = await fetch(`/api/users/verifyToken.php`, {
       method: "POST",
       body: formData,
@@ -157,15 +166,15 @@ function Signup() {
     const json = await res.json();
     // ! if token is verfied and useralreadyExists is true, then login
     // ! if token is verfied and useralreadyExists is false, then signup
-    console.log(json);
+    // console.log(json);
     if (json.status == 200 && json.message == "Token verified") {
       if (useralreadyExists) {
-        // signIn("credentials", {
-        //   email,
-        //   password: json.password,
-        //   callbackUrl: "/",
-        // });
-        console.log("login");
+        signIn("credentials", {
+          email,
+          token: json.token,
+          callbackUrl: "/",
+        });
+        // console.log(json);
       } else {
         setstage(["verfication", "personal-information"]);
       }

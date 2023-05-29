@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import CredentialsProvider from "next-auth/providers/credentials";
 const API_URL = process.env.API_URL || "http://localhost:3000/api";
 export const authOptions = {
   session: {
@@ -12,20 +13,24 @@ export const authOptions = {
     }),
 
     CredentialsProvider({
-      // The name to display on the sign in form (e.g. 'Sign in with...')
       name: 'Credentials',
-      credentials: {},
-      async authorize(credentials, req) {
-        const {email} = credentials;
-        const res = await fetch(`${API_URL}/users/?email=leviokoye@gmail.com`)
-        const {user} = await res.json()
-  
-        // If no error and we have user data, return it
-        if (res.ok && user) {
-          return user
+      async authorize(credentials) {
+        const {email, token} = credentials;
+        const res = await fetch(`${API_URL}/users/index.php?email=${email}&with=token`, {
+          method: 'GET',
+          headers: {
+            'Authorization': 'Bearer ' + token,
+          },
+        })
+        const response = await res.json()
+        if (response.status == 200 && response.data) {
+          console.log(response.data)
+          const ses = {
+            user: {...response.data}
+          }
+          return ses
         }
-        // Return null if user data could not be retrieved
-        return null
+        return false
       }
     })
   ],
@@ -39,10 +44,22 @@ export const authOptions = {
           if (!data.message) {
             return false;
           }
+          return true;
         });
 
-      return true;
     },
+    jwt({token, user}) {
+      if(user) {
+        token = {...token, ...user}
+      }
+      return token
+    },
+    session({session, token}) {
+      if(token) {
+        session = {...token}
+      }
+      return session
+    }
   },
 };
 
