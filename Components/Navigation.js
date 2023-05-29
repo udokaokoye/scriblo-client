@@ -6,7 +6,7 @@ function Navigation() {
   const { data: session } = useSession()
 
   useEffect(() => {
-    console.log(session?.user)
+    console.log(session)
   }, [session])
   return (
     <div className="navigation">
@@ -20,7 +20,7 @@ function Navigation() {
         </div>
 
         <div className="userProfile">
-          {session?.user && (<p>{session.user.name}</p>)}
+          {session && (<p>{session?.name}</p>)}
           
         </div>
       </div>

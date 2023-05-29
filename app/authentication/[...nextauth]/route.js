@@ -25,9 +25,7 @@ export const authOptions = {
         const response = await res.json()
         if (response.status == 200 && response.data) {
           console.log(response.data)
-          const ses = {
-            user: {...response.data}
-          }
+          const ses = {...response.data}
           return ses
         }
         return false
@@ -44,9 +42,9 @@ export const authOptions = {
           if (!data.message) {
             return false;
           }
-          return true;
         });
 
+      return true;
     },
     jwt({token, user}) {
       if(user) {

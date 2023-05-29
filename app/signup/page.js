@@ -287,7 +287,9 @@ function Signup() {
               </button>
               <br />
               <br />
-              <button onClick={() => signIn("google")} className="socialbutton">
+              <button onClick={() => signIn("google", {
+                callbackUrl: "/",
+              })} className="socialbutton">
                 <span
                   style={{
                     backgroundImage: `url('https://scriblo.s3.us-east-2.amazonaws.com/branding/google_logo.png')`,
