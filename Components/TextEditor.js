@@ -45,33 +45,42 @@ function TextEditor({ uploadImages, setuploadImages}) {
     return embedLink;
   }
 
-  const blockRendererFn = (contentBlock) => {
-    if (contentBlock.getType() === 'atomic') {
-      const entityKey = contentBlock.getEntityAt(0);
-      if (entityKey) {
-        const entity = ContentState.getEntity(entityKey);
-        if (entity.getType() === 'iframe') {
-          const data = entity.getData();
-          const { src, className } = data;
-          return {
-            component: CustomIFrameComponent,
-            editable: false,
-            props: {
-              src,
-              className,
-            },
-          };
-        }
-      }
-    }
-    return null;
-  };
-  
   const CustomIFrameComponent = ({ src, className }) => (
-    <div className={className}>
-      <iframe src={src} title="Embedded Content" />
-    </div>
+    <>
+      <h1>Hello World</h1>
+      <p>{className}</p>
+      <iframe src={src} title="Embedded Content" className={className} />
+    </>
   );
+
+  
+  // const handleEmbedLink = (url, className='test_url') => {
+  //   // console.log(editorState.getCurrentContent())
+  //   // return;
+
+  //   const contentState = editorState.getCurrentContent();
+  //   console.log(contentState)
+  //   // return;
+  //   // const embedLink = getEmbedLink(url);
+  //   const contentStateWithEntity = contentState.createEntity('iframe', 'IMMUTABLE', { url, className: "heyyy" });
+  //   const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+  //   const newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity });
+
+  //   const newContentState = AtomicBlockUtils.insertAtomicBlock(
+  //     newEditorState.getCurrentContent(),
+  //     entityKey,
+  //     ' '
+  //   );
+
+  //   const newEditorStateWithEmbed = EditorState.push(
+  //     newEditorState,
+  //     newContentState,
+  //     'insert-fragment'
+  //   );
+
+  //   seteditorState(newEditorStateWithEmbed);
+  //   return url;
+  // };
 
 
   const uploadImageCallBack = (file) => {
@@ -123,7 +132,7 @@ function TextEditor({ uploadImages, setuploadImages}) {
   }
   const embededLinkCallBack = (url) => {
     const embedLink = getEmbedLink(url);
-    console.log(embedLink)
+    // console.log(embedLink)
 
     return embedLink;
   }
@@ -179,21 +188,8 @@ function TextEditor({ uploadImages, setuploadImages}) {
             },
           },
         }}
-        onEditorStateChange={(editorState) => {
-          seteditorState(editorState);
-          setcontent(draftToHtml(convertToRaw(editorState.getCurrentContent())));
-      }}
-      blockRendererFn={blockRendererFn}
-        // blockRendererFn={(contentBlock) => {
-        //     const type = contentBlock.getType();
-        //     if (type === 'atomic') {
-        //       return {
-        //         component: AtomicImageComponent,
-        //         editable: false,
-        //       };
-        //     }
-        //     return null;
-        //   }}
+        onEditorStateChange={(edst) => seteditorState(edst)}
+      // blockRendererFn={blockRendererFn}
       />
     </div>
   );

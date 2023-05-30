@@ -7,15 +7,18 @@
 .editorWrapper {
   min-height: 100vh !important;
 }
+
 .editorWrapper .editorMain {
   min-height: inherit !important;
-  font-family: "Charter ITC TT", sans-serif;
+  font-family: 'Charter ITC TT', sans-serif;
 }
+
 .editorWrapper .editorMain img {
   width: 70% !important;
   display: block;
   margin: 0 auto;
 }
+
 .editorWrapper .editorMain iframe {
   min-width: 600px !important;
   min-height: 700px !important;
@@ -23,4 +26,35 @@
   overflow-y: hidden !important;
   display: block;
   margin: 0 auto;
-}/*# sourceMappingURL=TextEditor.css.map */
+}
+
+.editorWrapper .editorMain iframe[src*="youtube.com"], .editorWrapper .editorMain iframe[src*="youtu.be"] {
+  border: 2px solid red;
+  /* Example styling for YouTube */
+  /* Additional styles for YouTube */
+}
+
+.editorWrapper .editorMain iframe[src*="vimeo.com"] {
+  border: 2px solid blue;
+  /* Example styling for Vimeo */
+  /* Additional styles for Vimeo */
+}
+
+.editorWrapper .editorMain iframe[src*="twitter.com"] {
+  border: 2px solid green;
+  /* Example styling for Twitter */
+  /* Additional styles for Twitter */
+}
+
+.editorWrapper .editorMain iframe[src*="facebook.com"] {
+  border: 2px solid purple;
+  /* Example styling for Facebook */
+  /* Additional styles for Facebook */
+}
+
+.editorWrapper .editorMain iframe[src*="instagram.com"] {
+  border: 2px solid orange;
+  /* Example styling for Instagram */
+  /* Additional styles for Instagram */
+}
+/*# sourceMappingURL=TextEditor.css.map */

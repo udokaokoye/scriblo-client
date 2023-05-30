@@ -6,35 +6,48 @@
 .signup {
   width: 100%;
   height: 92vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: #F5F5F5;
 }
+
 .signup .signupContainer {
   background-color: white;
   width: 350px;
   height: auto;
   border-radius: 10px;
   padding: 30px;
-  box-shadow: rgba(0, 0, 0, 0.192) 0px 5px 15px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.192) 0px 5px 15px;
+          box-shadow: rgba(0, 0, 0, 0.192) 0px 5px 15px;
 }
+
 .signup .signupContainer .signupHeading {
   text-align: center;
   font-weight: 500;
 }
+
 .signup .signupContainer .signupSubHeading {
   margin-top: 5px;
   font-size: 13px;
   text-align: center;
   color: #797979;
 }
+
 .signup .signupContainer .signupForm {
   margin-top: 30px;
 }
+
 .signup .signupContainer .signupForm .signupEmailLabel {
   font-size: 14px;
 }
+
 .signup .signupContainer .signupForm .signupEmailInput {
   display: block;
   width: 97%;
@@ -45,25 +58,36 @@
   margin-top: 5px;
   padding-left: 10px;
 }
+
 .signup .signupContainer .signupForm .emailError {
   color: red;
   font-size: 12px;
   margin-top: 5px;
 }
+
 .signup .signupContainer .signupForm .btn {
   margin-top: 25px;
 }
+
 .signup .signupContainer .signupForm .signInLink {
   font-size: 12px;
   margin-top: 10px;
 }
+
 .signup .signupContainer .signupForm .signInLink span {
   text-decoration: underline;
 }
+
 .signup .signupContainer .signupForm .socialLoginButtons .socialbutton {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 10px 20px;
   border: none;
   background-color: #000;
@@ -74,6 +98,7 @@
   border-radius: 4px;
   width: 100%;
 }
+
 .signup .signupContainer .signupForm .socialLoginButtons .sociallogo {
   width: 29px;
   height: 28px;
@@ -81,116 +106,162 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
+
 .signup .verification {
   width: 400px;
   margin-top: 30px;
   padding: 30px;
   background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.192) 0px 5px 15px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.192) 0px 5px 15px;
+          box-shadow: rgba(0, 0, 0, 0.192) 0px 5px 15px;
 }
+
 .signup .verification .verificationHeading {
   font-size: 30px;
   font-weight: 300;
   text-align: center;
 }
+
 .signup .verification hr {
   margin: 10px 0px;
   background-color: transparent;
-  border-color: rgba(216, 216, 216, 0.4705882353);
+  border-color: #d8d8d878;
 }
+
 .signup .verification .subheading {
   font-size: 15px;
   color: #797979;
   text-align: center;
 }
+
 .signup .verification .verificationInstructions {
   margin-top: 30px;
   font-size: 15px;
   color: #797979;
   text-align: center;
 }
+
 .signup .verification .tokenError {
   text-align: center;
   color: red;
   font-size: 12px;
   margin-top: 15px;
 }
+
 .signup .verification .verificationForm {
   margin-top: 30px;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-evenly;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
+
 .signup .verification .verificationForm input {
   width: 12%;
   height: 50px;
   text-align: center;
   font-size: large;
 }
+
 .signup .verification .btn {
   display: block;
   margin: 0 auto;
   margin-top: 30px;
 }
+
 .signup .verification .verificationFooter {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-top: 30px;
 }
+
 .signup .verification .verificationFooter p {
   font-size: 15px;
   color: #797979;
   cursor: pointer;
 }
+
 .signup .verification .verificationFooter p:hover {
   color: black;
   text-decoration: underline;
 }
+
 .signup .selectInterest {
   width: 100%;
-  align-self: flex-start;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
   margin-top: 60px;
 }
+
 .signup .selectInterest .profileHead {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
+
 .signup .selectInterest .profileHead .backArrow {
-  justify-self: left;
-  align-self: center;
+  -ms-grid-column-align: left;
+      justify-self: left;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   font-size: 19px;
   cursor: pointer;
 }
+
 .signup .selectInterest .profileHead .profileheadinfos {
   margin: 0 auto;
 }
+
 .signup .selectInterest .profileHead .profileheadinfos h1 {
   font-size: 30px;
   font-weight: 500;
   text-align: center;
 }
+
 .signup .selectInterest .profileHead .profileheadinfos p {
   font-size: 15px;
   color: #797979;
   text-align: center;
 }
+
 .signup .selectInterest .selectedInterestsError {
   text-align: center;
   color: red;
   font-size: 13px;
   margin-top: 15px;
 }
+
 .signup .selectInterest .interests {
   margin: 0 auto;
   margin-top: 30px;
   width: 50%;
   height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 15px;
 }
+
 .signup .selectInterest .interests .interest {
   display: inline-block;
   width: auto;
@@ -198,57 +269,79 @@
   padding: 10px 20px;
   background: white;
   border-radius: 20px;
+  -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   border: 2px solid transparent;
   cursor: pointer;
 }
+
 .signup .selectInterest .interests .interest:hover {
   border: 2px solid black;
 }
+
 .signup .selectInterest .interests .selected {
   background-color: black;
   color: white;
 }
+
 .signup .selectInterest .btn {
   display: block;
   margin: 0 auto;
   margin-top: 50px;
 }
+
 .signup .personalInformation {
   width: 400px;
   margin-top: 30px;
   padding: 30px;
   background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.192) 0px 5px 15px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.192) 0px 5px 15px;
+          box-shadow: rgba(0, 0, 0, 0.192) 0px 5px 15px;
 }
+
 .signup .personalInformation .profileHead {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
+
 .signup .personalInformation .profileHead .backArrow {
-  justify-self: left;
-  align-self: center;
+  -ms-grid-column-align: left;
+      justify-self: left;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   font-size: 19px;
   cursor: pointer;
 }
+
 .signup .personalInformation .profileHead .profileheadinfos {
   margin: 0 auto;
 }
+
 .signup .personalInformation .profileHead .profileheadinfos .personalInformationHeading {
   text-align: center;
   font-size: 30px;
   font-weight: 500;
-  justify-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
 }
+
 .signup .personalInformation .profileHead .profileheadinfos .personalInformationSubHeading {
   font-size: 15px;
   color: #797979;
   text-align: center;
 }
+
 .signup .personalInformation .personalInformationForm {
   width: 100%;
   margin-top: 30px;
 }
+
 .signup .personalInformation .personalInformationForm .avatars {
   width: 100%;
   overflow-x: auto;
@@ -257,6 +350,7 @@
   scrollbar-width: thin;
   padding: 10px 0px;
 }
+
 .signup .personalInformation .personalInformationForm .avatars .avatar {
   display: inline-block;
   width: 80px;
@@ -270,15 +364,20 @@
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
+  -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
+
 .signup .personalInformation .personalInformationForm .avatars .customAvatar {
   background-size: 60% !important;
 }
+
 .signup .personalInformation .personalInformationForm .avatars .selectedAvatar {
-  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
   border: 2px solid #000;
 }
+
 .signup .personalInformation .personalInformationForm .personalInformationInput {
   display: block;
   width: 97%;
@@ -290,12 +389,14 @@
   margin-bottom: 25px;
   padding-left: 10px;
 }
+
 .signup .personalInformation .personalInformationForm .fullNameError {
   color: red;
   font-size: 12px;
   margin-top: -15px;
   margin-bottom: 10px;
 }
+
 .signup .personalInformation .personalInformationForm textarea {
   display: block;
   width: 97%;
@@ -308,14 +409,21 @@
 }
 
 .textBreaker {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 30px 0px;
 }
 
 .dash {
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   height: 1px;
   background-color: #bcbcbc;
   margin: 0 10px;
-}/*# sourceMappingURL=auth.css.map */
+}
+/*# sourceMappingURL=auth.css.map */

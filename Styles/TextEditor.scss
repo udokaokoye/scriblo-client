@@ -23,8 +23,36 @@
             overflow-y: hidden !important;
             // height: auto !important;
             display: block;
-            margin: 0 auto;
-            // object-fit: contain !important;
+            margin: 0 auto;  
+            &[src*="youtube.com"], 
+            &[src*="youtu.be"] {
+              border: 2px solid red; /* Example styling for YouTube */
+              /* Additional styles for YouTube */
+            }
+          
+            &[src*="vimeo.com"] {
+              border: 2px solid blue; /* Example styling for Vimeo */
+              /* Additional styles for Vimeo */
+            }
+          
+            &[src*="twitter.com"] {
+              border: 2px solid green; /* Example styling for Twitter */
+              /* Additional styles for Twitter */
+            }
+          
+            &[src*="facebook.com"] {
+              border: 2px solid purple; /* Example styling for Facebook */
+              /* Additional styles for Facebook */
+            }
+          
+            &[src*="instagram.com"] {
+              border: 2px solid orange; /* Example styling for Instagram */
+              /* Additional styles for Instagram */
+            }
+        }
+
+        .test_url {
+            // display: none !important;;  
         }
     }
 }
