@@ -1,6 +1,7 @@
 @import url('../Styles/main.css');
 @import url('../Styles/navigation.css');
 @import url('../Styles/auth.css');
+@import url('../Styles/create.css');
 
 *{
     margin: 0;
@@ -39,4 +40,10 @@ a {
 .bold {
     font-weight: bold;
     color: #929292;
+}
+
+.flex_center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

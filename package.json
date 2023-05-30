@@ -13,10 +13,12 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.2",
+    "draft-js": "^0.11.7",
     "moment": "^2.29.4",
     "next": "13.4.3",
     "next-auth": "^4.22.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-draft-wysiwyg": "^1.15.0"
   }
 }

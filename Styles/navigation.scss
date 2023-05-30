@@ -1,48 +1,106 @@
 .navigation {
-    background: #fff;
-    border-bottom: 1px solid #8C9196;
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    height: 8vh;
-    z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid #8c9196;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 8vh;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .navigation__logo {
+    width: 120px;
+    height: 100%;
+    background: url("https://scriblo.s3.us-east-2.amazonaws.com/branding/brand_logo_black.png")
+      no-repeat center;
+    background-size: contain;
+    margin-left: 20px;
+  }
+
+  .navigation__menu {
+    width: 60%;
+    // background: red;
+    margin-right: 20px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
 
-    .navigation__logo {
-        width: 120px;
-        height: 100%;
-        background: url("https://scriblo.s3.us-east-2.amazonaws.com/branding/brand_logo_black.png") no-repeat center;
-        background-size: contain;
-        margin-left: 20px;
+    .authButtons {
+      .signInButton {
+        font-size: 14px;
+        font-weight: 400;
+        margin-right: 44px;
+        cursor: pointer;
+      }
+
+      .getStartedButton {
+        width: 111px;
+        height: 34px;
+        border-radius: 4px;
+        font-size: 14px;
+        background-color: transparent;
+        border: none;
+        background: #000;
+        color: #fff;
+        cursor: pointer;
+      }
     }
 
-    .navigation__menu {
-        width: fit-content;
-        // background: red;
-        margin-right: 20px;
+    .userProfile {
+    // width: 20%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      position: relative;
+    //   background: red;
 
-        .authButtons {
+      .userProfile__avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid #ccc;
+        background-repeat: no-repeat !important;
+        background-position: top !important;
+        background-size: contain !important;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
 
-            .signInButton {
-                font-size: 14px;
-                font-weight: 400;
-                margin-right: 44px;
-                cursor: pointer;
-            }
-
-            .getStartedButton {
-                width: 111px;
-                height: 34px;
-                border-radius: 4px;
-                font-size: 14px;
-                background-color: transparent;
-                border: none;
-                background: #000;
-                color: #fff;
-                cursor: pointer;
-            }
+        &:hover {
+          border-color: rgb(151, 19, 151);
         }
+      }
+
+      .profileMenu {
+        position: absolute;
+        width: 120px;
+        height: auto;
+        background: white;
+        border: 1px solid #cccccc9c;
+        border-radius: 10px;
+        color: #000;
+        top: 35px;
+        right: 0px;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        padding: 10px;
+        gap: 15px;
+
+        .menuItem {
+          cursor: pointer;
+          font-size: 14px;
+          padding: 5px 15px;
+          border-radius: 10px;
+
+          &:hover {
+            background: #e8e8e8;
+          }
+        }
+      }
     }
+  }
 }

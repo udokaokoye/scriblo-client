@@ -1,0 +1,9 @@
+.newPostContainer {
+  margin-top: 9vh;
+}
+.newPostContainer .editorContainer {
+  width: 50%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+}/*# sourceMappingURL=create.css.map */
