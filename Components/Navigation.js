@@ -10,7 +10,7 @@ function Navigation() {
   const { demo, setdemo } = useAppContex();
 
   useEffect(() => {
-    console.log(session);
+    // console.log(session);
   }, [session]);
   return (
     <div className="navigation">
