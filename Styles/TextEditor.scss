@@ -1,0 +1,30 @@
+.uploadImage {
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+}
+
+.editorWrapper {
+    min-height: 100vh !important;
+
+    .editorMain{
+        min-height: inherit !important;
+         font-family: 'Charter ITC TT', sans-serif;
+
+        img {
+            width: 70% !important;
+            display: block;
+            margin: 0 auto;
+        }
+        iframe {
+            min-width: 600px !important;
+            min-height: 700px !important;
+            max-height: 900px !important;
+            overflow-y: hidden !important;
+            // height: auto !important;
+            display: block;
+            margin: 0 auto;
+            // object-fit: contain !important;
+        }
+    }
+}

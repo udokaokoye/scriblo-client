@@ -1,0 +1,26 @@
+.uploadImage {
+  width: 70%;
+  display: block;
+  margin: 0 auto;
+}
+
+.editorWrapper {
+  min-height: 100vh !important;
+}
+.editorWrapper .editorMain {
+  min-height: inherit !important;
+  font-family: "Charter ITC TT", sans-serif;
+}
+.editorWrapper .editorMain img {
+  width: 70% !important;
+  display: block;
+  margin: 0 auto;
+}
+.editorWrapper .editorMain iframe {
+  min-width: 600px !important;
+  min-height: 700px !important;
+  max-height: 900px !important;
+  overflow-y: hidden !important;
+  display: block;
+  margin: 0 auto;
+}/*# sourceMappingURL=TextEditor.css.map */
