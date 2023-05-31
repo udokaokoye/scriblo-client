@@ -7,54 +7,42 @@
 .editorWrapper {
   min-height: 100vh !important;
 }
-
 .editorWrapper .editorMain {
   min-height: inherit !important;
-  font-family: 'Charter ITC TT', sans-serif;
+  font-family: "Charter ITC TT", sans-serif;
 }
-
 .editorWrapper .editorMain img {
-  width: 70% !important;
+  width: 100% !important;
+  height: 500px !important;
+  -o-object-fit: contain !important;
+     object-fit: contain !important;
   display: block;
   margin: 0 auto;
 }
-
 .editorWrapper .editorMain iframe {
-  min-width: 600px !important;
-  min-height: 700px !important;
-  max-height: 900px !important;
+  height: auto !important;
+  width: auto !important;
   overflow-y: hidden !important;
   display: block;
   margin: 0 auto;
 }
-
 .editorWrapper .editorMain iframe[src*="youtube.com"], .editorWrapper .editorMain iframe[src*="youtu.be"] {
-  border: 2px solid red;
-  /* Example styling for YouTube */
-  /* Additional styles for YouTube */
+  width: 560px !important;
+  height: 315px !important;
 }
-
 .editorWrapper .editorMain iframe[src*="vimeo.com"] {
-  border: 2px solid blue;
-  /* Example styling for Vimeo */
-  /* Additional styles for Vimeo */
+  width: 640px !important;
+  height: 360px !important;
 }
-
 .editorWrapper .editorMain iframe[src*="twitter.com"] {
-  border: 2px solid green;
-  /* Example styling for Twitter */
-  /* Additional styles for Twitter */
+  min-width: 230px !important;
+  min-height: 550px !important;
 }
-
 .editorWrapper .editorMain iframe[src*="facebook.com"] {
-  border: 2px solid purple;
-  /* Example styling for Facebook */
-  /* Additional styles for Facebook */
+  width: auto !important;
+  height: auto !important;
 }
-
 .editorWrapper .editorMain iframe[src*="instagram.com"] {
-  border: 2px solid orange;
-  /* Example styling for Instagram */
-  /* Additional styles for Instagram */
-}
-/*# sourceMappingURL=TextEditor.css.map */
+  width: 320px !important;
+  height: 700px !important;
+}/*# sourceMappingURL=TextEditor.css.map */

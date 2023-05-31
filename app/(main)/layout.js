@@ -1,8 +1,9 @@
 import Navigation from '@/Components/Navigation'
-import './globals.css'
+import '../globals.css'
 import { Inter } from 'next/font/google'
 import Provider from '@/Components/Provider'
-import { AppContexProvider } from './contex/store';
+import { AppContexProvider } from '../contex/store';
+import { usePathname } from 'next/navigation';
 
 const inter = Inter({ subsets: ['latin'] })
 

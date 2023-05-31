@@ -14,7 +14,7 @@ function Navigation() {
   }, [session]);
   return (
     <div className="navigation">
-      <div className="navigation__logo"></div>
+      <Link href={'/'}><div className="navigation__logo"></div></Link>
       <div className="navigation__menu">
         {!session && (
           <div className="authButtons">
@@ -31,7 +31,7 @@ function Navigation() {
 
         {session && (
           <div className="userProfile">
-            <button className="btn flex_center" style={{width: 150, height: 38}}> <CreateOutlinedIcon /> Create Post</button>
+            <Link href={'/create'}><button className="btn flex_center" style={{width: 150, height: 38}}> <CreateOutlinedIcon /> Create Post</button> </Link>
 
 
             <div style={{background: `url(${session?.avatar})`}} className="userProfile__avatar" onClick={()=> setprofileMenuVisible(!profileMenuVisible)}>

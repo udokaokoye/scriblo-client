@@ -12,47 +12,43 @@
          font-family: 'Charter ITC TT', sans-serif;
 
         img {
-            width: 70% !important;
+            width: 100% !important;
+            height: 500px !important;
+            object-fit: contain !important;
             display: block;
             margin: 0 auto;
         }
         iframe {
-            min-width: 600px !important;
-            min-height: 700px !important;
-            max-height: 900px !important;
+            height: auto !important;
+            width: auto !important;
             overflow-y: hidden !important;
-            // height: auto !important;
             display: block;
             margin: 0 auto;  
             &[src*="youtube.com"], 
             &[src*="youtu.be"] {
-              border: 2px solid red; /* Example styling for YouTube */
-              /* Additional styles for YouTube */
+                width: 560px !important;
+                height: 315px !important;
             }
           
             &[src*="vimeo.com"] {
-              border: 2px solid blue; /* Example styling for Vimeo */
-              /* Additional styles for Vimeo */
+              width: 640px !important;
+                height: 360px !important;
             }
           
             &[src*="twitter.com"] {
-              border: 2px solid green; /* Example styling for Twitter */
-              /* Additional styles for Twitter */
+              min-width: 230px !important;
+              min-height: 550px !important;
             }
           
             &[src*="facebook.com"] {
-              border: 2px solid purple; /* Example styling for Facebook */
-              /* Additional styles for Facebook */
+              width: auto !important;
+              height: auto !important;
             }
           
             &[src*="instagram.com"] {
-              border: 2px solid orange; /* Example styling for Instagram */
-              /* Additional styles for Instagram */
+              width: 320px !important;
+              height: 700px !important;
             }
-        }
-
-        .test_url {
-            // display: none !important;;  
         }
     }
 }
