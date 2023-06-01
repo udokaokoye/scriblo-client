@@ -1,6 +1,6 @@
 import React from 'react'
 
-function AddPostNavigation() {
+function AddPostNavigation({savePost}) {
   return (
     <div className='addPostNavigation'>
         <div className="logo">
@@ -10,7 +10,7 @@ function AddPostNavigation() {
 
         <div className="menuBtns">
             <button className='btn btnDanger'>Cancel</button>
-            <button className="btn btnBlue">Save Draft</button>
+            <button className="btn btnBlue" onClick={() => savePost()}>Save Draft</button>
             <button className="btn">Publish</button>
         </div>
     </div>
