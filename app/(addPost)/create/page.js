@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import {S3Client, PutObjectCommand} from "@aws-sdk/client-s3";
 import draftToHtml from "draftjs-to-html";
 import AddPostNavigation from "@/Components/AddPostNavigation";
+import moment from "moment";
 
 function Create() {
 
@@ -16,7 +17,7 @@ function Create() {
     },
   });
   const [uploadImages, setuploadImages] = useState([]);
-  const [content, setcontent] = useState("");
+  const [content, setcontent] = useState();
   const [title, settitle] = useState("");
   const [tags, settags] = useState("");
   const [authorId, setauthorId] = useState(session?.id);
@@ -58,7 +59,7 @@ function Create() {
 
   const params = {
     Bucket: bucketName,
-    Key: `${isHidden ? 'drafts' : 'images'}/${fileName}_${index}.jpg`,
+    Key: `${isHidden == 1 ? 'drafts' : 'images'}/${fileName}_${index}.jpg`,
     Body: file,
     contentType: 'image/jpeg',
   }
@@ -70,57 +71,80 @@ function Create() {
   // console.log(s3Result)
 }
 
-  const logDetails = () => {
+const processRawEntity = async () => {
+    Object.values(rawEntityContent.entityMap)
+    .map(async (item, index) => {
+      uploadToS3(uploadImages.filter((img) => img.localSrc == item.data.src)[0].file, index, generateSlug(title))
+      item.data.src = convertToS3Url(`${generateSlug(title)}_${index}`);
+    });
+    // console.log(draftToHtml(rawEntityContent))
 
-    if (rawEntityContent.entityMap) {
+    // console.log(rawEntityContent.entityMap)
+    // console.log(rawEntityContent)
+    // return;
+  
 
-      const blobSrcs = Object.values(rawEntityContent.entityMap)
-        .filter((item) => item.data.src.startsWith("blob:"))
-        .map((item) => item.data.src);
-      console.log("blobUrls: ", blobSrcs)
+    // const blobSrcs = Object.values(rawEntityContent.entityMap)
+    //   .filter((item) => item.data.src.startsWith("blob:"))
+    //   .map((item) => item.data.src);
+    // // console.log("blobUrls: ", blobSrcs)
 
-      if (blobSrcs.length > 0) {
-        blobSrcs.forEach((blobSrc, index) => {
-          uploadToS3(uploadImages.filter((img) => img.localSrc == blobSrc)[0].file, index, generateSlug(title))
-          setmediafiles([...mediafiles, convertToS3Url(`${generateSlug(title)}_${index}`)])
-          
-          for (const key in rawEntityContent.entityMap) {
-            if (rawEntityContent.entityMap[key].data.src === blobSrc) {
-              rawEntityContent.entityMap[key].data.src = convertToS3Url(`${generateSlug(title)}_${index}`);
-            }
-          }
-        });
-      }
+    // if (blobSrcs.length > 0) {
+    //   blobSrcs.forEach(async (blobSrc, index) => {
+    //     await uploadToS3(uploadImages.filter((img) => img.localSrc == blobSrc)[0].file, index, generateSlug(title))
+    //     // await mediaPromisedState(convertToS3Url(`${generateSlug(title)}_${index}`));
+    //     // setmediafiles([...mediafiles, convertToS3Url(`${generateSlug(title)}_${index}`)]);
         
+    //     for (const key in rawEntityContent.entityMap) {
+    //       if (rawEntityContent.entityMap[key].data.src === blobSrc) {
+    //         rawEntityContent.entityMap[key].data.src = convertToS3Url(`${generateSlug(title)}_${index}`);
+    //       }
+    //     }
+    //   });
+    // }
       
-    }
+    
 
-    console.log("rawEntityContent: ", draftToHtml(rawEntityContent))
-    console.log("mediafiles: ", mediafiles)
+
+}
+
+  const logDetails = async () => {
+
+    // const res = await fetch(`/api/posts/index.php`,)
+    // const reJson = await res.json();
+    console.log(mediafiles)
+    return;
 
   };
 
   const savePost = async () => {
+    processRawEntity();
     setisHidden(1)
 
     let tagsIDs = [1,2,3];
 
     const formData = new FormData();
+
+    Object.values(rawEntityContent.entityMap)
+    .map((item) =>{
+      formData.append("mediaFiles[]", item.data.src);
+    });
     formData.append("title", title);
     formData.append("content", draftToHtml(rawEntityContent));
     formData.append("tags", tags);
     // for tagIDs we need to get the id of the selected tags from the allTags.js file
     formData.append("tagsIDs", tagsIDs);
-    formData.append("authorId", authorId);
+    formData.append("authorId", session?.id);
     formData.append("isHidden", 1);
-    formData.append("mediafiles", mediafiles);
     formData.append("slug", generateSlug(title));
+    formData.append("createdAt", moment().format("YYYY-MM-DD HH:mm:ss"));
+    formData.append("publishDate", moment().format("YYYY-MM-DD HH:mm:ss"));
 
-    const res = await fetch(`http://127.0.0.1/scriblo-server/api/posts`, {
-      method: "POST",
-      // headers: {
-      //   Authorization: `Bearer ${session?.token}`
-      // },
+    const res = await fetch(`/api/posts/index.php`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${session?.token}`
+      },
       body: formData,
     });
     const data = await res.json();
@@ -155,7 +179,6 @@ function Create() {
           uploadImages={uploadImages}
           setuploadImages={setuploadImages}
           content={content}
-          setcontent={setcontent}
           setrawEntityContent={setrawEntityContent}
         />
       </div>

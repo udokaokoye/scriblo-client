@@ -186,6 +186,9 @@ function TextEditor({ uploadImages, setuploadImages, content, setcontent, setraw
             className: "uploadImage",
             previewImage: true,
             alignmentEnabled: false,
+            inputAccept: "image/jpeg,image/jpg,image/png,image/svg",
+            // alt: { present: true, mandatory: true },
+            urlEnabled: false,
             // alt: { present: false, mandatory: false },
             defaultSize: {
               height: "100%",
@@ -203,7 +206,7 @@ function TextEditor({ uploadImages, setuploadImages, content, setcontent, setraw
         }}
         onEditorStateChange={(edst) => {
           seteditorState(edst)
-          setcontent(draftToHtml(convertToRaw(edst.getCurrentContent())));
+          // setcontent(draftToHtml(convertToRaw(edst.getCurrentContent())));
           setrawEntityContent(convertToRaw(edst.getCurrentContent()));
         }}
         // blockRendererFn={blockRendererFn}
