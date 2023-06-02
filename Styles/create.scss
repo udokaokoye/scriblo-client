@@ -224,20 +224,21 @@
       justify-content: space-between;
       margin-top: 25px;
 
-      .previewOptionBtn_preview {
+      .previewOptionBtn_save {
         width: 200px;
         height: 50px;
         border: none;
-        background: #c25fd3;
-        color: #fff;
+        background: transparent;
+        color: #000;
         font-size: 15px;
         font-weight: 500;
+        border: 1px solid #000;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
 
         &:hover {
-          background: #fff;
-          color: #000;
+          background: #000;
+          color: #fff;
           border: 1px solid #000;
         }
       }
@@ -257,6 +258,35 @@
           background: #fff;
           color: #000;
           border: 1px solid #000;
+        }
+      }
+    }
+
+    .previewOptionLinks {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between ;
+      margin-top: 25px;
+      .optionLink {
+        width: 50%;
+        span {
+          font-size: 15px;
+          font-weight: 500;
+          color: #000;
+          cursor: pointer;
+          text-decoration: underline;
+          transition: all 0.3s ease-in-out;
+
+          &:hover {
+            color: #c25fd3;
+          }
+        }
+        small {
+          display: block;
+          font-size: 12px;
+          color: #b7b7b7;
+          margin-top: 20px;
         }
       }
     }

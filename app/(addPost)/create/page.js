@@ -109,9 +109,8 @@ function Create() {
     return;
   };
 
-  const savePost = async () => {
+  const processPost = async () => {
     processRawEntity();
-    setisHidden(1);
 
     let tagsIDs = [1, 2, 3];
 
@@ -126,7 +125,7 @@ function Create() {
     // for tagIDs we need to get the id of the selected tags from the allTags.js file
     formData.append("tagsIDs", tagsIDs);
     formData.append("authorId", session?.id);
-    formData.append("isHidden", 1);
+    formData.append("isHidden", isHidden);
     formData.append("slug", generateSlug(title));
     formData.append("createdAt", moment().format("YYYY-MM-DD HH:mm:ss"));
     formData.append("publishDate", moment().format("YYYY-MM-DD HH:mm:ss"));
@@ -141,6 +140,26 @@ function Create() {
     const data = await res.json();
     console.log(data);
   };
+
+  const publishPost = async () => {
+    setisHidden(0);
+    // check if all fields are filled
+    if (!title || !rawEntityContent || !tags || !coverImage || !summary) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    processPost();
+  };
+
+  const savePost = async () => {
+    setisHidden(1);
+    if (!title || !rawEntityContent) {
+      alert("Please fill in a title and content before saving");
+      return;
+    }
+    processPost();
+  };
   return (
     <>
       <AddPostNavigation
@@ -149,7 +168,7 @@ function Create() {
         setstage={setstage}
       />
       <div className="newPostContainer">
-        <button onClick={() => logDetails()}>Log Details</button>
+        {/* <button onClick={() => logDetails()}>Log Details</button> */}
 
         {stage == "create" && (
           <div className="editorContainer">
@@ -183,69 +202,92 @@ function Create() {
         {stage == "preview" && (
           <div className="previewContainer">
             <h1>Article Preview</h1>
-          <div className="previewWrapper">
+            <div className="previewWrapper">
+              <div className="previewForms">
+                <div className="selectCoverImage">
+                  <small className="inputLabel">Select cover image</small>
+                  <div className="coverImageContainer">
+                    {coverImage == "" &&
+                      uploadImages.map((img, index) => (
+                        <div
+                          key={index}
+                          onClick={() => setcoverImage(img.localSrc)}
+                          className="coverImage"
+                          style={{ background: `url(${img.localSrc})` }}
+                        ></div>
+                      ))}
 
-            <div className="previewForms">
-              <div className="selectCoverImage">
-                <small className="inputLabel">Select cover image</small>
-                <div className="coverImageContainer">
-                  {coverImage == "" &&
-                    uploadImages.map((img, index) => (
+                    {coverImage !== "" && (
                       <div
-                        key={index}
-                        onClick={() => setcoverImage(img.localSrc)}
-                        className="coverImage"
-                        style={{ background: `url(${img.localSrc})` }}
-                      ></div>
-                    ))}
-
-                  {coverImage !== "" && (
-                    <div className="selectedCoverImage" style={{ background: `url(${coverImage})` }}>
-                      <div className="delete" onClick={() => setcoverImage("")}>
-                        X
+                        className="selectedCoverImage"
+                        style={{ background: `url(${coverImage})` }}
+                      >
+                        <div
+                          className="delete"
+                          onClick={() => setcoverImage("")}
+                        >
+                          X
+                        </div>
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
+                </div>
+                <div className="previewFormElement">
+                  <small className="inputLabel">Title</small>
+                  <input
+                    type="text"
+                    name="title"
+                    value={title}
+                    onChange={(txt) => settitle(txt.target.value)}
+                  />
+                  <small className="inputMessage"></small>
+                </div>
+                <div className="previewFormElement">
+                  <small className="inputLabel">Preview Subtitle</small>
+                  <textarea
+                    type="text"
+                    name="title"
+                    value={summary}
+                    onChange={(txt) => setsummary(txt.target.value)}
+                    maxLength={200}
+                  />
+                  <small className="inputMessage">
+                    Please enter preview subtitle, this will be visible
+                    alongside the article title and cover image{" "}
+                  </small>
+                </div>
+                <div className="previewFormElement">
+                  <small className="inputLabel">Tags</small>
+                  <input type="text" name="tags" onChange={(txt)=> settags(txt.target.value)} />
+                  <small className="inputMessage">
+                    Select categories that best describe your article
+                  </small>
                 </div>
               </div>
-              <div className="previewFormElement">
-                <small className="inputLabel">Title</small>
-                <input
-                  type="text"
-                  name="title"
-                  value={title}
-                  onChange={(txt) => settitle(txt.target.value)}
-                />
-                <small className="inputMessage"></small>
-              </div>
-              <div className="previewFormElement">
-                <small className="inputLabel">Preview Subtitle</small>
-                <textarea
-                  type="text"
-                  name="title"
-                  value={summary}
-                  onChange={(txt) => setsummary(txt.target.value)}
-                />
-                <small className="inputMessage">
-                  Please enter preview subtitle, this will be visible alongside
-                  the article title and cover image{" "}
-                </small>
-              </div>
-              <div className="previewFormElement">
-                <small className="inputLabel">Tags</small>
-                <input type="text" name="title" />
-                <small className="inputMessage">Select categories that best describe your article</small>
-              </div>
-            </div>
 
-            <div className="previewOptions">
-              <h1>Options</h1>
-              <div className="previewOptionBtns">
-                <button className="previewOptionBtn_preview">View live preview</button>
-                <button className="previewOptionBtn_publish">Publish</button>
+              <div className="previewOptions">
+                <h1>Options</h1>
+                <div className="previewOptionBtns">
+                  <button onClick={() => savePost()} className="previewOptionBtn_save">
+                    Save as drafft
+                  </button>
+                  <button onClick={() => publishPost()} className="previewOptionBtn_publish">Publish</button>
+                </div>
+                <div className="previewOptionLinks">
+                  <div className="optionLink">
+                    <span>View live preview</span>
+                    <small>Click to view live preview of your article</small>
+                  </div>
+                  <div className="optionLink">
+                    <span>Share preview link</span>
+                    <small>
+                      Share preview link with someone for review, code will be
+                      required to view preview
+                    </small>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
           </div>
         )}
       </div>

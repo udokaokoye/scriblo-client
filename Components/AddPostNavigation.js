@@ -10,7 +10,7 @@ function AddPostNavigation({savePost, stage, setstage}) {
 
         <div className="menuBtns">
             <button className='btn btnDanger' onClick={()=> setstage('create')}>Cancel</button>
-            <button className="btn btnBlue" onClick={() => setstage('preview')}>Save Draft</button>
+            {/* <button className="btn btnBlue" onClick={() => setstage('preview')}>Save Draft</button> */}
             <button className="btn" onClick={() => setstage('preview')}>Next</button>
         </div>
     </div>

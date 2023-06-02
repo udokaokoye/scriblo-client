@@ -1,4 +1,8 @@
+/* Fonts */
 @import url('https://fonts.cdnfonts.com/css/charter-itc-tt');
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+@import url('https://fonts.cdnfonts.com/css/sf-mono');
+                
 
 @import url('../Styles/main.css');
 @import url('../Styles/navigation.css');
