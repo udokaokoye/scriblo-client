@@ -51,12 +51,14 @@
   margin: 0 auto;
   font-family: "Charter ITC TT", sans-serif;
 }
-.newPostContainer .creatHeader input, .newPostContainer .creatHeader textarea {
+.newPostContainer .creatHeader input,
+.newPostContainer .creatHeader textarea {
   display: block;
   padding: 15px;
   resize: none;
 }
-.newPostContainer .creatHeader input:focus, .newPostContainer .creatHeader textarea:focus {
+.newPostContainer .creatHeader input:focus,
+.newPostContainer .creatHeader textarea:focus {
   outline: none;
 }
 .newPostContainer .creatHeader .articleTitle {
@@ -74,4 +76,157 @@
   height: 60px;
   font-size: 18px;
   border: none;
+}
+
+.previewContainer {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+.previewContainer h1 {
+  font-size: 20px;
+  font-weight: 500;
+}
+.previewContainer .previewWrapper {
+  width: 100%;
+  display: flex;
+  gap: 80px;
+}
+.previewContainer .previewWrapper .previewForms {
+  width: 50%;
+  margin-top: 25px;
+  overflow-x: hidden;
+}
+.previewContainer .previewWrapper .previewForms .selectCoverImage {
+  width: 100%;
+}
+.previewContainer .previewWrapper .previewForms .selectCoverImage .inputLabel {
+  display: block;
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+.previewContainer .previewWrapper .previewForms .selectCoverImage .coverImageContainer {
+  width: 100%;
+  height: 300px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  background: #f7f7f7;
+  cursor: pointer;
+}
+.previewContainer .previewWrapper .previewForms .selectCoverImage .coverImageContainer .coverImage {
+  width: 250px;
+  height: 100px;
+  background-position: center !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  transition: all 0.3s ease-in-out;
+}
+.previewContainer .previewWrapper .previewForms .selectCoverImage .coverImageContainer .coverImage:hover {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.previewContainer .previewWrapper .previewForms .selectCoverImage .coverImageContainer .selectedCoverImage {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-position: center !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+}
+.previewContainer .previewWrapper .previewForms .selectCoverImage .coverImageContainer .selectedCoverImage .delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.previewContainer .previewWrapper .previewForms .previewFormElement {
+  margin-top: 20px;
+}
+.previewContainer .previewWrapper .previewForms .previewFormElement .inputLabel {
+  display: block;
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+.previewContainer .previewWrapper .previewForms .previewFormElement input,
+.previewContainer .previewWrapper .previewForms .previewFormElement textarea {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding-bottom: 5px;
+  font-family: sans-serif;
+  resize: none;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 13px;
+  word-wrap: break-word;
+}
+.previewContainer .previewWrapper .previewForms .previewFormElement input:focus,
+.previewContainer .previewWrapper .previewForms .previewFormElement textarea:focus {
+  outline: none;
+}
+.previewContainer .previewWrapper .previewForms .previewFormElement textarea {
+  min-height: 100px;
+}
+.previewContainer .previewWrapper .previewForms .previewFormElement .inputMessage {
+  font-size: 11px;
+  color: #b7b7b7;
+}
+.previewContainer .previewWrapper .previewOptions {
+  width: 35%;
+  height: 100%;
+}
+.previewContainer .previewWrapper .previewOptions h1 {
+  font-size: 20px;
+  font-weight: 500;
+}
+.previewContainer .previewWrapper .previewOptions .previewOptionBtns {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+.previewContainer .previewWrapper .previewOptions .previewOptionBtns .previewOptionBtn_preview {
+  width: 200px;
+  height: 50px;
+  border: none;
+  background: #c25fd3;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.previewContainer .previewWrapper .previewOptions .previewOptionBtns .previewOptionBtn_preview:hover {
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+.previewContainer .previewWrapper .previewOptions .previewOptionBtns .previewOptionBtn_publish {
+  width: 200px;
+  height: 50px;
+  border: none;
+  background: #000;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.previewContainer .previewWrapper .previewOptions .previewOptionBtns .previewOptionBtn_publish:hover {
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
 }/*# sourceMappingURL=create.css.map */
