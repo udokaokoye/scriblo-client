@@ -16,13 +16,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ServerProtectedRoute>
+        {/* <ServerProtectedRoute> */}
         <AppContexProvider>
         <Provider>
         {children}
         </Provider>
         </AppContexProvider>
-        </ServerProtectedRoute>
+        {/* </ServerProtectedRoute> */}
         </body>
     </html>
   )

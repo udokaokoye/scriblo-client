@@ -1,6 +1,6 @@
 import React from 'react'
 
-function AddPostNavigation({savePost}) {
+function AddPostNavigation({savePost, stage, setstage}) {
   return (
     <div className='addPostNavigation'>
         <div className="logo">
@@ -9,9 +9,9 @@ function AddPostNavigation({savePost}) {
         </div>
 
         <div className="menuBtns">
-            <button className='btn btnDanger'>Cancel</button>
-            <button className="btn btnBlue" onClick={() => savePost()}>Save Draft</button>
-            <button className="btn">Publish</button>
+            <button className='btn btnDanger' onClick={()=> setstage('create')}>Cancel</button>
+            <button className="btn btnBlue" onClick={() => setstage('preview')}>Save Draft</button>
+            <button className="btn" onClick={() => setstage('preview')}>Next</button>
         </div>
     </div>
   )

@@ -10,12 +10,7 @@ import moment from "moment";
 
 function Create() {
 
-  const { data: session } = useSession({
-    required: true,
-    onUnauthenticated() {
-      redirect("/signup");
-    },
-  });
+  const { data: session } = useSession();
   const [uploadImages, setuploadImages] = useState([]);
   const [content, setcontent] = useState();
   const [title, settitle] = useState("");
@@ -24,7 +19,7 @@ function Create() {
   const [rawEntityContent, setrawEntityContent] = useState({});
   const [isHidden, setisHidden] = useState(0);
   const [mediafiles, setmediafiles] = useState([])
-
+  const [stage, setstage] = useState(['create']);
   function generateSlug(title) {
     // Convert the title to lowercase and replace special characters with dashes
     const slug = title.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '-');
@@ -112,7 +107,7 @@ const processRawEntity = async () => {
 
     // const res = await fetch(`/api/posts/index.php`,)
     // const reJson = await res.json();
-    console.log(mediafiles)
+    console.log(session?.token)
     return;
 
   };
@@ -153,35 +148,43 @@ const processRawEntity = async () => {
   }
   return (
     <>
-    <AddPostNavigation savePost={savePost} />
+    <AddPostNavigation savePost={savePost} stage={stage} setstage={setstage} />
     <div className="newPostContainer">
       <button onClick={() => logDetails()}>Log Details</button>
 
-      <div className="editorContainer">
-        <div className="creatHeader">
-          <textarea
-            type="text"
-            placeholder="Title Here"
-            name="title"
-            className="articleTitle"
-            cols={1}
-            onChange={(e) => settitle(e.target.value)}
-          />
-          <input
-            type="text"
-            name="tags"
-            placeholder="Add 3 tags"
-            className="tagInput"
-          />
-        </div>
+      {stage == 'create' && (
+                <div className="editorContainer">
+                <div className="creatHeader">
+                  <textarea
+                    type="text"
+                    placeholder="Title Here"
+                    name="title"
+                    className="articleTitle"
+                    cols={1}
+                    onChange={(e) => settitle(e.target.value)}
+                  />
+                  {/* <input
+                    type="text"
+                    name="tags"
+                    placeholder="Add 3 tags"
+                    className="tagInput"
+                  /> */}
+                </div>
+        
+                <TextEditor
+                  uploadImages={uploadImages}
+                  setuploadImages={setuploadImages}
+                  content={content}
+                  setrawEntityContent={setrawEntityContent}
+                />
+              </div>
+      )}
 
-        <TextEditor
-          uploadImages={uploadImages}
-          setuploadImages={setuploadImages}
-          content={content}
-          setrawEntityContent={setrawEntityContent}
-        />
-      </div>
+      {stage == 'preview' && (
+        <div className="previewContainer">
+          <h1>Preview</h1>
+        </div>
+)}
     </div>
     </>
   );
