@@ -7,9 +7,11 @@ import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import draftToHtml from "draftjs-to-html";
 import AddPostNavigation from "@/Components/AddPostNavigation";
 import moment from "moment";
+import { EditorState } from "draft-js";
 
 function Create() {
   const { data: session } = useSession();
+  const [editorState, seteditorState] = useState(EditorState.createEmpty());
   const [uploadImages, setuploadImages] = useState([]);
   const [content, setcontent] = useState();
   const [title, settitle] = useState("");
@@ -160,12 +162,19 @@ function Create() {
     }
     processPost();
   };
+
+  function textAreaAdjust(element) {
+    element.style.height = "1px";
+    element.style.height = (25+element.scrollHeight)+"px";
+  }
   return (
     <>
       <AddPostNavigation
         savePost={savePost}
         stage={stage}
         setstage={setstage}
+        seteditorState={seteditorState}
+        editorState={editorState}
       />
       <div className="newPostContainer">
         {/* <button onClick={() => logDetails()}>Log Details</button> */}
@@ -181,6 +190,7 @@ function Create() {
                 cols={1}
                 value={title}
                 onChange={(e) => settitle(e.target.value)}
+                onKeyUp={(e) => textAreaAdjust(e.target)}
               />
               {/* <input
                     type="text"
@@ -195,6 +205,8 @@ function Create() {
               setuploadImages={setuploadImages}
               content={content}
               setrawEntityContent={setrawEntityContent}
+              editorState={editorState}
+              seteditorState={seteditorState}
             />
           </div>
         )}
@@ -276,7 +288,7 @@ function Create() {
                 <div className="previewOptionLinks">
                   <div className="optionLink">
                     <span>View live preview</span>
-                    <small>Click to view live preview of your article</small>
+                    <small>Click to generate a live preview of your article</small>
                   </div>
                   <div className="optionLink">
                     <span>Share preview link</span>

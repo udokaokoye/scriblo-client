@@ -1,7 +1,11 @@
-.uploadImage {
-  width: 70%;
-  display: block;
-  margin: 0 auto;
+.editorPopups {
+  position: absolute !important;
+  left: -250px !important;
+  top: 50px !important;
+}
+
+.editorEmoji {
+  display: none !important;
 }
 
 .editorWrapper {
@@ -10,12 +14,15 @@
 .editorWrapper .editorMain {
   min-height: inherit !important;
   font-family: "Charter ITC TT", sans-serif;
+  color: rgb(98, 98, 98);
 }
 .editorWrapper .editorMain img {
   width: 100% !important;
-  height: 500px !important;
+  height: 300px !important;
   -o-object-fit: contain !important;
      object-fit: contain !important;
+  -o-object-position: top !important;
+     object-position: top !important;
   display: block;
   margin: 0 auto;
 }
@@ -27,8 +34,8 @@
   margin: 0 auto;
 }
 .editorWrapper .editorMain iframe[src*="youtube.com"], .editorWrapper .editorMain iframe[src*="youtu.be"] {
-  width: 560px !important;
-  height: 315px !important;
+  width: 100% !important;
+  height: auto !important;
 }
 .editorWrapper .editorMain iframe[src*="vimeo.com"] {
   width: 640px !important;
@@ -45,4 +52,7 @@
 .editorWrapper .editorMain iframe[src*="instagram.com"] {
   width: 320px !important;
   height: 700px !important;
+}
+.editorWrapper .editorMain b {
+  color: black !important;
 }/*# sourceMappingURL=TextEditor.css.map */

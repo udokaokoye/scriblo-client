@@ -1,8 +1,22 @@
-.uploadImage {
-    width: 70%;
-    display: block;
-    margin: 0 auto;
+.editorToolbar {
+  // position: sticky !important;
+  // top: 0 !important;
+  // z-index: 1 !important;
+  // background-color: #f8f8f8 !important;
+  // padding: 10px 0 !important;
+  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
 }
+
+.editorPopups {
+  position: absolute !important;
+  left: -250px !important; 
+  top: 50px !important;
+}
+
+.editorEmoji {
+  display: none !important;
+}
+
 
 .editorWrapper {
     min-height: 100vh !important;
@@ -13,8 +27,9 @@
 
         img {
             width: 100% !important;
-            height: 500px !important;
+            height: 300px !important;
             object-fit: contain !important;
+            object-position: top !important;
             display: block;
             margin: 0 auto;
         }
@@ -26,8 +41,8 @@
             margin: 0 auto;  
             &[src*="youtube.com"], 
             &[src*="youtu.be"] {
-                width: 560px !important;
-                height: 315px !important;
+                width: 100% !important;
+                height: auto !important;
             }
           
             &[src*="vimeo.com"] {
@@ -50,5 +65,15 @@
               height: 700px !important;
             }
         }
+
+        b {
+          color: black !important;
+        }
+        color: rgb(98, 98, 98);
+
+        
     }
+
+
+
 }

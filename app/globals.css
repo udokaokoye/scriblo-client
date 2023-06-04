@@ -9,6 +9,7 @@
 @import url('../Styles/auth.css');
 @import url('../Styles/create.css');
 @import url('../Styles/TextEditor.css');
+@import url('../Styles/home.css');
 
 *{
     margin: 0;
@@ -32,6 +33,24 @@ a {
     border: none;
     /* margin-top: 10px; */
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: black;
+}
+
+.btnInverse {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.btnInverse:hover {
+    background-color: black;
+    color: white;
 }
 
 .btnDanger {

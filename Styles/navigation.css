@@ -1,6 +1,6 @@
 .navigation {
   background: #fff;
-  border-bottom: 1px solid #8c9196;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
   position: fixed;
   top: 0;
   width: 100vw;
@@ -53,8 +53,8 @@
   border-radius: 50%;
   border: 2px solid #ccc;
   background-repeat: no-repeat !important;
-  background-position: top !important;
-  background-size: contain !important;
+  background-position: center !important;
+  background-size: cover !important;
   position: relative;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -64,13 +64,12 @@
 }
 .navigation .navigation__menu .userProfile .profileMenu {
   position: absolute;
-  width: 120px;
+  width: 250px;
   height: auto;
   background: white;
   border: 1px solid rgba(204, 204, 204, 0.6117647059);
-  border-radius: 10px;
   color: #000;
-  top: 35px;
+  top: 45px;
   right: 0px;
   margin-top: 10px;
   display: flex;

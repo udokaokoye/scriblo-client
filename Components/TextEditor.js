@@ -11,8 +11,8 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
 // import { Edit } from "@mui/icons-material";
 
-function TextEditor({ uploadImages, setuploadImages, content, setcontent, setrawEntityContent }) {
-  const [editorState, seteditorState] = useState(EditorState.createEmpty());
+function TextEditor({ uploadImages, setuploadImages, content, setcontent, setrawEntityContent, editorState, seteditorState }) {
+
 
 
   // useEffect(() => {
@@ -161,7 +161,7 @@ function TextEditor({ uploadImages, setuploadImages, content, setcontent, setraw
     <div>
       <Editor
         editorState={editorState}
-        toolbarClassName="toolbarClassName"
+        toolbarClassName="editorToolbar"
         wrapperClassName="editorWrapper"
         editorClassName="editorMain"
         toolbar={{
@@ -181,9 +181,11 @@ function TextEditor({ uploadImages, setuploadImages, content, setcontent, setraw
           textAlign: { inDropdown: true },
           link: { inDropdown: true },
           history: { inDropdown: true },
+          emoji: {className: 'editorEmoji'},
           image: {
             uploadCallback: uploadImageCallBack,
             className: "uploadImage",
+            popupClassName: "editorPopups",
             previewImage: true,
             alignmentEnabled: false,
             inputAccept: "image/jpeg,image/jpg,image/png,image/svg",
@@ -198,6 +200,7 @@ function TextEditor({ uploadImages, setuploadImages, content, setcontent, setraw
           },
           embedded: {
             embedCallback: embededLinkCallBack,
+            popupClassName: "editorPopups",
             defaultSize: {
               height: "auto",
               width: "auto",
@@ -209,7 +212,7 @@ function TextEditor({ uploadImages, setuploadImages, content, setcontent, setraw
           // setcontent(draftToHtml(convertToRaw(edst.getCurrentContent())));
           setrawEntityContent(convertToRaw(edst.getCurrentContent()));
         }}
-        // blockRendererFn={blockRendererFn}
+        placeholder="Write your story..."
       />
     </div>
   );

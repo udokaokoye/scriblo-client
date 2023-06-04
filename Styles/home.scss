@@ -1,0 +1,159 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.homepageShowcaseContainer {
+  width: 100%;
+  height: 70vh;
+  // background: red;
+  margin-top: 10vh;
+  margin-bottom: 8vh;
+  padding: 25px 0px;
+
+  .showcaseHeading {
+    text-align: center;
+    font-size: 90px;
+    font-family: "Charter ITC TT", sans-serif;
+    font-weight: 300;
+  }
+
+  .showcaseBannerImg {
+    width: 100%;
+    height: 500px;
+    background: url("/images/showcaseBanner.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .showcaseMessage {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  .showcaseBtn {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+    height: auto;
+    padding: 10px 29px;
+    background-color: transparent;
+    border: 1px solid #000000;
+    color: black;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: #000000;
+      color: white;
+    }
+  }
+}
+
+.homepageTrendingContainer {
+  // margin-top: 80px;
+  background-color: black;
+  min-height: 50vh;
+  height: auto;
+  color: #fff;
+  font-family: 'Sf pro display', sans-serif;
+  padding: 40px 0px;
+  .homepageTrendingContainerWrapper {
+    width: 55%;
+    margin: 0 auto;
+    height: 100%;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .headerTexts {
+      h2 {
+        font-size: 40px;
+      }
+      p {
+        font-size: 14px;
+        margin-top: 5px;
+      }
+    }
+
+    .headerBtn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  .trends {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+
+    .trend {
+      width: 300px;
+      height: auto;
+      // border: 1px solid #fff;
+
+      .trendRank {
+        font-size: 20px;
+        span {
+          color: #ccc;
+        }
+      }
+
+      .trendArticleAuthor {
+        width: 1005;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-top: 10px;
+
+        .authorAvatar {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background-color: red;
+        }
+
+        .authorName {
+          font-size: 16px;
+          font-weight: 300;
+        }
+      }
+      
+
+      .articleTitle {
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 32px;
+        margin-top: 10px;
+      }
+
+      .articleDateandReadTime {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+        font-size: 14px;
+        font-weight: 300;
+        color: #ccc;
+      }
+    }
+  }
+
+}
+}

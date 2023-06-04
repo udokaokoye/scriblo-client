@@ -1,17 +1,23 @@
 import React from 'react'
 
-function AddPostNavigation({savePost, stage, setstage}) {
+function AddPostNavigation({savePost, stage, setstage, seteditorState, editorState}) {
   return (
     <div className='addPostNavigation'>
         <div className="logo">
             <div className="logoImg"></div>
-            <span>Create Post</span>
+            <span>{stage} Post</span>
         </div>
 
         <div className="menuBtns">
             <button className='btn btnDanger' onClick={()=> setstage('create')}>Cancel</button>
             {/* <button className="btn btnBlue" onClick={() => setstage('preview')}>Save Draft</button> */}
-            <button className="btn" onClick={() => setstage('preview')}>Next</button>
+            {stage !== 'preview' && (
+              <button className="btn" onClick={() => {
+                setstage('preview')
+                seteditorState(editorState)
+              }}>Next</button>
+            )}
+            
         </div>
     </div>
   )

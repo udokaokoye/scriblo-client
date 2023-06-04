@@ -4,7 +4,7 @@ import { signIn, signOut } from "next-auth/react";
 import { useState, useRef, useEffect } from "react";
 import moment from "moment";
 import { useRouter, useSearchParams } from "next/navigation";
-// import { ArrowBackIos } from '@mui/icons-material';
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 function Signup() {
   const [useralreadyExists, setuseralreadyExists] = useState(false);
   const [stage, setstage] = useState(["signup", "signup"]);
@@ -12,9 +12,12 @@ function Signup() {
   const [token, settoken] = useState(["", "", "", "", ""]);
   const [fullName, setfullName] = useState("");
   const [avatar, setavatar] = useState("");
+  const [defaultAvatar, setdefaultAvatar] = useState('')
+  const [avatarFile, setavatarFile] = useState(null);
   const [bio, setbio] = useState("");
   const [selectedInterests, setselectedInterests] = useState([]);
   const verficationcodeRefs = useRef([]);
+  const fileInputRef = useRef(null);
 
   // !Error messages
   const [emailError, setemailError] = useState("");
@@ -45,55 +48,96 @@ function Signup() {
     signOut();
   };
 
+  function convertToS3Url(objectKey) {
+    const s3Url = `https://scriblo.s3.us-east-2.amazonaws.com/avatars/${objectKey}.jpg`;
+
+    return s3Url;
+  }
+
+  const uploadAvatarToS3 = async (file) => {
+    const bucketName = process.env.NEXT_PUBLIC_AWS_BUCKET_NAME;
+    const bucketRegion = process.env.NEXT_PUBLIC_AWS_BUCKET_REGION;
+    const bucketAccessKey = process.env.NEXT_PUBLIC_AWS_ACCESS_KEY;
+    const bucketSecretKey = process.env.NEXT_PUBLIC_AWS_SECRET_KEY;
+
+    const s3 = new S3Client({
+      region: bucketRegion,
+      credentials: {
+        accessKeyId: bucketAccessKey,
+        secretAccessKey: bucketSecretKey,
+      },
+    });
+
+    const params = {
+      Bucket: bucketName,
+      Key: `avatars/${email}_avatar.jpg`,
+      Body: file,
+      contentType: "image/jpeg",
+    };
+
+    const command = new PutObjectCommand(params);
+
+    await s3.send(command);
+  };
+
+  const handleAvatarChange = (event) => {
+    const file = event.target.files[0];
+    const localSrc = URL.createObjectURL(file);
+
+    setavatarFile(file);
+    setdefaultAvatar(localSrc);
+    setavatar("");
+  };
+
   const interests = [
-    {"name": "Tech", "emoji": "📱"},
-    {"name": "Science", "emoji": "🔬"},
-    {"name": "Health", "emoji": "🌿"},
-    {"name": "Travel", "emoji": "✈️"},
-    {"name": "Food", "emoji": "🍔"},
-    {"name": "Fashion", "emoji": "👗"},
-    {"name": "Fitness", "emoji": "💪"},
-    {"name": "Decor", "emoji": "🏠"},
-    {"name": "Finance", "emoji": "💰"},
-    {"name": "Parenting", "emoji": "👪"},
-    {"name": "Self-Improve", "emoji": "📚"},
-    {"name": "Art", "emoji": "🎨"},
-    {"name": "Books", "emoji": "📖"},
-    {"name": "Entertainment", "emoji": "🎬"},
-    {"name": "Sports", "emoji": "⚽"},
-    {"name": "Environment", "emoji": "🌍"},
-    {"name": "Business", "emoji": "💼"},
-    {"name": "Photography", "emoji": "📷"},
-    {"name": "Music", "emoji": "🎵"},
-    {"name": "Lifestyle", "emoji": "🌆"},
-    {"name": "Gaming", "emoji": "🎮"},
-    {"name": "Beauty", "emoji": "💄"},
-    {"name": "Education", "emoji": "🎓"},
-    {"name": "Motivation", "emoji": "💡"},
-    {"name": "Comedy", "emoji": "😂"},
-    {"name": "Politics", "emoji": "🗳️"},
-    {"name": "History", "emoji": "📜"},
-    {"name": "Crafts", "emoji": "🎨"},
-    {"name": "Gardening", "emoji": "🌱"},
-    {"name": "Pets", "emoji": "🐾"},
-    {"name": "Relationships", "emoji": "💑"},
-    {"name": "Technology", "emoji": "💻"},
-    {"name": "Design", "emoji": "🎨"},
-    {"name": "Movies", "emoji": "🎥"},
-    {"name": "Cooking", "emoji": "🍳"},
-    {"name": "Nature", "emoji": "🌳"},
-    {"name": "Writing", "emoji": "✍️"},
-    {"name": "Career", "emoji": "💼"},
-    {"name": "Fitness", "emoji": "💪"},
-    {"name": "Inspiration", "emoji": "💡"},
-    {"name": "Spirituality", "emoji": "🧘"},
-    {"name": "Hobbies", "emoji": "🎯"},
-    {"name": "Artificial Intelligence", "emoji": "🤖"},
-    {"name": "Travel Tips", "emoji": "✈️"},
-    {"name": "Parenting Tips", "emoji": "👪"},
-    {"name": "DIY Projects", "emoji": "🔨"},
-    {"name": "Entrepreneurship", "emoji": "🚀"},
-    {"name": "Photography Tips", "emoji": "📸"},
+    { name: "Tech", emoji: "📱" },
+    { name: "Science", emoji: "🔬" },
+    { name: "Health", emoji: "🌿" },
+    { name: "Travel", emoji: "✈️" },
+    { name: "Food", emoji: "🍔" },
+    { name: "Fashion", emoji: "👗" },
+    { name: "Fitness", emoji: "💪" },
+    { name: "Decor", emoji: "🏠" },
+    { name: "Finance", emoji: "💰" },
+    { name: "Parenting", emoji: "👪" },
+    { name: "Self-Improve", emoji: "📚" },
+    { name: "Art", emoji: "🎨" },
+    { name: "Books", emoji: "📖" },
+    { name: "Entertainment", emoji: "🎬" },
+    { name: "Sports", emoji: "⚽" },
+    { name: "Environment", emoji: "🌍" },
+    { name: "Business", emoji: "💼" },
+    { name: "Photography", emoji: "📷" },
+    { name: "Music", emoji: "🎵" },
+    { name: "Lifestyle", emoji: "🌆" },
+    { name: "Gaming", emoji: "🎮" },
+    { name: "Beauty", emoji: "💄" },
+    { name: "Education", emoji: "🎓" },
+    { name: "Motivation", emoji: "💡" },
+    { name: "Comedy", emoji: "😂" },
+    { name: "Politics", emoji: "🗳️" },
+    { name: "History", emoji: "📜" },
+    { name: "Crafts", emoji: "🎨" },
+    { name: "Gardening", emoji: "🌱" },
+    { name: "Pets", emoji: "🐾" },
+    { name: "Relationships", emoji: "💑" },
+    { name: "Technology", emoji: "💻" },
+    { name: "Design", emoji: "🎨" },
+    { name: "Movies", emoji: "🎥" },
+    { name: "Cooking", emoji: "🍳" },
+    { name: "Nature", emoji: "🌳" },
+    { name: "Writing", emoji: "✍️" },
+    { name: "Career", emoji: "💼" },
+    { name: "Fitness", emoji: "💪" },
+    { name: "Inspiration", emoji: "💡" },
+    { name: "Spirituality", emoji: "🧘" },
+    { name: "Hobbies", emoji: "🎯" },
+    { name: "Artificial Intelligence", emoji: "🤖" },
+    { name: "Travel Tips", emoji: "✈️" },
+    { name: "Parenting Tips", emoji: "👪" },
+    { name: "DIY Projects", emoji: "🔨" },
+    { name: "Entrepreneurship", emoji: "🚀" },
+    { name: "Photography Tips", emoji: "📸" },
   ];
   const avatarList = [
     "https://scriblo.s3.us-east-2.amazonaws.com/avatars/av1.jpg",
@@ -110,7 +154,9 @@ function Signup() {
       selectedInterests.splice(index, 1);
       setselectedInterests([...selectedInterests]);
     } else if (selectedInterests.length >= 3) {
-      setselectedInterestsError("You can only select 3 interests. You can search for more interests later on in the application.");
+      setselectedInterestsError(
+        "You can only select 3 interests. You can search for more interests later on in the application."
+      );
     } else {
       setselectedInterestsError("");
       setselectedInterests([...selectedInterests, interest]);
@@ -146,13 +192,15 @@ function Signup() {
   }
 
   const handleSignup = async () => {
+    await uploadAvatarToS3(avatarFile);
     const formData = new FormData();
     formData.append("email", email);
     formData.append("name", fullName);
-    formData.append("avatar", avatar);
+    formData.append("avatar", convertToS3Url(`${email}_avatar`));
     formData.append("bio", bio);
     formData.append("interests", selectedInterests.join(","));
     formData.append("createdAt", moment().format("YYYY-MM-DD HH:mm:ss"));
+    
 
     const res = await fetch(`/api/users/index.php`, {
       method: "POST",
@@ -168,7 +216,6 @@ function Signup() {
     } else {
       console.log(json);
     }
-
   };
 
   const handleVerification = async () => {
@@ -227,7 +274,7 @@ function Signup() {
       setfullNameError("Please enter your full name");
       return;
     }
-    setstage(["personal-information", "select-interest"])
+    setstage(["personal-information", "select-interest"]);
   };
 
   function isValidEmail(email) {
@@ -305,9 +352,14 @@ function Signup() {
               </button>
               <br />
               <br />
-              <button onClick={() => signIn("google", {
-                callbackUrl: "http://localhost:3000/",
-              })} className="socialbutton">
+              <button
+                onClick={() =>
+                  signIn("google", {
+                    callbackUrl: "http://localhost:3000/",
+                  })
+                }
+                className="socialbutton"
+              >
                 <span
                   style={{
                     backgroundImage: `url('https://scriblo.s3.us-east-2.amazonaws.com/branding/google_logo.png')`,
@@ -377,7 +429,7 @@ function Signup() {
           }`}
         >
           <div className="profileHead">
-            {/* <span className='backArrow' onClick={() => setstage(['signup', 'signup'])}><ArrowBackIos className="backArrow" /></span> */}
+            {/* <span className='backArrow' onClick={() => setstage(['signup', 'signup'])}>back</span> */}
             <div className="profileheadinfos">
               <h1 className="personalInformationHeading">
                 Personal Information
@@ -392,20 +444,19 @@ function Signup() {
             <label>Select an Avatar</label>
             <div className="avatars">
               <div
-                onClick={() =>
-                  setavatar(
-                    "https://scriblo.s3.us-east-2.amazonaws.com/avatars/avDefault.jpg"
-                  )
-                }
-                className="avatar customAvatar"
+                onClick={() => fileInputRef.current.click()}
+                className={`avatar ${defaultAvatar == '' && "customAvatar"} ${defaultAvatar !== "" && "selectedAvatar"}`}
                 style={{
                   background:
-                    "url(https://scriblo.s3.us-east-2.amazonaws.com/avatars/avDefault.jpg)",
+                    `url(${defaultAvatar != "" ? defaultAvatar : "https://scriblo.s3.us-east-2.amazonaws.com/avatars/avDefault.jpg"})`,
                 }}
               ></div>
               {avatarList.map((avatarLink, index) => (
                 <div
-                  onClick={() => setavatar(avatarLink)}
+                  onClick={() => {
+                    setavatar(avatarLink);
+                    setdefaultAvatar("");
+                  }}
                   className={`avatar ${
                     avatar == avatarLink ? "selectedAvatar" : " "
                   }`}
@@ -414,7 +465,14 @@ function Signup() {
                 ></div>
               ))}
             </div>
-            <label>Full Name</label>
+            <input
+              type="file"
+              ref={fileInputRef}
+              style={{ display: "none" }}
+              accept="image/jpeg, image/png"
+              onChange={handleAvatarChange}
+            />
+            <label className="nameLabel">Full Name</label>
             <input
               className="personalInformationInput"
               type="text"
@@ -424,7 +482,7 @@ function Signup() {
               value={fullName}
             />
             {fullNameError && <p className="fullNameError">{fullNameError}</p>}
-            <label>Email</label>
+            <label className="emailLabel">Email</label>
             <input
               className="personalInformationInput"
               type="email"
@@ -432,11 +490,12 @@ function Signup() {
               readOnly
               value={email}
             />
-            <label>Bio</label>
+            <label className="bioLabel">Bio</label>
             <textarea
               placeholder="Tell us a bit about yourself..."
               onChange={(e) => setbio(e.target.value)}
             />
+            <small className="bioWordCount">0 / 120</small>
             <button
               onClick={() => handlePersonalInfo()}
               className="btn"
@@ -457,7 +516,9 @@ function Signup() {
               <p>Discover Personalized Content Tailored to Your Preferences</p>
             </div>
           </div>
-            {selectedInterestsError && ( <p className="selectedInterestsError">{selectedInterestsError}</p>) }
+          {selectedInterestsError && (
+            <p className="selectedInterestsError">{selectedInterestsError}</p>
+          )}
 
           <div className="interests">
             {interests.map((interest, index) => (
@@ -472,7 +533,15 @@ function Signup() {
               </div>
             ))}
           </div>
-          <button disabled={selectedInterests.length < 3} className={`${selectedInterests.length < 3 ? 'btnDisabled' : ''} btn`} onClick={() => handleSignup()}>Continue</button>
+          <button
+            disabled={selectedInterests.length < 3}
+            className={`${
+              selectedInterests.length < 3 ? "btnDisabled" : ""
+            } btn`}
+            onClick={() => handleSignup()}
+          >
+            Continue
+          </button>
         </div>
       )}
     </div>
