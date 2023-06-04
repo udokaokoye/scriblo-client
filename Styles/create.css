@@ -1,18 +1,30 @@
 .addPostNavigation {
   width: 100%;
   height: 7vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .addPostNavigation .logo {
   width: 40%;
   height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 20px;
   margin-left: 20px;
 }
+
 .addPostNavigation .logo .logoImg {
   width: 120px;
   height: 100%;
@@ -22,19 +34,26 @@
   background-size: contain;
   margin-left: 20px;
 }
+
 .addPostNavigation .logo span {
   font-size: 20px;
   font-weight: 600;
   color: #000;
   text-transform: capitalize;
 }
+
 .addPostNavigation .menuBtns {
   width: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   gap: 20px;
   margin-right: 20px;
 }
+
 .addPostNavigation .menuBtns .btn {
   width: 120px;
 }
@@ -42,6 +61,7 @@
 .newPostContainer {
   position: relative;
 }
+
 .newPostContainer .editorContainer {
   width: 600px;
   margin: 0 auto;
@@ -49,20 +69,24 @@
   margin-bottom: 20px;
   overflow-x: hidden;
 }
+
 .newPostContainer .creatHeader {
   width: 100%;
   margin: 0 auto;
 }
+
 .newPostContainer .creatHeader input,
 .newPostContainer .creatHeader textarea {
   display: block;
   resize: none;
   font-family: "Charter ITC TT", sans-serif;
 }
+
 .newPostContainer .creatHeader input:focus,
 .newPostContainer .creatHeader textarea:focus {
   outline: none;
 }
+
 .newPostContainer .creatHeader .articleTitle {
   width: 100%;
   font-size: 35px;
@@ -74,6 +98,7 @@
   font-weight: 200;
   line-height: 45px;
 }
+
 .newPostContainer .creatHeader .tagInput {
   width: 100%;
   height: 60px;
@@ -86,51 +111,67 @@
   margin: 0 auto;
   margin-top: 60px;
 }
+
 .previewContainer h1 {
   font-size: 20px;
   font-weight: 500;
 }
+
 .previewContainer .previewWrapper {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 80px;
 }
+
 .previewContainer .previewWrapper .previewForms {
   width: 50%;
   margin-top: 25px;
   overflow-x: hidden;
 }
+
 .previewContainer .previewWrapper .previewForms .selectCoverImage {
   width: 100%;
 }
+
 .previewContainer .previewWrapper .previewForms .selectCoverImage .inputLabel {
   display: block;
   font-size: 15px;
   font-weight: 400;
   margin-bottom: 15px;
 }
+
 .previewContainer .previewWrapper .previewForms .selectCoverImage .coverImageContainer {
   width: 100%;
   height: 300px;
   border: 1px solid #ccc;
   margin-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   gap: 20px;
   background: #f7f7f7;
   cursor: pointer;
 }
+
 .previewContainer .previewWrapper .previewForms .selectCoverImage .coverImageContainer .coverImage {
   width: 250px;
   height: 100px;
   background-position: center !important;
   background-size: contain !important;
   background-repeat: no-repeat !important;
+  -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
+
 .previewContainer .previewWrapper .previewForms .selectCoverImage .coverImageContainer .coverImage:hover {
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  -webkit-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+          box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
+
 .previewContainer .previewWrapper .previewForms .selectCoverImage .coverImageContainer .selectedCoverImage {
   width: 100%;
   height: 100%;
@@ -139,6 +180,7 @@
   background-size: contain !important;
   background-repeat: no-repeat !important;
 }
+
 .previewContainer .previewWrapper .previewForms .selectCoverImage .coverImageContainer .selectedCoverImage .delete {
   position: absolute;
   top: 10px;
@@ -147,21 +189,30 @@
   height: 30px;
   background: #000;
   color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-radius: 50%;
   cursor: pointer;
 }
+
 .previewContainer .previewWrapper .previewForms .previewFormElement {
   margin-top: 20px;
 }
+
 .previewContainer .previewWrapper .previewForms .previewFormElement .inputLabel {
   display: block;
   font-size: 15px;
   font-weight: 400;
   margin-bottom: 15px;
 }
+
 .previewContainer .previewWrapper .previewForms .previewFormElement input,
 .previewContainer .previewWrapper .previewForms .previewFormElement textarea {
   display: block;
@@ -175,32 +226,43 @@
   font-size: 13px;
   word-wrap: break-word;
 }
+
 .previewContainer .previewWrapper .previewForms .previewFormElement input:focus,
 .previewContainer .previewWrapper .previewForms .previewFormElement textarea:focus {
   outline: none;
 }
+
 .previewContainer .previewWrapper .previewForms .previewFormElement textarea {
   min-height: 100px;
 }
+
 .previewContainer .previewWrapper .previewForms .previewFormElement .inputMessage {
   font-size: 11px;
   color: #b7b7b7;
 }
+
 .previewContainer .previewWrapper .previewOptions {
   width: 35%;
   height: 100%;
 }
+
 .previewContainer .previewWrapper .previewOptions h1 {
   font-size: 20px;
   font-weight: 500;
 }
+
 .previewContainer .previewWrapper .previewOptions .previewOptionBtns {
   width: 100%;
   height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-top: 25px;
 }
+
 .previewContainer .previewWrapper .previewOptions .previewOptionBtns .previewOptionBtn_save {
   width: 200px;
   height: 50px;
@@ -211,13 +273,16 @@
   font-weight: 500;
   border: 1px solid #000;
   cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
+
 .previewContainer .previewWrapper .previewOptions .previewOptionBtns .previewOptionBtn_save:hover {
   background: #000;
   color: #fff;
   border: 1px solid #000;
 }
+
 .previewContainer .previewWrapper .previewOptions .previewOptionBtns .previewOptionBtn_publish {
   width: 200px;
   height: 50px;
@@ -227,37 +292,52 @@
   font-size: 15px;
   font-weight: 500;
   cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
+
 .previewContainer .previewWrapper .previewOptions .previewOptionBtns .previewOptionBtn_publish:hover {
   background: #fff;
   color: #000;
   border: 1px solid #000;
 }
+
 .previewContainer .previewWrapper .previewOptions .previewOptionLinks {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-top: 25px;
 }
+
 .previewContainer .previewWrapper .previewOptions .previewOptionLinks .optionLink {
   width: 50%;
 }
+
 .previewContainer .previewWrapper .previewOptions .previewOptionLinks .optionLink span {
   font-size: 15px;
   font-weight: 500;
   color: #000;
   cursor: pointer;
   text-decoration: underline;
+  -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
+
 .previewContainer .previewWrapper .previewOptions .previewOptionLinks .optionLink span:hover {
   color: #c25fd3;
 }
+
 .previewContainer .previewWrapper .previewOptions .previewOptionLinks .optionLink small {
   display: block;
   font-size: 12px;
   color: #b7b7b7;
   margin-top: 20px;
-}/*# sourceMappingURL=create.css.map */
+}
+/*# sourceMappingURL=create.css.map */
