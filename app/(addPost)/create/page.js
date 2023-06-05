@@ -1,4 +1,5 @@
 "use client";
+import '../../../Styles/create.css'
 import TextEditor from "@/Components/TextEditor";
 import React, { useState } from "react";
 import { useSession } from "next-auth/react";
@@ -118,9 +119,13 @@ function Create() {
 
     const formData = new FormData();
 
-    Object.values(rawEntityContent.entityMap).map((item) => {
-      formData.append("mediaFiles[]", item.data.src);
-    });
+    if (rawEntityContent.entityMap.length > 0) {
+      Object.values(rawEntityContent.entityMap).map((item) => {
+        formData.append("mediaFiles[]", item.data.src);
+      });
+    } else {
+      formData.append("mediaFiles[]", "");
+    }
     formData.append("title", title);
     formData.append("content", draftToHtml(rawEntityContent));
     formData.append("tags", tags);
@@ -129,13 +134,15 @@ function Create() {
     formData.append("authorId", session?.id);
     formData.append("isHidden", isHidden);
     formData.append("slug", generateSlug(title));
+    formData.append("summary", summary);
+    formData.append("coverImage", coverImage);
     formData.append("createdAt", moment().format("YYYY-MM-DD HH:mm:ss"));
     formData.append("publishDate", moment().format("YYYY-MM-DD HH:mm:ss"));
 
     const res = await fetch(`/api/posts/index.php`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${session?.token}`,
+        'authorization': `Bearer ${session.token}`,
       },
       body: formData,
     });
@@ -155,7 +162,7 @@ function Create() {
   };
 
   const savePost = async () => {
-    setisHidden(1);
+    setisHidden(0);
     if (!title || !rawEntityContent) {
       alert("Please fill in a title and content before saving");
       return;

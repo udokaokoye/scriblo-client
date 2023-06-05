@@ -1,10 +1,18 @@
-'use client'
 import HomepageShowcase from "@/Components/HomepageShowcase";
 import HomepageTrending from "@/Components/HomepageTrending";
+import '../../Styles/home.css'
+import RecentArticles from "@/Components/RecentArticles";
+import {source_Sans_Pro} from '../../public/util/fonts'
+import { getServerSession } from "next-auth";
+import { authOptions } from "../authentication/[...nextauth]/route";
+import RecommendedTopics from "@/Components/RecommendedTopics";
+import PromoteScriblo from "@/Components/PromoteScriblo";
 
 
+export default async function Home () {
 
-export default function Home() {
+  const session = await getServerSession(authOptions);
+
   const articles = [
     {
       title: "The Power of Positive Thinking",
@@ -67,15 +75,120 @@ export default function Home() {
       image: "https://example.com/image6.jpg"
     }
   ];
+  const topics = [
+    "Tech",
+    "Science",
+    "Health",
+    "Travel",
+    "Food",
+    "Fashion",
+    "Fitness",
+    "Decor",
+  ]
+
+  const moreArticles = [
+    {
+      title: "The Importance of Regular Exercise",
+      summary: "Discover the benefits of incorporating regular exercise into your daily routine.",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+      categories: ["Health", "Fitness"],
+      readTime: "5 minutes",
+      coverImage: "https://example.com/cover-image1.jpg",
+      publishDate: "2 days ago",
+      authorAvatar: "https://example.com/author-avatar1.jpg",
+      authorName: "John Smith"
+    },
+    {
+      title: "10 Delicious and Healthy Breakfast Ideas",
+      summary: "Start your day off right with these nutritious and tasty breakfast options.",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+      categories: ["Food", "Health"],
+      readTime: "7 minutes",
+      coverImage: "https://example.com/cover-image2.jpg",
+      publishDate: "5 days ago",
+      authorAvatar: "https://example.com/author-avatar2.jpg",
+      authorName: "Emily Johnson"
+    },
+    {
+      title: "Tips for Productive Remote Work",
+      summary: "Maximize your productivity while working remotely with these helpful tips and strategies.",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+      categories: ["Remote Work", "Productivity"],
+      readTime: "6 minutes",
+      coverImage: "https://example.com/cover-image3.jpg",
+      publishDate: "1 day ago",
+      authorAvatar: "https://example.com/author-avatar3.jpg",
+      authorName: "Michael Davis"
+    },
+    {
+      title: "Exploring the Wonders of Space",
+      summary: "Embark on a fascinating journey through the vastness of space and uncover its mysteries.",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+      categories: ["Space", "Astronomy"],
+      readTime: "8 minutes",
+      coverImage: "https://example.com/cover-image4.jpg",
+      publishDate: "3 days ago",
+      authorAvatar: "https://example.com/author-avatar4.jpg",
+      authorName: "Sarah Thompson"
+    },
+    {
+      title: "The Art of Mindfulness Meditation",
+      summary: "Learn how to cultivate mindfulness through meditation and enhance your overall well-being.",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+      categories: ["Mindfulness", "Meditation"],
+      readTime: "10 minutes",
+      coverImage: "https://example.com/cover-image5.jpg",
+      publishDate: "6 days ago",
+      authorAvatar: "https://example.com/author-avatar5.jpg",
+      authorName: "David Miller"
+    },
+    {
+      title: "The Benefits of a Balanced Diet",
+      summary: "Discover the importance of maintaining a balanced diet for optimal health and nutrition.",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+      categories: ["Health", "Nutrition"],
+      readTime: "7 minutes",
+      coverImage: "https://example.com/cover-image6.jpg",
+      publishDate: "4 days ago",
+      authorAvatar: "https://example.com/author-avatar6.jpg",
+      authorName: "Sophia"
+    }
+    ]
   
 
   return (
     <>
-      <HomepageShowcase />
+      {!session?.email && (
+        <>
+          <HomepageShowcase source_Sans_Pro={source_Sans_Pro} />
       <br />
       <br />
       <br />
-      <HomepageTrending trends={articles} />
+      <HomepageTrending source_Sans_Pro={source_Sans_Pro} trends={articles} />
+      <br />
+        </>
+      )}
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <div className="mainContainer">
+        {session?.token}
+        <div className="articleFeed">
+        <RecentArticles source_Sans_Pro={source_Sans_Pro} topics={topics} articles={moreArticles} />
+        </div>
+        <div className={`feedSidebar ${source_Sans_Pro.className}`}>
+
+          <RecommendedTopics topics={topics.splice(0, 5)} source_Sans_Pro={source_Sans_Pro}  />
+          <br /><br />
+          <PromoteScriblo />
+        </div>
+      </div>
+      
+
+      
     </>
   )
 }

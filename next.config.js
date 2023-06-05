@@ -25,6 +25,10 @@ const nextConfig = {
       },
     ];
   },
+  // cssLoaderOptions: {
+  //   modules: true,
+  //   localIdentName: "[local]__[hash:base64:5]",
+  // },
 };
 
 module.exports = nextConfig;

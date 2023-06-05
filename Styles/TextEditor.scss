@@ -23,7 +23,7 @@
 
     .editorMain{
         min-height: inherit !important;
-         font-family: 'Charter ITC TT', sans-serif;
+        font-family: var(--font-charter-itc) !important;
 
         img {
             width: 100% !important;

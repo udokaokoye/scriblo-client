@@ -1,11 +1,15 @@
 import '../globals.css'
-import { Inter } from 'next/font/google'
 import Provider from '@/Components/Provider'
 import { AppContexProvider } from '../contex/store';
+import { Merriweather } from 'next/font/google'
 // import ClientProtectedRoute from '@/Components/ClientProtectedRoute';
 import ServerProtectedRoute from '@/Components/ServerProtectedRoute';
 
-const inter = Inter({ subsets: ['latin'] })
+const merrweather = Merriweather({
+  weight: ['300', '400', '700', '900'],
+  subsets: ['latin'],
+  variable: '--font-charter-itc'
+})
 
 export const metadata = {
   title: 'Scriblo',
@@ -15,7 +19,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={merrweather.className}>
         <ServerProtectedRoute>
         <AppContexProvider>
         <Provider>

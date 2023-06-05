@@ -1,11 +1,17 @@
 import Navigation from '@/Components/Navigation'
 import '../globals.css'
-import { Inter } from 'next/font/google'
+import { Merriweather } from 'next/font/google'
+// import localFont from 'next/font/local'
 import Provider from '@/Components/Provider'
 import { AppContexProvider } from '../contex/store';
 import { usePathname } from 'next/navigation';
 
-const inter = Inter({ subsets: ['latin'] })
+const merrweather = Merriweather({
+  weight: ['300', '400', '700', '900'],
+  subsets: ['latin'],
+  variable: '--font-charter-itc'
+})
+
 
 export const metadata = {
   title: 'Scriblo',
@@ -15,7 +21,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={merrweather.className}>
         <AppContexProvider>
         <Provider>
         <Navigation />

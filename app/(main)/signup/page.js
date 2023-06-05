@@ -5,6 +5,7 @@ import { useState, useRef, useEffect } from "react";
 import moment from "moment";
 import { useRouter, useSearchParams } from "next/navigation";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import '../../../Styles/auth.css'
 function Signup() {
   const [useralreadyExists, setuseralreadyExists] = useState(false);
   const [stage, setstage] = useState(["signup", "signup"]);

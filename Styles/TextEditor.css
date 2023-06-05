@@ -13,7 +13,7 @@
 }
 .editorWrapper .editorMain {
   min-height: inherit !important;
-  font-family: "Charter ITC TT", sans-serif;
+  font-family: var(--font-charter-itc) !important;
   color: rgb(98, 98, 98);
 }
 .editorWrapper .editorMain img {

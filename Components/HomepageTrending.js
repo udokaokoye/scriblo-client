@@ -1,9 +1,9 @@
 'use client'
 import React from 'react'
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
-function HomepageTrending({trends}) {
+function HomepageTrending({trends, source_Sans_Pro}) {
   return (
-    <div className='homepageTrendingContainer'>
+    <div className={`homepageTrendingContainer ${source_Sans_Pro.className}`}>
         <div className="homepageTrendingContainerWrapper">
         <div className="header">
             <div className="headerTexts">

@@ -1,15 +1,14 @@
-/* Fonts */
+/* Fonts
 @import url('https://fonts.cdnfonts.com/css/charter-itc-tt');
 @import url('https://fonts.cdnfonts.com/css/sf-pro-display');
-@import url('https://fonts.cdnfonts.com/css/sf-mono');
-                
+@import url('https://fonts.cdnfonts.com/css/sf-mono'); */
 
-@import url('../Styles/main.css');
-@import url('../Styles/navigation.css');
+/* @import url('../Styles/main.css'); */
+/* @import url('../Styles/navigation.css');
 @import url('../Styles/auth.css');
 @import url('../Styles/create.css');
 @import url('../Styles/TextEditor.css');
-@import url('../Styles/home.css');
+@import url('../Styles/home.css'); */
 
 *{
     margin: 0;

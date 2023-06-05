@@ -63,9 +63,10 @@
     input,
     textarea {
       display: block;
+      font-family: var(--font-charter-itc) !important;
       // padding: 15px;
       resize: none;
-      font-family: "Charter ITC TT", sans-serif;
+      font-weight: 300;
 
       &:focus {
         outline: none;
