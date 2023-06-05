@@ -175,7 +175,7 @@ export default async function Home () {
       <br />
       <br />
       <div className="mainContainer">
-        {session?.token}
+        {/* {session?.token} */}
         <div className="articleFeed">
         <RecentArticles source_Sans_Pro={source_Sans_Pro} topics={topics} articles={moreArticles} />
         </div>
