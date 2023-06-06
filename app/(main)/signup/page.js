@@ -342,7 +342,7 @@ function Signup() {
             </div>
 
             <div className="socialLoginButtons">
-              <button className="socialbutton">
+              {/* <button className="socialbutton">
                 <span
                   style={{
                     backgroundImage: `url('https://scriblo.s3.us-east-2.amazonaws.com/branding/apple_logo_white.png')`,
@@ -352,7 +352,7 @@ function Signup() {
                 Continue with Apple
               </button>
               <br />
-              <br />
+              <br /> */}
               <button
                 onClick={() =>
                   signIn("google", {

@@ -34,6 +34,7 @@
       height: 50px;
       width: 250px;
       padding: 0px 10px;
+      border: 1px solid #cccccc20;
 
       .searchIcon {
         font-weight: 300;
@@ -44,6 +45,8 @@
         padding: 10px 20px;
         border: none;
         background-color: transparent;
+        font-size: 14px;
+        font-weight: 400;
 
         &:focus {
           outline: none;
@@ -91,6 +94,21 @@
       gap: 20px;
       position: relative;
     //   background: red;
+
+    .newPostBtn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      background: transparent;
+      color: black;
+      border: 1px solid #ccc;
+      font-size: 16px;
+
+      .penIcon {
+        font-size: 16px;
+      }
+    }
 
       .userProfile__avatar {
         width: 50px;

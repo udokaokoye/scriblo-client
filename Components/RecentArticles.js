@@ -1,9 +1,12 @@
 "use client";
 
-import React from "react";
+import React, {useState} from "react";
 import ArticleCard from "./ArticleCard";
+import ArticleShowcase from "./ArticleShowcase";
+import { Key } from "@mui/icons-material";
 
 function RecentArticles({ topics, source_Sans_Pro, articles }) {
+  const [topic, settopic] = useState('Recommended')
   return (
     <div className={`recentArticlesContainer ${source_Sans_Pro.className}`}>
       <div className="header">
@@ -12,20 +15,23 @@ function RecentArticles({ topics, source_Sans_Pro, articles }) {
       </div>
 
       <div className="topicsBar">
-        {topics.map((topic) => (
-          <div className="topic">{topic}</div>
+        <div className="topic">Recommended</div>
+        {topics?.length > 0 && topics.map((topic, index) => (
+          <div key={index} className="topic">{topic}</div>
         ))}
       </div>
       <small className="seeMoreTopics">See more topics</small>
       <br />
       <br />
+      <ArticleShowcase />
+      <br /><br />
       <div className="articleCards">
-        {articles.map((article) => (
-          <>
+        {articles.map((article, index) => (
+          <React.Fragment key={index}>
             <ArticleCard article={article} />
             <br />
             <br />
-          </>
+          </React.Fragment>
         ))}
       </div>
     </div>

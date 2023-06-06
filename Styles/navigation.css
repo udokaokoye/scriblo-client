@@ -32,6 +32,7 @@
   height: 50px;
   width: 250px;
   padding: 0px 10px;
+  border: 1px solid rgba(204, 204, 204, 0.1254901961);
 }
 .navigation .logoSearch .navSearch .searchIcon {
   font-weight: 300;
@@ -42,6 +43,8 @@
   padding: 10px 20px;
   border: none;
   background-color: transparent;
+  font-size: 14px;
+  font-weight: 400;
 }
 .navigation .logoSearch .navSearch input:focus {
   outline: none;
@@ -76,6 +79,19 @@
   justify-content: space-between;
   gap: 20px;
   position: relative;
+}
+.navigation .navigation__menu .userProfile .newPostBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  color: black;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+.navigation .navigation__menu .userProfile .newPostBtn .penIcon {
+  font-size: 16px;
 }
 .navigation .navigation__menu .userProfile .userProfile__avatar {
   width: 50px;
