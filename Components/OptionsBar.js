@@ -6,8 +6,8 @@ function OptionBar({ options, source, searchQuery }) {
       {source == "/"
         ? options?.length > 0 &&
           options?.map((option, index) => (
-            <a href={`/${index !== 0 ? `?category=${option}`: ''}`} className="option">
-              <div key={index}>{option}</div>
+            <a key={index} href={`/${index !== 0 ? `?category=${option}`: ''}`} className="option">
+              <div >{option}</div>
             </a>
           ))
         : ""}
@@ -17,8 +17,8 @@ function OptionBar({ options, source, searchQuery }) {
             options?.map((option, index) => (
                 // searchQuery will be what the user is searching eg ~Javascript
                 // option will be the class eg: ~articles or ~people
-                <a href={`/search?q=${searchQuery}&class=${option.toLowerCase()}`} className="option">
-                  <div key={index}>{option}</div>
+                <a key={index} href={`/search?q=${searchQuery}&class=${option.toLowerCase()}`} className="option">
+                  <div >{option}</div>
                 </a>
               ))
         }
