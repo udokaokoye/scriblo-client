@@ -1,0 +1,16 @@
+.searchContainer {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10vh;
+}
+.searchContainer .searchResultContainer {
+  width: 60%;
+}
+.searchContainer .searchSideBar {
+  width: 30%;
+  height: auto;
+  border-left: 1px solid #e8e8e8;
+  padding-left: 25px;
+}/*# sourceMappingURL=search.css.map */

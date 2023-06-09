@@ -41,8 +41,8 @@
             margin: 0 auto;  
             &[src*="youtube.com"], 
             &[src*="youtu.be"] {
-                width: 100% !important;
-                height: auto !important;
+                width: 560px !important;
+                height: 315px !important;
             }
           
             &[src*="vimeo.com"] {
@@ -66,10 +66,20 @@
             }
         }
 
+       background-color: transparent !important;
+
+
+
+       span {
+        // display: none !important;
+        background-color: transparent !important;
+        color: rgb(98, 98, 98);
+        line-height: 34px !important;
+       }
+
         b {
           color: black !important;
         }
-        color: rgb(98, 98, 98);
 
         
     }

@@ -3,10 +3,15 @@
 import React, {useState} from "react";
 import ArticleCard from "./ArticleCard";
 import ArticleShowcase from "./ArticleShowcase";
-import { Key } from "@mui/icons-material";
+import Link from "next/link";
+import { getTagID } from "@/public/util/helpers";
+import NotFound from "./NotFound";
+import OptionsBar from './OptionsBar'
 
-function RecentArticles({ topics, source_Sans_Pro, articles }) {
-  const [topic, settopic] = useState('Recommended')
+function RecentArticles({ topics, source_Sans_Pro, articles, session }) {
+
+
+
   return (
     <div className={`recentArticlesContainer ${source_Sans_Pro.className}`}>
       <div className="header">
@@ -14,25 +19,23 @@ function RecentArticles({ topics, source_Sans_Pro, articles }) {
         <p>Discover recent article from writers on any topic</p>
       </div>
 
-      <div className="topicsBar">
-        <div className="topic">Recommended</div>
-        {topics?.length > 0 && topics.map((topic, index) => (
-          <div key={index} className="topic">{topic}</div>
-        ))}
-      </div>
-      <small className="seeMoreTopics">See more topics</small>
+      <OptionsBar options={topics} source={'/'} />
+      <Link href={'/explore'}><small className="seeMoreTopics">See more topics</small></Link>
       <br />
       <br />
-      <ArticleShowcase />
+      {articles?.length > 0 && <ArticleShowcase 
+      article={articles[0]} 
+      />}
       <br /><br />
       <div className="articleCards">
-        {articles.map((article, index) => (
+        {articles?.length >0 ? articles?.slice(1, articles?.length).map((article, index) => (
           <React.Fragment key={index}>
             <ArticleCard article={article} />
             <br />
             <br />
           </React.Fragment>
-        ))}
+        )) : <NotFound reason={'no_post_for_category'} />
+        }
       </div>
     </div>
   );

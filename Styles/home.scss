@@ -194,28 +194,7 @@
     }
   }
 
-  .topicsBar {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 7px;
-    column-gap: 10px;
-    margin-top: 20px;
 
-    .topic {
-      padding: 10px 22px;
-      border-bottom: 1px solid #ccc;
-      // border-radius: 4px;
-      font-size: 13px;
-      cursor: pointer;
-      transition: 0.1s ease-in-out;
-
-      &:hover {
-        color: #fff;
-        background-color: #000000;
-      }
-    }
-  }
   .seeMoreTopics {
     display: block;
     width: fit-content;
@@ -227,113 +206,16 @@
     border-radius: 4px;
     cursor: pointer;
   }
-
-  .articleCardContainer {
-    // background: red;
-    padding-bottom: 45px;
-    border-bottom: 1px solid #ccc;
-    cursor: pointer;
-
-    .articleCardHeader {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      .authorAvatar {
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        background: brown;
-      }
-      .authorName {
-        font-size: 14px;
-      }
-      .articleDate {
-        font-size: 14px;
-      }
-    }
-
-    .articleCardBody {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      .articleCardContent {
-        width: 70%;
-
-        .articleCardTitle {
-          font-family: var(--font-src-sans-pro);
-          font-weight: 600;
-          width: 90%;
-          font-size: 20px;
-          margin-top: 15px;
-        }
-        .articlecategories {
-          display: flex;
-          align-items: center;
-          gap: 15px;
-          margin-top: 10px;
-          span {
-            cursor: pointer;
-            padding: 4px 18px;
-            border-radius: 9px;
-            background: #f2f2f2;
-            font-size: 13px;
-          }
-        }
-
-        .articleCardSummary {
-          font-size: 15px;
-          margin-top: 10px;
-          font-weight: 300;
-          line-height: 25px;
-        }
-      }
-
-      .articleCardCoverImage {
-        width: 30%;
-        width: 80px;
-        height: 80px;
-        background: peachpuff;
-      }
-    }
-
-    .articleFooter {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 15px;
-
-      .articleReadTime {
-        font-family: 14px;
-        color: #b3b3b3;
-      }
-
-      .footerActionBtn {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-
-        span {
-          color: #b3b3b3;
-          cursor: pointer;
-          transition: all 0.2s ease-in-out;
-
-          &:hover {
-            color: #8c8c8c;
-          }
-        }
-      }
-    }
-  }
 }
 
 .articleShowcaseContainer {
   width: 100%;
   height: 400px;
   margin: 0 auto;
-  background: url("https://scriblo.s3.us-east-2.amazonaws.com/drafts/hello-this-is-levi_0.jpg");
-  background-position: top;
-  background-size: cover;
-  background-repeat: no-repeat;
+  // background: url("https://scriblo.s3.us-east-2.amazonaws.com/drafts/hello-this-is-levi_0.jpg");
+  background-position: top !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
   position: relative;
 
   .artileContent {
@@ -453,6 +335,133 @@
       background-color: #fff;
       color: #000;
       border: 1px solid #d6d6d6;
+    }
+  }
+}
+
+// .userCardContainer {
+//   width: 100%;
+//   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+//   padding: 20px;
+
+
+//   .userCardHeader {
+//     display: flex;
+//     gap: 15px;
+//     align-items: center;
+//     cursor: pointer;
+
+//     .userAvatar {
+//       width: 50px;
+//       height: 50px;
+//       border-radius: 50%;
+//       background-position: top !important;
+//       background-size: cover !important;
+//       background-repeat: no-repeat !important;
+//     }
+//   }
+
+//   .userIntrests {
+//     width: 300px;
+//     display: flex;
+//     gap: 15px;
+//     margin-top: 15px;
+
+//     span {
+//       padding: 6px 14px;
+//       background: #ccc;
+//       border-radius: 10px;
+//       font-size: 14px;
+//     }
+//   }
+
+//   .userBio {
+//     margin-top: 20px;
+//     width: 50%;
+//   }
+
+//   .followUser {
+//     width: 200px;
+//     height: 40px;
+//     margin-top: 20px;
+//     background: #000;
+//     border: 1px solid transparent;
+//     color: #fff;
+//     cursor: pointer;
+//     transition: all 0.3s ease-in-out;
+//     font-weight: bold;
+//     border-radius: 12px;
+    
+
+//     &:hover {
+//       background-color: transparent;
+//       color: black;
+//       border: 1px solid #dddddd;
+//       box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+//     }
+//   }
+// }
+
+.userCardContainer {
+  width: fit-content;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  padding: 20px;
+  display: flex;
+  gap: 15px;
+
+  .userAvatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-position: top !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+  }
+
+
+  .userInfo {
+    width: 300px;
+    // background: red;
+    cursor: pointer;
+
+  .userIntrests {
+    width: 300px;
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+
+    span {
+      padding: 4px 10px;
+      background: #ccc;
+      border-radius: 10px;
+      font-size: 12px;
+    }
+  }
+
+  .userBio {
+    margin-top: 20px;
+  }
+}
+
+  .followUser {
+    width: 200px;
+    height: 40px;
+    margin-top: 20px;
+    background: #000;
+    border: 1px solid transparent;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    border-radius: 12px;
+    
+
+    &:hover {
+      background-color: transparent;
+      color: black;
+      border: 1px solid #dddddd;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
   }
 }

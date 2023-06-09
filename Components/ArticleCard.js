@@ -3,13 +3,14 @@ import React from "react";
 import { merrweather } from "../public/util/fonts";
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import ShareIcon from '@mui/icons-material/Share';
+import { formatDate, limitText } from "@/public/util/helpers";
 function ArticleCard({ article }) {
   return (
     <article className={`articleCardContainer`}>
       <div className="articleCardHeader">
-        <div className="authorAvatar"></div>
+        <div style={{background: `url(${article.authorAvatar})`}} className="authorAvatar"></div>
         <p className="authorName">{article.authorName}</p>
-        <span className="articleDate">{article.publishDate}</span>
+        <span className="articleDate">{formatDate(article.publishDate)}</span>
       </div>
 
       <div className="articleCardBody">
@@ -18,17 +19,17 @@ function ArticleCard({ article }) {
             {article.title}
           </h1>
           <div className="articlecategories">
-            {article?.categories.map((categorie) => (<span key={categorie}>{categorie}</span>))}
+            {article?.tags.split(",").map((categorie) => (<span key={categorie}>{categorie}</span>))}
           </div>
           <p className={`articleCardSummary ${merrweather.className}`}>
-            {article.summary}
+            {limitText(article.summary, 35)}
           </p>
         </div>
-        <div className="articleCardCoverImage"></div>
+        {article.coverImage !== "" && (<div style={{background:`url(${article.coverImage})`}} className="articleCardCoverImage"></div>)}
       </div>
 
       <div className="articleFooter">
-        <span className="articleReadTime">{article.readTime}</span>
+        <span className="articleReadTime">5 mins read time</span>
         <div className="footerActionBtn">
           <span><BookmarkBorderIcon /></span> <span><ShareIcon /></span>
         </div>

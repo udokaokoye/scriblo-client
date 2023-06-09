@@ -53,14 +53,10 @@
   width: 100%;
   margin: 0 auto;
 }
-.newPostContainer .creatHeader input,
 .newPostContainer .creatHeader textarea {
   display: block;
-  font-family: var(--font-charter-itc) !important;
   resize: none;
-  font-weight: 300;
 }
-.newPostContainer .creatHeader input:focus,
 .newPostContainer .creatHeader textarea:focus {
   outline: none;
 }
@@ -71,7 +67,6 @@
   border: none;
   word-wrap: break-word;
   overflow-wrap: break-word !important;
-  font-family: "Charter ITC TT", sans-serif;
   font-weight: 200;
   line-height: 45px;
 }
@@ -111,7 +106,7 @@
   margin-bottom: 15px;
 }
 .previewContainer .previewWrapper .previewForms .selectCoverImage .coverImageContainer {
-  width: 100%;
+  width: 99%;
   height: 300px;
   border: 1px solid #ccc;
   margin-bottom: 20px;
@@ -120,6 +115,14 @@
   gap: 20px;
   background: #f7f7f7;
   cursor: pointer;
+}
+.previewContainer .previewWrapper .previewForms .selectCoverImage .coverImageContainer span {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .previewContainer .previewWrapper .previewForms .selectCoverImage .coverImageContainer .coverImage {
   width: 250px;
@@ -180,12 +183,60 @@
 .previewContainer .previewWrapper .previewForms .previewFormElement textarea:focus {
   outline: none;
 }
+.previewContainer .previewWrapper .previewForms .previewFormElement .tagsearchInput {
+  padding-bottom: 15px;
+}
 .previewContainer .previewWrapper .previewForms .previewFormElement textarea {
-  min-height: 100px;
+  height: auto;
+  line-height: 22px;
 }
 .previewContainer .previewWrapper .previewForms .previewFormElement .inputMessage {
   font-size: 11px;
   color: #b7b7b7;
+}
+.previewContainer .previewWrapper .previewForms .previewFormElement .allSelectedTags {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  margin: 10px 0px;
+  margin-bottom: 20px;
+}
+.previewContainer .previewWrapper .previewForms .previewFormElement .allSelectedTags span {
+  font-size: 14px;
+  padding: 10px 18px;
+  background-color: #e5e5e5;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.previewContainer .previewWrapper .previewForms .previewFormElement .allSelectedTags span .closeIcon {
+  font-size: 14px;
+  color: #a7a7a7;
+}
+.previewContainer .previewWrapper .previewForms .previewFormElement .allSelectedTags span .closeIcon:hover {
+  font-weight: bold;
+  color: black;
+}
+.previewContainer .previewWrapper .previewForms .previewFormElement .tagsRecommendations {
+  height: auto;
+  width: 200px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  border-radius: 4px;
+  border: 1px solid rgba(204, 204, 204, 0.568627451);
+}
+.previewContainer .previewWrapper .previewForms .previewFormElement .tagsRecommendations span {
+  font-size: 14px;
+  padding: 10px;
+  cursor: pointer;
+}
+.previewContainer .previewWrapper .previewForms .previewFormElement .tagsRecommendations span:hover {
+  background-color: black;
+  color: white;
 }
 .previewContainer .previewWrapper .previewOptions {
   width: 35%;

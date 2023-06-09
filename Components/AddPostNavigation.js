@@ -1,10 +1,11 @@
+import Link from 'next/link'
 import React from 'react'
 
 function AddPostNavigation({savePost, stage, setstage, seteditorState, editorState}) {
   return (
     <div className='addPostNavigation'>
         <div className="logo">
-            <div className="logoImg"></div>
+           <Link href={'/'}><div className="logoImg"></div></Link> 
             <span>{stage} Post</span>
         </div>
 

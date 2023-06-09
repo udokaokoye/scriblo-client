@@ -89,3 +89,126 @@ a {
     justify-content: center;
     align-items: center;
 }
+
+/* Start Option Bar */
+.optionBar {
+    width: 100%;
+    display: flex !important;
+    flex-wrap: wrap;
+    row-gap: 7px;
+    column-gap: 10px;
+    margin-top: 20px;
+  }
+
+  .optionBar .option {
+        width: fit-content !important;
+        padding: 10px 22px;
+        border-bottom: 1px solid #ccc;
+        /* // border-radius: 4px; */
+        font-size: 13px;
+        cursor: pointer;
+        transition: 0.1s ease-in-out;
+
+
+  }
+
+  .optionBar .option:hover {
+
+        color: #fff;
+        background-color: #000000;
+      
+  }
+  /* End Option Bar */
+
+  /* Start Article Card */
+    .articleCardContainer {
+    padding-bottom: 45px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+  }
+    .articleCardContainer .articleCardHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+    .articleCardContainer .articleCardHeader .authorAvatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: brown;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+  }
+    .articleCardContainer .articleCardHeader .authorName {
+    font-size: 14px;
+  }
+    .articleCardContainer .articleCardHeader .articleDate {
+    font-size: 14px;
+  }
+    .articleCardContainer .articleCardBody {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+    .articleCardContainer .articleCardBody .articleCardContent {
+    width: 70%;
+  }
+    .articleCardContainer .articleCardBody .articleCardContent .articleCardTitle {
+    font-family: var(--font-src-sans-pro);
+    font-weight: 600;
+    width: 90%;
+    font-size: 20px;
+    margin-top: 15px;
+  }
+    .articleCardContainer .articleCardBody .articleCardContent .articlecategories {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+  }
+    .articleCardContainer .articleCardBody .articleCardContent .articlecategories span {
+    cursor: pointer;
+    padding: 4px 18px;
+    border-radius: 9px;
+    background: #f2f2f2;
+    font-size: 13px;
+  }
+    .articleCardContainer .articleCardBody .articleCardContent .articleCardSummary {
+    font-size: 15px;
+    margin-top: 10px;
+    font-weight: 300;
+    line-height: 25px;
+  }
+    .articleCardContainer .articleCardBody .articleCardCoverImage {
+    width: 30%;
+    width: 120px;
+    height: 120px;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+  }
+    .articleCardContainer .articleFooter {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+    .articleCardContainer .articleFooter .articleReadTime {
+    font-family: 14px;
+    color: #b3b3b3;
+  }
+    .articleCardContainer .articleFooter .footerActionBtn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+    .articleCardContainer .articleFooter .footerActionBtn span {
+    color: #b3b3b3;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+    .articleCardContainer .articleFooter .footerActionBtn span:hover {
+    color: #8c8c8c;
+  }
+
+  /* End Article Card */

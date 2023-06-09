@@ -6,9 +6,11 @@ import { source_Sans_Pro } from "../../public/util/fonts";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../authentication/[...nextauth]/route";
 import RecommendedTopics from "@/Components/RecommendedTopics";
+import {headers} from 'next/headers'
+import { getTagID, getTagIDs } from "@/public/util/helpers";
 import PromoteScriblo from "@/Components/PromoteScriblo";
-import {allTags} from "@/public/util/allTags";
-export default async function Home() {
+// import next from "next/types";
+export default async function Home({params, searchParams}) {
   const session = await getServerSession(authOptions);
 
   const articles = [
@@ -79,7 +81,7 @@ export default async function Home() {
       image: "https://example.com/image6.jpg",
     },
   ];
-  const topics = [
+  const dummytopics = [
     "Tech",
     "Science",
     "Health",
@@ -171,32 +173,42 @@ export default async function Home() {
     },
   ];
 
-  function getTagIDs(tagNames, tags) {
-    const tagLookup = tags.reduce((lookup, tag) => {
-      lookup[tag.name] = tag.id;
-      return lookup;
-    }, {});
-  
-    const namesArray = tagNames.split(',');
-    const idsArray = namesArray.map(name => tagLookup[name]);
-    const validIdsArray = idsArray.filter(id => id !== undefined);
-    const idsString = validIdsArray.join(',');
-  
-    return idsString;
-  }
+  // const headerList = headers()
+
+
+
+
+
+
+  let feedArticle = [];
+  let topics = []
 
 
   if( session?.token) {
-      const intrestIDs = getTagIDs(session?.interests, allTags)
 
- const res = await fetch(`${process.env.API_URL}/posts/index.php?categories=${intrestIDs}`, {
-  headers: {
-    Authorization: `Bearer ${session?.token}`
-  }
-})
+    let intrestIDs = getTagIDs(session?.interests)
+    if (searchParams.category) {
+      intrestIDs = getTagID(searchParams.category)
+    }
 
-const data = await res.json()
-console.log(data)
+    const res = await fetch(`${process.env.API_URL}/posts/index.php?categories=${intrestIDs}`, {
+     headers: {
+       Authorization: `Bearer ${session?.token}`
+     },
+     next: {revalidate: 20}
+   })
+   
+   const data = await res.json()
+   feedArticle = data.data
+   topics = session?.interests.split(",")
+   topics.unshift("Recommended")
+
+// console.log(data)
+  } else {
+    const res = await fetch(`${process.env.API_URL}/posts/index.php?categories=all`, {next: {revalidate: 20}})
+    const data = await res.json()
+    feedArticle = data.data
+    topics = []
   }
 
   return (
@@ -225,13 +237,14 @@ console.log(data)
         <div className="articleFeed">
           <RecentArticles
             source_Sans_Pro={source_Sans_Pro}
-            topics={session?.interests.split(",")}
-            articles={moreArticles}
+            topics={topics}
+            articles={feedArticle}
+            session={session}
           />
         </div>
         <div className={`feedSidebar ${source_Sans_Pro.className}`}>
           <RecommendedTopics
-            topics={topics.splice(0, 5)}
+            topics={dummytopics.splice(0, 5)}
             source_Sans_Pro={source_Sans_Pro}
           />
           <br />

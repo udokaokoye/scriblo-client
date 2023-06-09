@@ -14,7 +14,7 @@
 .editorWrapper .editorMain {
   min-height: inherit !important;
   font-family: var(--font-charter-itc) !important;
-  color: rgb(98, 98, 98);
+  background-color: transparent !important;
 }
 .editorWrapper .editorMain img {
   width: 100% !important;
@@ -34,8 +34,8 @@
   margin: 0 auto;
 }
 .editorWrapper .editorMain iframe[src*="youtube.com"], .editorWrapper .editorMain iframe[src*="youtu.be"] {
-  width: 100% !important;
-  height: auto !important;
+  width: 560px !important;
+  height: 315px !important;
 }
 .editorWrapper .editorMain iframe[src*="vimeo.com"] {
   width: 640px !important;
@@ -52,6 +52,11 @@
 .editorWrapper .editorMain iframe[src*="instagram.com"] {
   width: 320px !important;
   height: 700px !important;
+}
+.editorWrapper .editorMain span {
+  background-color: transparent !important;
+  color: rgb(98, 98, 98);
+  line-height: 34px !important;
 }
 .editorWrapper .editorMain b {
   color: black !important;

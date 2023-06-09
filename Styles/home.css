@@ -169,26 +169,6 @@
   font-size: 14px;
   color: #ccc;
 }
-.recentArticlesContainer .topicsBar {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 7px;
-  -moz-column-gap: 10px;
-       column-gap: 10px;
-  margin-top: 20px;
-}
-.recentArticlesContainer .topicsBar .topic {
-  padding: 10px 22px;
-  border-bottom: 1px solid #ccc;
-  font-size: 13px;
-  cursor: pointer;
-  transition: 0.1s ease-in-out;
-}
-.recentArticlesContainer .topicsBar .topic:hover {
-  color: #fff;
-  background-color: #000000;
-}
 .recentArticlesContainer .seeMoreTopics {
   display: block;
   width: -moz-fit-content;
@@ -201,99 +181,14 @@
   border-radius: 4px;
   cursor: pointer;
 }
-.recentArticlesContainer .articleCardContainer {
-  padding-bottom: 45px;
-  border-bottom: 1px solid #ccc;
-  cursor: pointer;
-}
-.recentArticlesContainer .articleCardContainer .articleCardHeader {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.recentArticlesContainer .articleCardContainer .articleCardHeader .authorAvatar {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: brown;
-}
-.recentArticlesContainer .articleCardContainer .articleCardHeader .authorName {
-  font-size: 14px;
-}
-.recentArticlesContainer .articleCardContainer .articleCardHeader .articleDate {
-  font-size: 14px;
-}
-.recentArticlesContainer .articleCardContainer .articleCardBody {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.recentArticlesContainer .articleCardContainer .articleCardBody .articleCardContent {
-  width: 70%;
-}
-.recentArticlesContainer .articleCardContainer .articleCardBody .articleCardContent .articleCardTitle {
-  font-family: var(--font-src-sans-pro);
-  font-weight: 600;
-  width: 90%;
-  font-size: 20px;
-  margin-top: 15px;
-}
-.recentArticlesContainer .articleCardContainer .articleCardBody .articleCardContent .articlecategories {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-top: 10px;
-}
-.recentArticlesContainer .articleCardContainer .articleCardBody .articleCardContent .articlecategories span {
-  cursor: pointer;
-  padding: 4px 18px;
-  border-radius: 9px;
-  background: #f2f2f2;
-  font-size: 13px;
-}
-.recentArticlesContainer .articleCardContainer .articleCardBody .articleCardContent .articleCardSummary {
-  font-size: 15px;
-  margin-top: 10px;
-  font-weight: 300;
-  line-height: 25px;
-}
-.recentArticlesContainer .articleCardContainer .articleCardBody .articleCardCoverImage {
-  width: 30%;
-  width: 80px;
-  height: 80px;
-  background: peachpuff;
-}
-.recentArticlesContainer .articleCardContainer .articleFooter {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-}
-.recentArticlesContainer .articleCardContainer .articleFooter .articleReadTime {
-  font-family: 14px;
-  color: #b3b3b3;
-}
-.recentArticlesContainer .articleCardContainer .articleFooter .footerActionBtn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.recentArticlesContainer .articleCardContainer .articleFooter .footerActionBtn span {
-  color: #b3b3b3;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-.recentArticlesContainer .articleCardContainer .articleFooter .footerActionBtn span:hover {
-  color: #8c8c8c;
-}
 
 .articleShowcaseContainer {
   width: 100%;
   height: 400px;
   margin: 0 auto;
-  background: url("https://scriblo.s3.us-east-2.amazonaws.com/drafts/hello-this-is-levi_0.jpg");
-  background-position: top;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-position: top !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
   position: relative;
 }
 .articleShowcaseContainer .artileContent {
@@ -396,4 +291,59 @@
   background-color: #fff;
   color: #000;
   border: 1px solid #d6d6d6;
+}
+
+.userCardContainer {
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  padding: 20px;
+  display: flex;
+  gap: 15px;
+}
+.userCardContainer .userAvatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-position: top !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+}
+.userCardContainer .userInfo {
+  width: 300px;
+  cursor: pointer;
+}
+.userCardContainer .userInfo .userIntrests {
+  width: 300px;
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+.userCardContainer .userInfo .userIntrests span {
+  padding: 4px 10px;
+  background: #ccc;
+  border-radius: 10px;
+  font-size: 12px;
+}
+.userCardContainer .userInfo .userBio {
+  margin-top: 20px;
+}
+.userCardContainer .followUser {
+  width: 200px;
+  height: 40px;
+  margin-top: 20px;
+  background: #000;
+  border: 1px solid transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+  border-radius: 12px;
+}
+.userCardContainer .followUser:hover {
+  background-color: transparent;
+  color: black;
+  border: 1px solid #dddddd;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }/*# sourceMappingURL=home.css.map */
