@@ -4,6 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { source_Sans_Pro } from '@/public/util/fonts';
 import '../../../Styles/explore.css'
 import { allTags } from '@/public/util/allTags'
+import Link from 'next/link';
 function Explore() {
   return (
     <div className={`${source_Sans_Pro.className} exploreContainer`}>
@@ -16,7 +17,9 @@ function Explore() {
         <div className="allTopics">
             {
                 allTags.map((tag, index) => (
-                    <span key={index}>{tag.emoji} {tag.name}</span>
+                    <Link href={`/search?q=${tag.name}&class=tags`} >
+                        <span key={index}>{tag.emoji} {tag.name}</span>
+                        </Link>
                 ))
             }
         </div>

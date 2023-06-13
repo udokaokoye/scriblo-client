@@ -34,7 +34,7 @@ async function Search({ searchParams }) {
         {/* checking if there is a search result before rendering anything */}
         {searchResult?.length > 0 ? (
             // if the user is searching for an article we will return the articleShowcase and articleCard
-          searchClass == "articles" ? (
+          searchClass == "articles" || searchClass == 'tags' ? (
             <>
               <ArticleShowcase article={searchResult[0]} />
               <br />

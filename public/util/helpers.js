@@ -12,7 +12,7 @@ export function formatDate(date) {
     } else if (dateDifference < 4320) {
       return `${Math.floor(dateDifference / 1440)} days ago`;
     } else {
-      return yourDate.format('YYYY-MM-DD'); // or any other format you desire
+      return yourDate.format('MMM D, YYYY'); // or any other format you desire
     }
   }
   export function limitText(text, limit) {
@@ -49,5 +49,10 @@ export function formatDate(date) {
   export function getTagID(name) {
     const nameIdMap = createNameIdMap(allTags);
     return nameIdMap.get(name);
+  }
+
+  export function extractIdFromSlug(slug) {
+    var parts = slug.split("-");
+    return parts[parts.length - 1];
   }
   

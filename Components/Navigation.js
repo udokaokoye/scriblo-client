@@ -54,7 +54,7 @@ function Navigation() {
             </div>
             {profileMenuVisible && (
                 <div className={`profileMenu ${source_Sans_Pro.className}`}>
-                <span className="menuItem profileName">{session?.name} <br /> {session?.email}</span>
+                <span className="menuItem profileName">{session?.name} <br /> @{session?.username}</span>
                 <hr />
                 <span className="menuItem">Dashboard</span>
                 <span className="menuItem">Create Post</span>

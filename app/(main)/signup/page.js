@@ -193,11 +193,23 @@ function Signup() {
   }
 
   const handleSignup = async () => {
-    await uploadAvatarToS3(avatarFile);
+    avatar == '' && avatarFile !== null && await uploadAvatarToS3(avatarFile);
+    let uploadAvatar = ''
+    if (avatar == '') {
+      if (avatarFile == null) {
+        uploadAvatar = convertToS3Url(`default_avatar`)
+        // return;
+      } else {
+        
+        uploadAvatar = convertToS3Url(`${email}_avatar`)
+      }
+    } else {
+      uploadAvatar = avatar
+    }
     const formData = new FormData();
     formData.append("email", email);
     formData.append("name", fullName);
-    formData.append("avatar", convertToS3Url(`${email}_avatar`));
+    formData.append("avatar", uploadAvatar);
     formData.append("bio", bio);
     formData.append("interests", selectedInterests.join(","));
     formData.append("createdAt", moment().format("YYYY-MM-DD HH:mm:ss"));

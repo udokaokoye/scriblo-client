@@ -8,13 +8,15 @@ function RecommendedTopics({topics, source_Sans_Pro}) {
 
         <div className="recTopics">
             {topics.map((topic) => (
+                <Link href={`/search?q=${topic}&class=tags`}>
                 <div key={topic} className="recTopic">
                     {topic}
                 </div>
+                </Link>
             ))}
         </div>
 
-        <Link href={'/'}><span>Explore more topics</span></Link>
+        <Link href={'/explore'}><span>Explore more topics</span></Link>
     </div>
   )
 }

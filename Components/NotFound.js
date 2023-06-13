@@ -55,7 +55,7 @@ function NotFound({ reason, searchClass }) {
             className="notfoundBG"
             style={{
               background: `url(${
-                searchClass == "articles"
+                searchClass == "articles" || searchClass == "tags"
                   ? "https://scriblo.s3.us-east-2.amazonaws.com/branding/sad+man.png"
                   : "https://scriblo.s3.us-east-2.amazonaws.com/branding/no+user.png"
               })`,
@@ -63,13 +63,24 @@ function NotFound({ reason, searchClass }) {
           ></div>
           {searchClass == "articles" ? (
             <h3>Snap! No Post Found For That Keyword</h3>
-          ) : (
+          ) : searchClass == "people" ? (
             <h3>Snap! No User Found With That Name</h3>
-          )}
-          <p>
-            Make sure all words are spelled correctly <br /> try searching a more
-            general keyword
-          </p>
+          ) : searchClass == "tags" ? (<h3>Snap! No Post Found For That Category</h3>) : ''}
+
+          {searchClass == "articles" || searchClass == "people" ? (
+              <p>
+                Make sure all words are spelled correctly <br /> try searching a
+                more general keyword
+              </p>
+            ) : ''}
+
+            {searchClass == "tags"  && (
+              <p>
+                Make sure all words are spelled correctly <br /> try searching a
+                more general keyword
+              </p>
+            )
+            }
           <br />
           <Link href={"/explore"}>
             <button className="btn">Let's try that again</button>

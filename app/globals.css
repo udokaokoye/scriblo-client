@@ -9,6 +9,9 @@
 @import url('../Styles/create.css');
 @import url('../Styles/TextEditor.css');
 @import url('../Styles/home.css'); */
+html {
+  scroll-behavior: smooth;
+}
 
 *{
     margin: 0;
