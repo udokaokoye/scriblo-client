@@ -18,7 +18,7 @@ function ArticleCard({ article }) {
       </div>
 
       <div className="articleCardBody">
-        <div className="articleCardContent">
+        <div style={{width: `${article.coverImage == "" ? '100%' : '70%'}`}} className="articleCardContent">
           <Link href={`/${article.authorUsername}/${article.slug}`}>
             <h1 className="articleCardTitle">{article.title}</h1>
           </Link>

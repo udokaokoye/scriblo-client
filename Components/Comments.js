@@ -59,7 +59,7 @@ useEffect(() => {
         </>
       ) : (
         <div className="signinToComment">
-          <p>Please sign in to comments or view comment</p>
+          <p>Please sign in to comment or view comment</p>
           <Link href={"/signup"}>
             <button className="btn">Sign In</button>
           </Link>
