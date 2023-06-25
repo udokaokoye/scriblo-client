@@ -1,0 +1,178 @@
+$cover-height: 200px ;
+$profile-Avatar-offset: 40px;
+
+.profileContainer {
+  width: 70%;
+  min-height: 92vh;
+  margin: 0 auto;
+  margin-top: 9vh;
+  position: relative;
+
+  h3 {
+    font-size: 35px;
+    font-weight: 400;
+    color: rgb(41, 41, 41);
+  }
+}
+
+.profileHeadCardContainer {
+  width: 100%;
+
+  .profileCoverImage {
+    width: 100%;
+    height: $cover-height;
+    background: url('https://scriblo.s3.us-east-2.amazonaws.com/branding/default_cover.png');
+    background-position: center !important;
+    background-size: contain !important;
+    // background-repeat: no-repeat !important;
+    position: relative;
+
+    .overlay {
+        width: inherit;
+        height: $cover-height;
+        position: absolute;
+        background: #68646428;
+    }
+
+    &:hover {
+        .changeCoverInput {
+            width: inherit;
+            height: $cover-height;
+            position: absolute;
+            background: #08080876;
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+
+
+  }
+
+  .profileAvatar {
+    width: 7.5em;
+    height: 7.5em;
+    border-radius: 50%;
+    position: absolute;
+    background: brown;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    top: calc($cover-height - $profile-Avatar-offset);
+    margin-left: 40px;
+    border: 5px solid white;
+  }
+
+  .profileInfo {
+    margin-top: 6em;
+    padding: 0px 40px;
+
+    .profileIcon {
+        font-size: 18px;
+    }
+
+    .profileNameAndFollowBtn {
+        display: flex;
+        gap: 50px;
+        align-items: center;
+        h3 {
+            font-size: 42px;
+        }
+
+        .followAndEmailBtn {
+            display: flex;
+            gap: 20px;
+            .btn {
+                width: 120px;
+                height: 35px;
+                border-radius: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;
+                font-size: 14px;
+
+                &:hover {
+                    background-color: black;
+                    color: white;
+                }
+            }
+
+            .emailBtn {
+                background-color: transparent;
+                border: 1px solid #7d7d7d;
+                color: black;
+            }
+        }
+
+
+    }
+
+    .follows {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 20px;
+        color: #4c4c4c;
+    }
+
+    .profileBio {
+        width: 400px;
+        margin-top: 10px;
+        font-size: 14px;
+        line-height: 25px;
+    }
+
+    .profileDateAndUrl {
+        display: flex;
+        gap: 30px;
+        margin-top: 10px;
+        span {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            gap: 10px;
+            color: #636363;
+
+            &:last-child {
+
+            cursor: pointer;
+
+            &:hover {
+                color: black;
+            }
+            }
+        }
+    }
+
+    .profileInterests {
+        margin-top: 10px;
+        display: flex;
+        gap: 15px;
+
+        span {
+            padding: 8px 16px;
+            border-radius: 10px;
+            background: #ededed;
+        }
+    }
+  }
+}
+
+.profilePinnedArticlesContainer {
+
+    h3 {
+        font-size: 35px;
+        font-weight: 400;
+        color: rgb(41, 41, 41);
+
+        .pinIcon {
+            transform: rotate(45deg);
+            font-size: 28px;
+        }
+    }
+}

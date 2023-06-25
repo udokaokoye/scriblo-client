@@ -10,7 +10,7 @@ import AboutAuthorCard from "@/Components/AboutAuthorCard";
 import Comments from "@/Components/Comments";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/authentication/[...nextauth]/route";
-import { getComments } from "@/public/util/apiHelpers";
+// import { getComments } from "@/public/util/apiHelpers";
 async function Article({ params }) {
   const session = await getServerSession(authOptions);
   let post = {};
@@ -24,8 +24,17 @@ async function Article({ params }) {
   const data = await res.json();
   // console.log(data.data)
   post = data.data;
-  // const comments = await getComments(post?.id)
-  // console.log(comments)
+  let doesSignedInUserFollowAuthor = false;
+  if (session?.id) {
+    const userFollowsResponse = await fetch(
+      `${process.env.API_URL}/users/actions.php?action=getUserFollows&userId=${post?.authorId}`
+    );
+    const userFollowsData = await userFollowsResponse.json();
+    const userFollows = userFollowsData.data;
+    doesSignedInUserFollowAuthor = userFollows.followings.some(
+      (userFollow) => userFollow.user_id == session?.id
+    );
+  }
   return (
     <div className="articleContainer">
       {post ? (
@@ -38,23 +47,17 @@ async function Article({ params }) {
             authorUsername={post.authorUsername}
             articlePublishDate={formatDate(post.createdAt)}
             articleReadTime={"5 mins"}
+            authorId={post.authorId}
+            doesSignedInUserFollowAuthor={doesSignedInUserFollowAuthor}
+            session={session}
           />
           <br />
-          <ArticleReactionCard postId={post.id} userId={session?.id} session={session} />
+          <ArticleReactionCard
+            postId={post.id}
+            userId={session?.id}
+            session={session}
+          />
           <br />
-          {/* {post.coverImage !== "" && (
-            <div className="coverImageContainer">
-              <Image
-                src={post?.coverImage}
-                alt={post?.slug}
-                width={500}
-                height={500}
-                className="coverImage"
-                // placeholder="blur"
-                // blurDataURL=""
-              />
-            </div>
-          )} */}
 
           <article
             dangerouslySetInnerHTML={{ __html: post?.content }}
@@ -72,15 +75,22 @@ async function Article({ params }) {
           <br />
           <AboutAuthorCard
             author={{
+              id: post.authorId,
               name: post.authorName,
               avatar: post.authorAvatar,
               username: post.authorUsername,
-              bio: post.authorBio
+              bio: post.authorBio,
             }}
+            session={session}
+            doesSignedInUserFollowAuthor={doesSignedInUserFollowAuthor}
           />
           <br />
           <br />
-          <ArticleReactionCard postId={post.id} userId={session?.id} session={session} />
+          <ArticleReactionCard
+            postId={post.id}
+            userId={session?.id}
+            session={session}
+          />
           <br />
           <br />
           <div id="commentScrollHolder"></div>

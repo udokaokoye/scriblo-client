@@ -18,7 +18,7 @@ html {
     padding: 0;
 }
 
-a {
+a, .link {
     text-decoration: none;
     color: inherit;
     width: inherit;

@@ -31,8 +31,29 @@ export async function commentPost (postId, comment, userId, replyId) {
     return data
 }
 
-export async function followUser (followingID, followerID) {
-    
+export async function followUser (followingID, userId) {
+    const date = moment().format('YYYY-MM-DD HH:mm:ss');
+    const formData = new FormData()
+    formData.append('action', 'followuser')
+    formData.append('followId', followingID)
+    formData.append('userId', userId)
+    formData.append('date', date)
+
+    const response = await fetch('/api/users/actions.php', {method: "POST", body: formData})
+    const data = await response.json()
+    return data
+}
+
+export async function unfollowUser (unfollowingID, userId) {
+    const date = moment().format('YYYY-MM-DD HH:mm:ss');
+    const formData = new FormData()
+    formData.append('action', 'unfollowuser')
+    formData.append('unfollowId', unfollowingID)
+    formData.append('userId', userId)
+
+    const response = await fetch('/api/users/actions.php', {method: "POST", body: formData})
+    const data = await response.json()
+    return data
 }
 
 export async function bookmarkPost (postID, userID) {
@@ -73,8 +94,17 @@ export async function getBookmarks (userId) {
     return data.data
 }
 
+export async function getUserFollows (userId) {
+    const response = await fetch(`/api/users/actions.php?action=getUserFollows&userId=${userId}`)
+    const data = await response.json()
+    return data.data
+}
+
 export async function deleteComment (commentId) {
-const response = await fetch(`/api/posts/actions.php?data=comment&id=${commentId}`, {method: "DELETE"})
+    const formData = new FormData()
+    formData.append('action', 'deletecomment')
+    formData.append('commentId', commentId)
+const response = await fetch(`/api/posts/actions.php?data=comment&id=${commentId}`, {method: "POST", body: formData})
 const data = await response.json()
 return data;
 }

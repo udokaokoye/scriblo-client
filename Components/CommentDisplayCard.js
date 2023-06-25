@@ -7,25 +7,36 @@ import DeleteSweepOutlinedIcon from "@mui/icons-material/DeleteSweepOutlined";
 import CommentInput from "./CommentInput";
 import { commentPost, deleteComment } from "@/public/util/apiHelpers";
 import { formatDate } from "@/public/util/helpers";
+import Link from "next/link";
 function CommentDisplayCard({ comment, session, fetchCommnets, replies, nested=false, allComments }) {
   const [showMoreMenu, setshowMoreMenu] = useState(false);
   const [commentInput, setcommentInput] = useState("");
   const [showReplyInput, setshowReplyInput] = useState(false);
   const [showReplies, setshowReplies] = useState(false)
   const commentPostHandler = async () => {
+    if (commentInput == "") {
+      return;
+    }
     await commentPost(comment.postId, commentInput, session?.id, comment.id);
     setcommentInput("");
     fetchCommnets();
   };
+
+  const deleteCommentHandler = async () => {
+    if (confirm("Are you sure you want to delte this comment? this action cannot be undone")) {
+      await deleteComment(comment.id)
+      fetchCommnets()
+    }
+  }
   return (
     <div className="commentDisplayCardContainer">
       <div className="commentDisplayHeader">
-        <div
+        <Link href={`/${comment.authorUsername}`}><div
           style={{ background: `url(${comment.authorAvatar})` }}
           className={`commentAuthorAvatar ${nested && 'avatar_sm'}`}
-        ></div>
+        ></div></Link>
         <div className="commentAuthorNameDateContainer">
-          <p className="commentAuthorName"> {comment.authorName}</p>
+          <Link href={`/${comment.authorUsername}`}><p className="commentAuthorName"> {comment.authorName}</p></Link>
           <span className="commentPublishDate">
             {formatDate(comment.createdAt)}
           </span>
@@ -45,9 +56,7 @@ function CommentDisplayCard({ comment, session, fetchCommnets, replies, nested=f
             <FlagOutlinedIcon /> Report
           </div>
           {session?.id == comment.userID && (
-            <div onClick={() => {
-                confirm("Are you sure you want to delte this comment? this action cannot be undone") && deleteComment(comment.id)
-            }} className="moreMenuItem deleteMenu">
+            <div onClick={() => deleteCommentHandler()} className="moreMenuItem deleteMenu">
               <DeleteSweepOutlinedIcon color="red" /> Delete
             </div>
           )}

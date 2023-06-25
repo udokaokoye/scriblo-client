@@ -21,6 +21,10 @@
   article {
     p {
       margin: 15px 0px;
+      line-height: 34px !important;
+      letter-spacing: -0.003em;
+      color: rgba(0, 0, 0, 0.654) !important;
+      background: transparent !important;
       span {
         line-height: 34px !important;
         letter-spacing: -0.003em;
@@ -323,6 +327,9 @@
     display: flex;
     align-items: center;
     gap: 15px;
+    a {
+        width: unset;
+    }
 
     .commentAuthorAvatar {
       width: 50px;

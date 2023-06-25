@@ -9,11 +9,11 @@ function ArticleCard({ article }) {
   return (
     <article className={`articleCardContainer`}>
       <div className="articleCardHeader">
-        <div
+        <Link href={`/${article.authorUsername}`}><div
           style={{ background: `url(${article.authorAvatar})` }}
           className="authorAvatar"
-        ></div>
-        <p className="authorName">{article.authorName}</p>
+        ></div></Link>
+        <Link href={`/${article.authorUsername}`}><p className="authorName">{article.authorName}</p></Link>
         <span className="articleDate">{formatDate(article.publishDate)}</span>
       </div>
 
@@ -23,13 +23,13 @@ function ArticleCard({ article }) {
             <h1 className="articleCardTitle">{article.title}</h1>
           </Link>
           <div className="articlecategories">
-            {article?.tags.split(",").map((categorie) => (
-              <span key={categorie}>{categorie}</span>
+            {article?.tags.split(",").map((categorie, index) => (
+              <Link key={index} href={`/search/?q=${categorie}&class=articles`}><span key={categorie}>{categorie}</span></Link>
             ))}
           </div>
-          <p className={`articleCardSummary ${merrweather.className}`}>
+          <Link href={`/${article.authorUsername}/${article.slug}`}><p className={`articleCardSummary ${merrweather.className}`}>
             {limitText(article.summary, 35)}
-          </p>
+          </p></Link>
         </div>
         {article.coverImage !== "" && (
           <div

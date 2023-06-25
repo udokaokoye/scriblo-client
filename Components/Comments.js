@@ -9,6 +9,9 @@ import { commentPost, getComments } from "@/public/util/apiHelpers";
     const [allComments, setallComments] = useState([])
   const [commentInput, setcommentInput] = useState("");
   const commentPostHandler = async () => {
+    if (commentInput == "") {
+      return;
+    }
     const response = await commentPost(postId, commentInput, session?.id, "");
     setcommentInput("");
     fetchCommnets()

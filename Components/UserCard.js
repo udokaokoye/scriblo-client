@@ -1,6 +1,7 @@
 import React from 'react'
 import '../Styles/home.css'
 import { limitText } from '@/public/util/helpers'
+import Link from 'next/link'
 function UserCard({user, page}) {
   return (
     <div className='userCardContainer'>
@@ -18,7 +19,7 @@ function UserCard({user, page}) {
         
         <div className="userAvatar" style={{background: `url(${user.avatar})`}}></div>
         <div className="userInfo">
-        <h3>{user.name}</h3>
+        <Link href={`/${user.username}`}><h3>{user.name}</h3></Link>
         <div className="userIntrests">
             {user.interests?.split(',').map((interest, index) => (
                 <span key={index}>{interest}</span>
@@ -29,7 +30,7 @@ function UserCard({user, page}) {
             </p>
 
         </div>
-        <button className='followUser'>Follow</button>
+        {/* <button className='followUser'>Follow</button> */}
 
     </div>
   )

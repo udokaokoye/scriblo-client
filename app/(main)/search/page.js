@@ -51,7 +51,7 @@ async function Search({ searchParams }) {
           // if the user is searching for an user we will return the userCard
           searchResult.map((user, index) => (
             <div key={index}>
-                <UserCard user={user} />
+                <UserCard user={user}  />
                 <br />
                 <br />
                 <br />

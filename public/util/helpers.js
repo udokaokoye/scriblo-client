@@ -55,4 +55,8 @@ export function formatDate(date) {
     var parts = slug.split("-");
     return parts[parts.length - 1];
   }
+
+  export const followUser = async (userId, followerId) => {
+
+  };
   

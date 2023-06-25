@@ -56,7 +56,9 @@ function Navigation() {
                 <div className={`profileMenu ${source_Sans_Pro.className}`}>
                 <span className="menuItem profileName">{session?.name} <br /> @{session?.username}</span>
                 <hr />
-                <span className="menuItem">Dashboard</span>
+                <Link className="menuItem" href={`/${session?.username}`}>View Profile</Link>
+                <span className="menuItem">Stories</span>
+                <span className="menuItem">Stats</span>
                 <span className="menuItem">Create Post</span>
                 <span className="menuItem">Saved Post</span>
                 <span className="menuItem">Settings</span>
