@@ -1,0 +1,27 @@
+.userArticlesContainer {
+    margin: 0 auto;
+    margin-top: 16vh;
+    width: 50%;
+
+    h1 {
+         font-size: 40px;
+         font-weight: 500;
+    }
+
+    .tabs {
+        width: 100%;
+        border-bottom: 1px solid #b0b0b077;
+        display: flex;
+        gap: 20px;
+
+        span {
+            font-size: 15px;
+            padding-bottom: 10px;
+            cursor: pointer;
+        }
+        .active {
+            border-bottom: 1px solid black;
+        }
+        margin: 20px 0px;
+    }
+}

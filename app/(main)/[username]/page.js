@@ -28,7 +28,7 @@ async function Profile({ params }) {
   const userFollows = userFollowsData.data
   let ServerdoesSignedInUserFollowProfile = false
   if (session?.id) {
-    ServerdoesSignedInUserFollowProfile = userFollows.followings.some((userFollow) => userFollow.user_id == session?.id)
+    ServerdoesSignedInUserFollowProfile = userFollows.followers.some((userFollow) => userFollow.user_id == session?.id)
     console.log(ServerdoesSignedInUserFollowProfile)
   }
 
@@ -48,7 +48,10 @@ async function Profile({ params }) {
 
             {userPosts?.length > 0 ? (
               userPosts.map((post, index) => (
+              <>
               <ArticleCard key={index} article={post} />
+              <br />
+              </>
                 ))
             ) : (
               <NotFound reason={'no_post_for_user'} />

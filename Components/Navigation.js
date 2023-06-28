@@ -54,14 +54,14 @@ function Navigation() {
             </div>
             {profileMenuVisible && (
                 <div className={`profileMenu ${source_Sans_Pro.className}`}>
-                <span className="menuItem profileName">{session?.name} <br /> @{session?.username}</span>
-                <hr />
-                <Link className="menuItem" href={`/${session?.username}`}>View Profile</Link>
-                <span className="menuItem">Stories</span>
+                {/* <span className="menuItem profileName">{session?.name} <br /> @{session?.username}</span>
+                <hr /> */}
+                <Link onClick={() => setprofileMenuVisible(false)} className="menuItem" href={`/${session?.username}`}>View Profile</Link>
+                <Link onClick={() => setprofileMenuVisible(false)} className="menuItem" href={`/${session?.username}/articles`}>Articles</Link>
                 <span className="menuItem">Stats</span>
                 <span className="menuItem">Create Post</span>
                 <span className="menuItem">Saved Post</span>
-                <span className="menuItem">Settings</span>
+                <Link onClick={() => setprofileMenuVisible(false)} className="menuItem" href={`/${session?.username}/settings`}>Settings</Link>
                 <hr />
                 <span className="menuItem" onClick={()=> signOut()}>Sign Out</span>
                 </div>

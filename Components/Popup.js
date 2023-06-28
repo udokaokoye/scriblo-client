@@ -1,7 +1,10 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import '@/Styles/popup.css'
-function Popup({closePopup, profilePhotoRef, popupContent}) {
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+function Popup({closePopup, profilePhotoRef, popupContent, user}) {
+    const [updatedName, setupdatedName] = useState(user?.name)
+    const [updatedBio, setupdatedBio] = useState(user?.bio)
   return (
     <div className='popupContainer'>
         <div className="popupcloserdiv" onClick={() => closePopup()}></div>
@@ -9,28 +12,31 @@ function Popup({closePopup, profilePhotoRef, popupContent}) {
             {
                 popupContent === 'editProfile' &&
                 <div className="editProfilePopup">
+                    <div className="popupHeader">
                     <h3>Profile Information</h3>
+                    <span onClick={() => closePopup()}><CloseOutlinedIcon /></span>
+                    </div>
 
                     <div className="updatePhoto">
-                        <div className="currentProfilePhoto"></div>
+                        <div style={{background: `url(${user?.avatar})`}} className="currentProfilePhoto"></div>
                         <div className="photoActions"><span>Update</span> <span>Remove</span></div>
                         <input type="file" name="profilephoto" id="profilephoto" ref={profilePhotoRef} style={{display: 'none'}} />
                     </div>
 
                     <div className="updateField">
                         <span>Name</span>
-                        <input type="text" placeholder='Udoka Okoye' value={'Udoka Okoye'}/>
+                        <input type="text" placeholder='Enter updated name' value={updatedName} onChange={(txt) => setupdatedName(txt.target.value)}/>
                         <small>Appears on your profile</small>
                     </div>
 
                     <div className="updateField">
                         <span>Bio</span>
-                        <textarea type="text" placeholder='Udoka Okoye' value={'Udoka Okoye'}/>
+                        <textarea type="text" placeholder='Enter Bio' value={updatedBio} onChange={(txt) => setupdatedBio(txt.target.value)}/>
                         <small>Appears on your profile</small>
                     </div>
 
                     <div className="updateProfileBtns">
-                        <button className='cancel'>Cancel</button>
+                        <button onClick={() => closePopup()} className='cancel'>Cancel</button>
                         <button className='save'>Save</button>
                     </div>
                 </div>

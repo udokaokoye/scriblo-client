@@ -31,7 +31,7 @@ async function Article({ params }) {
     );
     const userFollowsData = await userFollowsResponse.json();
     const userFollows = userFollowsData.data;
-    doesSignedInUserFollowAuthor = userFollows.followings.some(
+    doesSignedInUserFollowAuthor = userFollows.followers.some(
       (userFollow) => userFollow.user_id == session?.id
     );
   }

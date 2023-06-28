@@ -11,10 +11,13 @@
 }
 .mainContainer .articleFeed {
   width: 60%;
+  height: auto;
 }
 .mainContainer .feedSidebar {
   width: 30%;
-  height: auto;
+  height: 110vh;
+  top: 0;
+  position: sticky;
   border-left: 1px solid #e8e8e8;
   padding-left: 25px;
 }

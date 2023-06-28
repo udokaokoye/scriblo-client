@@ -18,12 +18,121 @@
 
 
     .popupContent {
-        width: 800px;
-        height: 400px;
-        background-color: white;
-        border-radius: 10px;
-        padding: 10px;
         z-index: 10;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+        .editProfilePopup {        
+            width: 600px;
+            height: auto;
+            background-color: white;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+            .popupHeader {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+                h3 {
+                    font-weight: 500;
+                }
+
+                span {
+                    cursor: pointer;
+                }
+            }
+
+
+            .updatePhoto {
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                margin-bottom: 20px;
+
+                .currentProfilePhoto {
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 50%;
+                    background-position: top !important;
+                    background-size: cover !important;
+                    background-repeat: no-repeat !important;
+                    cursor: pointer;
+                }
+
+                .photoActions{ 
+                    display: flex;
+                    gap: 20px;
+
+                    span {
+                        cursor: pointer;
+                        color: purple;
+                        &:last-child {
+                            color: red;
+                        }
+                    }
+                }
+            }
+
+            .updateField {
+                font-size: 14px;
+                margin-bottom: 20px;
+                span {
+                    display: block;
+                }
+
+                input, textarea {
+                    width: 100%;
+                    height: 30px;
+                    border: none;
+                    border-bottom: 1px solid #e9e9e9;
+                    margin-top: 10px;
+                    // padding-left: 5px;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+                textarea {
+                    height: 60px;
+                    font-family: inherit !important;
+                }
+
+                small {
+                    margin-top: 5px;
+                    color: #4a4a4a77;
+                    display: block;
+                }
+            }
+
+            .updateProfileBtns {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                gap: 20px;
+
+
+                button {
+                    padding: 10px 25px;
+                    border-radius: 20px;
+                    background-color: transparent;
+                    cursor: pointer;
+                }
+
+                .cancel {
+                    border: 2px solid red;
+                }
+
+                .save {
+                    border: 2px solid transparent;
+                    background: purple;
+                    color: white;
+
+                    &:hover { 
+                        background-color: rgb(105, 1, 105);
+                    }
+                }
+            }
+        }
     }
 }

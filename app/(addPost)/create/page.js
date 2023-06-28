@@ -28,24 +28,34 @@ function Create() {
   const [recommendedTags, setrecommendedTags] = useState([]);
   const [authorId, setauthorId] = useState(session?.id);
   const [rawEntityContent, setrawEntityContent] = useState({});
-  const [isHidden, setisHidden] = useState(0);
+  const isHidden = useRef(0)
   const [mediafiles, setmediafiles] = useState([]);
   const [stage, setstage] = useState(["create"]);
+  const stripReplaceSpacesWithDashes = (text) => {
+    let strippedText = text.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
+
+    // Remove leading and trailing dashes
+     strippedText = strippedText.replace(/^-+|-+$/g, "");
+     return strippedText;
+  }
   function generateSlug(title) {
-    // Convert the title to lowercase and replace special characters with dashes
+    let trimmedSlug;
+    if (isHidden == 0) {
+      // Convert the title to lowercase and replace special characters with dashes
     const slug = title.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
 
     // Remove leading and trailing dashes
-    const trimmedSlug = slug.replace(/^-+|-+$/g, "");
+     trimmedSlug = slug.replace(/^-+|-+$/g, "");
+    } else {
+      trimmedSlug = `${session?.username}-draft-${stripReplaceSpacesWithDashes(title)}`
+    }
 
     // Return the final slug
     return trimmedSlug;
   }
 
   function convertToS3Url(objectKey) {
-    const s3Url = `https://scriblo.s3.us-east-2.amazonaws.com/${
-      isHidden ? "drafts" : "images"
-    }/${objectKey}.jpg`;
+    const s3Url = `https://scriblo.s3.us-east-2.amazonaws.com/images/${objectKey}.jpg`;
 
     return s3Url;
   }
@@ -65,7 +75,7 @@ function Create() {
 
     const params = {
       Bucket: bucketName,
-      Key: `${isHidden == 1 ? "drafts" : "images"}/${fileName}_${index}.jpg`,
+      Key: `images/${fileName}_${index}.jpg`,
       Body: file,
       contentType: "image/jpeg",
     };
@@ -77,64 +87,86 @@ function Create() {
     return(s3Result.$metadata)
   };
 
-  const processRawEntity = async () => {
+  // const processRawEntity = async () => {
+  //   let returnData = null;
+  //   Object.values(rawEntityContent.entityMap).map(async (item, index) => {
+  //     if (item.type == "IMAGE") {
+  //       const fileToUpload = uploadImages.filter((img) => img.localSrc == item.data.src)[0].file
+  //       item.data.src = convertToS3Url(`${generateSlug(title)}_${index}`);
+  //       const result = await uploadToS3(
+  //         fileToUpload,
+  //         index,
+  //         generateSlug(title)
+  //       );
+  //       console.log(result)
+  //       returnData = result
+  //     }
+  //   });
+  //   return returnData
+  // };
 
-    Object.values(rawEntityContent.entityMap).map(async (item, index) => {
-      if (item.type == "IMAGE") {
-        const result = uploadToS3(
-          uploadImages.filter((img) => img.localSrc == item.data.src)[0].file,
-          index,
-          generateSlug(title)
-        );
-          item.data.src = convertToS3Url(`${generateSlug(title)}_${index}`);
-        return result
-      }
-    });
-    // console.log(draftToHtml(rawEntityContent))
+  // const testProcessEntity = new Promise((resolve, reject) => {
+  //   Object.values(rawEntityContent.entityMap).map(async (item, index) => {
+  //     if (item.type == "IMAGE") {
+  //       const fileToUpload = uploadImages.filter((img) => img.localSrc == item.data.src)[0].file
+  //       item.data.src = convertToS3Url(`${generateSlug(title)}_${index}`);
+  //       const result = await uploadToS3(
+  //         fileToUpload,
+  //         index,
+  //         generateSlug(title)
+  //       );
+  //       resolve("uploaded")
+  //     }
+  //   });
+  // })
 
-    // console.log(rawEntityContent.entityMap)
-    // console.log(rawEntityContent)
-    // return;
+  // const processCoverImage = async (formData) => {
+  //   if (coverImage !== '') {
+  //     const result = uploadToS3(coverImage.file, 'cover', generateSlug(title))
+  //     formData.append('coverImage', convertToS3Url(`${generateSlug(title)}_cover`))
+  //     return result
+  //   } else {
+  //     formData.append('coverImage', '')
+  //     return true
+  //   }
 
-    // const blobSrcs = Object.values(rawEntityContent.entityMap)
-    //   .filter((item) => item.data.src.startsWith("blob:"))
-    //   .map((item) => item.data.src);
-    // // console.log("blobUrls: ", blobSrcs)
-
-    // if (blobSrcs.length > 0) {
-    //   blobSrcs.forEach(async (blobSrc, index) => {
-    //     await uploadToS3(uploadImages.filter((img) => img.localSrc == blobSrc)[0].file, index, generateSlug(title))
-    //     // await mediaPromisedState(convertToS3Url(`${generateSlug(title)}_${index}`));
-    //     // setmediafiles([...mediafiles, convertToS3Url(`${generateSlug(title)}_${index}`)]);
-
-    //     for (const key in rawEntityContent.entityMap) {
-    //       if (rawEntityContent.entityMap[key].data.src === blobSrc) {
-    //         rawEntityContent.entityMap[key].data.src = convertToS3Url(`${generateSlug(title)}_${index}`);
-    //       }
-    //     }
-    //   });
-    // }
-  };
-
-  const processCoverImage = async (formData) => {
-    if (coverImage !== '') {
-      const result = uploadToS3(coverImage.file, 'cover', generateSlug(title))
-      formData.append('coverImage', convertToS3Url(`${generateSlug(title)}_cover`))
-      return result
-    } else {
-      formData.append('coverImage', '')
-      return true
-    }
-
-  }
+  // }
 
   const processPost = async () => {
     const formData = new FormData();
-    await processRawEntity();
-    await processCoverImage(formData);
+    // const processRes = await processRawEntity();
+    const processRawEntity = new Promise((resolve, reject) => {
+      Object.values(rawEntityContent.entityMap).map(async (item, index) => {
+        if (item.type == "IMAGE") {
+          const fileToUpload = uploadImages.filter((img) => img.localSrc == item.data.src)[0].file
+          item.data.src = convertToS3Url(`${generateSlug(title)}_${index}`);
+          const result = await uploadToS3(
+            fileToUpload,
+            index,
+            generateSlug(title)
+          );
+          resolve("uploaded: " + result)
+        }
+      });
+    })
 
-    // return;
-
+    const processCoverImage = new Promise(async (resolve, reject) => {
+      if (coverImage !== '') {
+        formData.append('coverImage', convertToS3Url(`${generateSlug(title)}_cover`))
+        const result = await uploadToS3(coverImage.file, 'cover', generateSlug(title))
+        resolve("Cover Image Uploaded")
+      } else {
+        formData.append('coverImage', '')
+        resolve("Cover Image Uploaded")
+      }
+    })
+    console.log("Processing Article Images")
+    await processRawEntity
+    console.log("Procced!")
+    console.log("Processing Cover Image")
+    await processCoverImage;
+    console.log("Procced!")
+    console.log("All Files Processed")
     let tagsIDs = tags.map((tg) => tg.id);
     let finalTags = tags.map((tg) => tg.name);
 
@@ -153,12 +185,13 @@ function Create() {
     // for tagIDs we need to get the id of the selected tags from the allTags.js file
     formData.append("tagsIDs", tagsIDs);
     formData.append("authorId", session?.id);
-    formData.append("isHidden", isHidden);
+    formData.append("isHidden", isHidden.current);
     formData.append("slug", generateSlug(title));
     formData.append("summary", summary);
     // formData.append("coverImage", uploadCoverImage);
     formData.append("createdAt", moment().format("YYYY-MM-DD HH:mm:ss"));
     formData.append("publishDate", moment().format("YYYY-MM-DD HH:mm:ss"));
+    formData.append('username', session?.username)
 
     const res = await fetch(`/api/posts/index.php`, {
       method: "POST",
@@ -177,7 +210,7 @@ function Create() {
       setuploadImages([]);
       setcoverImage("");
       setsummary("");
-      setisHidden(0);
+      isHidden.current = 0;
       setstage(0);
       setmediafiles([]);
 
@@ -187,7 +220,7 @@ function Create() {
   };
 
   const publishPost = async () => {
-    setisHidden(0);
+    isHidden.current = 0
     // check if all fields are filled
     if (!title || !rawEntityContent || !tags || !coverImage || !summary) {
       alert("Please fill all fields");
@@ -198,7 +231,7 @@ function Create() {
   };
 
   const savePost = async () => {
-    setisHidden(0);
+    isHidden.current = 1
     if (!title || !rawEntityContent) {
       alert("Please fill in a title and content before saving");
       return;

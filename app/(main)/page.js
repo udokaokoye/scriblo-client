@@ -9,6 +9,7 @@ import RecommendedTopics from "@/Components/RecommendedTopics";
 import {headers} from 'next/headers'
 import { getTagID, getTagIDs } from "@/public/util/helpers";
 import PromoteScriblo from "@/Components/PromoteScriblo";
+import ReadOurBlogCTASide from "@/Components/ReadOurBlogCTASide";
 // import next from "next/types";
 export default async function Home({params, searchParams}) {
   const session = await getServerSession(authOptions);
@@ -250,6 +251,9 @@ export default async function Home({params, searchParams}) {
           <br />
           <br />
           <PromoteScriblo />
+          <br />
+          <br />
+          <ReadOurBlogCTASide />
         </div>
       </div>
     </>
