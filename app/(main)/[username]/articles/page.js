@@ -9,11 +9,26 @@ import { source_Sans_Pro } from "@/public/util/fonts";
 function userArticles({ params }) {
   const { data: session } = useSession();
   const [tab, settab] = useState("drafts");
+  const [allposts, setallposts] = useState([])
   useEffect(() => {
     if (session?.username !== params?.username) {
       redirect("/");
     }
   }, [session]);
+
+  useEffect(() => {
+    if (params?.username) {
+      const fetchPosts = async () => {
+        const userPostsResponse = await fetch(
+          `/api/posts/actions.php?data=posts_username&username=${params.username}`
+        );
+        const userPostsData = await userPostsResponse.json();
+        console.log(userPostsData.data)
+        setallposts(userPostsData.data)
+      }
+    }
+  }, [params?.username])
+  
 
   return (
     <ClientProtectedRoute>

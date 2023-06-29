@@ -148,6 +148,7 @@ function Create() {
           resolve("uploaded: " + result)
         }
       });
+      resolve("No Images")
     })
 
     const processCoverImage = new Promise(async (resolve, reject) => {

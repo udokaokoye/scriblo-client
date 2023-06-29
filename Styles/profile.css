@@ -5,15 +5,17 @@
   margin-top: 9vh;
   position: relative;
 }
+
 .profileContainer h3 {
   font-size: 35px;
   font-weight: 400;
-  color: rgb(41, 41, 41);
+  color: #292929;
 }
 
 .profileHeadCardContainer {
   width: 100%;
 }
+
 .profileHeadCardContainer .profileCoverImage {
   width: 100%;
   height: 200px;
@@ -22,25 +24,34 @@
   background-size: contain !important;
   position: relative;
 }
+
 .profileHeadCardContainer .profileCoverImage .overlay {
   width: inherit;
   height: 200px;
   position: absolute;
-  background: rgba(104, 100, 100, 0.1568627451);
+  background: #68646428;
 }
+
 .profileHeadCardContainer .profileCoverImage:hover .changeCoverInput {
   width: inherit;
   height: 200px;
   position: absolute;
-  background: rgba(8, 8, 8, 0.462745098);
+  background: #08080876;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
   display: flex !important;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 32px;
   color: white;
   font-weight: bold;
   cursor: pointer;
 }
+
 .profileHeadCardContainer .profileAvatar {
   width: 7.5em;
   height: 7.5em;
@@ -50,84 +61,124 @@
   background-position: center !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
-  top: 160px;
+  top: calc($cover-height - $profile-Avatar-offset);
   margin-left: 40px;
   border: 5px solid white;
 }
+
 .profileHeadCardContainer .profileInfo {
   margin-top: 6em;
   padding: 0px 40px;
 }
+
 .profileHeadCardContainer .profileInfo .profileIcon {
   font-size: 18px;
 }
+
 .profileHeadCardContainer .profileInfo .profileNameAndFollowBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 50px;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .profileHeadCardContainer .profileInfo .profileNameAndFollowBtn h3 {
   font-size: 42px;
 }
+
 .profileHeadCardContainer .profileInfo .profileNameAndFollowBtn .followAndEmailBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 20px;
 }
+
 .profileHeadCardContainer .profileInfo .profileNameAndFollowBtn .followAndEmailBtn .btn {
   width: 120px;
   height: 35px;
   border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 5px;
   font-size: 14px;
 }
+
 .profileHeadCardContainer .profileInfo .profileNameAndFollowBtn .followAndEmailBtn .btn:hover {
   background-color: black;
   color: white;
 }
+
 .profileHeadCardContainer .profileInfo .profileNameAndFollowBtn .followAndEmailBtn .emailBtn {
   background-color: transparent;
   border: 1px solid #7d7d7d;
   color: black;
 }
+
 .profileHeadCardContainer .profileInfo .follows {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 15px;
   margin-top: 20px;
   color: #4c4c4c;
 }
+
 .profileHeadCardContainer .profileInfo .profileBio {
   width: 400px;
   margin-top: 10px;
   font-size: 14px;
   line-height: 25px;
 }
+
 .profileHeadCardContainer .profileInfo .profileDateAndUrl {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 30px;
   margin-top: 10px;
 }
+
 .profileHeadCardContainer .profileInfo .profileDateAndUrl span {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 14px;
   gap: 10px;
   color: #636363;
 }
+
 .profileHeadCardContainer .profileInfo .profileDateAndUrl span:last-child {
   cursor: pointer;
 }
+
 .profileHeadCardContainer .profileInfo .profileDateAndUrl span:last-child:hover {
   color: black;
 }
+
 .profileHeadCardContainer .profileInfo .profileInterests {
   margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 15px;
 }
+
 .profileHeadCardContainer .profileInfo .profileInterests span {
   padding: 8px 16px;
   border-radius: 10px;
@@ -137,9 +188,12 @@
 .profilePinnedArticlesContainer h3 {
   font-size: 35px;
   font-weight: 400;
-  color: rgb(41, 41, 41);
+  color: #292929;
 }
+
 .profilePinnedArticlesContainer h3 .pinIcon {
-  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
   font-size: 28px;
-}/*# sourceMappingURL=profile.css.map */
+}
+/*# sourceMappingURL=profile.css.map */
