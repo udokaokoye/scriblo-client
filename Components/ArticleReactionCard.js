@@ -30,7 +30,7 @@ function ArticleReactionCard({postId, userId, session}) {
 
     const getAllBookmarks = async () => {
       const allBookmarks = await getBookmarks(userId)
-      allBookmarks !== null && setisBookedMarked(allBookmarks?.filter(bookmark => bookmark?.postId == postId).length > 0)
+      allBookmarks !== null && setisBookedMarked(allBookmarks?.filter(bookmark => bookmark?.id == postId).length > 0)
     }
 
     useEffect(() => {

@@ -1,34 +1,21 @@
 .navigation {
   background: #fff;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
-          box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
   position: fixed;
   top: 0;
   width: 100vw;
   height: 8vh;
   z-index: 100;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
-
 .navigation .logoSearch {
   height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 20px;
 }
-
 .navigation .logoSearch .navigation__logo {
   width: 120px !important;
   height: 100% !important;
@@ -36,28 +23,21 @@
   background-size: contain;
   margin-left: 20px;
 }
-
 .navigation .logoSearch .navSearch {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 0px;
   background: #FAFAFA;
   border-radius: 15px;
   height: 50px;
   width: 250px;
   padding: 0px 10px;
-  border: 1px solid #cccccc20;
+  border: 1px solid rgba(204, 204, 204, 0.1254901961);
 }
-
 .navigation .logoSearch .navSearch .searchIcon {
   font-weight: 300;
   color: #b0b0b0;
 }
-
 .navigation .logoSearch .navSearch input {
   width: 100%;
   padding: 10px 20px;
@@ -66,30 +46,22 @@
   font-size: 14px;
   font-weight: 400;
 }
-
 .navigation .logoSearch .navSearch input:focus {
   outline: none;
 }
-
 .navigation .navigation__menu {
   width: 60%;
   font-family: var(--font-src-sans-pro) !important;
   margin-right: 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  justify-content: flex-end;
 }
-
 .navigation .navigation__menu .authButtons .signInButton {
   font-size: 14px;
   font-weight: 400;
   margin-right: 44px;
   cursor: pointer;
 }
-
 .navigation .navigation__menu .authButtons .getStartedButton {
   width: 111px;
   height: 34px;
@@ -101,42 +73,26 @@
   color: #fff;
   cursor: pointer;
 }
-
 .navigation .navigation__menu .userProfile {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   gap: 20px;
   position: relative;
 }
-
 .navigation .navigation__menu .userProfile .newPostBtn {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
   background: transparent;
   color: black;
   border: 1px solid #ccc;
   font-size: 16px;
 }
-
 .navigation .navigation__menu .userProfile .newPostBtn .penIcon {
   font-size: 16px;
 }
-
 .navigation .navigation__menu .userProfile .userProfile__avatar {
   width: 50px;
   height: 50px;
@@ -147,43 +103,51 @@
   background-size: cover !important;
   position: relative;
   cursor: pointer;
-  -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
-
 .navigation .navigation__menu .userProfile .userProfile__avatar:hover {
-  border-color: #971397;
+  border-color: rgb(151, 19, 151);
 }
-
 .navigation .navigation__menu .userProfile .profileMenu {
   position: absolute;
   width: 250px;
   height: auto;
   background: white;
-  border: 1px solid #cccccc9c;
+  border: 1px solid rgba(204, 204, 204, 0.6117647059);
   color: #000;
   top: 45px;
   right: 0px;
   margin-top: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   text-align: left;
 }
-
 .navigation .navigation__menu .userProfile .profileMenu .menuItem {
   cursor: pointer;
   font-size: 14px;
   padding: 15px 15px;
-  border-bottom: 1px solid #e5e5e597;
+  border-bottom: 1px solid rgba(229, 229, 229, 0.5921568627);
 }
-
 .navigation .navigation__menu .userProfile .profileMenu .menuItem:hover {
   background: #000;
   color: white;
 }
-/*# sourceMappingURL=navigation.css.map */
+
+@media (max-width: 794px) {
+  .navigation .logoSearch .navSearch {
+    width: 150px;
+    height: 40px;
+  }
+  .navigation .navigation__menu .authButtons button {
+    width: 100px;
+    height: 20px;
+  }
+}
+@media (max-width: 492px) {
+  .navigation .logoSearch .navSearch {
+    display: none;
+  }
+  .navigation .navigation__menu .userProfile .newPostBtn {
+    display: none;
+  }
+}/*# sourceMappingURL=navigation.css.map */

@@ -160,3 +160,41 @@
     }
   }
 }
+
+@media (max-width: 794px) {
+  .navigation {
+    .logoSearch {
+      .navSearch {
+        width: 150px;
+        height: 40px;
+      }
+    }
+
+    .navigation__menu {
+      .authButtons {
+        button {
+          width: 100px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 492px) {
+  .navigation {
+    .logoSearch {
+      .navSearch {
+        display: none;
+      }
+    }
+
+    .navigation__menu {
+.userProfile {
+  .newPostBtn {
+    display: none;
+  }
+}
+    }
+  }
+}

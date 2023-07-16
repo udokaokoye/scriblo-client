@@ -198,7 +198,6 @@
     }
   }
 
-
   .seeMoreTopics {
     display: block;
     width: fit-content;
@@ -237,7 +236,9 @@
     align-items: flex-start;
     flex-direction: column;
 
-    h1, p, span {
+    h1,
+    p,
+    span {
       margin-left: 20px;
       cursor: pointer;
     }
@@ -343,73 +344,11 @@
   }
 }
 
-// .userCardContainer {
-//   width: 100%;
-//   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-//   padding: 20px;
-
-
-//   .userCardHeader {
-//     display: flex;
-//     gap: 15px;
-//     align-items: center;
-//     cursor: pointer;
-
-//     .userAvatar {
-//       width: 50px;
-//       height: 50px;
-//       border-radius: 50%;
-//       background-position: top !important;
-//       background-size: cover !important;
-//       background-repeat: no-repeat !important;
-//     }
-//   }
-
-//   .userIntrests {
-//     width: 300px;
-//     display: flex;
-//     gap: 15px;
-//     margin-top: 15px;
-
-//     span {
-//       padding: 6px 14px;
-//       background: #ccc;
-//       border-radius: 10px;
-//       font-size: 14px;
-//     }
-//   }
-
-//   .userBio {
-//     margin-top: 20px;
-//     width: 50%;
-//   }
-
-//   .followUser {
-//     width: 200px;
-//     height: 40px;
-//     margin-top: 20px;
-//     background: #000;
-//     border: 1px solid transparent;
-//     color: #fff;
-//     cursor: pointer;
-//     transition: all 0.3s ease-in-out;
-//     font-weight: bold;
-//     border-radius: 12px;
-    
-
-//     &:hover {
-//       background-color: transparent;
-//       color: black;
-//       border: 1px solid #dddddd;
-//       box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-//     }
-//   }
-// }
-
 .userCardContainer {
   width: fit-content;
   border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   padding: 20px;
   display: flex;
   gap: 15px;
@@ -423,30 +362,29 @@
     background-repeat: no-repeat !important;
   }
 
-
   .userInfo {
     width: 300px;
     // background: red;
     cursor: pointer;
 
-  .userIntrests {
-    width: 300px;
-    display: flex;
-    gap: 15px;
-    margin-top: 15px;
+    .userIntrests {
+      width: 300px;
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
 
-    span {
-      padding: 4px 10px;
-      background: #ccc;
-      border-radius: 10px;
-      font-size: 12px;
+      span {
+        padding: 4px 10px;
+        background: #ccc;
+        border-radius: 10px;
+        font-size: 12px;
+      }
+    }
+
+    .userBio {
+      margin-top: 20px;
     }
   }
-
-  .userBio {
-    margin-top: 20px;
-  }
-}
 
   .followUser {
     width: 200px;
@@ -459,13 +397,103 @@
     transition: all 0.3s ease-in-out;
     font-weight: bold;
     border-radius: 12px;
-    
 
     &:hover {
       background-color: transparent;
       color: black;
       border: 1px solid #dddddd;
       box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+  }
+}
+
+@media (max-width: 857px) {
+  .mainContainer {
+    width: 85%;
+    display: block;
+    .articleFeed {
+      width: 100%;
+    }
+
+    .feedSidebar {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 670px) {
+  .homepageShowcaseContainer {
+    .showcaseBannerImg {
+      height: 400px;
+    }
+  }
+}
+
+@media (max-width: 594px) {
+  .articleShowcaseContainer {
+    height: 300px;
+  }
+
+  .homepageShowcaseContainer {
+    .showcaseHeading {
+      font-size: 70px;
+    }
+    .showcaseBannerImg {
+      height: 400px;
+    }
+  }
+
+  .homepageTrendingContainer {
+    .homepageTrendingContainerWrapper {
+      .header {
+        .headerTexts {
+          h2 {
+            font-size: 30px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .articleShowcaseContainer {
+    height: 300px;
+    .artileContent {
+      h1 {
+        width: 100%;
+        display: -webkit-box; /* For Safari and older versions of iOS */
+        -webkit-line-clamp: 2; /* Limit the text to two lines */
+        -webkit-box-orient: vertical; /* Set vertical orientation */
+        overflow: hidden; /* Hide any overflowing content */
+        text-overflow: ellipsis;
+      }
+      p {
+        display: none;
+      }
+    }
+  }
+  .homepageShowcaseContainer {
+    margin-top: 18vh;
+    .showcaseHeading {
+      font-size: 50px;
+    }
+    .showcaseBannerImg {
+      height: 200px;
+    }
+
+    .showcaseBtn {
+      padding: 10px 85px;
+    }
+  }
+
+  .homepageTrendingContainer {
+    .homepageTrendingContainerWrapper {
+      .header {
+        .headerBtn {
+          display: none;
+        }
+      }
     }
   }
 }

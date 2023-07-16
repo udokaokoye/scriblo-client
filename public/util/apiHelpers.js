@@ -108,3 +108,13 @@ const response = await fetch(`/api/posts/actions.php?data=comment&id=${commentId
 const data = await response.json()
 return data;
 }
+
+export async function deleteBookmark (bookmarkId) {
+    const formData = new FormData();
+    formData.append('action', 'deleteBookmark')
+    formData.append("bookmarkId", bookmarkId)
+
+    const response = await fetch('/api/posts/actions.php', {method: "POST", body: formData})
+    const data = await response.json();
+    return data;
+}

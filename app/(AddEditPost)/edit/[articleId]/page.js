@@ -1,53 +1,135 @@
 "use client";
-import "../../../Styles/create.css";
+import "@/Styles/create.css";
 import TextEditor from "@/Components/TextEditor";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import {
+  S3Client,
+  PutObjectCommand,
+  DeleteObjectCommand,
+} from "@aws-sdk/client-s3";
 import draftToHtml from "draftjs-to-html";
-import AddPostNavigation from "@/Components/AddPostNavigation";
 import moment from "moment";
 import { useRouter } from "next/navigation";
-import { EditorState } from "draft-js";
+import {
+  EditorState,
+  convertFromHTML,
+  ContentState,
+  convertToRaw,
+} from "draft-js";
 import { allTags } from "@/public/util/allTags";
 import CloseIcon from "@mui/icons-material/Close";
 import { source_Sans_Pro, merrweather } from "@/public/util/fonts";
-function Create() {
+import htmlToDraft from "html-to-draftjs";
+import AddPostNavigation from "@/Components/AddPostNavigation";
+function ArticleEdit({ params }) {
+  const [articleToEdit, setarticleToEdit] = useState({});
+
   const router = useRouter();
   const fileInputRef = useRef(null);
   const { data: session } = useSession();
   const [editorState, seteditorState] = useState(EditorState.createEmpty());
   const [uploadImages, setuploadImages] = useState([]);
+  const [oldImages, setoldImages] = useState([]);
+  const [isArticleVisible, setisArticleVisible] = useState(true);
   const [content, setcontent] = useState();
   const [title, settitle] = useState("");
   const [summary, setsummary] = useState("");
-  const [coverImage, setcoverImage] = useState("");
+  const [coverImage, setcoverImage] = useState({ file: null, localSrc: "" });
+  const [oldCoverImage, setoldCoverImage] = useState("");
   const [tagSearchInput, settagSearchInput] = useState("");
   const [tags, settags] = useState([]);
   const [recommendedTags, setrecommendedTags] = useState([]);
   const [authorId, setauthorId] = useState(session?.id);
   const [rawEntityContent, setrawEntityContent] = useState({});
-  const isHidden = useRef(0)
+  const isHidden = useRef(0);
+  const oldImagesRef = useRef([]);
   const [mediafiles, setmediafiles] = useState([]);
   const [stage, setstage] = useState(["create"]);
+
+  useEffect(() => {
+    // if (!session?.id) {
+    //   redirect("/");
+    // }
+    const fetchArticle = async () => {
+      const res = await fetch(
+        `/api/posts/index.php?articleId=${params.articleId}`,
+        { next: { revalidate: 20 } }
+      );
+
+      const data = await res.json();
+      if (data.data.authorId !== session?.id) {
+        alert("/");
+      }
+      //   console.log(data?.data);
+      setarticleToEdit(data?.data);
+      settitle(data?.data?.title);
+      setsummary(data?.data?.summary);
+      const prevTags = data?.data?.tags
+        ?.split(",")
+        .map((name) => ({ name, id: 0 }));
+      settags(prevTags);
+      if (data.data.coverImage !== "") {
+        setcoverImage({
+          file: null,
+          localSrc: data.data.coverImage,
+        });
+      }
+      setoldCoverImage(data.data.coverImage);
+
+      console.log(data.data?.isHidden);
+      isHidden.current = data.data?.isHidden;
+      setisArticleVisible(data.data?.isHidden == 1 ? false : true);
+
+      const blocksFromHTML = htmlToDraft(data.data?.content);
+      const editState = ContentState.createFromBlockArray(
+        blocksFromHTML.contentBlocks,
+        blocksFromHTML.entityMap
+      );
+      const rawContent = convertToRaw(editState);
+
+      seteditorState(EditorState.createWithContent(editState));
+      setrawEntityContent(rawContent);
+
+      const prevUploadedImages = Object.values(rawContent.entityMap).map(
+        (item, index) => {
+          if (item.type == "IMAGE") {
+            return item.data.src;
+          } else {
+            return [];
+          }
+        }
+      );
+
+      // console.log(prevUploadedImages);
+      setoldImages(prevUploadedImages);
+      oldImagesRef.current = prevUploadedImages
+    };
+
+    if (session?.id) {
+      fetchArticle();
+    }
+  }, [params, session]);
   const stripReplaceSpacesWithDashes = (text) => {
     let strippedText = text.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
 
     // Remove leading and trailing dashes
-     strippedText = strippedText.replace(/^-+|-+$/g, "");
-     return strippedText;
-  }
+    strippedText = strippedText.replace(/^-+|-+$/g, "");
+    return strippedText;
+  };
   function generateSlug(title) {
     let trimmedSlug;
     if (isHidden == 0) {
       // Convert the title to lowercase and replace special characters with dashes
-    const slug = title.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
+      const slug = title.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
 
-    // Remove leading and trailing dashes
-     trimmedSlug = slug.replace(/^-+|-+$/g, "");
+      // Remove leading and trailing dashes
+      trimmedSlug = slug.replace(/^-+|-+$/g, "");
     } else {
-      trimmedSlug = `${session?.username}-draft-${stripReplaceSpacesWithDashes(title)}`
+      trimmedSlug = `${session?.username}-draft-${stripReplaceSpacesWithDashes(
+        title
+      )}`;
     }
 
     // Return the final slug
@@ -84,120 +166,174 @@ function Create() {
 
     const s3Result = await s3.send(command);
 
-    return(s3Result.$metadata)
+    return s3Result.$metadata;
   };
 
-  // const processRawEntity = async () => {
-  //   let returnData = null;
-  //   Object.values(rawEntityContent.entityMap).map(async (item, index) => {
-  //     if (item.type == "IMAGE") {
-  //       const fileToUpload = uploadImages.filter((img) => img.localSrc == item.data.src)[0].file
-  //       item.data.src = convertToS3Url(`${generateSlug(title)}_${index}`);
-  //       const result = await uploadToS3(
-  //         fileToUpload,
-  //         index,
-  //         generateSlug(title)
-  //       );
-  //       console.log(result)
-  //       returnData = result
-  //     }
-  //   });
-  //   return returnData
-  // };
+  const getFileNameFromS3URL = (url) => {
+    const parts = url.split("/");
+    const fileNameWithExtension = parts[parts.length - 1];
+    const fileName = fileNameWithExtension.split(".")[0];
+    return fileName;
+  };
 
-  // const testProcessEntity = new Promise((resolve, reject) => {
-  //   Object.values(rawEntityContent.entityMap).map(async (item, index) => {
-  //     if (item.type == "IMAGE") {
-  //       const fileToUpload = uploadImages.filter((img) => img.localSrc == item.data.src)[0].file
-  //       item.data.src = convertToS3Url(`${generateSlug(title)}_${index}`);
-  //       const result = await uploadToS3(
-  //         fileToUpload,
-  //         index,
-  //         generateSlug(title)
-  //       );
-  //       resolve("uploaded")
-  //     }
-  //   });
-  // })
+  const deleteFromS3 = async (fileName) => {
+    const bucketName = process.env.NEXT_PUBLIC_AWS_BUCKET_NAME;
+    const bucketRegion = process.env.NEXT_PUBLIC_AWS_BUCKET_REGION;
+    const bucketAccessKey = process.env.NEXT_PUBLIC_AWS_ACCESS_KEY;
+    const bucketSecretKey = process.env.NEXT_PUBLIC_AWS_SECRET_KEY;
 
-  // const processCoverImage = async (formData) => {
-  //   if (coverImage !== '') {
-  //     const result = uploadToS3(coverImage.file, 'cover', generateSlug(title))
-  //     formData.append('coverImage', convertToS3Url(`${generateSlug(title)}_cover`))
-  //     return result
-  //   } else {
-  //     formData.append('coverImage', '')
-  //     return true
-  //   }
+    const s3 = new S3Client({
+      region: bucketRegion,
+      credentials: {
+        accessKeyId: bucketAccessKey,
+        secretAccessKey: bucketSecretKey,
+      },
+    });
 
-  // }
+    const params = {
+      Bucket: bucketName,
+      Key: `/images/${getFileNameFromS3URL(fileName)}.jpg`,
+    };
+
+    const command = new DeleteObjectCommand(params);
+
+    const s3Result = await s3.send(command);
+    console.log(s3Result);
+
+    return s3Result.$metadata;
+  };
 
   const processPost = async () => {
     const formData = new FormData();
-    // const processRes = await processRawEntity();
+    formData.append("action", "updatePost");
     const processRawEntity = new Promise((resolve, reject) => {
       Object.values(rawEntityContent.entityMap).map(async (item, index) => {
         if (item.type == "IMAGE") {
-          const fileToUpload = uploadImages.filter((img) => img.localSrc == item.data.src)[0].file
-          item.data.src = convertToS3Url(`${generateSlug(title)}_${index}`);
-          const result = await uploadToS3(
-            fileToUpload,
-            index,
-            generateSlug(title)
-          );
-          resolve("uploaded: " + result)
-        }
+          if (!oldImagesRef.current.includes(item.data.src)) {
+            const fileToUpload = uploadImages.filter(
+              (img) => img.localSrc == item.data.src
+            )[0].file;
+            item.data.src = convertToS3Url(`${generateSlug(title)}_${index}`);
+            const result = await uploadToS3(
+              fileToUpload,
+              index,
+              generateSlug(title)
+            );
+            resolve("uploaded: " + result);
+          } else {
+            // remove image from old array where the value is item.data.src
+            console.log("ELSE BLOCK");
+            // console.log(item.data.src);
+            const updatedOldImages = oldImagesRef.current.filter(
+              (img) => img !== item.data.src
+            );
+            oldImagesRef.current = updatedOldImages;
+          }
+          //   !DELETE EVERYTHING IN OLDIMAGES ARRAY
+          // const oldImagesToDelete = oldImages.filter((img) => img !== item.data.src)
+          // console.log("old: " + oldImagesToDelete);
+
+          // oldImagesToDelete.length > 0 && oldImagesToDelete.map((imgToDelete) => {
+          //       deleteFromS3(imgToDelete);
+          //     });
+        } 
+        // else {
+        //   console.log("STILL HIT")
+        //   if (oldImages.length > 0) {
+        //     oldImages.map((imgToDel) => {
+        //       deleteFromS3(imgToDel)
+        //     })
+        //   }
+        // }
       });
-      resolve("No Images")
-    })
+      console.log(oldImagesRef.current)
+
+      if (oldImagesRef.current.length > 0 || Object.values(rawEntityContent.entityMap).length == 0) {
+        
+            oldImagesRef.current.map((imgToDel) => {
+              deleteFromS3(imgToDel)
+            })
+          
+      }
+
+      resolve("Updated Image");
+    });
+
+    return;
 
     const processCoverImage = new Promise(async (resolve, reject) => {
-      if (coverImage !== '') {
-        formData.append('coverImage', convertToS3Url(`${generateSlug(title)}_cover`))
-        const result = await uploadToS3(coverImage.file, 'cover', generateSlug(title))
-        resolve("Cover Image Uploaded")
+      if (coverImage.localSrc !== "" || coverImage.file !== null) {
+        if (
+          coverImage.localSrc.includes("scriblo.s3.us-east-2.amazonaws.com")
+        ) {
+          formData.append("coverImage", coverImage.localSrc);
+        } else {
+          formData.append(
+            "coverImage",
+            convertToS3Url(`${generateSlug(title)}_cover`)
+          );
+          const result = await uploadToS3(
+            coverImage.file,
+            "cover",
+            generateSlug(title)
+          );
+        }
+
+        console.log(coverImage);
+        // return;
+        resolve("Cover Image Uploaded");
       } else {
-        formData.append('coverImage', '')
-        resolve("Cover Image Uploaded")
+        formData.append("coverImage", "");
+        resolve("Cover Image Uploaded");
       }
-    })
-    console.log("Processing Article Images")
-    await processRawEntity
-    console.log("Procced!")
-    console.log("Processing Cover Image")
+    });
+
+    // // console.log("Processing Article Images");
+    await processRawEntity;
+    // // console.log("Procced!");
+    // // console.log("Processing Cover Image");
     await processCoverImage;
-    console.log("Procced!")
-    console.log("All Files Processed")
-    let tagsIDs = tags.map((tg) => tg.id);
+    // // console.log("Procced!");
+    // // console.log("All Files Processed");
+    let tagsIDs;
     let finalTags = tags.map((tg) => tg.name);
 
-
-
-    if (rawEntityContent.entityMap.length > 0) {
+    let tagids = tags.map((tt) => {
+      return allTags.filter((td) => td.name == tt.name)[0];
+    });
+    tagsIDs = tagids.map((tst) => tst.id);
+    if (Object.values(rawEntityContent.entityMap).length > 0) {
       Object.values(rawEntityContent.entityMap).map((item) => {
         formData.append("mediaFiles[]", item.data.src);
       });
     } else {
       formData.append("mediaFiles[]", "");
     }
+    formData.append(
+      "updateRelationshipTable",
+      articleToEdit.tags == finalTags.join(",")
+    );
+    // formData.append('updateRelationshipTableFromVisibility', oldIsHidden !== isHidden)
+    formData.append("id", articleToEdit.id);
     formData.append("title", title);
     formData.append("content", draftToHtml(rawEntityContent));
     formData.append("tags", finalTags.join(","));
+    // console.log(tagsIDs.join(','))
+    // return;
     // for tagIDs we need to get the id of the selected tags from the allTags.js file
-    formData.append("tagsIDs", tagsIDs);
+    formData.append("tagsIDs", tagsIDs.join(","));
     formData.append("authorId", session?.id);
     formData.append("isHidden", isHidden.current);
-    formData.append("slug", generateSlug(title));
+    // formData.append("slug", generateSlug(title));
     formData.append("summary", summary);
-    // formData.append("coverImage", uploadCoverImage);
     formData.append("createdAt", moment().format("YYYY-MM-DD HH:mm:ss"));
     formData.append("publishDate", moment().format("YYYY-MM-DD HH:mm:ss"));
-    formData.append('username', session?.username)
+    formData.append("username", session?.username);
 
-    const res = await fetch(`/api/posts/index.php`, {
+    const res = await fetch(`/api/posts/actions.php`, {
       method: "POST",
       headers: {
-        authorization: `Bearer ${session.token}`,
+        Authorization: `Bearer ${session.token}`,
       },
       body: formData,
     });
@@ -220,23 +356,14 @@ function Create() {
     console.log(data);
   };
 
-  const publishPost = async () => {
-    isHidden.current = 0
+  const editPost = async () => {
+    // isHidden.current = 0;
     // check if all fields are filled
-    if (!title || !rawEntityContent || !tags || !coverImage || !summary) {
+    if (!title || !rawEntityContent || !tags || !summary) {
       alert("Please fill all fields");
       return;
     }
 
-    processPost();
-  };
-
-  const savePost = async () => {
-    isHidden.current = 1
-    if (!title || !rawEntityContent) {
-      alert("Please fill in a title and content before saving");
-      return;
-    }
     processPost();
   };
 
@@ -267,7 +394,7 @@ function Create() {
   };
 
   const handleTagDelete = (tg) => {
-    const newTags = tags.filter((tag) => tag.id !== tg.id);
+    const newTags = tags.filter((tag) => tag.name !== tg.name);
     settags(newTags);
   };
   const handleCoverUpload = (event) => {
@@ -279,13 +406,15 @@ function Create() {
     });
   };
   return (
-    <>
+    <div className="editContainer">
       <AddPostNavigation
-        savePost={savePost}
+        // savePost={savePost}
         stage={stage}
         setstage={setstage}
         seteditorState={seteditorState}
         editorState={editorState}
+        editing={true}
+        redirect={redirect}
       />
       <div className={`newPostContainer ${source_Sans_Pro.className}`}>
         {/* <button onClick={() => logDetails()}>Log Details</button> */}
@@ -331,8 +460,14 @@ function Create() {
                       }
                     }}
                   >
-                    {coverImage == "" &&
-                      uploadImages.length > 0 && (<button onClick={() => fileInputRef.current.click()} className="coverImage">Click to select custom Cover Image</button>)}
+                    {coverImage == "" && uploadImages.length > 0 && (
+                      <button
+                        onClick={() => fileInputRef.current.click()}
+                        className="coverImage"
+                      >
+                        Click to select custom Cover Image
+                      </button>
+                    )}
                     {coverImage == "" &&
                       uploadImages.length > 0 &&
                       uploadImages.map((img, index) => (
@@ -344,21 +479,23 @@ function Create() {
                         ></div>
                       ))}
 
-                    {coverImage !== "" && (
+                    {coverImage.localSrc !== "" && (
                       <div
                         className="selectedCoverImage"
                         style={{ background: `url(${coverImage.localSrc})` }}
                       >
                         <div
                           className="delete"
-                          onClick={() => setcoverImage("")}
+                          onClick={() =>
+                            setcoverImage({ file: null, localSrc: "" })
+                          }
                         >
                           X
                         </div>
                       </div>
                     )}
 
-                    {coverImage == "" && uploadImages.length <= 0 && (
+                    {coverImage.localSrc == "" && uploadImages.length <= 0 && (
                       <span>Click to add a Cover Image</span>
                     )}
                     <input
@@ -441,21 +578,37 @@ function Create() {
 
               <div className="previewOptions">
                 <h1>Options</h1>
+                <small>Please confirm all your changes</small>
+                <br />
+                <br />
+                <div className="visiBilityOptions">
+                  <input
+                    type="checkbox"
+                    checked={isArticleVisible}
+                    onChange={() => {
+                      isHidden.current = isHidden.current == 0 ? 1 : 0;
+                      console.log(isHidden.current);
+                      setisArticleVisible(!isArticleVisible);
+                    }}
+                  />{" "}
+                  Make article visible
+                </div>
                 <div className="previewOptionBtns">
-                  <button
+                  {/* <button
                     onClick={() => savePost()}
                     className="previewOptionBtn_save"
                   >
                     Save as drafft
-                  </button>
+                  </button> */}
+
                   <button
-                    onClick={() => publishPost()}
+                    onClick={() => editPost()}
                     className="previewOptionBtn_publish"
                   >
-                    Publish
+                    Edit Article
                   </button>
                 </div>
-                <div className="previewOptionLinks">
+                {/* <div className="previewOptionLinks">
                   <div className="optionLink">
                     <span>View live preview</span>
                     <small>
@@ -469,14 +622,14 @@ function Create() {
                       required to view preview
                     </small>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
 
-export default Create;
+export default ArticleEdit;

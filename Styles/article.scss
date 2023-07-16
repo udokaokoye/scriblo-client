@@ -32,6 +32,17 @@
         background: transparent !important;
       }
     }
+    margin: 15px 0px;
+    line-height: 34px !important;
+    letter-spacing: -0.003em;
+    color: rgba(0, 0, 0, 0.654) !important;
+    background: transparent !important;
+    span {
+      line-height: 34px !important;
+      letter-spacing: -0.003em;
+      color: rgba(0, 0, 0, 0.654) !important;
+      background: transparent !important;
+    }
 
     img {
       margin: 30px 0px;
@@ -442,5 +453,12 @@
     width: calc(100% - 60px);
     margin-left: auto;
     margin-top: 5px;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .articleContainer {
+    width: 60%;
   }
 }
