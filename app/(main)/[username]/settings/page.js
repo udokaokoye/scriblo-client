@@ -73,6 +73,20 @@ function Settings({params}) {
                 {/* <button onClick={() => setpopupActive(true)}>popup</button> */}
                 </>
         }
+
+{settingsTab === 'publishing' && (
+    <h4>Accessibility Feature Coming Soon</h4>
+)
+
+
+    }
+
+{settingsTab === 'notification' && (
+    <h4>Accessibility Feature Coming Soon</h4>
+)
+
+
+    }
         </div>
                     
             </div>

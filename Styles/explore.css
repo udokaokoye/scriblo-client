@@ -48,4 +48,24 @@
 }
 .exploreContainer .allTopics span:hover {
   background: #e3e3e3;
+}
+
+@media (max-width: 675px) {
+  .exploreContainer {
+    width: 90%;
+  }
+}
+@media (max-width: 500px) {
+  .exploreContainer .searchInput {
+    width: 90%;
+  }
+}
+@media (max-width: 388px) {
+  .exploreContainer .searchInput {
+    width: 90%;
+    height: 45px;
+  }
+  .exploreContainer .searchInput input {
+    font-size: 16px;
+  }
 }/*# sourceMappingURL=explore.css.map */

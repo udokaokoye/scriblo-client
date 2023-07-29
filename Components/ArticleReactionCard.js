@@ -14,7 +14,7 @@ import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutlineOutlined';
 import { getLikes, likePost, getBookmarks, bookmarkPost } from '@/public/util/apiHelpers';
 
-function ArticleReactionCard({postId, userId, session}) {
+function ArticleReactionCard({postId, userId, session, preview}) {
     const [showShareMenu, setshowShareMenu] = useState(false)
     const [likes, setlikes] = useState([])
     const [likesCount, setlikesCount] = useState(0)
@@ -66,13 +66,13 @@ function ArticleReactionCard({postId, userId, session}) {
   return (
     <div className='articleReactionCard'>
         <div className={`reactions ${source_Sans_Pro.className}`}>
-        <span onClick={() => handleLike()}>{isPostLiked ? (<FavoriteIcon className='actionIcon' />) : (<FavoriteBorderIcon className='actionIcon' /> )}{likesCount}</span>
-        <span onClick={() => document.getElementById('commentScrollHolder').scrollIntoView()}><ChatBubbleOutlineOutlinedIcon className='actionIcon' /></span>
+        <span onClick={() => !preview && handleLike()}>{isPostLiked ? (<FavoriteIcon className='actionIcon' />) : (<FavoriteBorderIcon className='actionIcon' /> )}{likesCount}</span>
+        <span onClick={() => !preview && document.getElementById('commentScrollHolder').scrollIntoView()}><ChatBubbleOutlineOutlinedIcon className='actionIcon' /></span>
         </div>
         <div className="actions">
-            <span onClick={() => handleBookmark()}>{isBookedMarked ? (<BookmarkOutlinedIcon className='actionIcon' />) : (<BookmarkAddOutlinedIcon className='actionIcon' />)}</span>
+            <span onClick={() => !preview && handleBookmark()}>{isBookedMarked ? (<BookmarkOutlinedIcon className='actionIcon' />) : (<BookmarkAddOutlinedIcon className='actionIcon' />)}</span>
             <PlayCircleOutlineOutlinedIcon className='actionIcon' />
-            <span onClick={() => setshowShareMenu(!showShareMenu)}><IosShareOutlinedIcon className='actionIcon shareIcon' /></span>
+            <span onClick={() => !preview && setshowShareMenu(!showShareMenu)}><IosShareOutlinedIcon className='actionIcon shareIcon' /></span>
             
             <div style={{display: showShareMenu ? 'block' : 'none'}} className="shareMenu">
                 <div className="shareOption"><InsertLinkIcon /> Copy</div>

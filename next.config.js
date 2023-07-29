@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const API_URL = 'http://192.168.86.52/scriblo-server/api'
+const API_URL = 'http://localhost/scriblo-server/api'
 const nextConfig = {
   trailingSlash: true,
   images: {

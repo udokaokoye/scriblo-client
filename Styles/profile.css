@@ -129,6 +129,7 @@
   gap: 15px;
 }
 .profileHeadCardContainer .profileInfo .profileInterests span {
+  display: block;
   padding: 8px 16px;
   border-radius: 10px;
   background: #ededed;
@@ -142,4 +143,27 @@
 .profilePinnedArticlesContainer h3 .pinIcon {
   transform: rotate(45deg);
   font-size: 28px;
+}
+
+@media (max-width: 700px) {
+  .profileContainer {
+    width: 100%;
+  }
+  .profileContainer .profileInfo .profileNameAndFollowBtn {
+    flex-wrap: wrap;
+    row-gap: 18px;
+  }
+  .profileContainer .profileInfo .profileNameAndFollowBtn h3 {
+    font-size: 8vw;
+  }
+}
+@media (max-width: 488px) {
+  .profileContainer .profileInfo .profileBio {
+    width: 100%;
+  }
+}
+@media (max-width: 400px) {
+  .profileContainer .profileInfo .profileInterests span {
+    font-size: 13px;
+  }
 }/*# sourceMappingURL=profile.css.map */

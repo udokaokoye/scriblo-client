@@ -1,0 +1,38 @@
+.previewContainer {
+  margin-top: 8vh;
+}
+.previewContainer .previewCodeInput {
+  width: 400px;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.previewContainer h2 {
+  text-align: center;
+  font-size: 40px;
+}
+.previewContainer p {
+  text-align: center;
+}
+.previewContainer .codeForm {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0px;
+}
+.previewContainer .codeForm input {
+  width: 15%;
+  height: 60px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  font-size: 20px;
+  text-align: center;
+}
+.previewContainer .btn {
+  margin: 0 auto;
+}
+.previewContainer .btn:hover {
+  border: 2px solid black;
+}/*# sourceMappingURL=preview.css.map */

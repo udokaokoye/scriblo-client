@@ -1,10 +1,12 @@
 .editorToolbar {
-  // position: sticky !important;
-  // top: 0 !important;
-  // z-index: 1 !important;
-  // background-color: #f8f8f8 !important;
-  // padding: 10px 0 !important;
-  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+position: relative;
+
+.fixedToolBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
 }
 
 .editorPopups {
@@ -20,6 +22,7 @@
 
 .editorWrapper {
     min-height: 100vh !important;
+    position: relative;
 
     .editorMain{
         min-height: inherit !important;
@@ -87,3 +90,62 @@
 
 
 }
+
+@media (max-width: 712px) {
+
+  .editorWrapper {
+    max-width: 100% !important;
+    .editorToolbar {
+      width: 100% !important;
+    }
+
+    .editorMain {
+      // background: red !important;
+      max-width: 100% !important;
+    }
+  }
+}
+
+@media (max-width: 540px) {
+  .editorWrapper {
+    .editorToolbar {
+      .rdw-image-wrapper, .rdw-emoji-wrapper, .rdw-embedded-wrapper, .rdw-dropdown-wrapper .rdw-history-dropdown, .rdw-dropdown-wrapper .rdw-text-align-dropdown, .rdw-dropdown-wrapper .rdw-list-dropdown, .rdw-fontsize-wrapper, .rdw-block-wrapper, .rdw-dropdown-wrapper .rdw-inline-dropdown {
+        position: unset !important;
+      }
+    }
+  }
+
+  .editorPopups {
+    position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  }
+}
+
+// @media (max-width: 492px) {
+
+//   .editorPopups {
+//     position: absolute !important;
+//     left: 50px !important; 
+//     top: 50px !important;
+//   }
+// }
+
+// @media (max-width: 444px) {
+
+//   .editorPopups {
+//     position: absolute !important;
+//     left: -50px !important; 
+//     top: 50px !important;
+//   }
+// }
+
+// @media (max-width: 376px) {
+
+//   .editorPopups {
+//     position: absolute !important;
+//     left: -110px !important; 
+//     top: 50px !important;
+//   }
+// }

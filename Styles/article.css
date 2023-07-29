@@ -3,6 +3,10 @@
   min-height: 100vh;
   margin: 0 auto;
   margin-top: 16vh;
+  overflow-x: hidden;
+}
+.articleContainer .mobileCoverImageTop {
+  display: none;
 }
 .articleContainer .coverImageContainer {
   width: 100%;
@@ -81,10 +85,12 @@
   margin-top: 10px;
 }
 .articleContainer .articleTags span {
-  padding: 7px 15px;
+  display: block;
+  padding: 9px 15px;
   border-radius: 15px;
   cursor: pointer;
   background-color: #e9e9e9;
+  overflow-y: hidden !important;
 }
 .articleContainer .articleTags span:hover {
   background-color: #d6d6d6;
@@ -394,5 +400,46 @@
 @media (max-width: 1024px) {
   .articleContainer {
     width: 60%;
+  }
+  .articleContainer article iframe[src*="youtube.com"], .articleContainer article iframe[src*="youtu.be"] {
+    width: 100% !important;
+    height: 315px !important;
+  }
+}
+@media (max-width: 900px) {
+  .articleContainer .mobileCoverImageTop {
+    display: block;
+    width: 100%;
+    height: 300px;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .articleContainer .mobileCoverImageTop .mobileCoverImg {
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+@media (max-width: 700px) {
+  .articleContainer {
+    width: 90%;
+  }
+}
+@media (max-width: 650px) {
+  .aboutAuthorCard {
+    width: 90%;
+  }
+  .aboutAuthorCard .authorContainer .authorInfo {
+    width: auto;
+  }
+}
+@media (max-width: 450px) {
+  .articleContainer .mobileCoverImageTop {
+    height: 200px;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .articleContainer .mobileCoverImageTop .mobileCoverImg {
+    -o-object-fit: cover;
+       object-fit: cover;
   }
 }/*# sourceMappingURL=article.css.map */

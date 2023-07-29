@@ -67,6 +67,9 @@
     justify-content: flex-end;
 
     .authButtons {
+      .mobileSearchIcon {
+        display: none;
+      }
       .signInButton {
         font-size: 14px;
         font-weight: 400;
@@ -95,6 +98,10 @@
       gap: 20px;
       position: relative;
     //   background: red;
+
+    .mobileSearchIcon {
+      display: none;
+    }
 
     .newPostBtn {
       display: flex;
@@ -181,18 +188,65 @@
   }
 }
 
+@media (max-width: 563px) {
+  .navigation {
+    .logoSearch {
+      .navSearch {
+        width: 150px;
+        height: 40px;
+      }
+    }
+
+    .navigation__menu {
+      .userProfile {
+        .newPostBtn {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: 492px) {
   .navigation {
     .logoSearch {
+      .navigation__logo {
+        width: 100px !important;
+      }
       .navSearch {
         display: none;
       }
     }
 
     .navigation__menu {
+      .authButtons {
+        display: flex;
+        gap: 20px;
+        text-align: center;
+        .mobileSearchIcon {
+          display: block;
+          .searchIcon {
+            font-size: 29px;
+            color: #474747;
+          }
+        }
+      }
 .userProfile {
+
+  .mobileSearchIcon {
+    display: block;
+    .searchIcon {
+      font-size: 29px;
+      color: #474747;
+    }
+  }
   .newPostBtn {
     display: none;
+  }
+
+  .userProfile__avatar {
+    width: 40px;
+    height: 40px;
   }
 }
     }

@@ -10,12 +10,14 @@ import AboutAuthorCard from "@/Components/AboutAuthorCard";
 import Comments from "@/Components/Comments";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/authentication/[...nextauth]/route";
+import Image from "next/image";
 // import { getComments } from "@/public/util/apiHelpers";
 async function Article({ params }) {
   const session = await getServerSession(authOptions);
   let post = {};
   //   let postId = extractIdFromSlug(params.slug);
   let slug = params.slug;
+  let readTime = 0;
   const res = await fetch(
     `${process.env.API_URL}/posts/index.php?slug=${slug}`,
     { next: { revalidate: 20 } }
@@ -35,10 +37,12 @@ async function Article({ params }) {
       (userFollow) => userFollow.user_id == session?.id
     );
   }
+
   return (
     <div className="articleContainer">
       {post ? (
         <>
+        {post.coverImage !== '' && <div className="mobileCoverImageTop"><Image className="mobileCoverImg" src={post.coverImage} fill /></div>}
           <h1>{post.title}</h1>
           <br />
           <ArticleInfoCard

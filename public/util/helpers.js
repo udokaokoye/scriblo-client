@@ -56,7 +56,13 @@ export function formatDate(date) {
     return parts[parts.length - 1];
   }
 
-  export const followUser = async (userId, followerId) => {
-
+  export const copyToClipboard = (text) => {
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed"; // Make it hidden offscreen
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
   };
   

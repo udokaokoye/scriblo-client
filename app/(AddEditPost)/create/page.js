@@ -13,6 +13,10 @@ import { EditorState } from "draft-js";
 import { allTags } from "@/public/util/allTags";
 import CloseIcon from "@mui/icons-material/Close";
 import { source_Sans_Pro, merrweather } from "@/public/util/fonts";
+import { v4 as uuidv4 } from 'uuid';
+import Popup from "@/Components/Popup";
+import { copyToClipboard } from "@/public/util/helpers";
+import Loading from "@/Components/Loading";
 function Create() {
   const router = useRouter();
   const fileInputRef = useRef(null);
@@ -31,6 +35,10 @@ function Create() {
   const isHidden = useRef(0)
   const [mediafiles, setmediafiles] = useState([]);
   const [stage, setstage] = useState(["create"]);
+  const [showPreviewCodePopup, setshowPreviewCodePopup] = useState(false)
+  const [previewArticleDetails, setpreviewArticleDetails] = useState({code: "00000", url:'processing...'})
+  const [loading, setloading] = useState(false)
+  // console.log(session.token)
   const stripReplaceSpacesWithDashes = (text) => {
     let strippedText = text.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
 
@@ -132,17 +140,17 @@ function Create() {
 
   // }
 
-  const processPost = async () => {
+  const processPost = async (preview=false, fromViewLivePreview) => {
     const formData = new FormData();
-    // const processRes = await processRawEntity();
     const processRawEntity = new Promise((resolve, reject) => {
       Object.values(rawEntityContent.entityMap).map(async (item, index) => {
         if (item.type == "IMAGE") {
+          const fileUid = uuidv4();
           const fileToUpload = uploadImages.filter((img) => img.localSrc == item.data.src)[0].file
-          item.data.src = convertToS3Url(`${generateSlug(title)}_${index}`);
+          item.data.src = convertToS3Url(`${generateSlug(title)}_${index}_${fileUid}`);
           const result = await uploadToS3(
             fileToUpload,
-            index,
+            `${index}_${fileUid}`,
             generateSlug(title)
           );
           resolve("uploaded: " + result)
@@ -153,8 +161,9 @@ function Create() {
 
     const processCoverImage = new Promise(async (resolve, reject) => {
       if (coverImage !== '') {
-        formData.append('coverImage', convertToS3Url(`${generateSlug(title)}_cover`))
-        const result = await uploadToS3(coverImage.file, 'cover', generateSlug(title))
+        const fileUid = uuidv4();
+        formData.append('coverImage', convertToS3Url(`${generateSlug(title)}_cover_${fileUid}`))
+        const result = await uploadToS3(coverImage.file, `cover_${fileUid}`, generateSlug(title))
         resolve("Cover Image Uploaded")
       } else {
         formData.append('coverImage', '')
@@ -174,7 +183,6 @@ function Create() {
     let tagids = tags.map((tt) => {
       return allTags.filter((td) => td.name == tt.name )[0]
     })
-    // console.log(finalTags)
     tagsIDs = tagids.map((tst) => tst.id)
 
 
@@ -195,15 +203,21 @@ function Create() {
     formData.append("isHidden", isHidden.current);
     formData.append("slug", generateSlug(title));
     formData.append("summary", summary);
+    formData.append("readTime", calculateReadTime(editorState.getCurrentContent().getPlainText()))
     // formData.append("coverImage", uploadCoverImage);
     formData.append("createdAt", moment().format("YYYY-MM-DD HH:mm:ss"));
     formData.append("publishDate", moment().format("YYYY-MM-DD HH:mm:ss"));
     formData.append('username', session?.username)
+    formData.append("authToken", session?.token)
 
+    if (preview) {
+      formData.append("setupPreviewLink", 1)
+      formData.append('previewSlug', uuidv4())
+    }
     const res = await fetch(`/api/posts/index.php`, {
       method: "POST",
       headers: {
-        authorization: `Bearer ${session.token}`,
+        authorization: `Bearer ${session?.token}`,
       },
       body: formData,
     });
@@ -220,10 +234,21 @@ function Create() {
       isHidden.current = 0;
       setstage(0);
       setmediafiles([]);
+      setloading(false)
 
-      router.push(`/`);
+      if (preview && data.message.previewCode) {
+        if (fromViewLivePreview) {
+          router.push(`/preview/${data.message.previewUrl}`)
+        }
+        setshowPreviewCodePopup(true)
+        setpreviewArticleDetails({
+          code: data.message.previewCode,
+          url: data.message.previewUrl
+        })
+      } else {
+        router.push(`/`);
+      }
     }
-    console.log(data);
   };
 
   const publishPost = async () => {
@@ -233,6 +258,7 @@ function Create() {
       alert("Please fill all fields");
       return;
     }
+    setloading(true)
 
     processPost();
   };
@@ -243,6 +269,7 @@ function Create() {
       alert("Please fill in a title and content before saving");
       return;
     }
+    setloading(true)
     processPost();
   };
 
@@ -284,7 +311,35 @@ function Create() {
       localSrc,
     });
   };
-  return (
+  function calculateReadTime(article, wordsPerMinute = 200) {
+    // Regular expression to count words (excluding whitespace)
+    const wordCount = article.trim().split(/\s+/).length;
+    
+    // Calculate read time in minutes
+    const readTimeMinutes = Math.ceil(wordCount / wordsPerMinute);
+    
+    return readTimeMinutes;
+  }
+
+  function previewLinkHandler(fromViewLivePreview=false) {
+    isHidden.current = 1
+    if (!title || !rawEntityContent) {
+      alert("Please fill in a title and content before saving");
+      return;
+    }
+    setloading(true)
+    processPost(true, fromViewLivePreview);
+  }
+
+  function copyPreviewLink (previewSlug) {
+    copyToClipboard(`${process.env.NEXT_PUBLIC_APP_URL}/preview/${previewSlug}`)
+    alert("Copied to clipboard")
+  }
+
+  return loading ? (
+    <Loading />
+  ) : 
+   (
     <>
       <AddPostNavigation
         savePost={savePost}
@@ -295,7 +350,7 @@ function Create() {
       />
       <div className={`newPostContainer ${source_Sans_Pro.className}`}>
         {/* <button onClick={() => logDetails()}>Log Details</button> */}
-
+        {showPreviewCodePopup && (<Popup popupContent={'previewCodeUrl'} closePopup={() => redirect(`/${session?.username}/articles`)} previewArticleDetails={previewArticleDetails} copyPreviewLink={copyPreviewLink} />)}
         {stage == "create" && (
           <div className="editorContainer">
             <div className="creatHeader">
@@ -324,6 +379,7 @@ function Create() {
 
         {stage == "preview" && (
           <div className="previewContainer">
+            
             <h1>Article Preview</h1>
             <div className="previewWrapper">
               <div className="previewForms">
@@ -463,13 +519,13 @@ function Create() {
                 </div>
                 <div className="previewOptionLinks">
                   <div className="optionLink">
-                    <span>View live preview</span>
+                    <span onClick={() => previewLinkHandler(true)}>View live preview</span>
                     <small>
                       Click to generate a live preview of your article
                     </small>
                   </div>
                   <div className="optionLink">
-                    <span>Share preview link</span>
+                    <span onClick={() => previewLinkHandler()}>Share preview link</span>
                     <small>
                       Share preview link with someone for review, code will be
                       required to view preview

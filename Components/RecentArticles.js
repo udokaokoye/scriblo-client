@@ -40,8 +40,7 @@ function RecentArticles({ topics, source_Sans_Pro, articles, session }) {
       <br />
       <div className="articleCards">
         {articles?.length > 0 ? (
-          visibleArticles
-            .map((article, index) => (
+          visibleArticles?.map((article, index) => (
               <React.Fragment key={index}>
                 <ArticleCard article={article} />
                 <br />

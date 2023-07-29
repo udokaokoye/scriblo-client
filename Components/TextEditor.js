@@ -13,12 +13,21 @@ import draftToHtml from "draftjs-to-html";
 // import { Edit } from "@mui/icons-material";
 
 function TextEditor({ uploadImages, setuploadImages, content, setcontent, setrawEntityContent, editorState, seteditorState }) {
+const [isToolBarSticky, setisToolBarSticky] = useState(false)
 
 
 
-  // useEffect(() => {
-  //   console.log("Content: " + content)
-  // }, [content])
+// useEffect(() => {
+//   const handleScroll = () => {
+//     const top = window.pageYOffset || document.documentElement.scrollTop;
+//     setisToolBarSticky(top > 0);
+//   };
+
+//   window.addEventListener('scroll', handleScroll);
+//   return () => {
+//     window.removeEventListener('scroll', handleScroll);
+//   };
+// }, []);
 
   useLayoutEffect(() => {
     // setting all iframes to not scroll
@@ -69,6 +78,19 @@ function TextEditor({ uploadImages, setuploadImages, content, setcontent, setraw
       <iframe src={src} title="Embedded Content" className={className} />
     </>
   );
+
+//   var stickyToolbar = document.querySelector('.rdw-editor-toolbar');
+// var stickyToolbarOffsetTop = stickyToolbar?.offsetTop;
+
+// function handleScroll() {
+//   if (window.pageYOffset >= stickyToolbarOffsetTop) {
+//     stickyToolbar?.classList.add('fixed');
+//   } else {
+//     stickyToolbar?.classList.remove('fixed');
+//   }
+// }
+
+// window.addEventListener('scroll', handleScroll);
 
   // const handleEmbedLink = (url, className='test_url') => {
   //   // console.log(editorState.getCurrentContent())
@@ -162,7 +184,8 @@ function TextEditor({ uploadImages, setuploadImages, content, setcontent, setraw
     <div>
       <Editor
         editorState={editorState}
-        toolbarClassName="editorToolbar"
+        toolbarClassName={`editorToolbar ${isToolBarSticky ? "fixed" :''}`}
+        too
         wrapperClassName="editorWrapper"
         editorClassName="editorMain"
         toolbar={{

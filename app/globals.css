@@ -270,4 +270,10 @@ a,
     width: 70px;
     height: 70px;
   }
+
+  .optionBar {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    padding-bottom: 20px;
+  }
 }

@@ -70,14 +70,16 @@
 .popupContainer .popupContent .editProfilePopup .updateField span {
   display: block;
 }
-.popupContainer .popupContent .editProfilePopup .updateField input, .popupContainer .popupContent .editProfilePopup .updateField textarea {
+.popupContainer .popupContent .editProfilePopup .updateField input,
+.popupContainer .popupContent .editProfilePopup .updateField textarea {
   width: 100%;
   height: 30px;
   border: none;
   border-bottom: 1px solid #e9e9e9;
   margin-top: 10px;
 }
-.popupContainer .popupContent .editProfilePopup .updateField input:focus, .popupContainer .popupContent .editProfilePopup .updateField textarea:focus {
+.popupContainer .popupContent .editProfilePopup .updateField input:focus,
+.popupContainer .popupContent .editProfilePopup .updateField textarea:focus {
   outline: none;
 }
 .popupContainer .popupContent .editProfilePopup .updateField textarea {
@@ -111,4 +113,94 @@
 }
 .popupContainer .popupContent .editProfilePopup .updateProfileBtns .save:hover {
   background-color: rgb(105, 1, 105);
+}
+.popupContainer .popupContent .previewCodeUrlPopup {
+  border-radius: 30px;
+}
+.popupContainer .popupContent .previewCodeUrlPopup .previewCodeUrlTitle {
+  font-weight: bold;
+  font-size: 40px;
+  color: #353535 !important;
+  text-align: center;
+}
+.popupContainer .popupContent .previewCodeUrlPopup p {
+  text-align: center;
+  font-size: 16px;
+  margin: 5px 0px;
+}
+.popupContainer .popupContent .previewCodeUrlPopup .previewCodeText {
+  display: block;
+  margin-top: 20px;
+  font-size: 22px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 3px;
+}
+.popupContainer .popupContent .previewCodeUrlPopup .previewCode {
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 35px;
+  font-weight: bold;
+  text-align: center;
+  background: rgb(244, 244, 244);
+  margin: 0 auto;
+  padding: 15px;
+  letter-spacing: 15px;
+  border-radius: 30px;
+}
+.popupContainer .popupContent .previewCodeUrlPopup .previewLink {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 10px;
+  text-overflow: ellipsis;
+  background-color: rgb(232, 232, 232);
+  width: 200px;
+  padding: 5px 18px;
+  white-space: nowrap; /* Prevent line breaks */
+  overflow: hidden; /* Hide any overflowing content */
+  text-overflow: ellipsis;
+  gap: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.popupContainer .popupContent .previewCodeUrlPopup small {
+  margin-top: 15px;
+  display: block;
+  text-align: center;
+  font-style: italic;
+  color: #191919;
+}
+.popupContainer .popupContent .previewCodeUrlPopup .previewCodeUrlBtns {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.popupContainer .popupContent .previewCodeUrlPopup .previewCodeUrlBtns button {
+  width: 150px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.popupContainer .popupContent .previewCodeUrlPopup .previewCodeUrlBtns .cancelBtn {
+  background-color: red;
+}
+
+@media (max-width: 700px) {
+  .popupContainer .popupContent {
+    width: 100%;
+  }
+  .popupContainer .popupContent .editProfilePopup {
+    margin: 0 auto;
+    width: 90%;
+  }
 }/*# sourceMappingURL=popup.css.map */

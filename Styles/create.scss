@@ -50,6 +50,7 @@
 
 .newPostContainer {
   position: relative;
+  // background: green;
   .editorContainer {
     width: 600px;
     margin: 0 auto;
@@ -358,5 +359,108 @@
         }
       }
     }
+  }
+}
+
+
+@media (max-width: 1094px) {
+
+  .newPostContainer {
+
+    h1 {
+      text-align: center;
+      display: block;
+      margin-bottom: 20px;
+    }
+    .previewWrapper {
+      display: block;
+
+      .previewForms {
+        margin: 0 auto;
+        width: 70%;
+      }
+
+      .previewOptions {
+         width: 70%;
+         margin: 0 auto;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 712px) {
+
+  .addPostNavigation { 
+    .logo {
+      span {
+        display: none;
+      }
+    }
+  }
+
+  .newPostContainer {
+
+    .editorContainer {
+      width: 90%;
+      padding: 0px;
+      padding-top: 50px;
+
+      .creatHeader {
+        textarea {
+          width: 100%;
+        }
+      }
+    }
+
+    h1 {
+      text-align: center;
+      display: block;
+      margin-bottom: 20px;
+    }
+    .previewContainer {
+      width: 100%;
+    }
+    .previewWrapper {
+      display: block;
+
+      .previewForms {
+        margin: 0 auto;
+        width: 90%;
+      }
+
+      .previewOptions {
+         width: 90%;
+         margin: 0 auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 634px) {
+
+  .addPostNavigation { 
+
+    .menuBtns {
+      width: 50%;
+
+      .btn {
+        width: 80px;
+        height: 30px;
+      }
+    }
+  }
+
+  .newPostContainer {
+
+    .editorContainer {
+
+      .creatHeader {
+        textarea {
+          width: 100%;
+        }
+      }
+    }
+
   }
 }

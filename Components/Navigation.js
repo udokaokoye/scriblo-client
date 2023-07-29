@@ -8,6 +8,7 @@ import { source_Sans_Pro } from "@/public/util/fonts";
 import '../Styles/navigation.css'
 import { useAppContex } from "../app/contex/store";
 import { useRouter } from "next/navigation";
+import SearchIcon from '@mui/icons-material/Search';
 
 function Navigation() {
   const { data: session, update } = useSession();
@@ -31,6 +32,8 @@ function Navigation() {
       <div className="navigation__menu">
         {!session && (
           <div className={`authButtons ${source_Sans_Pro.className}`}>
+            <Link href={'/explore'} className="mobileSearchIcon"><span ><SearchIcon className="searchIcon" /> </span></Link>
+
             <Link href={"/signup"}>
               <button className="getStartedButton">Get Started</button>
             </Link>
@@ -42,6 +45,8 @@ function Navigation() {
             <Link href={'/create'}><button className="btn newPostBtn" style={{width: 150, height: 38}}> 
             {/* <CreateOutlinedIcon className="penIcon" />  */}
             Create Post</button> </Link>
+
+            <Link href={'/explore'} className="mobileSearchIcon"><span ><SearchIcon className="searchIcon" /> </span></Link>
 
 
             <div style={{background: `url(${session?.avatar})`}} className="userProfile__avatar" onClick={()=> setprofileMenuVisible(!profileMenuVisible)}>

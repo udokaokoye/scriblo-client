@@ -73,3 +73,21 @@
     }
   }
 }
+
+@media (max-width: 900px) {
+
+.settingsContainer {
+  .settingsWrapper {
+    width: 60%;
+  }
+}
+}
+
+@media (max-width: 600px) {
+
+  .settingsContainer {
+    .settingsWrapper {
+      width: 90%;
+    }
+  }
+  }

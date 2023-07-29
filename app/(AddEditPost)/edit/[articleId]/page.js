@@ -2,8 +2,8 @@
 import "@/Styles/create.css";
 import TextEditor from "@/Components/TextEditor";
 import React, { useState, useRef, useEffect } from "react";
-import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { getSession, useSession } from "next-auth/react";
+import { notFound, redirect } from "next/navigation";
 import {
   S3Client,
   PutObjectCommand,
@@ -23,12 +23,15 @@ import CloseIcon from "@mui/icons-material/Close";
 import { source_Sans_Pro, merrweather } from "@/public/util/fonts";
 import htmlToDraft from "html-to-draftjs";
 import AddPostNavigation from "@/Components/AddPostNavigation";
+import { authOptions } from "@/app/authentication/[...nextauth]/route";
+import { v4 as uuidv4 } from 'uuid';
+import Loading from "@/Components/Loading";
 function ArticleEdit({ params }) {
   const [articleToEdit, setarticleToEdit] = useState({});
 
   const router = useRouter();
   const fileInputRef = useRef(null);
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const [editorState, seteditorState] = useState(EditorState.createEmpty());
   const [uploadImages, setuploadImages] = useState([]);
   const [oldImages, setoldImages] = useState([]);
@@ -47,20 +50,23 @@ function ArticleEdit({ params }) {
   const oldImagesRef = useRef([]);
   const [mediafiles, setmediafiles] = useState([]);
   const [stage, setstage] = useState(["create"]);
+  const [loading, setloading] = useState(false)
 
   useEffect(() => {
-    // if (!session?.id) {
-    //   redirect("/");
-    // }
     const fetchArticle = async () => {
+      const sessionForValidation = await getSession(authOptions)
+      if (!sessionForValidation.id) {
+        notFound()
+      }
       const res = await fetch(
         `/api/posts/index.php?articleId=${params.articleId}`,
         { next: { revalidate: 20 } }
       );
 
       const data = await res.json();
-      if (data.data.authorId !== session?.id) {
-        alert("/");
+      if (data.data.authorId !== sessionForValidation?.id) {
+        
+        notFound()
       }
       //   console.log(data?.data);
       setarticleToEdit(data?.data);
@@ -70,6 +76,7 @@ function ArticleEdit({ params }) {
         ?.split(",")
         .map((name) => ({ name, id: 0 }));
       settags(prevTags);
+
       if (data.data.coverImage !== "") {
         setcoverImage({
           file: null,
@@ -97,7 +104,7 @@ function ArticleEdit({ params }) {
           if (item.type == "IMAGE") {
             return item.data.src;
           } else {
-            return [];
+            return null;
           }
         }
       );
@@ -107,10 +114,10 @@ function ArticleEdit({ params }) {
       oldImagesRef.current = prevUploadedImages
     };
 
-    if (session?.id) {
+    // if (session?.id) {
       fetchArticle();
-    }
-  }, [params, session]);
+    // }
+  }, [params]);
   const stripReplaceSpacesWithDashes = (text) => {
     let strippedText = text.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
 
@@ -192,7 +199,7 @@ function ArticleEdit({ params }) {
 
     const params = {
       Bucket: bucketName,
-      Key: `/images/${getFileNameFromS3URL(fileName)}.jpg`,
+      Key: `images/${getFileNameFromS3URL(fileName)}.jpg`,
     };
 
     const command = new DeleteObjectCommand(params);
@@ -210,23 +217,25 @@ function ArticleEdit({ params }) {
       Object.values(rawEntityContent.entityMap).map(async (item, index) => {
         if (item.type == "IMAGE") {
           if (!oldImagesRef.current.includes(item.data.src)) {
+            const fileUid = uuidv4();
             const fileToUpload = uploadImages.filter(
               (img) => img.localSrc == item.data.src
             )[0].file;
-            item.data.src = convertToS3Url(`${generateSlug(title)}_${index}`);
+            item.data.src = convertToS3Url(`${generateSlug(title)}_${index}_${fileUid}`);
             const result = await uploadToS3(
               fileToUpload,
-              index,
+              `${index}_${fileUid}`,
               generateSlug(title)
             );
             resolve("uploaded: " + result);
           } else {
             // remove image from old array where the value is item.data.src
-            console.log("ELSE BLOCK");
+            // console.log("ELSE BLOCK");
             // console.log(item.data.src);
             const updatedOldImages = oldImagesRef.current.filter(
               (img) => img !== item.data.src
             );
+            // console.log(updatedOldImages)
             oldImagesRef.current = updatedOldImages;
           }
           //   !DELETE EVERYTHING IN OLDIMAGES ARRAY
@@ -246,12 +255,17 @@ function ArticleEdit({ params }) {
         //   }
         // }
       });
-      console.log(oldImagesRef.current)
+      // console.log(oldImagesRef.current.length)
+      // console.log(oldImagesRef.current)
+      // console.log("Entity map lenght: " + Object.values(rawEntityContent.entityMap).length)
+      // console.log(Object.values(rawEntityContent.entityMap))
 
       if (oldImagesRef.current.length > 0 || Object.values(rawEntityContent.entityMap).length == 0) {
         
-            oldImagesRef.current.map((imgToDel) => {
-              deleteFromS3(imgToDel)
+        oldImagesRef.current.map((imgToDel) => {
+              if (imgToDel !== null) {
+                deleteFromS3(imgToDel)
+              }
             })
           
       }
@@ -259,35 +273,41 @@ function ArticleEdit({ params }) {
       resolve("Updated Image");
     });
 
-    return;
+    // return;
 
-    const processCoverImage = new Promise(async (resolve, reject) => {
-      if (coverImage.localSrc !== "" || coverImage.file !== null) {
-        if (
-          coverImage.localSrc.includes("scriblo.s3.us-east-2.amazonaws.com")
-        ) {
-          formData.append("coverImage", coverImage.localSrc);
+    const processCoverImage = new Promise( (resolve, reject) => {
+
+        if (coverImage.localSrc !== "" || coverImage.file !== null) {
+          if (
+            coverImage.localSrc.includes("scriblo.s3.us-east-2.amazonaws.com")
+          ) {
+            formData.append("coverImage", coverImage.localSrc);
+          } else {
+            const fileUid = uuidv4();
+            formData.append(
+              "coverImage",
+              convertToS3Url(`${generateSlug(title)}_cover_${fileUid}`)
+            );
+            uploadToS3(
+              coverImage.file,
+              `cover_${fileUid}`,
+              generateSlug(title)
+            );
+             deleteFromS3(oldCoverImage)
+          }
+  
+          // console.log(coverImage);
+          // return;
+          resolve("Cover Image Uploaded");
         } else {
-          formData.append(
-            "coverImage",
-            convertToS3Url(`${generateSlug(title)}_cover`)
-          );
-          const result = await uploadToS3(
-            coverImage.file,
-            "cover",
-            generateSlug(title)
-          );
+          formData.append("coverImage", "");
+          resolve("Cover Image Uploaded");
         }
+      
 
-        console.log(coverImage);
-        // return;
-        resolve("Cover Image Uploaded");
-      } else {
-        formData.append("coverImage", "");
-        resolve("Cover Image Uploaded");
-      }
     });
 
+    // return;
     // // console.log("Processing Article Images");
     await processRawEntity;
     // // console.log("Procced!");
@@ -318,13 +338,14 @@ function ArticleEdit({ params }) {
     formData.append("title", title);
     formData.append("content", draftToHtml(rawEntityContent));
     formData.append("tags", finalTags.join(","));
+    formData.append("readTime", calculateReadTime(editorState.getCurrentContent().getPlainText()))
     // console.log(tagsIDs.join(','))
     // return;
     // for tagIDs we need to get the id of the selected tags from the allTags.js file
     formData.append("tagsIDs", tagsIDs.join(","));
     formData.append("authorId", session?.id);
     formData.append("isHidden", isHidden.current);
-    // formData.append("slug", generateSlug(title));
+    formData.append("slug", generateSlug(title));
     formData.append("summary", summary);
     formData.append("createdAt", moment().format("YYYY-MM-DD HH:mm:ss"));
     formData.append("publishDate", moment().format("YYYY-MM-DD HH:mm:ss"));
@@ -350,6 +371,7 @@ function ArticleEdit({ params }) {
       isHidden.current = 0;
       setstage(0);
       setmediafiles([]);
+      setloading(false)
 
       router.push(`/`);
     }
@@ -364,7 +386,11 @@ function ArticleEdit({ params }) {
       return;
     }
 
-    processPost();
+    if (confirm("Updating the post title will affect the previous post URL, this action cannot be undone.")) {
+      setloading(true)
+      processPost();
+    }
+
   };
 
   function textAreaAdjust(element) {
@@ -405,7 +431,19 @@ function ArticleEdit({ params }) {
       localSrc,
     });
   };
-  return (
+  function calculateReadTime(article, wordsPerMinute = 200) {
+    // Regular expression to count words (excluding whitespace)
+    const wordCount = article.trim().split(/\s+/).length;
+    
+    // Calculate read time in minutes
+    const readTimeMinutes = Math.ceil(wordCount / wordsPerMinute);
+    
+    return readTimeMinutes;
+  }
+  return loading ? (
+    <Loading />
+  ) : 
+   (
     <div className="editContainer">
       <AddPostNavigation
         // savePost={savePost}
@@ -455,12 +493,14 @@ function ArticleEdit({ params }) {
                   <div
                     className="coverImageContainer"
                     onClick={() => {
-                      if (uploadImages.length <= 0 && coverImage == "") {
+                      if (uploadImages.length <= 0 && coverImage.localSrc == "") {
+                        console.log(coverImage)
+                        console.log(oldCoverImage)
                         fileInputRef.current.click();
                       }
                     }}
                   >
-                    {coverImage == "" && uploadImages.length > 0 && (
+                    {coverImage.localSrc == "" && uploadImages.length > 0 && (
                       <button
                         onClick={() => fileInputRef.current.click()}
                         className="coverImage"

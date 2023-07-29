@@ -4,7 +4,7 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteSweepOutlinedIcon from '@mui/icons-material/DeleteSweepOutlined';
 import { formatDate } from '@/public/util/helpers';
 import Link from 'next/link';
-function UserPersonalArticleCard({userArticle}) {
+function UserPersonalArticleCard({userArticle, deleteArticle}) {
   return (
     <div className='userArticleCardContainer'>
         <div style={{background: `url(${userArticle.coverImage})`}} className="articleCover">{userArticle?.coverImage == '' && 'No Cover Image'}</div>
@@ -17,7 +17,7 @@ function UserPersonalArticleCard({userArticle}) {
         </div>
         <div className="articleOptions">
           <Link href={`/edit/${userArticle.id}`}><span className='editIcon'><EditOutlinedIcon /></span></Link>
-          <span className='deleteIcon'><DeleteSweepOutlinedIcon /></span>
+          <span className='deleteIcon' onClick={() => deleteArticle(userArticle?.id, userArticle?.content, userArticle?.coverImage)}><DeleteSweepOutlinedIcon /></span>
         </div>
     </div>
   )

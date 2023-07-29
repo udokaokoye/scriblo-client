@@ -57,3 +57,38 @@
     }
   }
 }
+
+
+@media (max-width: 675px) {
+
+.exploreContainer {
+  width: 90%;
+}
+}
+
+@media (max-width: 500px) {
+
+  .exploreContainer {
+
+
+    .searchInput {
+      width: 90%;
+    }
+  }
+  }
+
+  @media (max-width: 388px) {
+
+    .exploreContainer {
+  
+  
+      .searchInput {
+        width: 90%;
+        height: 45px;
+        
+        input {
+          font-size: 16px;
+        }
+      }
+    }
+    }

@@ -21,4 +21,28 @@
 }
 .userArticlesContainer .tabs .active {
   border-bottom: 1px solid black;
+}
+.userArticlesContainer .draftsTab .previewDetails {
+  display: flex;
+  gap: 20px;
+}
+.userArticlesContainer .draftsTab .previewDetails span {
+  background: #ebebeb;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.userArticlesContainer .draftsTab .previewDetails .previewUrl {
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.userArticlesContainer .draftsTab .previewDetails button {
+  margin-left: auto;
+  padding: 0px 20px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
 }/*# sourceMappingURL=userArticles.css.map */

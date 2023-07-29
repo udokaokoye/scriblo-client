@@ -16,4 +16,20 @@
   border: none;
   cursor: pointer;
   border: 2px solid black;
+}
+
+@media (max-width: 900px) {
+  .bookmarksContainer {
+    width: 70%;
+  }
+}
+@media (max-width: 650px) {
+  .bookmarksContainer {
+    width: 90%;
+    margin-top: 12vh;
+  }
+  .bookmarksContainer .removeBookmarkBtn {
+    padding: 8px 10px;
+    border: none;
+  }
 }/*# sourceMappingURL=bookmarks.css.map */

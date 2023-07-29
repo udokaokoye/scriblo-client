@@ -116,5 +116,16 @@ export async function deleteBookmark (bookmarkId) {
 
     const response = await fetch('/api/posts/actions.php', {method: "POST", body: formData})
     const data = await response.json();
+    // return data;
+}
+
+export async function deletePost (postId, sessionToken) {
+    const formData = new FormData();
+    formData.append('action', 'deletePost')
+    formData.append("postId", postId)
+    formData.append("authToken", sessionToken)
+
+    const response = await fetch('/api/posts/actions.php', {method: "POST", body: formData})
+    const data = await response.json();
     return data;
 }

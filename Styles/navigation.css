@@ -56,6 +56,9 @@
   display: flex;
   justify-content: flex-end;
 }
+.navigation .navigation__menu .authButtons .mobileSearchIcon {
+  display: none;
+}
 .navigation .navigation__menu .authButtons .signInButton {
   font-size: 14px;
   font-weight: 400;
@@ -79,6 +82,9 @@
   justify-content: space-between;
   gap: 20px;
   position: relative;
+}
+.navigation .navigation__menu .userProfile .mobileSearchIcon {
+  display: none;
 }
 .navigation .navigation__menu .userProfile .newPostBtn {
   display: flex;
@@ -143,11 +149,46 @@
     height: 20px;
   }
 }
-@media (max-width: 492px) {
+@media (max-width: 563px) {
   .navigation .logoSearch .navSearch {
-    display: none;
+    width: 150px;
+    height: 40px;
   }
   .navigation .navigation__menu .userProfile .newPostBtn {
     display: none;
+  }
+}
+@media (max-width: 492px) {
+  .navigation .logoSearch .navigation__logo {
+    width: 100px !important;
+  }
+  .navigation .logoSearch .navSearch {
+    display: none;
+  }
+  .navigation .navigation__menu .authButtons {
+    display: flex;
+    gap: 20px;
+    text-align: center;
+  }
+  .navigation .navigation__menu .authButtons .mobileSearchIcon {
+    display: block;
+  }
+  .navigation .navigation__menu .authButtons .mobileSearchIcon .searchIcon {
+    font-size: 29px;
+    color: #474747;
+  }
+  .navigation .navigation__menu .userProfile .mobileSearchIcon {
+    display: block;
+  }
+  .navigation .navigation__menu .userProfile .mobileSearchIcon .searchIcon {
+    font-size: 29px;
+    color: #474747;
+  }
+  .navigation .navigation__menu .userProfile .newPostBtn {
+    display: none;
+  }
+  .navigation .navigation__menu .userProfile .userProfile__avatar {
+    width: 40px;
+    height: 40px;
   }
 }/*# sourceMappingURL=navigation.css.map */

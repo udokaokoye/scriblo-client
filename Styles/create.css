@@ -312,4 +312,67 @@
   font-size: 12px;
   color: #b7b7b7;
   margin-top: 20px;
+}
+
+@media (max-width: 1094px) {
+  .newPostContainer h1 {
+    text-align: center;
+    display: block;
+    margin-bottom: 20px;
+  }
+  .newPostContainer .previewWrapper {
+    display: block;
+  }
+  .newPostContainer .previewWrapper .previewForms {
+    margin: 0 auto;
+    width: 70%;
+  }
+  .newPostContainer .previewWrapper .previewOptions {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 712px) {
+  .addPostNavigation .logo span {
+    display: none;
+  }
+  .newPostContainer .editorContainer {
+    width: 90%;
+    padding: 0px;
+    padding-top: 50px;
+  }
+  .newPostContainer .editorContainer .creatHeader textarea {
+    width: 100%;
+  }
+  .newPostContainer h1 {
+    text-align: center;
+    display: block;
+    margin-bottom: 20px;
+  }
+  .newPostContainer .previewContainer {
+    width: 100%;
+  }
+  .newPostContainer .previewWrapper {
+    display: block;
+  }
+  .newPostContainer .previewWrapper .previewForms {
+    margin: 0 auto;
+    width: 90%;
+  }
+  .newPostContainer .previewWrapper .previewOptions {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 634px) {
+  .addPostNavigation .menuBtns {
+    width: 50%;
+  }
+  .addPostNavigation .menuBtns .btn {
+    width: 80px;
+    height: 30px;
+  }
+  .newPostContainer .editorContainer .creatHeader textarea {
+    width: 100%;
+  }
 }/*# sourceMappingURL=create.css.map */

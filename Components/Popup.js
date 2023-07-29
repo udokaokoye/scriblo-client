@@ -2,7 +2,9 @@
 import React, { useState } from 'react'
 import '@/Styles/popup.css'
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
-function Popup({closePopup, profilePhotoRef, popupContent, user}) {
+import InsertLinkIcon from '@mui/icons-material/InsertLink';
+import Link from 'next/link';
+function Popup({closePopup, profilePhotoRef, popupContent, user, previewArticleDetails, copyPreviewLink}) {
     const [updatedName, setupdatedName] = useState(user?.name)
     const [updatedBio, setupdatedBio] = useState(user?.bio)
   return (
@@ -38,6 +40,27 @@ function Popup({closePopup, profilePhotoRef, popupContent, user}) {
                     <div className="updateProfileBtns">
                         <button onClick={() => closePopup()} className='cancel'>Cancel</button>
                         <button className='save'>Save</button>
+                    </div>
+                </div>
+            }
+
+
+            {
+                popupContent === "previewCodeUrl" && 
+
+                <div className="editProfilePopup previewCodeUrlPopup">
+                    <h1 className='previewCodeUrlTitle'>Your Preview Link Is Ready!</h1>
+                    <p>Share this link with friends/editors to look at your article.</p>
+
+                    <span className='previewCodeText'>Preview Code</span>
+                    <p className="previewCode">{previewArticleDetails.code}</p>
+
+                    <span className='previewLink'>{previewArticleDetails.url}</span>
+
+                    <small>*You can still access these details in your Drafts page.</small>
+                    <div className="previewCodeUrlBtns">
+                        <button onClick={() => copyPreviewLink(previewArticleDetails.url)}> <InsertLinkIcon /> Copy Url</button>
+                        <Link href={'/'}><button className='cancelBtn' onClick={() => closePopup()}> Close</button></Link>
                     </div>
                 </div>
             }
