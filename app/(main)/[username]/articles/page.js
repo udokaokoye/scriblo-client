@@ -1,18 +1,16 @@
 "use client";
 import ClientProtectedRoute from "@/Components/ClientProtectedRoute";
 import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
 import "@/Styles/userArticles.css";
 import { useEffect, useState } from "react";
 import { source_Sans_Pro } from "@/public/util/fonts";
-import ArticleCard from "@/Components/ArticleCard";
-import UserArticleCard from "@/Components/UserPersonalArticleCard";
 import UserPersonalArticleCard from "@/Components/UserPersonalArticleCard";
 import { deletePost } from "@/public/util/apiHelpers";
 import { DeleteObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import htmlToDraft from "html-to-draftjs";
 import { ContentState, convertToRaw } from "draft-js";
 import { copyToClipboard, limitText } from "@/public/util/helpers";
+import Head from "next/head";
 import Loading from "@/Components/Loading";
 
 function userArticles({ params }) {
@@ -21,7 +19,7 @@ function userArticles({ params }) {
   const [allposts, setallposts] = useState([]);
   const [drafts, setdrafts] = useState([]);
   const [published, setpublished] = useState([]);
-  const [loading, setloading] = useState(false)
+  const [loading, setloading] = useState(false);
   //   useEffect(() => {
   //     if (session?.username !== params?.username) {
   //       redirect("/");
@@ -29,7 +27,7 @@ function userArticles({ params }) {
   //   }, [session]);
 
   const fetchPosts = async () => {
-    setloading(true)
+    setloading(true);
     const userPostsResponse = await fetch(
       `/api/posts/actions.php?data=posts_username&username=${params.username}`
     );
@@ -38,7 +36,7 @@ function userArticles({ params }) {
     setallposts(userPostsData.data);
     setdrafts(userPostsData.data?.filter((data) => data.isHidden == 1));
     setpublished(userPostsData?.data?.filter((data) => data.isHidden == 0));
-    setloading(false)
+    setloading(false);
   };
 
   useEffect(() => {
@@ -86,7 +84,7 @@ function userArticles({ params }) {
         "Are you sure you want to delete this article? this action cannot be undone"
       )
     ) {
-      setloading(true)
+      setloading(true);
       const blocksFromHTML = htmlToDraft(content);
       const editState = ContentState.createFromBlockArray(
         blocksFromHTML.contentBlocks,
@@ -103,15 +101,14 @@ function userArticles({ params }) {
         deleteFromS3(coverImage);
       }
       await deletePost(postId, session?.token);
-      setloading(false)
+      setloading(false);
       fetchPosts();
     }
   };
 
   return loading ? (
     <Loading />
-  ) : 
-   (
+  ) : (
     <ClientProtectedRoute>
       <div className={`userArticlesContainer ${source_Sans_Pro.className}`}>
         <h1>Your Articles</h1>

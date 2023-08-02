@@ -23,8 +23,9 @@ $profile-Avatar-offset: 40px;
     height: $cover-height;
     background: url('https://scriblo.s3.us-east-2.amazonaws.com/branding/default_cover.png');
     background-position: center !important;
-    background-size: contain !important;
-    // background-repeat: no-repeat !important;
+    background-size: 60% !important;
+    background-repeat: no-repeat !important;
+    background-color: #EDEBE6;
     position: relative;
 
     .overlay {
@@ -184,6 +185,11 @@ $profile-Avatar-offset: 40px;
     .profileContainer {
         width: 100%;
 
+        .profileHeadCardContainer {
+            .profileCoverImage {
+                background-size: 120% !important;
+            }
+        }
         .profileInfo {
             .profileNameAndFollowBtn {
                 h3 {

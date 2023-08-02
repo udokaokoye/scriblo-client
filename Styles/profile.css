@@ -19,7 +19,9 @@
   height: 200px;
   background: url("https://scriblo.s3.us-east-2.amazonaws.com/branding/default_cover.png");
   background-position: center !important;
-  background-size: contain !important;
+  background-size: 60% !important;
+  background-repeat: no-repeat !important;
+  background-color: #EDEBE6;
   position: relative;
 }
 .profileHeadCardContainer .profileCoverImage .overlay {
@@ -148,6 +150,9 @@
 @media (max-width: 700px) {
   .profileContainer {
     width: 100%;
+  }
+  .profileContainer .profileHeadCardContainer .profileCoverImage {
+    background-size: 120% !important;
   }
   .profileContainer .profileInfo .profileNameAndFollowBtn {
     flex-wrap: wrap;

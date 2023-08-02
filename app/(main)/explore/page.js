@@ -6,7 +6,10 @@ import '../../../Styles/explore.css'
 import { allTags } from '@/public/util/allTags'
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+
+
 function Explore() {
+    
     const router = useRouter()
     const handleSearch = (e) => {
         if (e.keyCode === 13) {

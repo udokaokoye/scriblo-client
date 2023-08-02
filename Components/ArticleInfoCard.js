@@ -17,7 +17,7 @@ function ArticleInfoCard({authorAvatar, authorUsername, authorName, authorId, ar
             )}
             </div>
             <div className="publishDateAndReadTime">
-                <span className="articlePublishedDate">published {articlePublishDate}</span> . <span className="articleReadTime">{articleReadTime}</span>
+                <span className="articlePublishedDate">published {articlePublishDate}</span> . | <span className="articleReadTime">{articleReadTime} read time</span>
             </div>
         </div>
     </div>

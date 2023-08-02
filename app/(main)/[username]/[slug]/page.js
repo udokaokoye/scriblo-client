@@ -107,4 +107,57 @@ async function Article({ params }) {
   );
 }
 
+export const generateMetadata = async (props) => {
+  const { params } = props;
+  const res = await fetch(
+    `${process.env.API_URL}/posts/index.php?slug=${params.slug}`,
+    // { next: { revalidate: 20 } }
+  );
+
+  const data = await res.json();
+  const post = data.data;
+  if (post) {
+    return {
+      title: post.title,
+      desciption: post.summary,
+      alternates: {
+        canonical: `${process.env.APP_URL}${post.authorUsername}/${params.slug}`
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: post.title,
+        description: post.desciption,
+        siteId: '1467726470533754880',
+        creator: '@myscriblo',
+        creatorId: '1467726470533754880',
+        images: [
+          {
+            url: post.coverImage,
+            alt: post.title
+          }
+        ],
+      },
+      openGraph: {
+        title: post.title,
+        description: post.summary,
+        url: `${process.env.APP_URL}${post.authorUsername}/${params.slug}`,
+        siteName: "Scriblo",
+        images: [
+          {
+            url: post.coverImage,
+            alt: post.title
+          }
+        ],
+        locale: 'en_US',
+        type: 'website',
+      },
+    }
+  } else {
+    return {
+      title: "Not Found",
+      description: "The post you are looking for was not found"
+    }
+  }
+  
+};
 export default Article;

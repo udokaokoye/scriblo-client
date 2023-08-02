@@ -48,7 +48,7 @@ function Create() {
   }
   function generateSlug(title) {
     let trimmedSlug;
-    if (isHidden == 0) {
+    if (isHidden.current == 0) {
       // Convert the title to lowercase and replace special characters with dashes
     const slug = title.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
 
@@ -95,50 +95,6 @@ function Create() {
     return(s3Result.$metadata)
   };
 
-  // const processRawEntity = async () => {
-  //   let returnData = null;
-  //   Object.values(rawEntityContent.entityMap).map(async (item, index) => {
-  //     if (item.type == "IMAGE") {
-  //       const fileToUpload = uploadImages.filter((img) => img.localSrc == item.data.src)[0].file
-  //       item.data.src = convertToS3Url(`${generateSlug(title)}_${index}`);
-  //       const result = await uploadToS3(
-  //         fileToUpload,
-  //         index,
-  //         generateSlug(title)
-  //       );
-  //       console.log(result)
-  //       returnData = result
-  //     }
-  //   });
-  //   return returnData
-  // };
-
-  // const testProcessEntity = new Promise((resolve, reject) => {
-  //   Object.values(rawEntityContent.entityMap).map(async (item, index) => {
-  //     if (item.type == "IMAGE") {
-  //       const fileToUpload = uploadImages.filter((img) => img.localSrc == item.data.src)[0].file
-  //       item.data.src = convertToS3Url(`${generateSlug(title)}_${index}`);
-  //       const result = await uploadToS3(
-  //         fileToUpload,
-  //         index,
-  //         generateSlug(title)
-  //       );
-  //       resolve("uploaded")
-  //     }
-  //   });
-  // })
-
-  // const processCoverImage = async (formData) => {
-  //   if (coverImage !== '') {
-  //     const result = uploadToS3(coverImage.file, 'cover', generateSlug(title))
-  //     formData.append('coverImage', convertToS3Url(`${generateSlug(title)}_cover`))
-  //     return result
-  //   } else {
-  //     formData.append('coverImage', '')
-  //     return true
-  //   }
-
-  // }
 
   const processPost = async (preview=false, fromViewLivePreview) => {
     const formData = new FormData();

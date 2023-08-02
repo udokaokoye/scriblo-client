@@ -127,7 +127,7 @@ function ArticleEdit({ params }) {
   };
   function generateSlug(title) {
     let trimmedSlug;
-    if (isHidden == 0) {
+    if (isHidden.current == 0) {
       // Convert the title to lowercase and replace special characters with dashes
       const slug = title.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
 

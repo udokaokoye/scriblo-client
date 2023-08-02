@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-const API_URL = process.env.API_URL || "http://localhost:3000/api";
+const API_URL = process.env.API_URL;
 
 export const authOptions = {
   session: {

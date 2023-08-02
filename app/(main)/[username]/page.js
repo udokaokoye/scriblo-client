@@ -65,4 +65,58 @@ async function Profile({ params }) {
   );
 }
 
+
+export const generateMetadata = async (props) => {
+  const { params } = props;
+  const userResponse = await fetch(
+    `${process.env.API_URL}/users/actions.php?action=getUser&username=${params.username}`
+  );
+  const userData = await userResponse.json();
+  const user = userData.data;
+
+  if (user) {
+    return {
+      title: user.name,
+      desciption: user.bio !== '' ? user.bio : user.name,
+      alternates: {
+        canonical: `${process.env.APP_URL}${params.username}`
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: user.name,
+        description: user.bio !== '' ? user.bio : user.name,
+        siteId: '1467726470533754880',
+        creator: '@myscriblo',
+        creatorId: '1467726470533754880',
+        images: [
+          {
+            url: user.avatar,
+            alt: user.name
+          }
+        ],
+      },
+      openGraph: {
+        title: user.name,
+        description: user.bio !== '' ? user.bio : user.name,
+        url: `${process.env.APP_URL}${user.authorUsername}`,
+        siteName: "Scriblo",
+        images: [
+          {
+            url: user.avatar,
+            alt: user.name
+          }
+        ],
+        locale: 'en_US',
+        type: 'website',
+      },
+    }
+  } else {
+    return {
+      title: "User Not Found",
+      description: "The user you are looking for was not found"
+    }
+  }
+
+}
+
 export default Profile;

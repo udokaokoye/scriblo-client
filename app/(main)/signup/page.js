@@ -6,6 +6,7 @@ import moment from "moment";
 import { useRouter, useSearchParams } from "next/navigation";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import '../../../Styles/auth.css'
+import Loading from "@/Components/Loading";
 function Signup() {
   const [useralreadyExists, setuseralreadyExists] = useState(false);
   const [stage, setstage] = useState(["signup", "signup"]);
@@ -19,7 +20,7 @@ function Signup() {
   const [selectedInterests, setselectedInterests] = useState([]);
   const verficationcodeRefs = useRef([]);
   const fileInputRef = useRef(null);
-
+  const [loading, setloading] = useState(false)
   // !Error messages
   const [emailError, setemailError] = useState("");
   const [tokenError, settokenError] = useState("");
@@ -174,7 +175,7 @@ function Signup() {
       setemailError("Please enter a valid email");
       return;
     }
-
+    setloading(true)
     setemailError("");
     const res = await fetch(`/api/users/checkIfUserExists.php?email=${email}`);
     const json = await res.json();
@@ -182,6 +183,7 @@ function Signup() {
     setuseralreadyExists(json.message);
     const tokenSent = await sendToken();
     if (tokenSent) {
+      setloading(false)
       settokenError("");
       settoken(["", "", "", "", ""]);
       setstage(["signup", "verification"]);
@@ -193,6 +195,7 @@ function Signup() {
   }
 
   const handleSignup = async () => {
+    setloading(true)
     avatar == '' && avatarFile !== null && await uploadAvatarToS3(avatarFile);
     let uploadAvatar = ''
     if (avatar == '') {
@@ -220,6 +223,7 @@ function Signup() {
       body: formData,
     });
     const json = await res.json();
+
     if (json.status == 200) {
       signIn("credentials", {
         email,
@@ -229,6 +233,7 @@ function Signup() {
     } else {
       console.log(json);
     }
+    setloading(false)
   };
 
   const handleVerification = async () => {
@@ -315,7 +320,9 @@ function Signup() {
     }
   };
 
-  return (
+  return loading ? (
+    <Loading />
+  ) :  (
     <div className="signup">
       {stage[1] == "signup" && (
         <div className="signupContainer">
