@@ -1,6 +1,8 @@
 'use client'
 import React from 'react'
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+import { formatDate } from '@/public/util/helpers';
+import Link from 'next/link';
 function HomepageTrending({trends, source_Sans_Pro}) {
   return (
     <div className={`homepageTrendingContainer ${source_Sans_Pro.className}`}>
@@ -14,20 +16,23 @@ function HomepageTrending({trends, source_Sans_Pro}) {
         </div>
 
         <div className="trends">
-            {trends.map((trend, index) => (
+            {trends?.length >=6 ? trends.slice(0,5).map((trend, index) => (
                 <div key={index} className="trend">
                     <div className="trendRank"><span>#</span>{index+1}</div>
-                    <div className="trendArticleAuthor">
-                        <div className="authorAvatar"></div>
+                    <Link href={`/${trend.authorUsername}`}><div className="trendArticleAuthor">
+                        <div style={{background: `url(${trend.authorAvatar})`}} className="authorAvatar"></div>
                         <span className="authorName">{trend.authorName}</span>
                     </div>
-                    <h3 className="articleTitle">{trend.title}</h3>
+                    </Link>
+                    <Link href={`/${trend.authorUsername}/${trend.slug}`}><h3 className="articleTitle">{trend.title}</h3></Link>
                     <div className="articleDateandReadTime">
-                        <span className="articleDate">Aug 20</span>
-                        <span className="articleReadTime">{trend.readTime}</span>
+                        <span className="articleDate">{formatDate(trend.createdAt)}</span>
+                        <span className="articleReadTime">{trend.readTime} min read time</span>
                     </div>
                 </div>
-            ))}
+            )) : ""
+        
+        }
 
         </div>
         </div>

@@ -220,10 +220,10 @@ export default async function Home({params, searchParams}) {
           <br />
           <br />
           <br />
-          <HomepageTrending
+          {feedArticle.length >= 6 && <HomepageTrending
             source_Sans_Pro={source_Sans_Pro}
-            trends={articles}
-          />
+            trends={feedArticle}
+          />}
           <br />
         </>
       )}
@@ -236,6 +236,7 @@ export default async function Home({params, searchParams}) {
       <div className="mainContainer">
         {/* {session?.token} */}
         <div className="articleFeed">
+          
           <RecentArticles
             source_Sans_Pro={source_Sans_Pro}
             topics={topics}

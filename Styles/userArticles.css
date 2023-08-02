@@ -45,4 +45,15 @@
   color: white;
   border: none;
   cursor: pointer;
+}
+
+@media (max-width: 622px) {
+  .userArticlesContainer {
+    width: 80%;
+  }
+}
+@media (max-width: 522px) {
+  .userArticlesContainer {
+    width: 90%;
+  }
 }/*# sourceMappingURL=userArticles.css.map */

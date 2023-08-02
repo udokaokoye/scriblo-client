@@ -149,10 +149,13 @@
           margin-top: 10px;
 
           .authorAvatar {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background-color: red;
+            background-position: contain !important;
+            background-repeat: no-repeat !important;
+            background-position: top !important;
           }
 
           .authorName {

@@ -25,6 +25,7 @@ function RecentArticles({ topics, source_Sans_Pro, articles, session }) {
   return (
     <div className={`recentArticlesContainer ${source_Sans_Pro.className}`}>
       <div className="header">
+      <span id="articles"></span>
         <h3>Recent Articles</h3>
         <p>Discover recent article from writers on any topic</p>
       </div>
@@ -34,6 +35,7 @@ function RecentArticles({ topics, source_Sans_Pro, articles, session }) {
         <small className="seeMoreTopics">See more topics</small>
       </Link>
       <br />
+      
       <br />
       {articles?.length > 0 && <ArticleShowcase article={articles[0]} />}
       <br />

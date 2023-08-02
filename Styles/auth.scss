@@ -429,3 +429,23 @@
   background-color: #bcbcbc;
   margin: 0 10px;
 }
+
+@media (max-width: 1000px) {
+  .signup {
+    .selectInterest {
+      .interests {
+        width: 90%;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 500px) {
+  .signup {
+    .personalInformation {
+      overflow-x: hidden;
+      width: 90%;
+    }
+  }
+}

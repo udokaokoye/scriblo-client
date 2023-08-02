@@ -58,7 +58,7 @@ function Navigation() {
                 <hr /> */}
                 <Link onClick={() => setprofileMenuVisible(false)} className="menuItem" href={`/${session?.username}`}>View Profile</Link>
                 <Link onClick={() => setprofileMenuVisible(false)} className="menuItem" href={`/${session?.username}/articles`}>Articles</Link>
-                <span className="menuItem">Stats</span>
+                <span onClick={() => alert("coming soon")} className="menuItem">Stats</span>
                 <Link onClick={() => setprofileMenuVisible(false)} className="menuItem" href={`/create`}>Create Post</Link>
                 <Link onClick={() => setprofileMenuVisible(false)} className="menuItem" href={`/${session?.username}/bookmarks`}>Saved Post</Link>
                 <Link onClick={() => setprofileMenuVisible(false)} className="menuItem" href={`/${session?.username}/settings`}>Settings</Link>
