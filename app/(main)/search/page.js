@@ -19,7 +19,7 @@ async function Search({ searchParams }) {
   );
 
   const data = await res.json();
-  // console.log(data.data)
+  console.log(data.data)
   searchResult = data.data;
 
   return (
