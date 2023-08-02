@@ -19,6 +19,7 @@ async function Search({ searchParams }) {
   );
 
   const data = await res.json();
+  console.log("HEllo")
   console.log(data.data)
   searchResult = data.data;
 
