@@ -28,7 +28,6 @@
   width: inherit;
   height: 200px;
   position: absolute;
-  background: rgba(104, 100, 100, 0.1568627451);
 }
 .profileHeadCardContainer .profileCoverImage:hover .changeCoverInput {
   width: inherit;
