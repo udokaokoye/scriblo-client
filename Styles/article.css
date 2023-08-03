@@ -119,6 +119,9 @@
 .articleInfoCardContainer .articleAuthorInfo .authorNameAndFollowButton .authorName {
   font-weight: 600;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 .articleInfoCardContainer .articleAuthorInfo .authorNameAndFollowButton .authorName .authorUsername {
   font-size: 12px;
@@ -215,6 +218,9 @@
   margin-bottom: 5px;
   font-size: 16px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 .aboutAuthorCard .authorContainer .authorInfo .authorBio {
   margin-bottom: 5px;
@@ -316,6 +322,9 @@
 }
 .commentDisplayCardContainer .commentDisplayHeader .commentAuthorNameDateContainer .commentAuthorName {
   font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 .commentDisplayCardContainer .commentDisplayHeader .commentAuthorNameDateContainer .commentPublishDate {
   display: block;

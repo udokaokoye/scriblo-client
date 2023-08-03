@@ -8,6 +8,7 @@ import CommentInput from "./CommentInput";
 import { commentPost, deleteComment } from "@/public/util/apiHelpers";
 import { formatDate } from "@/public/util/helpers";
 import Link from "next/link";
+import Verified from "./Verified";
 function CommentDisplayCard({ comment, session, fetchCommnets, replies, nested=false, allComments }) {
   const [showMoreMenu, setshowMoreMenu] = useState(false);
   const [commentInput, setcommentInput] = useState("");
@@ -36,7 +37,7 @@ function CommentDisplayCard({ comment, session, fetchCommnets, replies, nested=f
           className={`commentAuthorAvatar ${nested && 'avatar_sm'}`}
         ></div></Link>
         <div className="commentAuthorNameDateContainer">
-          <Link href={`/${comment.authorUsername}`}><p className="commentAuthorName"> {comment.authorName}</p></Link>
+          <Link href={`/${comment.authorUsername}`}><p className="commentAuthorName"> {comment.authorName} {comment.authorVerified == '1' && <Verified />}</p></Link>
           <span className="commentPublishDate">
             {formatDate(comment.createdAt)}
           </span>

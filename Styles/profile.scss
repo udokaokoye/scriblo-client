@@ -82,6 +82,9 @@ $profile-Avatar-offset: 40px;
         align-items: center;
         h3 {
             font-size: 42px;
+            gap: 5px;
+            display: flex;
+            align-items: center;
         }
 
         .followAndEmailBtn {

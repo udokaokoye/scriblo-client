@@ -2,6 +2,7 @@ import React from 'react'
 import '../Styles/home.css'
 import { limitText } from '@/public/util/helpers'
 import Link from 'next/link'
+import Verified from './Verified'
 function UserCard({user, page}) {
   return (
     <div className='userCardContainer'>
@@ -19,7 +20,7 @@ function UserCard({user, page}) {
         
         <div className="userAvatar" style={{background: `url(${user.avatar})`}}></div>
         <div className="userInfo">
-        <Link href={`/${user.username}`}><h3>{user.name}</h3></Link>
+        <Link href={`/${user.username}`}><h3>{user.name} {user.verified == '1' && <Verified />}</h3> </Link>
         <div className="userIntrests">
             {user.interests?.split(',').map((interest, index) => (
                 <span key={index}>{interest}</span>

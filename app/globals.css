@@ -136,7 +136,7 @@ a,
 .articleCardContainer .articleCardHeader {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
 }
 .articleCardContainer .articleCardHeader .authorAvatar {
   width: 24px;
@@ -150,8 +150,9 @@ a,
 .articleCardContainer .articleCardHeader .authorName {
   font-size: 14px;
 }
-.articleCardContainer .articleCardHeader .articleDate {
-  font-size: 14px;
+.articleCardContainer .articleDate {
+  font-size: 12px;
+  margin-left: 29px;
 }
 .articleCardContainer .articleCardBody {
   display: flex;

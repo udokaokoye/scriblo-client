@@ -210,7 +210,7 @@ function Create() {
   const publishPost = async () => {
     isHidden.current = 0
     // check if all fields are filled
-    if (!title || !rawEntityContent || !tags || !coverImage || !summary) {
+    if (!title || !rawEntityContent || tags.length <=0 || !coverImage || !summary) {
       alert("Please fill all fields");
       return;
     }

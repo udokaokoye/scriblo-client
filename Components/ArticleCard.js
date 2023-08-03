@@ -5,6 +5,7 @@ import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ShareIcon from "@mui/icons-material/Share";
 import { formatDate, limitText } from "@/public/util/helpers";
 import Link from "next/link";
+import Verified from "./Verified";
 function ArticleCard({ article }) {
   return (
     <article className={`articleCardContainer`}>
@@ -13,14 +14,16 @@ function ArticleCard({ article }) {
           style={{ background: `url(${article.authorAvatar})` }}
           className="authorAvatar"
         ></div></Link>
-        <Link href={`/${article.authorUsername}`}><p className="authorName">{article.authorName}</p></Link>
-        <span className="articleDate">{formatDate(article.publishDate)}</span>
+        <Link href={`/${article.authorUsername}`}><p className="authorName">{article.authorName}</p> </Link>
+        {article.authorVerified == '1' && <Verified />}
+        
       </div>
+      <span className="articleDate">{formatDate(article.publishDate)}</span>
 
       <div className="articleCardBody">
         <div style={{width: `${article.coverImage == "" ? '100%' : '70%'}`}} className="articleCardContent">
           <Link href={`/${article.authorUsername}/${article.slug}`}>
-            <h1 className="articleCardTitle">{article.title}</h1>
+            <h1 className="articleCardTitle">{article.title}</h1> 
           </Link>
           <div className="articlecategories">
             {article?.tags.split(",").map((categorie, index) => (

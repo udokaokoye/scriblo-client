@@ -13,8 +13,9 @@ import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutlineOutlined';
 import { getLikes, likePost, getBookmarks, bookmarkPost } from '@/public/util/apiHelpers';
+import { copyToClipboard } from '@/public/util/helpers';
 
-function ArticleReactionCard({postId, userId, session, preview}) {
+function ArticleReactionCard({postId, userId, session, preview, authorUsername, slug}) {
     const [showShareMenu, setshowShareMenu] = useState(false)
     const [likes, setlikes] = useState([])
     const [likesCount, setlikesCount] = useState(0)
@@ -75,7 +76,10 @@ function ArticleReactionCard({postId, userId, session, preview}) {
             <span onClick={() => !preview && setshowShareMenu(!showShareMenu)}><IosShareOutlinedIcon className='actionIcon shareIcon' /></span>
             
             <div style={{display: showShareMenu ? 'block' : 'none'}} className="shareMenu">
-                <div className="shareOption"><InsertLinkIcon /> Copy</div>
+                <div onClick={() => {
+                  copyToClipboard(`${process.env.APP_URL}${authorUsername}/${slug}`)
+                  alert("Copied to clipboard");
+                }} className="shareOption"><InsertLinkIcon /> Copy</div>
                 <div className="shareOption"><TwitterIcon /> Twitter</div>
                 <div className="shareOption"><FacebookOutlinedIcon /> Facebook</div>
             </div>

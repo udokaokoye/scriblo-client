@@ -14,6 +14,7 @@ import Image from "next/image";
 // import { getComments } from "@/public/util/apiHelpers";
 async function Article({ params }) {
   const session = await getServerSession(authOptions);
+  // console.log(session)
   let post = {};
   //   let postId = extractIdFromSlug(params.slug);
   let slug = params.slug;
@@ -48,9 +49,10 @@ async function Article({ params }) {
           <ArticleInfoCard
             authorAvatar={post.authorAvatar}
             authorName={post.authorName}
+            authorVerified={post.authorVerified}
             authorUsername={post.authorUsername}
             articlePublishDate={formatDate(post.createdAt)}
-            articleReadTime={"5 mins"}
+            articleReadTime={post?.readTime}
             authorId={post.authorId}
             doesSignedInUserFollowAuthor={doesSignedInUserFollowAuthor}
             session={session}
@@ -60,6 +62,8 @@ async function Article({ params }) {
             postId={post.id}
             userId={session?.id}
             session={session}
+            authorUsername={post.authorUsername}
+            slug={post.slug}
           />
           <br />
 
@@ -84,6 +88,7 @@ async function Article({ params }) {
               avatar: post.authorAvatar,
               username: post.authorUsername,
               bio: post.authorBio,
+              verified: post.authorVerified
             }}
             session={session}
             doesSignedInUserFollowAuthor={doesSignedInUserFollowAuthor}

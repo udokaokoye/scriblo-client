@@ -8,6 +8,7 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { formatDate } from "@/public/util/helpers";
 import { followUser } from "@/public/util/apiHelpers";
 import Link from "next/link";
+import Verified from "./Verified";
 function ProfileHeadCard({
   session,
   profile,
@@ -44,7 +45,7 @@ function ProfileHeadCard({
       ></div>
       <div className="profileInfo">
         <div className="profileNameAndFollowBtn">
-          <h3>{profile?.name}</h3>
+          <h3>{profile?.name} {profile.verified == '1' && <Verified size={25} />}</h3>
           {session?.id !== profile?.id ? (
             <div className="followAndEmailBtn">
               <button

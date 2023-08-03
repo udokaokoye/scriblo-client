@@ -138,6 +138,9 @@
       .authorName {
         font-weight: 600;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
         .authorUsername {
           font-size: 12px;
           color: rgb(46, 46, 46);
@@ -248,6 +251,9 @@
         margin-bottom: 5px;
         font-size: 16px;
         font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 5px;
       }
       .authorBio {
         margin-bottom: 5px;
@@ -369,6 +375,9 @@
     .commentAuthorNameDateContainer {
       .commentAuthorName {
         font-size: 16px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
       }
       .commentPublishDate {
         display: block;

@@ -3,6 +3,7 @@ import { followUser } from '@/public/util/apiHelpers'
 import { source_Sans_Pro } from '@/public/util/fonts'
 import Link from 'next/link'
 import React, {useState} from 'react'
+import Verified from './Verified'
 
 function AboutAuthorCard({author, session, doesSignedInUserFollowAuthor}) {
   const [SignedInUserFollowAuthor, setSignedInUserFollowAuthor] = useState(doesSignedInUserFollowAuthor)
@@ -20,7 +21,7 @@ function AboutAuthorCard({author, session, doesSignedInUserFollowAuthor}) {
         <div className={`authorContainer ${source_Sans_Pro.className}`}>
           <Link href={`/${author.username}`}><div className="authorAvatar" style={{background: `url(${author.avatar})`}}></div></Link>
           <div className="authorInfo">
-            <Link href={`/${author.username}`}><p className="authorName">{author.name}</p></Link>
+            <Link href={`/${author.username}`}><p className="authorName">{author.name} {author.verified == '1' && <Verified />}</p></Link>
             <p className="authorBio">{author.bio}</p>
             {session?.email && !SignedInUserFollowAuthor && author.id !== session?.id ? (
               <button className='btn' onClick={() => handleFollowUser()}>Follow +</button>

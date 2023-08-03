@@ -381,7 +381,7 @@ function ArticleEdit({ params }) {
   const editPost = async () => {
     // isHidden.current = 0;
     // check if all fields are filled
-    if (!title || !rawEntityContent || !tags || !summary) {
+    if (!title || !rawEntityContent || tags.length <=0 || !summary) {
       alert("Please fill all fields");
       return;
     }
