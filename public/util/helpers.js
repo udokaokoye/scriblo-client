@@ -1,19 +1,29 @@
 import moment from "moment";
 import { allTags } from "./allTags";
 export function formatDate(date) {
-    const currentDate = moment();
-    const yourDate = moment(date);
-    const dateDifference = currentDate.diff(yourDate, 'minutes');
-  
-    if (dateDifference < 60) {
-      return `${dateDifference} mins ago`;
-    } else if (dateDifference < 1440) {
-      return `${Math.floor(dateDifference / 60)} hours ago`;
-    } else if (dateDifference < 4320) {
-      return `${Math.floor(dateDifference / 1440)} days ago`;
-    } else {
-      return yourDate.format('MMM D, YYYY'); // or any other format you desire
-    }
+  const now = moment();
+  const inputDate = moment(date);
+
+  const diffInSeconds = now.diff(inputDate, 'seconds');
+  const diffInMinutes = now.diff(inputDate, 'minutes');
+  const diffInHours = now.diff(inputDate, 'hours');
+  const diffInDays = now.diff(inputDate, 'days');
+  const diffInMonths = now.diff(inputDate, 'months');
+  const diffInYears = now.diff(inputDate, 'years');
+
+  if (diffInSeconds < 60) {
+    return `${diffInSeconds} seconds ago`;
+  } else if (diffInMinutes < 60) {
+    return `${diffInMinutes} minutes ago`;
+  } else if (diffInHours < 24) {
+    return `${diffInHours} hours ago`;
+  } else if (diffInDays < 30) {
+    return `${diffInDays} days ago`;
+  } else if (diffInMonths < 12) {
+    return `${diffInMonths} months ago`;
+  } else {
+    return `${diffInYears} years ago`;
+  }
   }
   export function limitText(text, limit) {
     const words = text.split(' ');
