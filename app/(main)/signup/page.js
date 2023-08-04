@@ -20,6 +20,8 @@ function Signup() {
   const [selectedInterests, setselectedInterests] = useState([]);
   const verficationcodeRefs = useRef([]);
   const fileInputRef = useRef(null);
+
+  const [bioWordCount, setbioWordCount] = useState(0)
   const [loading, setloading] = useState(false)
   // !Error messages
   const [emailError, setemailError] = useState("");
@@ -513,9 +515,13 @@ function Signup() {
             <label className="bioLabel">Bio</label>
             <textarea
               placeholder="Tell us a bit about yourself..."
-              onChange={(e) => setbio(e.target.value)}
+              onChange={(e) => {
+                setbio(e.target.value)
+                setbioWordCount(e.target.value.length)
+              }}
+              maxLength={200}
             />
-            <small className="bioWordCount">0 / 120</small>
+            <small className="bioWordCount">{bioWordCount} / 200</small>
             <button
               onClick={() => handlePersonalInfo()}
               className="btn"
@@ -541,7 +547,7 @@ function Signup() {
           )}
 
           <div className="interests">
-            {interests.map((interest, index) => (
+            {interests.sort((a, b) => a.name.localeCompare(b.name)).map((interest, index) => (
               <div
                 onClick={() => handleSelectedInterests(interest.name)}
                 className={`${

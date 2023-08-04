@@ -254,7 +254,7 @@
 }
 .signup .personalInformation .personalInformationForm .avatars {
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: scroll;
   white-space: nowrap;
   margin: 20px 0px;
   scrollbar-width: thin;

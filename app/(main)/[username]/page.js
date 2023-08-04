@@ -20,7 +20,7 @@ async function Profile({ params }) {
     `${process.env.API_URL}/posts/actions.php?data=posts_username&username=${params.username}`
   );
   const userPostsData = await userPostsResponse.json();
-  const userPosts = userPostsData.data;
+  const userPosts = userPostsData.data?.filter((pst) => pst.isHidden !== '1');
 
 
   const userFollowsResponse = await fetch(`${process.env.API_URL}/users/actions.php?action=getUserFollows&userId=${user?.id}`)
