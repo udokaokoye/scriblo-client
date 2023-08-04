@@ -18,7 +18,7 @@ function ArticleCard({ article }) {
         {article.authorVerified == '1' && <Verified />}
         
       </div>
-      <span className="articleDate">{formatDate(article.publishDate)}</span>
+      <span className="articleDate">{formatDate(article.createdAt)}</span>
 
       <div className="articleCardBody">
         <div style={{width: `${article.coverImage == "" ? '100%' : '70%'}`}} className="articleCardContent">
