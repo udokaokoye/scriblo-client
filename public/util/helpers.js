@@ -1,8 +1,9 @@
 import moment from "moment";
+import 'moment-timezone';
 import { allTags } from "./allTags";
 export function formatDate(date) {
   const now = moment();
-  const inputDate = moment(date);
+  const inputDate = moment.tz(date, getUserTimeZone());
 
   const diffInSeconds = now.diff(inputDate, 'seconds');
   const diffInMinutes = now.diff(inputDate, 'minutes');
@@ -76,3 +77,22 @@ export function formatDate(date) {
     document.body.removeChild(textarea);
   };
   
+  export function getUserTimeZone() {
+    const userTimeZoneOffset = new Date().getTimezoneOffset();
+    const userTimeZone = moment.tz.guess();
+    const currentTimeZoneOffset = moment.tz(userTimeZone).utcOffset();
+  
+    if (userTimeZoneOffset === currentTimeZoneOffset) {
+      return userTimeZone;
+    } else {
+      // If the offset doesn't match, we'll try to find a matching timezone using the offset
+      const timeZones = moment.tz.names();
+      for (let i = 0; i < timeZones.length; i++) {
+        if (moment.tz(timeZones[i]).utcOffset() === userTimeZoneOffset) {
+          return timeZones[i];
+        }
+      }
+      // If no match is found, return the default timezone
+      return userTimeZone;
+    }
+  }
