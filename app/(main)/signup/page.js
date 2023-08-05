@@ -377,7 +377,7 @@ function Signup() {
               <button
                 onClick={() =>
                   signIn("google", {
-                    callbackUrl: process.env.APP_URL,
+                    callbackUrl: "http://localhost:3000/",
                   })
                 }
                 className="socialbutton"
