@@ -226,15 +226,16 @@ export default async function Home({ params, searchParams }) {
                 source_Sans_Pro={source_Sans_Pro}
                 trends={feedArticle}
               />
+              
+      <br />
+      <br />
+      <br />
+      <br />
             </>
           )}
           <br />
         </>
       )}
-      <br />
-      <br />
-      <br />
-      <br />
       <br />
       <br />
       <div className="mainContainer">

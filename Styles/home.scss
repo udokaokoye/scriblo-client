@@ -206,8 +206,8 @@
     width: fit-content;
     font-size: 12px;
     padding: 6px 14px;
-    background: #ccc;
-    color: black;
+    background: #2563EB;
+    color: white;
     margin-top: 15px;
     border-radius: 4px;
     cursor: pointer;
@@ -281,14 +281,17 @@
     .recTopic {
       padding: 8px 20px;
       border-radius: 10px;
-      background: #f2f2f2;
+      // background: #f2f2f2
+      background-color: #2563EB;
+      // color: black;
+      color: white;
       font-size: 14px;
       font-weight: 300;
       cursor: pointer;
       transition: 0.2s ease-in-out;
 
       &:hover {
-        background: #e5e5e5;
+        background: #1c55cf;
       }
     }
   }
@@ -298,7 +301,9 @@
     font-size: 12px;
     // margin-left: 20px;
     margin-top: 10px;
-    color: purple;
+    // color: purple;
+    color: black;
+    font-weight: bold;
     cursor: pointer;
   }
 }
@@ -360,7 +365,7 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-position: top !important;
+    background-position: center !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
   }
@@ -463,6 +468,19 @@
       }
     }
   }
+
+  .userCardContainer{
+    width: 90%;
+    padding: 10px;
+
+    .userInfo {
+      width: 50%;
+
+      .userBio {
+        width: 100%;
+      }
+    }
+  }
 }
 
 @media (max-width: 450px) {
@@ -483,6 +501,8 @@
     }
   }
   .homepageShowcaseContainer {
+    height: 50vh !important;
+    // background: #000;
     margin-top: 18vh;
     .showcaseHeading {
       font-size: 50px;

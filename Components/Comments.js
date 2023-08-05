@@ -8,12 +8,16 @@ import { commentPost, getComments } from "@/public/util/apiHelpers";
   function Comments({ session, postId }) {
     const [allComments, setallComments] = useState([])
   const [commentInput, setcommentInput] = useState("");
+  const [isSubmitting, setisSubmitting] = useState(false)
   const commentPostHandler = async () => {
     if (commentInput == "") {
       return;
     }
+    setisSubmitting(true)
+
     const response = await commentPost(postId, commentInput, session?.id, "");
     setcommentInput("");
+    setisSubmitting(false)
     fetchCommnets()
   };
 
@@ -47,6 +51,7 @@ useEffect(() => {
             commentInput={commentInput}
             setcommentInput={setcommentInput}
             commentPostHandler={commentPostHandler}
+            isSubmitting={isSubmitting}
           />
           <br />
           <br />

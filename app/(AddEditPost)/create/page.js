@@ -101,9 +101,11 @@ function Create() {
     const processRawEntity = new Promise((resolve, reject) => {
       Object.values(rawEntityContent.entityMap).map(async (item, index) => {
         if (item.type == "IMAGE") {
+          // console.log(item)
           const fileUid = uuidv4();
           const fileToUpload = uploadImages.filter((img) => img.localSrc == item.data.src)[0].file
           item.data.src = convertToS3Url(`${generateSlug(title)}_${index}_${fileUid}`);
+          item.data.alt = "HELLO"
           const result = await uploadToS3(
             fileToUpload,
             `${index}_${fileUid}`,
@@ -220,6 +222,13 @@ function Create() {
   };
 
   const savePost = async () => {
+    // Object.values(rawEntityContent.entityMap).map(async (item, index) => {
+    //   if (item.type == "IMAGE") {
+    //     console.log(item)
+
+    //   }
+    // })
+    // return;
     isHidden.current = 1
     if (!title || !rawEntityContent) {
       alert("Please fill in a title and content before saving");

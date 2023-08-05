@@ -182,8 +182,8 @@
   width: fit-content;
   font-size: 12px;
   padding: 6px 14px;
-  background: #ccc;
-  color: black;
+  background: #2563EB;
+  color: white;
   margin-top: 15px;
   border-radius: 4px;
   cursor: pointer;
@@ -246,20 +246,22 @@
 .recommendedTopicsContainer .recTopics .recTopic {
   padding: 8px 20px;
   border-radius: 10px;
-  background: #f2f2f2;
+  background-color: #2563EB;
+  color: white;
   font-size: 14px;
   font-weight: 300;
   cursor: pointer;
   transition: 0.2s ease-in-out;
 }
 .recommendedTopicsContainer .recTopics .recTopic:hover {
-  background: #e5e5e5;
+  background: #1c55cf;
 }
 .recommendedTopicsContainer span {
   display: block;
   font-size: 12px;
   margin-top: 10px;
-  color: purple;
+  color: black;
+  font-weight: bold;
   cursor: pointer;
 }
 
@@ -315,7 +317,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-position: top !important;
+  background-position: center !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
 }
@@ -392,6 +394,16 @@
   .homepageTrendingContainer .homepageTrendingContainerWrapper .header .headerTexts h2 {
     font-size: 30px;
   }
+  .userCardContainer {
+    width: 90%;
+    padding: 10px;
+  }
+  .userCardContainer .userInfo {
+    width: 50%;
+  }
+  .userCardContainer .userInfo .userBio {
+    width: 100%;
+  }
 }
 @media (max-width: 450px) {
   .articleShowcaseContainer {
@@ -409,6 +421,7 @@
     display: none;
   }
   .homepageShowcaseContainer {
+    height: 50vh !important;
     margin-top: 18vh;
   }
   .homepageShowcaseContainer .showcaseHeading {

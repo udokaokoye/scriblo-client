@@ -105,7 +105,7 @@ a,
 
 .optionBar .option {
   width: fit-content !important;
-  padding: 10px 22px;
+  padding: 10px 10px;
   border-bottom: 1px solid #ccc;
   /* // border-radius: 4px; */
   font-size: 13px;

@@ -318,7 +318,33 @@
             margin-top: 10px;
             margin-left: auto;
             margin-right: 20px;
+            position: relative;
+            .loader {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 20px;
+              height: 20px;
+              border: 2px solid #fff;
+              border-top: 2px solid transparent;
+              border-radius: 50%;
+              animation: spin 1s linear infinite;
+              display: block;
+            }
+            @keyframes spin {
+              0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+              }
+              100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+              }
+            }
           }
+
+   
+
+          
 
     }
 
