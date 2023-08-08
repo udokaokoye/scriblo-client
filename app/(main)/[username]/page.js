@@ -26,6 +26,7 @@ async function Profile({ params }) {
   const userFollowsResponse = await fetch(`${process.env.API_URL}/users/actions.php?action=getUserFollows&userId=${user?.id}`)
   const userFollowsData = await userFollowsResponse.json()
   const userFollows = userFollowsData.data
+  // console.log(userFollows)
   let ServerdoesSignedInUserFollowProfile = false
   if (session?.id) {
     ServerdoesSignedInUserFollowProfile = userFollows.followers.some((userFollow) => userFollow.user_id == session?.id)
@@ -36,9 +37,10 @@ async function Profile({ params }) {
   // }
   return (
     <div className={`profileContainer ${source_Sans_Pro.className}`}>
+      <div className="profileContainerWrapper">
       {/* {params.username} */}
       {user !== null ? (
-        <>
+        <div div style={{position:'relative'}}>
           <ProfileHeadCard session={session} profile={user} follows={userFollows} ServerdoesSignedInUserFollowProfile={ServerdoesSignedInUserFollowProfile}/>
           <div style={{ padding: 40 }}>
             <ProfilePinnedArticles pinnedArticles={userPosts?.filter((post) => post.pinned == 'true')} />
@@ -57,10 +59,11 @@ async function Profile({ params }) {
               <NotFound reason={'no_post_for_user'} />
             )}
           </div>
-        </>
+        </div>
       ) : (
         "NO USER FOUND"
       )}
+    </div>
     </div>
   );
 }

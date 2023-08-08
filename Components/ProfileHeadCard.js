@@ -9,12 +9,14 @@ import { formatDate } from "@/public/util/helpers";
 import { followUser } from "@/public/util/apiHelpers";
 import Link from "next/link";
 import Verified from "./Verified";
+import Popup from "./Popup";
 function ProfileHeadCard({
   session,
   profile,
   follows,
   ServerdoesSignedInUserFollowProfile,
 }) {
+
   const [doesSignedInUserFollowProfile, setdoesSignedInUserFollowProfile] =
     useState(ServerdoesSignedInUserFollowProfile);
 
@@ -29,8 +31,10 @@ function ProfileHeadCard({
       }
     }
   };
+  console.log(follows)
   return (
     <div className="profileHeadCardContainer">
+      {/* {showFollowList && <Popup popupContent={'followList'} closePopup={() => setshowFollowList(false)} />} */}
       <div className="profileCoverImage">
         <div className="overlay"></div>
         {session?.email && session.id == profile?.id && (
@@ -70,10 +74,17 @@ function ProfileHeadCard({
             </div>
           )}
         </div>
+
+
+
+
         <div className="follows">
-          <span>{follows?.followers?.length} Followers</span>
-          <span>{follows?.followings?.length} Following</span>
+          <Link href={`/${profile?.username}/followers`}><span>{follows?.followers?.length} Followers</span></Link>
+          <Link href={`/${profile?.username}/following`}><span>{follows?.followings?.length} Following</span></Link>
         </div>
+
+
+
         <p className="profileBio">{profile?.bio}</p>
         <div className="profileDateAndUrl">
           <span>

@@ -8,6 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 200;
 
   .popupcloserdiv {
     position: absolute;
@@ -17,7 +18,7 @@
   }
 
   .popupContent {
-    z-index: 10;
+    z-index: 200;
 
     .editProfilePopup {
       width: 600px;
@@ -221,6 +222,13 @@
             background-color: red;
         }
       }
+    }
+
+    .followsContainer {
+      background: rgb(183, 183, 183);
+      width: 500px;
+      height: 400px;
+      border-radius: 10px;
     }
   }
 }

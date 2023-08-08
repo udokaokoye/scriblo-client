@@ -227,15 +227,15 @@ export default async function Home({ params, searchParams }) {
                 trends={feedArticle}
               />
               
-      <br />
-      <br />
-      <br />
-      <br />
             </>
           )}
           <br />
         </>
       )}
+      <br />
+      <br />
+      <br />
+      <br />
       <br />
       <br />
       <div className="mainContainer">
