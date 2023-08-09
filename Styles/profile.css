@@ -209,7 +209,7 @@
   border-radius: 50%;
   background-color: brown;
   background-position: center !important;
-  background-size: contain !important;
+  background-size: cover !important;
   background-repeat: no-repeat !important;
   border: 1px solid black;
 }
