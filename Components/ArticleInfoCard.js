@@ -8,7 +8,7 @@ function ArticleInfoCard({authorAvatar, authorUsername, authorName, authorId, ar
         <div className="authorAvatar" style={{background: `url(${authorAvatar})`}}></div>
         <div className="articleAuthorInfo">
             <div className="authorNameAndFollowButton">
-                <p className="authorName"> By {authorName} {authorVerified == '1' && <Verified />} - <Link href={`/${authorUsername}`}><span className='authorUsername'>@{authorUsername}</span></Link> </p>
+                <p className="authorName"> <Link href={`/${authorUsername}`}>By {authorName} {authorVerified == '1' && <Verified />}</Link> - <Link href={`/${authorUsername}`}><span className='authorUsername'>@{authorUsername}</span></Link> </p>
                 {session?.email && !doesSignedInUserFollowAuthor && authorId !== session?.id && (
               <span>Follow</span>
             )}
