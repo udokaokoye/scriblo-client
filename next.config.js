@@ -2,7 +2,8 @@
 
 // const API_URL = 'http://localhost/scriblo-server/api'
 // const API_URL = 'http://localhost/scriblo-server/api'
-const API_URL = 'https://api.myscriblo.com/api'
+// const API_URL = 'https://api.myscriblo.com/api'
+const API_URL = process.env.API_URL;
 const nextConfig = {
   trailingSlash: true,
   images: {
