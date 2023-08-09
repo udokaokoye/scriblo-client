@@ -212,10 +212,11 @@ function Create() {
   const publishPost = async () => {
     isHidden.current = 0
     // check if all fields are filled
-    if (!title || !rawEntityContent || tags.length <=0 || !coverImage || !summary) {
-      alert("Please fill all fields");
+    if (!title || !editorState.getCurrentContent().hasText() || editorState.getCurrentContent().getPlainText() == '' || editorState.getCurrentContent().getPlainText() == ' ' || tags.length <=0 || !coverImage || !summary) {
+      alert("Please fill all fields. Title, summary, cover Image and tags are all required to publish an article");
       return;
     }
+
     setloading(true)
 
     processPost();
