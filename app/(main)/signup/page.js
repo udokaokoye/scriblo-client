@@ -239,6 +239,7 @@ function Signup() {
   };
 
   const handleVerification = async () => {
+    setloading(true)
     const formData = new FormData();
     formData.append("email", email);
     formData.append("token", token.join(""));
@@ -263,7 +264,9 @@ function Signup() {
       } else {
         setstage(["verfication", "personal-information"]);
       }
+      setloading(false)
     } else {
+      setloading(false)
       settokenError(json.message + " Please try resending token");
       settoken(["", "", "", "", ""]);
     }

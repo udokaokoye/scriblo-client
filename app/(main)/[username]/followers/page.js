@@ -55,7 +55,7 @@ async function Followers({ params }) {
           {userFollows.followers.length > 0 &&
             userFollows.followers.map((follow) => (
               <>
-              <FollowUserCard user={follow.user_details} profileId={user.id} userId={session.id} type={'follower'} />
+              <FollowUserCard user={follow.user_details} profileId={user.id} userId={session?.id} type={'follower'} />
                   </>
 
               

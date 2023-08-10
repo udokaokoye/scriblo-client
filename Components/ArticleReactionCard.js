@@ -72,7 +72,7 @@ function ArticleReactionCard({postId, userId, session, preview, authorUsername, 
         </div>
         <div className="actions">
             <span onClick={() => !preview && handleBookmark()}>{isBookedMarked ? (<BookmarkOutlinedIcon className='actionIcon' />) : (<BookmarkAddOutlinedIcon className='actionIcon' />)}</span>
-            <PlayCircleOutlineOutlinedIcon className='actionIcon' />
+            <span onClick={() => alert("Artile to speech feature coming soon!")}><PlayCircleOutlineOutlinedIcon className='actionIcon' /></span>
             <span onClick={() => !preview && setshowShareMenu(!showShareMenu)}><IosShareOutlinedIcon className='actionIcon shareIcon' /></span>
             
             <div style={{display: showShareMenu ? 'block' : 'none'}} className="shareMenu">

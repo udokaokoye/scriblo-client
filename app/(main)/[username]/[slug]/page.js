@@ -37,6 +37,8 @@ async function Article({ params }) {
     doesSignedInUserFollowAuthor = userFollows.followers.some(
       (userFollow) => userFollow.user_id == session?.id
     );
+
+    // !likes and bookmarks logic goes here
   }
 
   return (
