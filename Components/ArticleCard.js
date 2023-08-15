@@ -26,7 +26,7 @@ function ArticleCard({ article }) {
             <h1 className="articleCardTitle">{article.title}</h1> 
           </Link>
           <div className="articlecategories">
-            {article?.tags.split(",").map((categorie, index) => (
+            {article?.tags.split(",").slice(0, 3).map((categorie, index) => (
               <Link key={index} href={`/search/?q=${categorie}&class=articles`}><span key={categorie}>{categorie}</span></Link>
             ))}
           </div>
@@ -41,6 +41,12 @@ function ArticleCard({ article }) {
           ></div>
         )}
       </div>
+
+      <div className="Mobilearticlecategories">
+            {article?.tags.split(",").slice(0, 3).map((categorie, index) => (
+              <Link key={index} href={`/search/?q=${categorie}&class=articles`}><span key={categorie}>{categorie}</span></Link>
+            ))}
+          </div>
 
       <div className="articleFooter">
         <span className="articleReadTime">5 mins read time</span>

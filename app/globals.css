@@ -184,7 +184,7 @@ a,
   padding: 4px 18px;
   border-radius: 9px;
   background: #f2f2f2;
-  font-size: 13px;
+  font-size: 80%;
 }
 .articleCardContainer .articleCardBody .articleCardContent .articleCardSummary {
   font-size: 15px;
@@ -199,6 +199,10 @@ a,
   background-position: center !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
+}
+
+.articleCardContainer .Mobilearticlecategories {
+  display: none;
 }
 .articleCardContainer .articleFooter {
   display: flex;
@@ -253,6 +257,9 @@ a,
       display: flex;
       flex-direction: column-reverse;
     } */
+    .articleCardContainer .articleCardBody .articleCardContent {
+      width: 80%;
+    }
   .articleCardContainer .articleCardBody .articleCardContent .articleCardTitle {
     width: 100%;
     display: -webkit-box; /* For Safari and older versions of iOS */
@@ -267,7 +274,29 @@ a,
     .articleCardSummary {
     display: none;
   }
+  .articleCardContainer
+  .articleCardBody
+  .articleCardContent
+  .articlecategories {
+    display: none;
+ font-size: 12px;
+}
+.articleCardContainer .Mobilearticlecategories {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.articleCardContainer .Mobilearticlecategories span {
+  cursor: pointer;
+  padding: 4px 18px;
+  border-radius: 9px;
+  background: #f2f2f2;
+  font-size: 13px;
+}
   .articleCardContainer .articleCardBody .articleCardCoverImage {
+    /* background: green !important; */
     width: 70px;
     height: 70px;
   }

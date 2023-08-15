@@ -407,7 +407,7 @@
 }
 @media (max-width: 450px) {
   .articleShowcaseContainer {
-    height: 300px;
+    height: 200px !important;
   }
   .articleShowcaseContainer .artileContent h1 {
     width: 100%;
@@ -416,6 +416,8 @@
     -webkit-box-orient: vertical; /* Set vertical orientation */
     overflow: hidden; /* Hide any overflowing content */
     text-overflow: ellipsis;
+    margin: 0;
+    padding: 10px !important;
   }
   .articleShowcaseContainer .artileContent p {
     display: none;

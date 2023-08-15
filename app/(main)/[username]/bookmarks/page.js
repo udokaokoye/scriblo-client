@@ -10,8 +10,10 @@ function Bookmark() {
   const { data: session } = useSession();
   const [userBookmarks, setuserBookmarks] = useState([]);
   const fetUserBookmarks = async () => {
-    const bookmarks = await getBookmarks(session?.id);
-    // console.log(bookmarks)
+    const response = await fetch(`/api/posts/actions.php?data=bookmarks&userId=${session?.id}`)
+    const data = await response.json()
+    const bookmarks = data.data
+    console.log(bookmarks)
     setuserBookmarks(bookmarks);
   };
   useEffect(() => {

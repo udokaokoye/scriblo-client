@@ -83,13 +83,13 @@ export async function getComments (postId) {
 }
 
 export async function getLikes (postId) {
-    const response = await fetch(`/api/posts/actions.php?data=likes&postId=${postId}`)
+    const response = await fetch(`${process.env.API_URL}/posts/actions.php?data=likes&postId=${postId}`)
     const data = await response.json()
     return data.data
 }
 
 export async function getBookmarks (userId) {
-    const response = await fetch(`/api/posts/actions.php?data=bookmarks&userId=${userId}`)
+    const response = await fetch(`${process.env.API_URL}/posts/actions.php?data=bookmarks&userId=${userId}`)
     const data = await response.json()
     return data.data
 }

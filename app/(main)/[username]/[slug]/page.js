@@ -11,6 +11,7 @@ import Comments from "@/Components/Comments";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/authentication/[...nextauth]/route";
 import Image from "next/image";
+import { getBookmarks, getLikes } from "@/public/util/apiHelpers";
 // import { getComments } from "@/public/util/apiHelpers";
 async function Article({ params }) {
   const session = await getServerSession(authOptions);
@@ -27,6 +28,16 @@ async function Article({ params }) {
   const data = await res.json();
   // console.log(data.data)
   post = data.data;
+
+    const allLikes = await getLikes(post?.id)
+    let doesSignedInuserLikePost = false;
+    let didSignedInUserBookmarkPost = false;
+
+
+
+
+    
+  
   let doesSignedInUserFollowAuthor = false;
   if (session?.id) {
     const userFollowsResponse = await fetch(
@@ -39,13 +50,22 @@ async function Article({ params }) {
     );
 
     // !likes and bookmarks logic goes here
+    if (allLikes !== null) {
+      doesSignedInuserLikePost = allLikes?.filter(like => like?.userId == session?.id).length > 0
+    }
+
+    const allBookmarks = await getBookmarks(session?.id)
+    
+    if (allBookmarks !== null) {
+      didSignedInUserBookmarkPost = allBookmarks?.filter(bookmark => bookmark?.id == post?.id).length > 0
+    }
   }
 
   return (
     <div className="articleContainer">
       {post ? (
         <>
-        {post.coverImage !== '' && <div className="mobileCoverImageTop"><Image className="mobileCoverImg" src={post.coverImage} fill /></div>}
+        {post.coverImage !== '' && <div className="mobileCoverImageTop"><Image alt={post?.title} className="mobileCoverImg" src={post.coverImage} fill /></div>}
           <h1>{post.title}</h1>
           <br />
           <ArticleInfoCard
@@ -66,6 +86,9 @@ async function Article({ params }) {
             session={session}
             authorUsername={post.authorUsername}
             slug={post.slug}
+            allLikes={allLikes.length}
+            doesSignedInuserLikePost={doesSignedInuserLikePost}
+            didSignedInUserBookmarkPost={didSignedInUserBookmarkPost}
           />
           <br />
 
@@ -101,6 +124,11 @@ async function Article({ params }) {
             postId={post.id}
             userId={session?.id}
             session={session}
+            authorUsername={post.authorUsername}
+            slug={post.slug}
+            allLikes={allLikes.length}
+            doesSignedInuserLikePost={doesSignedInuserLikePost}
+            didSignedInUserBookmarkPost={didSignedInUserBookmarkPost}
           />
           <br />
           <br />

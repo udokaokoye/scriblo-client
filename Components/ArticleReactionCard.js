@@ -15,12 +15,12 @@ import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutline
 import { getLikes, likePost, getBookmarks, bookmarkPost } from '@/public/util/apiHelpers';
 import { copyToClipboard } from '@/public/util/helpers';
 
-function ArticleReactionCard({postId, userId, session, preview, authorUsername, slug}) {
+function ArticleReactionCard({postId, userId, session, preview, authorUsername, slug, allLikes, doesSignedInuserLikePost, didSignedInUserBookmarkPost}) {
     const [showShareMenu, setshowShareMenu] = useState(false)
     const [likes, setlikes] = useState([])
-    const [likesCount, setlikesCount] = useState(0)
-    const [isPostLiked, setisPostLiked] = useState(false)
-    const [isBookedMarked, setisBookedMarked] = useState(false)
+    const [likesCount, setlikesCount] = useState(allLikes)
+    const [isPostLiked, setisPostLiked] = useState(doesSignedInuserLikePost)
+    const [isBookedMarked, setisBookedMarked] = useState(didSignedInUserBookmarkPost)
 
     const getallLikes = async () => {
       const allLikes =await getLikes(postId)
@@ -80,10 +80,10 @@ function ArticleReactionCard({postId, userId, session, preview, authorUsername, 
                   copyToClipboard(`${process.env.APP_URL}${authorUsername}/${slug}`)
                   alert("Copied to clipboard");
                 }} className="shareOption"><InsertLinkIcon /> Copy</div>
-                <div className="shareOption"><TwitterIcon /> Twitter</div>
-                <div className="shareOption"><FacebookOutlinedIcon /> Facebook</div>
+                <div onClick={() => alert("Share to twitter is currently in development")} className="shareOption"><TwitterIcon /> Twitter</div>
+                <div onClick={() => alert("Share to facebook is currently in development")} className="shareOption"><FacebookOutlinedIcon /> Facebook</div>
             </div>
-            <span title='Flag this article'><FlagOutlinedIcon className='actionIcon' /></span>
+            <span onClick={() => alert("Ability to flag an article is currently in development")} title='Flag this article'><FlagOutlinedIcon className='actionIcon' /></span>
         </div>
     </div>
   )
