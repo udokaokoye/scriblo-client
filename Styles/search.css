@@ -1,13 +1,19 @@
 .searchContainer {
   width: 70%;
   margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-top: 10vh;
 }
+
 .searchContainer .searchResultContainer {
   width: 60%;
 }
+
 .searchContainer .searchSideBar {
   width: 30%;
   height: auto;
@@ -26,4 +32,5 @@
   .searchContainer .searchSideBar {
     display: none;
   }
-}/*# sourceMappingURL=search.css.map */
+}
+/*# sourceMappingURL=search.css.map */

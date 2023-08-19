@@ -6,17 +6,24 @@
 .mainContainer {
   width: 70%;
   margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
+
 .mainContainer .articleFeed {
   width: 60%;
   height: auto;
 }
+
 .mainContainer .feedSidebar {
   width: 30%;
   height: 110vh;
   top: 0;
+  position: -webkit-sticky;
   position: sticky;
   border-left: 1px solid #e8e8e8;
   padding-left: 25px;
@@ -30,12 +37,14 @@
   margin-bottom: 8vh;
   padding: 25px 0px;
 }
+
 .homepageShowcaseContainer .showcaseHeading {
   text-align: center;
   font-size: 90px;
   font-family: var(--font-charter-itc) !important;
   font-weight: 300;
 }
+
 .homepageShowcaseContainer .showcaseBannerImg {
   width: 100%;
   height: 500px;
@@ -44,15 +53,18 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
 .homepageShowcaseContainer .showcaseMessage {
   text-align: center;
   font-size: 18px;
   margin-top: 20px;
   margin-bottom: 40px;
 }
+
 .homepageShowcaseContainer .showcaseBtn {
   display: block;
   margin: 0 auto;
+  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   height: auto;
@@ -61,12 +73,18 @@
   border: 1px solid #000000;
   color: black;
   font-size: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 5px;
   cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
+
 .homepageShowcaseContainer .showcaseBtn:hover {
   background-color: #000000;
   color: white;
@@ -80,79 +98,113 @@
   font-family: var(--font-src-sans-pro);
   padding: 40px 0px;
 }
+
 .homepageTrendingContainer .homepageTrendingContainerWrapper {
   width: 70%;
   margin: 0 auto;
   height: 100%;
 }
+
 .homepageTrendingContainer .homepageTrendingContainerWrapper .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .homepageTrendingContainer .homepageTrendingContainerWrapper .header .headerTexts h2 {
   font-size: 40px;
   font-weight: 400;
 }
+
 .homepageTrendingContainer .homepageTrendingContainerWrapper .header .headerTexts p {
   font-size: 14px;
   margin-top: 5px;
 }
+
 .homepageTrendingContainer .homepageTrendingContainerWrapper .header .headerBtn {
   width: 40px;
   height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: #fff;
   border-radius: 50%;
   border: none;
   cursor: pointer;
 }
+
 .homepageTrendingContainer .homepageTrendingContainerWrapper .trends {
   margin-top: 40px;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   gap: 40px;
 }
+
 .homepageTrendingContainer .homepageTrendingContainerWrapper .trends .trend {
   width: 400px;
   height: auto;
 }
+
 .homepageTrendingContainer .homepageTrendingContainerWrapper .trends .trend .trendRank {
   font-size: 20px;
 }
+
 .homepageTrendingContainer .homepageTrendingContainerWrapper .trends .trend .trendRank span {
   color: #ccc;
 }
+
 .homepageTrendingContainer .homepageTrendingContainerWrapper .trends .trend .trendArticleAuthor {
   width: 1005;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 10px;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-top: 10px;
 }
+
 .homepageTrendingContainer .homepageTrendingContainerWrapper .trends .trend .trendArticleAuthor .authorAvatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: red;
-  background-position: contain !important;
+  background-position: cover !important;
   background-repeat: no-repeat !important;
-  background-position: top !important;
+  background-position: center !important;
 }
+
 .homepageTrendingContainer .homepageTrendingContainerWrapper .trends .trend .trendArticleAuthor .authorName {
   font-size: 16px;
   font-weight: 300;
 }
+
 .homepageTrendingContainer .homepageTrendingContainerWrapper .trends .trend .articleTitle {
   font-size: 28px;
   font-weight: 500;
   line-height: 32px;
   margin-top: 10px;
 }
+
 .homepageTrendingContainer .homepageTrendingContainerWrapper .trends .trend .articleDateandReadTime {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 10px;
   margin-top: 10px;
@@ -165,19 +217,24 @@
   width: 100%;
   margin: 0 auto;
 }
+
 .recentArticlesContainer .header {
   font-family: var(--font-src-sans-pro) !important;
 }
+
 .recentArticlesContainer .header h3 {
   font-size: 28px;
   font-weight: 400;
 }
+
 .recentArticlesContainer .header p {
   font-size: 14px;
   color: #ccc;
 }
+
 .recentArticlesContainer .seeMoreTopics {
   display: block;
+  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   font-size: 12px;
@@ -198,29 +255,43 @@
   background-repeat: no-repeat !important;
   position: relative;
 }
+
 .articleShowcaseContainer .artileContent {
   width: inherit;
   height: inherit;
   position: absolute;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.732)), to(rgba(0, 0, 0, 0.167)));
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.732), rgba(0, 0, 0, 0.167));
   color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-  flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
+
 .articleShowcaseContainer .artileContent h1,
 .articleShowcaseContainer .artileContent p,
 .articleShowcaseContainer .artileContent span {
   margin-left: 20px;
   cursor: pointer;
 }
+
 .articleShowcaseContainer .artileContent span {
   margin-bottom: 20px;
   margin-top: 15px;
   font-size: 14px;
   font-weight: bold;
 }
+
 .articleShowcaseContainer .artileContent h1 {
   font-weight: bold;
   font-size: 35px;
@@ -231,18 +302,26 @@
   width: 100%;
   height: auto;
 }
+
 .recommendedTopicsContainer h4 {
   font-weight: 500;
 }
+
 .recommendedTopicsContainer .recTopics {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   row-gap: 10px;
-  -moz-column-gap: 10px;
-       column-gap: 10px;
+  -webkit-column-gap: 10px;
+          column-gap: 10px;
   margin-top: 15px;
 }
+
 .recommendedTopicsContainer .recTopics .recTopic {
   padding: 8px 20px;
   border-radius: 10px;
@@ -251,11 +330,14 @@
   font-size: 14px;
   font-weight: 300;
   cursor: pointer;
+  -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
 }
+
 .recommendedTopicsContainer .recTopics .recTopic:hover {
   background: #1c55cf;
 }
+
 .recommendedTopicsContainer span {
   display: block;
   font-size: 12px;
@@ -269,6 +351,7 @@
   width: 100%;
   height: auto;
 }
+
 .promoteScribloContainer .scribloBanner {
   width: 100%;
   height: 200px;
@@ -277,16 +360,19 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
+
 .promoteScribloContainer h3 {
   font-size: 18px;
   font-weight: 600;
   margin-top: 10px;
 }
+
 .promoteScribloContainer p {
   font-size: 14px;
   line-height: 24px;
   margin-top: 15px;
 }
+
 .promoteScribloContainer button {
   padding: 6px 18px;
   border: 1px solid transparent;
@@ -295,9 +381,11 @@
   margin-top: 15px;
   background: #000;
   color: white;
+  -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
+
 .promoteScribloContainer button:hover {
   background-color: #fff;
   color: #000;
@@ -305,14 +393,19 @@
 }
 
 .userCardContainer {
+  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 15px;
 }
+
 .userCardContainer .userAvatar {
   width: 50px;
   height: 50px;
@@ -321,30 +414,42 @@
   background-size: cover !important;
   background-repeat: no-repeat !important;
 }
+
 .userCardContainer .userInfo {
   width: 300px;
   cursor: pointer;
 }
+
 .userCardContainer .userInfo h3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 5px;
 }
+
 .userCardContainer .userInfo .userIntrests {
   width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 15px;
   margin-top: 15px;
 }
+
 .userCardContainer .userInfo .userIntrests span {
   padding: 4px 10px;
   background: #ccc;
   border-radius: 10px;
   font-size: 12px;
 }
+
 .userCardContainer .userInfo .userBio {
   margin-top: 20px;
 }
+
 .userCardContainer .followUser {
   width: 200px;
   height: 40px;
@@ -353,15 +458,18 @@
   border: 1px solid transparent;
   color: #fff;
   cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   font-weight: bold;
   border-radius: 12px;
 }
+
 .userCardContainer .followUser:hover {
   background-color: transparent;
   color: black;
   border: 1px solid #dddddd;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  -webkit-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+          box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 @media (max-width: 857px) {
@@ -376,11 +484,13 @@
     display: none;
   }
 }
+
 @media (max-width: 670px) {
   .homepageShowcaseContainer .showcaseBannerImg {
     height: 400px;
   }
 }
+
 @media (max-width: 594px) {
   .articleShowcaseContainer {
     height: 300px;
@@ -405,16 +515,21 @@
     width: 100%;
   }
 }
+
 @media (max-width: 450px) {
   .articleShowcaseContainer {
     height: 200px !important;
   }
   .articleShowcaseContainer .artileContent h1 {
     width: 100%;
-    display: -webkit-box; /* For Safari and older versions of iOS */
-    -webkit-line-clamp: 2; /* Limit the text to two lines */
-    -webkit-box-orient: vertical; /* Set vertical orientation */
-    overflow: hidden; /* Hide any overflowing content */
+    display: -webkit-box;
+    /* For Safari and older versions of iOS */
+    -webkit-line-clamp: 2;
+    /* Limit the text to two lines */
+    -webkit-box-orient: vertical;
+    /* Set vertical orientation */
+    overflow: hidden;
+    /* Hide any overflowing content */
     text-overflow: ellipsis;
     margin: 0;
     padding: 10px !important;
@@ -438,4 +553,5 @@
   .homepageTrendingContainer .homepageTrendingContainerWrapper .header .headerBtn {
     display: none;
   }
-}/*# sourceMappingURL=home.css.map */
+}
+/*# sourceMappingURL=home.css.map */

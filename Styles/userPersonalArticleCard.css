@@ -1,9 +1,12 @@
 .userArticleCardContainer {
   width: auto;
   height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 20px;
 }
+
 .userArticleCardContainer .articleCover {
   width: 160px;
   height: 120px;
@@ -12,26 +15,38 @@
   background-repeat: no-repeat !important;
   cursor: pointer;
 }
+
 .userArticleCardContainer .articleInformation {
   width: 70%;
   cursor: pointer;
 }
+
 .userArticleCardContainer .articleInformation p {
   margin: 10px 0px;
 }
+
 .userArticleCardContainer .articleInformation .articleDate {
-  color: rgba(78, 78, 78, 0.4666666667);
+  color: #4e4e4e77;
 }
+
 .userArticleCardContainer .articleOptions {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 60px;
 }
+
 .userArticleCardContainer .articleOptions .editIcon {
   color: blue;
   cursor: pointer;
 }
+
 .userArticleCardContainer .articleOptions .deleteIcon {
   color: red;
   cursor: pointer;
-}/*# sourceMappingURL=userPersonalArticleCard.css.map */
+}
+/*# sourceMappingURL=userPersonalArticleCard.css.map */

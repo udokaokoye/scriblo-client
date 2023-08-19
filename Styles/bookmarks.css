@@ -3,10 +3,12 @@
   margin: 0 auto;
   margin-top: 10vh;
 }
+
 .bookmarksContainer h1 {
   font-weight: 400;
   color: #3f3f3f;
 }
+
 .bookmarksContainer .removeBookmarkBtn {
   padding: 10px 12px;
   margin-bottom: 10px;
@@ -23,6 +25,7 @@
     width: 70%;
   }
 }
+
 @media (max-width: 650px) {
   .bookmarksContainer {
     width: 90%;
@@ -32,4 +35,5 @@
     padding: 8px 10px;
     border: none;
   }
-}/*# sourceMappingURL=bookmarks.css.map */
+}
+/*# sourceMappingURL=bookmarks.css.map */

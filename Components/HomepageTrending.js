@@ -20,7 +20,7 @@ function HomepageTrending({trends, source_Sans_Pro}) {
                 <div key={index} className="trend">
                     <div className="trendRank"><span>#</span>{index+1}</div>
                     <Link href={`/${trend.authorUsername}`}><div className="trendArticleAuthor">
-                        <div style={{background: `url(${trend.authorAvatar})`}} className="authorAvatar"></div>
+                        {/* <div style={{background: `url(${trend.authorAvatar})`}} className="authorAvatar"></div> */}
                         <span className="authorName">{trend.authorName}</span>
                     </div>
                     </Link>
