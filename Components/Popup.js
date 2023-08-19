@@ -1,19 +1,52 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "@/Styles/popup.css";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import InsertLinkIcon from "@mui/icons-material/InsertLink";
 import Link from "next/link";
 function Popup({
   closePopup,
-  profilePhotoRef,
+  // profilePhotoRef,
   popupContent,
   user,
   previewArticleDetails,
   copyPreviewLink,
+  updateProfile
 }) {
   const [updatedName, setupdatedName] = useState(user?.name);
+  const [updateUsername, setupdateUsername] = useState(user?.username);
+  const [updatedBioUrl, setupdatedBioUrl] = useState(user?.url);
   const [updatedBio, setupdatedBio] = useState(user?.bio);
+  const [updatedAvatar, setupdatedAvatar] = useState(user?.avatar);
+  const [updatedAvatarFile, setupdatedAvatarFile] = useState(null)
+
+  const [showRevertBtn, setshowRevertBtn] = useState(false)
+
+
+  const profilePhotoRef = useRef(null)
+
+// profilePhotoRef.current = user?.avatar
+
+  const handleSubmitUpdatedURL = () => {
+    const objToSend = {
+      name: updatedName,
+      bio: updatedBio,
+      url: updatedBioUrl,
+      username:  updateUsername,
+      file: updatedAvatarFile
+    }
+    updateProfile(objToSend)
+
+  }
+
+  const handleProfileImageUpdate = (e) => {
+    const file = e.target.files[0];
+    const localSrc = URL.createObjectURL(file);
+    setupdatedAvatar(localSrc)
+    setupdatedAvatarFile(file)
+
+    setshowRevertBtn(true);
+  }
   return (
     <div
       className="popupContainer"
@@ -35,18 +68,26 @@ function Popup({
 
             <div className="updatePhoto">
               <div
-                style={{ background: `url(${user?.avatar})` }}
+                style={{ background: `url(${updatedAvatar})` }}
                 className="currentProfilePhoto"
               ></div>
               <div className="photoActions">
-                <span>Update</span> <span>Remove</span>
+                <span onClick={() => profilePhotoRef.current.click()}>Update</span> <span>Remove</span>
+
               </div>
+              {showRevertBtn && (<span style={{cursor: 'pointer'}} onClick={() => {
+                setupdatedAvatar(user?.avatar)
+                setshowRevertBtn(false)
+                setupdatedAvatarFile(null)
+              }}>revert</span>)}
               <input
                 type="file"
                 name="profilephoto"
                 id="profilephoto"
                 ref={profilePhotoRef}
                 style={{ display: "none" }}
+                accept="image/jpeg, image/png"
+                onChange={handleProfileImageUpdate}
               />
             </div>
 
@@ -62,6 +103,17 @@ function Popup({
             </div>
 
             <div className="updateField">
+              <span>username</span>
+              <input
+                type="text"
+                placeholder="Enter updated username"
+                value={updateUsername}
+                onChange={(txt) => setupdateUsername(txt.target.value)}
+              />
+              <small>Appears on your profile</small>
+            </div>
+
+            <div className="updateField">
               <span>Bio</span>
               <textarea
                 type="text"
@@ -72,11 +124,22 @@ function Popup({
               <small>Appears on your profile</small>
             </div>
 
+            <div className="updateField">
+              <span>Bio URL</span>
+              <input
+                type="text"
+                placeholder="Enter Bio URL (https://example.com)"
+                value={updatedBioUrl}
+                onChange={(txt) => setupdatedBioUrl(txt.target.value)}
+              />
+              <small>Appears on your profile</small>
+            </div>
+
             <div className="updateProfileBtns">
               <button onClick={() => closePopup()} className="cancel">
                 Cancel
               </button>
-              <button className="save">Save</button>
+              <button className="save" onClick={() => handleSubmitUpdatedURL()}>Save</button>
             </div>
           </div>
         )}

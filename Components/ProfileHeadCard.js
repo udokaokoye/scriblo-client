@@ -5,7 +5,7 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import InsertLinkOutlinedIcon from "@mui/icons-material/InsertLinkOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import { formatDate } from "@/public/util/helpers";
+import { formatDate, limitText } from "@/public/util/helpers";
 import { followUser } from "@/public/util/apiHelpers";
 import Link from "next/link";
 import Verified from "./Verified";
@@ -95,15 +95,15 @@ function ProfileHeadCard({
           {profile?.url ? (
             <span>
               <InsertLinkOutlinedIcon className="profileIcon" />{" "}
-              http:profileurl.com
+              {limitText(profile?.url, 10)}
             </span>
           ) : (
-            <span>
+            <Link href={`/${session?.username}/settings`}><span>
               <InsertLinkOutlinedIcon className="profileIcon" />{" "}
               {session?.id == profile?.id
                 ? "Add a link to your profile"
                 : "No link added"}
-            </span>
+            </span></Link>
           )}
         </div>
         <div className="profileInterests">
