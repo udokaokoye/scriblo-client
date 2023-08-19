@@ -1,15 +1,18 @@
 "use client";
 import PushPinOutlinedIcon from "@mui/icons-material/PushPinOutlined";
-function ProfilePinnedArticles({ pinnedArticles }) {
+import ArticleCard from "./ArticleCard";
+function ProfilePinnedArticles({ pinnedArticles, session }) {
   return (
     <div className="profilePinnedArticlesContainer">
       <h3>
         Pinned Articles <PushPinOutlinedIcon className="pinIcon" />
       </h3>
-
+    <br/>
       {pinnedArticles?.length > 0 ? (
         pinnedArticles.map((article, index) => (
-            <p key={index}>pinned article</p>
+            <div>
+                <ArticleCard article={article} fromProfilePage={true} session={session}/>
+              </div>
         ))
       ) : (
         <p><br /> No pinned articles</p>

@@ -129,3 +129,25 @@ export async function deletePost (postId, sessionToken) {
     const data = await response.json();
     return data;
 }
+
+export async function pinArticle (postId) {
+    const formData = new FormData()
+    formData.append('action', 'pinPost')
+    formData.append('postId', postId)
+
+    const response = await fetch('/api/posts/actions.php', {method: "POST", body: formData})
+    const data = await response.json()
+    console.log(data)
+    return data
+}
+
+export async function unpinArticle (postId) {
+    const formData = new FormData()
+    formData.append('action', 'unpinPost')
+    formData.append('postId', postId)
+
+    const response = await fetch('/api/posts/actions.php', {method: "POST", body: formData})
+    const data = await response.json()
+    console.log(data)
+    return data
+}

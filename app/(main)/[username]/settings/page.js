@@ -114,7 +114,7 @@ function Settings({params}) {
         const formData = new FormData()
         console.log(newprofileData)
         // return;
-
+        profilePhotoRef.current = user?.avatar
         if (newprofileData.file !== null) {
             await deleteFromS3(user?.avatar)
             await uploadAvatarToS3(newprofileData.file)

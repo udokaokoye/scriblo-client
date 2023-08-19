@@ -34,13 +34,13 @@ function ArticleReactionCard({postId, userId, session, preview, authorUsername, 
       allBookmarks !== null && setisBookedMarked(allBookmarks?.filter(bookmark => bookmark?.id == postId).length > 0)
     }
 
-    useEffect(() => {
-      const getData = async () => {
-        await getallLikes()
-        await getAllBookmarks()
-      }
-      getData()
-    }, [])
+    // useEffect(() => {
+    //   const getData = async () => {
+    //     await getallLikes()
+    //     await getAllBookmarks()
+    //   }
+    //   getData()
+    // }, [])
 
     const handleLike = async () => {
       if(!session?.token) {

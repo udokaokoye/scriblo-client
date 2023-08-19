@@ -20,7 +20,8 @@ async function Profile({ params }) {
     `${process.env.API_URL}/posts/actions.php?data=posts_username&username=${params.username}`
   );
   const userPostsData = await userPostsResponse.json();
-  const userPosts = userPostsData.data?.filter((pst) => pst.isHidden !== '1');
+  const userPosts = userPostsData.data?.filter((pst) => pst.isHidden !== '1' && pst.pinned !== 'true');
+  const pinnedArticles = userPostsData.data?.filter((pst) => pst.isHidden !== '1' && pst.pinned !== 'false');
 
 
   const userFollowsResponse = await fetch(`${process.env.API_URL}/users/actions.php?action=getUserFollows&userId=${user?.id}`)
@@ -43,7 +44,7 @@ async function Profile({ params }) {
         <div div style={{position:'relative'}}>
           <ProfileHeadCard session={session} profile={user} follows={userFollows} ServerdoesSignedInUserFollowProfile={ServerdoesSignedInUserFollowProfile}/>
           <div style={{ padding: 40 }}>
-            <ProfilePinnedArticles pinnedArticles={userPosts?.filter((post) => post.pinned == 'true')} />
+            <ProfilePinnedArticles pinnedArticles={pinnedArticles} session={session} />
             <br /><br />
             <h3>Articles</h3>
             <br /><br />
@@ -51,7 +52,7 @@ async function Profile({ params }) {
             {userPosts?.length > 0 ? (
               userPosts.map((post, index) => (
               <>
-              <ArticleCard key={index} article={post} />
+              <ArticleCard key={index} article={post} fromProfilePage={true} session={session} />
               <br />
               </>
                 ))

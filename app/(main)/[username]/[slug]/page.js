@@ -29,7 +29,13 @@ async function Article({ params }) {
   // console.log(data.data)
   post = data.data;
 
-    const allLikes = await getLikes(post?.id)
+    // const allLikes = await getLikes(post?.id)
+    const likeresponse = await fetch(`${process.env.API_URL}/posts/actions.php?data=likes&postId=${post?.id}`)
+    const likedata = await likeresponse.json()
+    let allLikes = likedata.data;
+    if (allLikes == null) {
+      allLikes = [];
+    }
     let doesSignedInuserLikePost = false;
     let didSignedInUserBookmarkPost = false;
 
@@ -54,7 +60,10 @@ async function Article({ params }) {
       doesSignedInuserLikePost = allLikes?.filter(like => like?.userId == session?.id).length > 0
     }
 
-    const allBookmarks = await getBookmarks(session?.id)
+    // const allBookmarks = await getBookmarks(session?.id)
+    const bookmarkresponse = await fetch(`${process.env.API_URL}/posts/actions.php?data=bookmarks&userId=${session?.id}`)
+    const bookmarkdata = await bookmarkresponse.json()
+    const allBookmarks = bookmarkdata.data
     
     if (allBookmarks !== null) {
       didSignedInUserBookmarkPost = allBookmarks?.filter(bookmark => bookmark?.id == post?.id).length > 0
@@ -86,7 +95,7 @@ async function Article({ params }) {
             session={session}
             authorUsername={post.authorUsername}
             slug={post.slug}
-            allLikes={allLikes.length}
+            allLikes={allLikes?.length}
             doesSignedInuserLikePost={doesSignedInuserLikePost}
             didSignedInUserBookmarkPost={didSignedInUserBookmarkPost}
           />
@@ -126,7 +135,7 @@ async function Article({ params }) {
             session={session}
             authorUsername={post.authorUsername}
             slug={post.slug}
-            allLikes={allLikes.length}
+            allLikes={allLikes?.length}
             doesSignedInuserLikePost={doesSignedInuserLikePost}
             didSignedInUserBookmarkPost={didSignedInUserBookmarkPost}
           />
