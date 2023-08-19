@@ -137,7 +137,8 @@ function Settings({params}) {
 
         const responseJson = await response.json()
         console.log(responseJson)
-        redirect(`/${user?.username}`)
+        // redirect(`/${user?.username}`)
+        alert("updated")
 
 
     }
