@@ -185,7 +185,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-position: cover !important;
+  background-size: cover !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
 }
