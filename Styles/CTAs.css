@@ -6,18 +6,15 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
-
 .readOurBlogCTASideContainer .ctaTitle {
   font-weight: 600;
   margin: 10px 0px;
 }
-
 .readOurBlogCTASideContainer .ctaDescription {
   font-size: 14px;
   line-height: 24px;
   margin-top: 15px;
 }
-
 .readOurBlogCTASideContainer .ctaButton {
   padding: 6px 18px;
   border: 1px solid transparent;
@@ -26,14 +23,11 @@
   margin-top: 15px;
   background: #000;
   color: white;
-  -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
-
 .readOurBlogCTASideContainer .ctaButton:hover {
   background-color: #fff;
   color: #000;
   border: 1px solid #d6d6d6;
-}
-/*# sourceMappingURL=CTAs.css.map */
+}/*# sourceMappingURL=CTAs.css.map */

@@ -7,12 +7,9 @@
   position: absolute;
   width: 30%;
   height: 100vh;
-  top: 50%;
-  /* Move the top of the div to the middle of the container */
-  left: 50%;
-  /* Move the left side of the div to the middle of the container */
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  top: 50%; /* Move the top of the div to the middle of the container */
+  left: 50%; /* Move the left side of the div to the middle of the container */
+  transform: translate(-50%, -50%);
 }
 
 @media (max-width: 705px) {
@@ -20,10 +17,8 @@
     width: 50%;
   }
 }
-
 @media (max-width: 377px) {
   .loadingArea {
     width: 90%;
   }
-}
-/*# sourceMappingURL=loading.css.map */
+}/*# sourceMappingURL=loading.css.map */
