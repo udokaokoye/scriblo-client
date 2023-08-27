@@ -6,14 +6,17 @@ import ClientProtectedRoute from "@/Components/ClientProtectedRoute";
 import Popup from "@/Components/Popup";
 import { S3Client, PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
+import Loading from "../loading";
 function Settings({params}) {
     const { data: session } = useSession()
     const [user, setuser] = useState({})
     const [settingsTab, setsettingsTab] = useState('account')
     const [popupActive, setpopupActive] = useState(false)
     const [popupContent, setpopupContent] = useState('')
+    const [loading, setloading] = useState(false)
     const profilePhotoRef = useRef(null)
+    const router = useRouter()
 
     // ! popup form elemnents
     const [updatedName, setupdatedName] = useState(user?.name);
@@ -85,20 +88,7 @@ function Settings({params}) {
       };
 
     useEffect(() => {
-        const getuserInfo = async () => {
-            const userResponse = await fetch(
-                `/api/users/actions.php?action=getUser&username=${session?.username}`
-              );
-              let userData = await userResponse.json();
-              userData = userData.data
-            //   console.log(userData)
-              setuser(userData)
-              setupdatedName(userData?.name)
-              setupdateUsername(userData?.username)
-              setupdatedBio(userData?.bio)
-              setupdatedBioUrl(userData?.url)
 
-        }
 
         getuserInfo()
     }, [session])
@@ -109,11 +99,27 @@ function Settings({params}) {
       }
     }, [session])
 
+    const getuserInfo = async () => {
+      const userResponse = await fetch(
+          `/api/users/actions.php?action=getUser&username=${session?.username}`
+        );
+        let userData = await userResponse.json();
+        userData = userData.data
+      //   console.log(userData)
+        setuser(userData)
+        setupdatedName(userData?.name)
+        setupdateUsername(userData?.username)
+        setupdatedBio(userData?.bio)
+        setupdatedBioUrl(userData?.url)
+
+  }
+
 
     const updateProfile = async (newprofileData) => {
         const formData = new FormData()
         console.log(newprofileData)
         // return;
+        setloading(true)
         profilePhotoRef.current = user?.avatar
         if (newprofileData.file !== null) {
             await deleteFromS3(user?.avatar)
@@ -138,13 +144,19 @@ function Settings({params}) {
         const responseJson = await response.json()
         console.log(responseJson)
         // redirect(`/${user?.username}`)
-        alert("updated")
+        setloading(false)
+        alert('Profile Updated, refresh page to see changes')
+        setpopupActive(false)
+        getuserInfo()
+
 
 
     }
     
     
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <ClientProtectedRoute>
         <div className={`settingsContainer ${source_Sans_Pro.className}`}>
             {popupActive && <Popup
@@ -152,6 +164,7 @@ function Settings({params}) {
             popupContent={popupContent}  
             user={user}
             updateProfile={updateProfile}
+            setloading={setloading}
             // updatedBio={updatedBio}
             // updatedName={updatedName}
             // updatedBioUrl={updatedBioUrl}

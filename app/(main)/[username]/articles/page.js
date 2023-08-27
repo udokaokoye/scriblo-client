@@ -106,9 +106,7 @@ function userArticles({ params }) {
     }
   };
 
-  return loading ? (
-    <Loading />
-  ) : (
+  return  (
     <ClientProtectedRoute>
       <div className={`userArticlesContainer ${source_Sans_Pro.className}`}>
         <h1>Your Articles</h1>

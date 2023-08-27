@@ -72,10 +72,14 @@ function ArticleEdit({ params }) {
       setarticleToEdit(data?.data);
       settitle(data?.data?.title);
       setsummary(data?.data?.summary);
-      const prevTags = data?.data?.tags
+      
+      if(data?.data?.tags !== "") {
+        prevTags = data?.data?.tags
         ?.split(",")
         .map((name) => ({ name, id: 0 }));
       settags(prevTags);
+      }
+
 
       if (data.data.coverImage !== "") {
         setcoverImage({
@@ -350,6 +354,7 @@ function ArticleEdit({ params }) {
     formData.append("createdAt", moment().format("YYYY-MM-DD HH:mm:ss"));
     formData.append("publishDate", moment().format("YYYY-MM-DD HH:mm:ss"));
     formData.append("username", session?.username);
+    formData.append('authToken', session?.token)
 
     const res = await fetch(`/api/posts/actions.php`, {
       method: "POST",
@@ -373,7 +378,7 @@ function ArticleEdit({ params }) {
       setmediafiles([]);
       setloading(false)
 
-      router.push(`/`);
+      router.replace(`/${session?.username}/articles`);
     }
     console.log(data);
   };
@@ -381,9 +386,16 @@ function ArticleEdit({ params }) {
   const editPost = async () => {
     // isHidden.current = 0;
     // check if all fields are filled
-    if (!title || !editorState.getCurrentContent().hasText() || editorState.getCurrentContent().getPlainText() == '' || editorState.getCurrentContent().getPlainText() == ' ' || tags.length <=0 || !summary) {
-      alert("Please fill all fields");
-      return;
+    if(isHidden.current == 0) {
+      if (!title || !editorState.getCurrentContent().hasText() || editorState.getCurrentContent().getPlainText() == '' || editorState.getCurrentContent().getPlainText() == ' ' || tags.length <=0 || !summary) {
+        alert("Please fill all fields. Title, summary, cover Image and tags are all required to publish an article");
+        return;
+      }
+    } else {
+      if (!title || !editorState.getCurrentContent().hasText() || editorState.getCurrentContent().getPlainText() == '' || editorState.getCurrentContent().getPlainText() == ' ') {
+        alert("Please fill all fields");
+        return;
+      }
     }
 
     if (confirm("Updating the post title will affect the previous post URL, this action cannot be undone.")) {

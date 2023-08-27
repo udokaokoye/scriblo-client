@@ -204,7 +204,7 @@ function Create() {
           url: data.message.previewUrl
         })
       } else {
-        router.push(`/`);
+        router.push(`/${session?.username}/articles`);
       }
     }
   };

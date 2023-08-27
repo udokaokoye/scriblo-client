@@ -93,10 +93,12 @@ function ProfileHeadCard({
             {formatDate(profile?.createdAt)}
           </span>
           {profile?.url ? (
+              <Link target="_blank" href={profile?.url}>
             <span>
               <InsertLinkOutlinedIcon className="profileIcon" />{" "}
               {limitText(profile?.url, 10)}
             </span>
+              </Link>
           ) : (
             <Link href={`/${session?.username}/settings`}><span>
               <InsertLinkOutlinedIcon className="profileIcon" />{" "}
