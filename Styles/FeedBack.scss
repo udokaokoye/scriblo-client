@@ -9,7 +9,7 @@
   .feedbackBtn {
     margin-left: auto;
     width: 30px;
-    height: 100px;
+    height: 120px;
     background: blue;
     border-radius: 15px;
     border-bottom-right-radius: 0px;
@@ -17,11 +17,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+    // align-items: center;
+    color: white;
+
+    // .chatIcon {
+    //     margin-top: 10px;
+    // }
     p {
         color: white;
         font-weight: bold;
         transform: rotate(270deg);
         user-select: none;
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        align-items: center;
       }
   }
 
@@ -41,6 +54,13 @@
         margin: 0 auto;
         height: 100%;
         padding: 15px;
+
+        .close {
+            margin-top: 20px;
+            font-weight: bold;
+            color: red;
+            cursor: pointer;
+        }
 
         h3 {
             text-align: center;
@@ -161,6 +181,11 @@
         bottom: -80px !important;
         right: 0;
         width: 20px;
+        font-size: 14px;
+
+        .chatIcon {
+            font-size: 15px;
+        }
     }
 
     .open {

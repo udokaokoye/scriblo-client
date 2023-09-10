@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-// import { Chat } from '@mui/icons-material'
+import { Chat } from '@mui/icons-material'
 import "../Styles/FeedBack.css";
 import { source_Sans_Pro } from "@/public/util/fonts";
 import moment from "moment";
@@ -46,7 +46,8 @@ const FeedBack = () => {
   return (
     <div className={`feedBackContainer ${source_Sans_Pro.className}`}>
       <div className="feedbackBtn">
-        <p onClick={() => setshowFeedBackForm(!showFeedBackForm)}>Feedback</p>
+        <p onClick={() => setshowFeedBackForm(!showFeedBackForm)}><Chat className="chatIcon" /> Feedback</p>
+      
       </div>
 
       <div
@@ -99,6 +100,8 @@ const FeedBack = () => {
                 Something else
               </span>
             </div>
+                <br />
+            <span onClick={() => setshowFeedBackForm(false)} className="close">Close</span>
           </div>
         )}
 

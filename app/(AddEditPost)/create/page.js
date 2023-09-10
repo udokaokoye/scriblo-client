@@ -1,7 +1,7 @@
 "use client";
 import "../../../Styles/create.css";
 import TextEditor from "@/Components/TextEditor";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
@@ -38,6 +38,11 @@ function Create() {
   const [showPreviewCodePopup, setshowPreviewCodePopup] = useState(false)
   const [previewArticleDetails, setpreviewArticleDetails] = useState({code: "00000", url:'processing...'})
   const [loading, setloading] = useState(false)
+
+  useEffect(() => {
+    alert("Tips For Creating Articles. \n - Use Optimized Images \n - Avoid 3rd party extentions like grammarly. \n The app isn't optimized to handle large images, using large image file might freeze the app or take longer to upload.")
+  }, [])
+  
   // console.log(session.token)
   const stripReplaceSpacesWithDashes = (text) => {
     let strippedText = text.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");

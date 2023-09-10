@@ -8,7 +8,7 @@
 .feedBackContainer .feedbackBtn {
   margin-left: auto;
   width: 30px;
-  height: 100px;
+  height: 120px;
   background: blue;
   border-radius: 15px;
   border-bottom-right-radius: 0px;
@@ -16,6 +16,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  color: white;
 }
 .feedBackContainer .feedbackBtn p {
   color: white;
@@ -24,6 +27,10 @@
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  align-items: center;
 }
 .feedBackContainer .feedbackFormContainer {
   width: 300px;
@@ -40,6 +47,12 @@
   margin: 0 auto;
   height: 100%;
   padding: 15px;
+}
+.feedBackContainer .feedbackFormContainer .stageOne .close {
+  margin-top: 20px;
+  font-weight: bold;
+  color: red;
+  cursor: pointer;
 }
 .feedBackContainer .feedbackFormContainer .stageOne h3 {
   text-align: center;
@@ -135,6 +148,10 @@
     bottom: -80px !important;
     right: 0;
     width: 20px;
+    font-size: 14px;
+  }
+  .feedBackContainer .feedbackBtn .chatIcon {
+    font-size: 15px;
   }
   .feedBackContainer .open {
     right: 40px;
