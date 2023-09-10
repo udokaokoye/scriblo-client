@@ -4,6 +4,12 @@
   right: 0;
   z-index: 400;
 
+  small {
+    font-size: 12px;
+    font-style: italic;
+    color: #616161;
+  }
+
   cursor: pointer;
 
   .feedbackBtn {
@@ -40,7 +46,7 @@
 
   .feedbackFormContainer {
     width: 300px;
-    height: 400px;
+    height: auto;
     background: white;
     position: absolute;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;

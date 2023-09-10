@@ -102,6 +102,8 @@ const FeedBack = () => {
             </div>
                 <br />
             <span onClick={() => setshowFeedBackForm(false)} className="close">Close</span>
+            <br />
+            <small>NOTE: During development, the feedback button is accessible here. Once the application is stable, it will be relocated to the app's menu.</small>
           </div>
         )}
 
@@ -145,6 +147,8 @@ const FeedBack = () => {
             </div>
         )}
       </div>
+
+      
     </div>
   );
 };
