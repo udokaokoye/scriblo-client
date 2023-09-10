@@ -1,0 +1,97 @@
+.editorToolbar {
+  position: relative;
+}
+.editorToolbar .fixedToolBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.editorPopups {
+  position: absolute !important;
+  left: -250px !important;
+  top: 50px !important;
+}
+
+.editorEmoji {
+  display: none !important;
+}
+
+.editorWrapper {
+  min-height: 100vh !important;
+  position: relative;
+}
+.editorWrapper .editorMain {
+  min-height: inherit !important;
+  font-family: var(--font-charter-itc) !important;
+  background-color: transparent !important;
+}
+.editorWrapper .editorMain img {
+  width: 100% !important;
+  height: 300px !important;
+  -o-object-fit: contain !important;
+     object-fit: contain !important;
+  -o-object-position: top !important;
+     object-position: top !important;
+  display: block;
+  margin: 0 auto;
+}
+.editorWrapper .editorMain iframe {
+  height: auto !important;
+  width: auto !important;
+  overflow-y: hidden !important;
+  display: block;
+  margin: 0 auto;
+}
+.editorWrapper .editorMain iframe[src*="youtube.com"], .editorWrapper .editorMain iframe[src*="youtu.be"] {
+  width: 560px !important;
+  height: 315px !important;
+}
+.editorWrapper .editorMain iframe[src*="vimeo.com"] {
+  width: 640px !important;
+  height: 360px !important;
+}
+.editorWrapper .editorMain iframe[src*="twitter.com"] {
+  min-width: 230px !important;
+  min-height: 550px !important;
+}
+.editorWrapper .editorMain iframe[src*="facebook.com"] {
+  width: auto !important;
+  height: auto !important;
+}
+.editorWrapper .editorMain iframe[src*="instagram.com"] {
+  width: 320px !important;
+  height: 700px !important;
+}
+.editorWrapper .editorMain span {
+  background-color: transparent !important;
+  color: rgb(98, 98, 98);
+  line-height: 34px !important;
+}
+.editorWrapper .editorMain b {
+  color: black !important;
+}
+
+@media (max-width: 712px) {
+  .editorWrapper {
+    max-width: 100% !important;
+  }
+  .editorWrapper .editorToolbar {
+    width: 100% !important;
+  }
+  .editorWrapper .editorMain {
+    max-width: 100% !important;
+  }
+}
+@media (max-width: 540px) {
+  .editorWrapper .editorToolbar .rdw-image-wrapper, .editorWrapper .editorToolbar .rdw-emoji-wrapper, .editorWrapper .editorToolbar .rdw-embedded-wrapper, .editorWrapper .editorToolbar .rdw-dropdown-wrapper .rdw-history-dropdown, .editorWrapper .editorToolbar .rdw-dropdown-wrapper .rdw-text-align-dropdown, .editorWrapper .editorToolbar .rdw-dropdown-wrapper .rdw-list-dropdown, .editorWrapper .editorToolbar .rdw-fontsize-wrapper, .editorWrapper .editorToolbar .rdw-block-wrapper, .editorWrapper .editorToolbar .rdw-dropdown-wrapper .rdw-inline-dropdown {
+    position: unset !important;
+  }
+  .editorPopups {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+}/*# sourceMappingURL=TextEditor.css.map */

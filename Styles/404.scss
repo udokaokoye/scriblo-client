@@ -1,0 +1,24 @@
+.notFoundContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.notFoundImageContainer {
+    width: 50%;
+    height: 400px;
+    margin: 0 auto;
+    background: url('../public/images/404.jpg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+button {
+    margin: 0 auto;
+
+    &:hover {
+        border: 1px solid black !important;
+    }
+}

@@ -1,0 +1,50 @@
+.notFoundContainer {
+  width: 100%;
+  height: auto;
+}
+.notFoundContainer .notfoundBG {
+  width: 100%;
+  height: 300px;
+  margin: 0 auto;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+}
+.notFoundContainer h3 {
+  text-align: center;
+  font-size: 30px;
+}
+.notFoundContainer p {
+  text-align: center;
+  margin-top: 5px;
+}
+.notFoundContainer small {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+.notFoundContainer .btn {
+  display: block;
+  margin: 0 auto;
+  border: 1px solid transparent;
+}
+.notFoundContainer .btn:hover {
+  border: 1px solid black;
+}
+.notFoundContainer .suggestedCategories {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.notFoundContainer .suggestedCategories span {
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: #f1f1f1;
+  font-size: 14px;
+  cursor: pointer;
+}
+.notFoundContainer .suggestedCategories span:hover {
+  background-color: #dedede;
+}/*# sourceMappingURL=notFound.css.map */

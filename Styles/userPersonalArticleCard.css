@@ -1,0 +1,37 @@
+.userArticleCardContainer {
+  width: auto;
+  height: auto;
+  display: flex;
+  gap: 20px;
+}
+.userArticleCardContainer .articleCover {
+  width: 160px;
+  height: 120px;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  cursor: pointer;
+}
+.userArticleCardContainer .articleInformation {
+  width: 70%;
+  cursor: pointer;
+}
+.userArticleCardContainer .articleInformation p {
+  margin: 10px 0px;
+}
+.userArticleCardContainer .articleInformation .articleDate {
+  color: rgba(78, 78, 78, 0.4666666667);
+}
+.userArticleCardContainer .articleOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+.userArticleCardContainer .articleOptions .editIcon {
+  color: blue;
+  cursor: pointer;
+}
+.userArticleCardContainer .articleOptions .deleteIcon {
+  color: red;
+  cursor: pointer;
+}/*# sourceMappingURL=userPersonalArticleCard.css.map */

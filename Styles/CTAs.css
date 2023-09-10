@@ -1,0 +1,33 @@
+.readOurBlogCTASideContainer .CTAImage {
+  width: 100%;
+  height: 200px;
+  background: url("https://scriblo.s3.us-east-2.amazonaws.com/branding/readOurBlogCTA.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.readOurBlogCTASideContainer .ctaTitle {
+  font-weight: 600;
+  margin: 10px 0px;
+}
+.readOurBlogCTASideContainer .ctaDescription {
+  font-size: 14px;
+  line-height: 24px;
+  margin-top: 15px;
+}
+.readOurBlogCTASideContainer .ctaButton {
+  padding: 6px 18px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-top: 15px;
+  background: #000;
+  color: white;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.readOurBlogCTASideContainer .ctaButton:hover {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #d6d6d6;
+}/*# sourceMappingURL=CTAs.css.map */

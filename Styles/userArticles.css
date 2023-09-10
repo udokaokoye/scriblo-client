@@ -1,0 +1,59 @@
+.userArticlesContainer {
+  margin: 0 auto;
+  margin-top: 16vh;
+  width: 50%;
+}
+.userArticlesContainer h1 {
+  font-size: 40px;
+  font-weight: 500;
+}
+.userArticlesContainer .tabs {
+  width: 100%;
+  border-bottom: 1px solid rgba(176, 176, 176, 0.4666666667);
+  display: flex;
+  gap: 20px;
+  margin: 20px 0px;
+}
+.userArticlesContainer .tabs span {
+  font-size: 15px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+.userArticlesContainer .tabs .active {
+  border-bottom: 1px solid black;
+}
+.userArticlesContainer .draftsTab .previewDetails {
+  display: flex;
+  gap: 20px;
+}
+.userArticlesContainer .draftsTab .previewDetails span {
+  background: #ebebeb;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.userArticlesContainer .draftsTab .previewDetails .previewUrl {
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.userArticlesContainer .draftsTab .previewDetails button {
+  margin-left: auto;
+  padding: 0px 20px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 622px) {
+  .userArticlesContainer {
+    width: 80%;
+  }
+}
+@media (max-width: 522px) {
+  .userArticlesContainer {
+    width: 90%;
+  }
+}/*# sourceMappingURL=userArticles.css.map */

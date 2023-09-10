@@ -1,0 +1,201 @@
+.feedBackContainer {
+  position: fixed;
+  bottom: 250px;
+  right: 0;
+  z-index: 400;
+
+  small {
+    font-size: 12px;
+    font-style: italic;
+    color: #616161;
+  }
+
+  cursor: pointer;
+
+  .feedbackBtn {
+    margin-left: auto;
+    width: 30px;
+    height: 120px;
+    background: blue;
+    border-radius: 15px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+    // align-items: center;
+    color: white;
+
+    // .chatIcon {
+    //     margin-top: 10px;
+    // }
+    p {
+        color: white;
+        font-weight: bold;
+        transform: rotate(270deg);
+        user-select: none;
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        align-items: center;
+      }
+  }
+
+  .feedbackFormContainer {
+    width: 300px;
+    height: auto;
+    background: white;
+    position: absolute;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    bottom: -100px;
+    transition: all 0.2s ease-in-out;
+    border-radius: 15px;
+
+
+    .stageOne {
+        width: 90%;
+        margin: 0 auto;
+        height: 100%;
+        padding: 15px;
+
+        .close {
+            margin-top: 20px;
+            font-weight: bold;
+            color: red;
+            cursor: pointer;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        .feedbackOptions {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            // align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 15px;
+
+            span {
+                // width: fit-content;
+                border: 2px solid transparent;
+                text-align: center;
+                padding: 5px 18px;
+                background-color: black;
+                color: white;
+                border-radius: 10px;
+                transition: all 0.2s ease-in-out;
+
+                &:hover {
+                    background-color: transparent;
+                    color: black;
+                    border: 2px solid black;
+                }
+
+
+                &:last-child {
+                    border: 2px solid black;
+                    background-color: transparent;
+                    color: black;
+
+                    &:hover {
+                        background-color: black;
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+
+    .stageTwo {
+        .stageHeader {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .formField {
+            padding: 10px;
+            h3 {
+                margin-bottom: 5px;
+                font-weight: normal;
+            }
+
+            textarea {
+                width: calc(100% - 35px);
+                height: 60px;
+                size-adjust: unset;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                padding: 15px;
+                font-family: inherit;
+            }
+        }
+
+        .submitBtn {
+            padding: 10px 20px;
+            margin: 10px 15px;
+            background: blue;
+            color: white;
+            border: 1px solid transparent;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+    }
+
+    .stageThree {
+        margin-top: 30px;
+        padding: 20px;
+        text-align: center;
+        p {
+            margin-top: 10px;
+        }
+
+        .closeBtn {
+            padding: 10px 32px;
+            background-color: blue;
+            color: white;
+            font-weight: bold;
+            border: none;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    }
+  }
+  .open {
+    right: 60px;
+}
+
+.close {
+    right: -800px;
+}
+
+
+}
+
+@media (max-width: 398px) {
+
+.feedBackContainer {
+    .feedbackBtn {
+        position: absolute;
+        bottom: -80px !important;
+        right: 0;
+        width: 20px;
+        font-size: 14px;
+
+        .chatIcon {
+            font-size: 15px;
+        }
+    }
+
+    .open {
+        right: 40px;
+    }
+}
+}

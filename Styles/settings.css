@@ -1,0 +1,76 @@
+.settingsContainer {
+  margin-top: 8vh;
+}
+.settingsContainer .settingsWrapper {
+  width: 40%;
+  margin: 0 auto;
+  padding-top: 4vh;
+  font-size: 14px;
+}
+.settingsContainer .settingsWrapper .settingsHeaderText {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 2vh;
+}
+.settingsContainer .settingsWrapper .SettingsTabs {
+  width: 100%;
+  border-bottom: 1px solid #e9e9e9;
+  display: flex;
+  gap: 20px;
+}
+.settingsContainer .settingsWrapper .SettingsTabs .settingsTab {
+  cursor: pointer;
+  padding: 10px 0px;
+  border-bottom: 2px solid transparent;
+}
+.settingsContainer .settingsWrapper .SettingsTabs .settingsTab:hover {
+  border-bottom: 2px solid #e9e9e9;
+}
+.settingsContainer .settingsWrapper .SettingsTabs .activeTab {
+  border-bottom: 1px solid #000;
+}
+.settingsContainer .settingsWrapper .SettingsTabs .activeTab:hover {
+  border-bottom: 1px solid #000;
+}
+.settingsContainer .settingsWrapper .settingsContent {
+  margin-top: 25px;
+}
+.settingsContainer .settingsWrapper .settingsContent .accountField {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.settingsContainer .settingsWrapper .settingsContent .accountField:hover span {
+  color: #000 !important;
+}
+.settingsContainer .settingsWrapper .settingsContent .accountField span {
+  font-weight: 400;
+  color: #3a3a3a;
+}
+.settingsContainer .settingsWrapper .settingsContent .accountField span:last-child {
+  color: #777777;
+}
+.settingsContainer .settingsWrapper .settingsContent .deleteAccount {
+  cursor: pointer;
+}
+.settingsContainer .settingsWrapper .settingsContent .deleteAccount span {
+  display: block;
+  color: rgb(222, 56, 56);
+}
+.settingsContainer .settingsWrapper .settingsContent .deleteAccount small {
+  color: #777777;
+}
+
+@media (max-width: 900px) {
+  .settingsContainer .settingsWrapper {
+    width: 60%;
+  }
+}
+@media (max-width: 600px) {
+  .settingsContainer .settingsWrapper {
+    width: 90%;
+  }
+}/*# sourceMappingURL=settings.css.map */

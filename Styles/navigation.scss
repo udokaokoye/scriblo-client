@@ -1,0 +1,254 @@
+.navigation {
+  background: #fff;
+  // border-bottom: 1px solid #8c9196;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 8vh;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .logoSearch {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    .navigation__logo {
+      width: 120px !important;
+      height: 100% !important;
+      background: url("https://scriblo.s3.us-east-2.amazonaws.com/branding/brand_logo_black.png")
+        no-repeat center;
+      background-size: contain;
+      // background: red;
+      margin-left: 20px;
+    }
+
+    .navSearch {
+      display: flex;
+      align-items: center;
+      gap: 0px;
+      background: #FAFAFA;
+      border-radius: 15px;
+      height: 50px;
+      width: 250px;
+      padding: 0px 10px;
+      border: 1px solid #cccccc20;
+
+      .searchIcon {
+        font-weight: 300;
+        color: #b0b0b0;
+      }
+      input {
+        width: 100%;
+        padding: 10px 20px;
+        border: none;
+        background-color: transparent;
+        font-size: 14px;
+        font-weight: 400;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+
+
+
+  .navigation__menu {
+    width: 60%;
+    // background: red;
+  font-family: var(--font-src-sans-pro) !important;
+    margin-right: 20px;
+    display: flex;
+    justify-content: flex-end;
+
+    .authButtons {
+      .mobileSearchIcon {
+        display: none;
+      }
+      .signInButton {
+        font-size: 14px;
+        font-weight: 400;
+        margin-right: 44px;
+        cursor: pointer;
+      }
+
+      .getStartedButton {
+        width: 111px;
+        height: 34px;
+        border-radius: 4px;
+        font-size: 14px;
+        background-color: transparent;
+        border: none;
+        background: #000;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+
+    .userProfile {
+    // width: 20%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      position: relative;
+    //   background: red;
+
+    .mobileSearchIcon {
+      display: none;
+    }
+
+    .newPostBtn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      background: transparent;
+      color: black;
+      border: 1px solid #ccc;
+      font-size: 16px;
+
+      .penIcon {
+        font-size: 16px;
+      }
+    }
+
+      .userProfile__avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid #ccc;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        background-size: cover !important;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          border-color: rgb(151, 19, 151);
+        }
+      }
+
+      .profileMenu {
+        position: absolute;
+        width: 250px;
+        height: auto;
+        background: white;
+        border: 1px solid #cccccc9c;
+        // border-radius: 10px;
+        color: #000;
+        top: 45px;
+        right: 0px;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        // padding: 10px;
+
+        .menuItem {
+          cursor: pointer;
+          font-size: 14px;
+          padding: 15px 15px;
+          border-bottom: 1px solid #e5e5e597;
+          // border-radius: 10px;
+
+          &:hover {
+            background: #000;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 794px) {
+  .navigation {
+    .logoSearch {
+      .navSearch {
+        width: 150px;
+        height: 40px;
+      }
+    }
+
+    .navigation__menu {
+      .authButtons {
+        button {
+          width: 100px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 563px) {
+  .navigation {
+    .logoSearch {
+      .navSearch {
+        width: 150px;
+        height: 40px;
+      }
+    }
+
+    .navigation__menu {
+      .userProfile {
+        .newPostBtn {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 492px) {
+  .navigation {
+    .logoSearch {
+      .navigation__logo {
+        width: 100px !important;
+      }
+      .navSearch {
+        display: none;
+      }
+    }
+
+    .navigation__menu {
+      .authButtons {
+        display: flex;
+        gap: 20px;
+        text-align: center;
+        .mobileSearchIcon {
+          display: block;
+          .searchIcon {
+            font-size: 29px;
+            color: #474747;
+          }
+        }
+      }
+.userProfile {
+
+  .mobileSearchIcon {
+    display: block;
+    .searchIcon {
+      font-size: 29px;
+      color: #474747;
+    }
+  }
+  .newPostBtn {
+    display: none;
+  }
+
+  .userProfile__avatar {
+    width: 40px;
+    height: 40px;
+  }
+}
+    }
+  }
+}

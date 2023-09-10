@@ -1,0 +1,57 @@
+.notFoundContainer {
+    width: 100%;
+    height: auto;
+    // background: red;
+
+    .notfoundBG {
+        width: 100%;
+        height: 300px;
+        margin: 0 auto;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-size: contain !important;
+    }
+
+    h3  {
+        text-align: center;
+        font-size: 30px;
+    }
+    p {
+        text-align: center;
+        margin-top: 5px;
+    }
+
+    small {
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    .btn {
+        display: block;
+        margin: 0 auto;
+        border: 1px solid transparent;
+        &:hover {
+            border: 1px solid black;
+        }
+    }
+
+    .suggestedCategories {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        span {
+            padding: 8px 16px;
+            border-radius: 10px;
+            background: #f1f1f1;
+            font-size: 14px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #dedede;
+            }
+        }
+    }
+}

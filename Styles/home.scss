@@ -1,0 +1,530 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.mainContainer {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  // overflow: hidden;
+
+  .articleFeed {
+    width: 60%;
+    height: auto;
+  }
+
+  .feedSidebar {
+    width: 30%;
+    height: 110vh;
+    top: 0;
+    position: sticky;
+    border-left: 1px solid #e8e8e8;
+    padding-left: 25px;
+    padding-bottom: 50px;
+  }
+}
+
+.homepageShowcaseContainer {
+  width: 100%;
+  height: 70vh;
+  // background: red;
+  margin-top: 10vh;
+  margin-bottom: 8vh;
+  padding: 25px 0px;
+
+  .showcaseHeading {
+    text-align: center;
+    font-size: 90px;
+    font-family: var(--font-charter-itc) !important;
+    font-weight: 300;
+    // font-weight: 300;
+  }
+
+  .showcaseBannerImg {
+    width: 100%;
+    height: 500px;
+    background: url("/images/showcaseBanner.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .showcaseMessage {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  .showcaseBtn {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+    height: auto;
+    padding: 10px 29px;
+    background-color: transparent;
+    border: 1px solid #000000;
+    color: black;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: #000000;
+      color: white;
+    }
+  }
+}
+
+.homepageTrendingContainer {
+  // margin-top: 80px;
+  background-color: black;
+  min-height: 50vh;
+  height: auto;
+  color: #fff;
+  // font-family: var(--font-src-sans-pro);
+  padding: 40px 0px;
+  .homepageTrendingContainerWrapper {
+    width: 70%;
+    margin: 0 auto;
+    height: 100%;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .headerTexts {
+        h2 {
+          font-size: 40px;
+          font-weight: 400;
+        }
+        p {
+          font-size: 14px;
+          margin-top: 5px;
+        }
+      }
+
+      .headerBtn {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+      }
+    }
+
+    .trends {
+      margin-top: 40px;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+
+      .trend {
+        width: 400px;
+        height: auto;
+        // border: 1px solid #fff;
+
+        .trendRank {
+          font-size: 20px;
+          span {
+            color: #ccc;
+          }
+        }
+
+        .trendArticleAuthor {
+          width: 1005;
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          margin-top: 10px;
+
+          .authorAvatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            // background-color: red;
+            background-size: cover !important;
+            background-repeat: no-repeat !important;
+            background-position: center !important;
+          }
+
+          .authorName {
+            font-size: 16px;
+            font-weight: 300;
+          }
+        }
+
+        .articleTitle {
+          font-size: 28px;
+          font-weight: 500;
+          line-height: 32px;
+          margin-top: 10px;
+        }
+
+        .articleDateandReadTime {
+          display: flex;
+          gap: 10px;
+          margin-top: 10px;
+          font-size: 13px;
+          font-weight: 300;
+          color: #ccc;
+        }
+      }
+    }
+  }
+}
+
+.recentArticlesContainer {
+  width: 100%;
+  margin: 0 auto;
+  // background: green;
+
+  .header {
+    font-family: var(--font-src-sans-pro) !important;
+    h3 {
+      font-size: 28px;
+      font-weight: 400;
+    }
+    p {
+      font-size: 14px;
+      color: #ccc;
+    }
+  }
+
+  .seeMoreTopics {
+    display: block;
+    width: fit-content;
+    font-size: 12px;
+    padding: 6px 14px;
+    background: #2563EB;
+    color: white;
+    margin-top: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}
+
+.articleShowcaseContainer {
+  width: 100%;
+  height: 400px;
+  margin: 0 auto;
+  // background: url("https://scriblo.s3.us-east-2.amazonaws.com/drafts/hello-this-is-levi_0.jpg");
+  background-position: top !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  position: relative;
+
+  .artileContent {
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    background-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.732),
+      rgba(0, 0, 0, 0.167)
+    );
+    color: #fff;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-direction: column;
+
+    h1,
+    p,
+    span {
+      margin-left: 20px;
+      cursor: pointer;
+    }
+    span {
+      margin-bottom: 20px;
+      margin-top: 15px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-weight: bold;
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+  }
+}
+
+.recommendedTopicsContainer {
+  width: 100%;
+  height: auto;
+
+  h4 {
+    // text-align: center;
+    font-weight: 500;
+  }
+
+  .recTopics {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    // justify-content: center;
+    row-gap: 10px;
+    column-gap: 10px;
+    margin-top: 15px;
+
+    .recTopic {
+      padding: 8px 20px;
+      border-radius: 10px;
+      // background: #f2f2f2
+      background-color: #2563EB;
+      // color: black;
+      color: white;
+      font-size: 14px;
+      font-weight: 300;
+      cursor: pointer;
+      transition: 0.2s ease-in-out;
+
+      &:hover {
+        background: #1c55cf;
+      }
+    }
+  }
+
+  span {
+    display: block;
+    font-size: 12px;
+    // margin-left: 20px;
+    margin-top: 10px;
+    // color: purple;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
+
+.promoteScribloContainer {
+  width: 100%;
+  height: auto;
+
+  .scribloBanner {
+    width: 100%;
+    height: 200px;
+    background: url("https://scriblo.s3.us-east-2.amazonaws.com/branding/logoBanner.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 24px;
+    margin-top: 15px;
+  }
+
+  button {
+    padding: 6px 18px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-top: 15px;
+    background: #000;
+    color: white;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #fff;
+      color: #000;
+      border: 1px solid #d6d6d6;
+    }
+  }
+}
+
+.userCardContainer {
+  width: fit-content;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  padding: 20px;
+  display: flex;
+  gap: 15px;
+
+  .userAvatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+  }
+
+  .userInfo {
+    width: 300px;
+    // background: red;
+    cursor: pointer;
+
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .userIntrests {
+      width: 300px;
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+
+      span {
+        padding: 4px 10px;
+        background: #ccc;
+        border-radius: 10px;
+        font-size: 12px;
+      }
+    }
+
+    .userBio {
+      margin-top: 20px;
+    }
+  }
+
+  .followUser {
+    width: 200px;
+    height: 40px;
+    margin-top: 20px;
+    background: #000;
+    border: 1px solid transparent;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    border-radius: 12px;
+
+    &:hover {
+      background-color: transparent;
+      color: black;
+      border: 1px solid #dddddd;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+  }
+}
+
+@media (max-width: 857px) {
+  .mainContainer {
+    width: 85%;
+    display: block;
+    .articleFeed {
+      width: 100%;
+    }
+
+    .feedSidebar {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 670px) {
+  .homepageShowcaseContainer {
+    .showcaseBannerImg {
+      height: 400px;
+    }
+  }
+}
+
+@media (max-width: 594px) {
+  .articleShowcaseContainer {
+    height: 300px;
+  }
+
+  .homepageShowcaseContainer {
+    .showcaseHeading {
+      font-size: 70px;
+    }
+    .showcaseBannerImg {
+      height: 400px;
+    }
+  }
+
+  .homepageTrendingContainer {
+    .homepageTrendingContainerWrapper {
+      .header {
+        .headerTexts {
+          h2 {
+            font-size: 30px;
+          }
+        }
+      }
+    }
+  }
+
+  .userCardContainer{
+    width: 90%;
+    padding: 10px;
+
+    .userInfo {
+      width: 50%;
+
+      .userBio {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .articleShowcaseContainer {
+    height: 200px !important;
+    .artileContent {
+      h1 {
+        width: 100%;
+        display: -webkit-box; /* For Safari and older versions of iOS */
+        -webkit-line-clamp: 2; /* Limit the text to two lines */
+        -webkit-box-orient: vertical; /* Set vertical orientation */
+        overflow: hidden; /* Hide any overflowing content */
+        text-overflow: ellipsis;
+        margin: 0;
+        padding: 10px !important;
+      }
+      p {
+        display: none;
+      }
+    }
+  }
+  .homepageShowcaseContainer {
+    height: 50vh !important;
+    // background: #000;
+    margin-top: 18vh;
+    .showcaseHeading {
+      font-size: 50px;
+    }
+    .showcaseBannerImg {
+      height: 200px;
+    }
+
+    .showcaseBtn {
+      padding: 10px 85px;
+    }
+  }
+
+  .homepageTrendingContainer {
+    .homepageTrendingContainerWrapper {
+      .header {
+        .headerBtn {
+          display: none;
+        }
+      }
+    }
+  }
+}

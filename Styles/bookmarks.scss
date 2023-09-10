@@ -1,0 +1,41 @@
+.bookmarksContainer {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 10vh;
+
+    h1 {
+        font-weight: 400;
+        color: #3f3f3f;
+    }
+
+    .removeBookmarkBtn{
+        padding: 10px 12px;
+        margin-bottom: 10px;
+        background-color: orange;
+        color: white;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        border: 2px solid black;
+
+    }
+}
+
+@media (max-width: 900px) {
+.bookmarksContainer {
+    width: 70%;
+}
+}
+
+@media (max-width: 650px) {
+    .bookmarksContainer {
+        width: 90%;
+        margin-top: 12vh;
+
+
+        .removeBookmarkBtn {
+            padding: 8px 10px;
+            border: none;
+        }
+    }
+    }

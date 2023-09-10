@@ -1,0 +1,70 @@
+.userArticlesContainer {
+  margin: 0 auto;
+  margin-top: 16vh;
+  width: 50%;
+
+  h1 {
+    font-size: 40px;
+    font-weight: 500;
+  }
+
+  .tabs {
+    width: 100%;
+    border-bottom: 1px solid #b0b0b077;
+    display: flex;
+    gap: 20px;
+
+    span {
+      font-size: 15px;
+      padding-bottom: 10px;
+      cursor: pointer;
+    }
+    .active {
+      border-bottom: 1px solid black;
+    }
+    margin: 20px 0px;
+  }
+
+  .draftsTab {
+    .previewDetails {
+      display: flex;
+      gap: 20px;
+
+      span {
+        // width: ;
+        background: #ebebeb;
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      .previewUrl {
+        width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      button {
+        margin-left: auto;
+        padding: 0px 20px;
+        background: black;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (max-width: 622px) {
+  .userArticlesContainer {
+    width: 80%;
+  }
+}
+
+@media (max-width: 522px) {
+  .userArticlesContainer {
+    width: 90%;
+  }
+}

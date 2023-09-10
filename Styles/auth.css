@@ -1,0 +1,363 @@
+@import url("https://fonts.cdnfonts.com/css/charter-itc-tt");
+@import url("https://fonts.cdnfonts.com/css/sf-pro-display");
+@import url("https://fonts.cdnfonts.com/css/sf-mono");
+.signup,
+.login {
+  margin-top: 8vh;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica";
+}
+
+.signup {
+  width: 100%;
+  height: 92vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signup .signupContainer {
+  background-color: white;
+  width: 400px;
+  height: auto;
+  border-radius: 10px;
+  padding: 30px;
+}
+.signup .signupContainer .signupHeading {
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica";
+  text-align: center;
+  font-weight: lighter;
+  margin-bottom: 10px;
+}
+.signup .signupContainer .signupSubHeading {
+  margin-top: 5px;
+  font-size: 13px;
+  text-align: center;
+  color: #797979;
+}
+.signup .signupContainer .signupForm {
+  margin-top: 30px;
+}
+.signup .signupContainer .signupForm .signupEmailLabel {
+  font-size: 14px;
+  font-weight: lighter;
+}
+.signup .signupContainer .signupForm .signupEmailInput {
+  display: block;
+  width: 97%;
+  height: 40px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  padding-left: 10px;
+}
+.signup .signupContainer .signupForm .emailError {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+.signup .signupContainer .signupForm .btn {
+  margin-top: 25px;
+}
+.signup .signupContainer .signupForm .signInLink {
+  font-size: 12px;
+  margin-top: 10px;
+}
+.signup .signupContainer .signupForm .signInLink span {
+  text-decoration: underline;
+}
+.signup .signupContainer .signupForm .socialLoginButtons .socialbutton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 100%;
+}
+.signup .signupContainer .signupForm .socialLoginButtons .sociallogo {
+  width: 29px;
+  height: 28px;
+  margin-right: 10px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.signup .verification {
+  width: 400px;
+  margin-top: 30px;
+  padding: 30px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.192) 0px 5px 15px;
+}
+.signup .verification .verificationHeading {
+  font-size: 30px;
+  font-weight: 300;
+  text-align: center;
+}
+.signup .verification hr {
+  margin: 10px 0px;
+  background-color: transparent;
+  border-color: rgba(216, 216, 216, 0.4705882353);
+}
+.signup .verification .subheading {
+  font-size: 15px;
+  color: #797979;
+  text-align: center;
+}
+.signup .verification .verificationInstructions {
+  margin-top: 30px;
+  font-size: 15px;
+  color: #797979;
+  text-align: center;
+}
+.signup .verification .tokenError {
+  text-align: center;
+  color: red;
+  font-size: 12px;
+  margin-top: 15px;
+}
+.signup .verification .verificationForm {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.signup .verification .verificationForm input {
+  width: 12%;
+  height: 50px;
+  text-align: center;
+  font-size: large;
+}
+.signup .verification .btn {
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+.signup .verification .verificationFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+.signup .verification .verificationFooter p {
+  font-size: 15px;
+  color: #797979;
+  cursor: pointer;
+}
+.signup .verification .verificationFooter p:hover {
+  color: black;
+  text-decoration: underline;
+}
+.signup .selectInterest {
+  width: 100%;
+  align-self: flex-start;
+  margin-top: 60px;
+  padding-bottom: 40px;
+}
+.signup .selectInterest .profileHead {
+  display: flex;
+  flex-direction: row;
+}
+.signup .selectInterest .profileHead .backArrow {
+  justify-self: left;
+  align-self: center;
+  font-size: 19px;
+  cursor: pointer;
+}
+.signup .selectInterest .profileHead .profileheadinfos {
+  margin: 0 auto;
+}
+.signup .selectInterest .profileHead .profileheadinfos h1 {
+  font-size: 30px;
+  font-weight: 500;
+  text-align: center;
+}
+.signup .selectInterest .profileHead .profileheadinfos p {
+  font-size: 15px;
+  color: #797979;
+  text-align: center;
+}
+.signup .selectInterest .selectedInterestsError {
+  text-align: center;
+  color: red;
+  font-size: 13px;
+  margin-top: 15px;
+}
+.signup .selectInterest .interests {
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 50%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+.signup .selectInterest .interests .interest {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  padding: 10px 20px;
+  background: white;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+.signup .selectInterest .interests .interest:hover {
+  border: 2px solid black;
+}
+.signup .selectInterest .interests .selected {
+  background-color: black;
+  color: white;
+}
+.signup .selectInterest .btn {
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+.signup .personalInformation {
+  width: 400px;
+  margin-top: 30px;
+  padding: 30px;
+  background-color: white;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica";
+}
+.signup .personalInformation .profileHead .backArrow {
+  justify-self: left;
+  align-self: center;
+  font-size: 19px;
+  cursor: pointer;
+}
+.signup .personalInformation .profileHead .profileheadinfos {
+  margin: 0 auto;
+}
+.signup .personalInformation .profileHead .profileheadinfos .personalInformationHeading {
+  text-align: left;
+  font-size: 30px;
+  font-weight: 500;
+  justify-self: center;
+}
+.signup .personalInformation .profileHead .profileheadinfos .personalInformationSubHeading {
+  font-size: 15px;
+  color: #797979;
+  text-align: left;
+  margin-top: 10px;
+}
+.signup .personalInformation .personalInformationForm {
+  width: 100%;
+  margin-top: 50px;
+}
+.signup .personalInformation .personalInformationForm .avatars {
+  width: 100%;
+  overflow-x: scroll;
+  white-space: nowrap;
+  margin: 20px 0px;
+  scrollbar-width: thin;
+  padding: 10px 0px;
+  padding-left: 10px;
+}
+.signup .personalInformation .personalInformationForm .avatars .avatar {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #f3f3f3;
+  margin: 0 auto;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  margin-right: 20px;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: all 0.2s ease-in-out;
+}
+.signup .personalInformation .personalInformationForm .avatars .customAvatar {
+  background-size: 60% !important;
+}
+.signup .personalInformation .personalInformationForm .avatars .selectedAvatar {
+  transform: scale(1.2);
+  border: 2px solid #000;
+}
+.signup .personalInformation .personalInformationForm .personalInformationInput {
+  display: block;
+  width: 97%;
+  height: 40px;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  margin-top: 10px;
+  margin-bottom: 35px;
+  padding-left: 0px;
+  font-weight: 400;
+  color: #4a4a4a;
+}
+.signup .personalInformation .personalInformationForm .personalInformationInput:focus {
+  outline: none;
+  border-bottom-color: #000;
+}
+.signup .personalInformation .personalInformationForm .fullNameError {
+  color: red;
+  font-size: 12px;
+  margin-top: -30px;
+  margin-bottom: 10px;
+}
+.signup .personalInformation .personalInformationForm .emailLabel {
+  display: block;
+  margin-top: 30px;
+}
+.signup .personalInformation .personalInformationForm textarea {
+  display: block;
+  width: 97%;
+  height: 100px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  resize: none;
+  font-weight: 400;
+  color: #4a4a4a;
+}
+.signup .personalInformation .personalInformationForm textarea:focus {
+  outline: none;
+  border-bottom-color: #000;
+}
+.signup .personalInformation .personalInformationForm .bioWordCount {
+  font-size: 12px;
+  color: #797979;
+  margin-top: -20px;
+  margin-bottom: 10px;
+}
+.signup .personalInformation .personalInformationForm .btn {
+  margin-top: 25px;
+}
+
+.textBreaker {
+  display: flex;
+  align-items: center;
+  margin: 30px 0px;
+}
+
+.dash {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #bcbcbc;
+  margin: 0 10px;
+}
+
+@media (max-width: 1000px) {
+  .signup .selectInterest .interests {
+    width: 90%;
+  }
+}
+@media (max-width: 500px) {
+  .signup .personalInformation {
+    overflow-x: hidden;
+    width: 90%;
+  }
+}/*# sourceMappingURL=auth.css.map */

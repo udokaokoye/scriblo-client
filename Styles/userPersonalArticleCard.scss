@@ -1,0 +1,44 @@
+.userArticleCardContainer {
+    width: auto;
+    height: auto;
+    // background: red;
+    display: flex;
+    gap: 20px;
+
+    .articleCover {
+        width: 160px;
+        height: 120px;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        cursor: pointer;
+    }
+
+    .articleInformation {
+        width: 70%;
+        cursor: pointer;
+        p {
+            margin: 10px 0px;
+        }
+
+        .articleDate {
+            color: #4e4e4e77;
+        }
+    }
+
+    .articleOptions {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+
+        .editIcon {
+            color: blue;
+            cursor: pointer;
+        }
+
+        .deleteIcon {
+            color: red;
+            cursor: pointer;
+        }
+    }
+}

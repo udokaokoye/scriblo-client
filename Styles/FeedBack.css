@@ -1,0 +1,164 @@
+.feedBackContainer {
+  position: fixed;
+  bottom: 250px;
+  right: 0;
+  z-index: 400;
+  cursor: pointer;
+}
+.feedBackContainer small {
+  font-size: 12px;
+  font-style: italic;
+  color: #616161;
+}
+.feedBackContainer .feedbackBtn {
+  margin-left: auto;
+  width: 30px;
+  height: 120px;
+  background: blue;
+  border-radius: 15px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+.feedBackContainer .feedbackBtn p {
+  color: white;
+  font-weight: bold;
+  transform: rotate(270deg);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  align-items: center;
+}
+.feedBackContainer .feedbackFormContainer {
+  width: 300px;
+  height: auto;
+  background: white;
+  position: absolute;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  bottom: -100px;
+  transition: all 0.2s ease-in-out;
+  border-radius: 15px;
+}
+.feedBackContainer .feedbackFormContainer .stageOne {
+  width: 90%;
+  margin: 0 auto;
+  height: 100%;
+  padding: 15px;
+}
+.feedBackContainer .feedbackFormContainer .stageOne .close {
+  margin-top: 20px;
+  font-weight: bold;
+  color: red;
+  cursor: pointer;
+}
+.feedBackContainer .feedbackFormContainer .stageOne h3 {
+  text-align: center;
+}
+.feedBackContainer .feedbackFormContainer .stageOne .feedbackOptions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 15px;
+}
+.feedBackContainer .feedbackFormContainer .stageOne .feedbackOptions span {
+  border: 2px solid transparent;
+  text-align: center;
+  padding: 5px 18px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+}
+.feedBackContainer .feedbackFormContainer .stageOne .feedbackOptions span:hover {
+  background-color: transparent;
+  color: black;
+  border: 2px solid black;
+}
+.feedBackContainer .feedbackFormContainer .stageOne .feedbackOptions span:last-child {
+  border: 2px solid black;
+  background-color: transparent;
+  color: black;
+}
+.feedBackContainer .feedbackFormContainer .stageOne .feedbackOptions span:last-child:hover {
+  background-color: black;
+  color: white;
+}
+.feedBackContainer .feedbackFormContainer .stageTwo .stageHeader {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.feedBackContainer .feedbackFormContainer .stageTwo .formField {
+  padding: 10px;
+}
+.feedBackContainer .feedbackFormContainer .stageTwo .formField h3 {
+  margin-bottom: 5px;
+  font-weight: normal;
+}
+.feedBackContainer .feedbackFormContainer .stageTwo .formField textarea {
+  width: calc(100% - 35px);
+  height: 60px;
+  size-adjust: unset;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  font-family: inherit;
+}
+.feedBackContainer .feedbackFormContainer .stageTwo .submitBtn {
+  padding: 10px 20px;
+  margin: 10px 15px;
+  background: blue;
+  color: white;
+  border: 1px solid transparent;
+  font-weight: bold;
+  cursor: pointer;
+}
+.feedBackContainer .feedbackFormContainer .stageThree {
+  margin-top: 30px;
+  padding: 20px;
+  text-align: center;
+}
+.feedBackContainer .feedbackFormContainer .stageThree p {
+  margin-top: 10px;
+}
+.feedBackContainer .feedbackFormContainer .stageThree .closeBtn {
+  padding: 10px 32px;
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.feedBackContainer .open {
+  right: 60px;
+}
+.feedBackContainer .close {
+  right: -800px;
+}
+
+@media (max-width: 398px) {
+  .feedBackContainer .feedbackBtn {
+    position: absolute;
+    bottom: -80px !important;
+    right: 0;
+    width: 20px;
+    font-size: 14px;
+  }
+  .feedBackContainer .feedbackBtn .chatIcon {
+    font-size: 15px;
+  }
+  .feedBackContainer .open {
+    right: 40px;
+  }
+}/*# sourceMappingURL=FeedBack.css.map */

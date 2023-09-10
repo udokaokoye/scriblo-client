@@ -1,0 +1,266 @@
+.profileContainer {
+  width: 100%;
+  min-height: 92vh;
+  margin-top: 9vh;
+  position: relative;
+}
+.profileContainer .profileContainerWrapper {
+  width: 70%;
+  margin: 0 auto;
+}
+.profileContainer h3 {
+  font-size: 35px;
+  font-weight: 400;
+  color: rgb(41, 41, 41);
+}
+
+.profileHeadCardContainer {
+  width: 100%;
+}
+.profileHeadCardContainer .profileCoverImage {
+  width: 100%;
+  height: 200px;
+  background: url("https://scriblo.s3.us-east-2.amazonaws.com/branding/default_cover.png");
+  background-position: center !important;
+  background-size: 60% !important;
+  background-repeat: no-repeat !important;
+  background-color: #EDEBE6;
+  position: relative;
+}
+.profileHeadCardContainer .profileCoverImage .overlay {
+  width: inherit;
+  height: 200px;
+  position: absolute;
+}
+.profileHeadCardContainer .profileCoverImage:hover .changeCoverInput {
+  width: inherit;
+  height: 200px;
+  position: absolute;
+  background: rgba(8, 8, 8, 0.462745098);
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.profileHeadCardContainer .profileAvatar {
+  width: 7.5em;
+  height: 7.5em;
+  border-radius: 50%;
+  position: absolute;
+  background: brown;
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  top: 160px;
+  margin-left: 40px;
+  border: 5px solid white;
+}
+.profileHeadCardContainer .profileInfo {
+  margin-top: 6em;
+  padding: 0px 40px;
+}
+.profileHeadCardContainer .profileInfo .profileIcon {
+  font-size: 18px;
+}
+.profileHeadCardContainer .profileInfo .profileNameAndFollowBtn {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+.profileHeadCardContainer .profileInfo .profileNameAndFollowBtn h3 {
+  font-size: 42px;
+  gap: 5px;
+  display: flex;
+  align-items: center;
+}
+.profileHeadCardContainer .profileInfo .profileNameAndFollowBtn .followAndEmailBtn {
+  display: flex;
+  gap: 20px;
+}
+.profileHeadCardContainer .profileInfo .profileNameAndFollowBtn .followAndEmailBtn .btn {
+  width: 120px;
+  height: 35px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+}
+.profileHeadCardContainer .profileInfo .profileNameAndFollowBtn .followAndEmailBtn .btn:hover {
+  background-color: black;
+  color: white;
+}
+.profileHeadCardContainer .profileInfo .profileNameAndFollowBtn .followAndEmailBtn .emailBtn {
+  background-color: transparent;
+  border: 1px solid #7d7d7d;
+  color: black;
+}
+.profileHeadCardContainer .profileInfo .follows {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  color: #4c4c4c;
+}
+.profileHeadCardContainer .profileInfo .profileBio {
+  width: 400px;
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 25px;
+}
+.profileHeadCardContainer .profileInfo .profileDateAndUrl {
+  display: flex;
+  gap: 30px;
+  margin-top: 10px;
+}
+.profileHeadCardContainer .profileInfo .profileDateAndUrl span {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 10px;
+  color: #636363;
+}
+.profileHeadCardContainer .profileInfo .profileDateAndUrl span:last-child {
+  cursor: pointer;
+}
+.profileHeadCardContainer .profileInfo .profileDateAndUrl span:last-child:hover {
+  color: black;
+}
+.profileHeadCardContainer .profileInfo .profileInterests {
+  margin-top: 10px;
+  display: flex;
+  gap: 15px;
+}
+.profileHeadCardContainer .profileInfo .profileInterests span {
+  display: block;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: #ededed;
+}
+
+.profilePinnedArticlesContainer h3 {
+  font-size: 35px;
+  font-weight: 400;
+  color: rgb(41, 41, 41);
+}
+.profilePinnedArticlesContainer h3 .pinIcon {
+  transform: rotate(45deg);
+  font-size: 28px;
+}
+
+.followsOverlayCloser {
+  position: absolute;
+  background: rgba(2, 2, 2, 0.287);
+  width: 100%;
+  height: 100%;
+  z-index: 199;
+}
+
+.followsContainer {
+  position: absolute;
+  background: white;
+  width: 350px;
+  height: 500px;
+  z-index: 200;
+  top: 30%;
+  left: 50%;
+  border-radius: 15px;
+  transform: translate(-50%, -50%);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.followsContainer .followsHeader {
+  width: 100%;
+  border-bottom: 1px solid rgba(204, 204, 204, 0.5294117647);
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+}
+.followsContainer .followsHeader .headerText {
+  width: 90%;
+  font-size: 18px;
+  text-align: center;
+}
+.followsContainer .followsHeader .closeFollows {
+  font-weight: bolder;
+  padding: 5px;
+  width: 10%;
+  margin-left: auto;
+}
+.followsContainer .followWrapper {
+  height: calc(100% - 40px);
+  overflow-y: scroll;
+}
+.followsContainer .followItem {
+  width: auto;
+  display: flex;
+  gap: 15px;
+  margin: 10px 10px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.followsContainer .followItem .followAvatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: brown;
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  border: 1px solid black;
+}
+.followsContainer .followItem .followInfo .followName {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.followsContainer .followItem .followInfo .followUsername {
+  display: block;
+  font-size: 16px;
+}
+.followsContainer .followItem .followActionBtn {
+  width: 100px;
+  height: 30px;
+  background: black;
+  color: white;
+  border: none;
+  margin-left: auto;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .profileContainer .profileContainerWrapper {
+    width: 100% !important;
+  }
+  .profileContainer .profileHeadCardContainer .profileCoverImage {
+    background-size: 120% !important;
+  }
+  .profileContainer .profileInfo .profileNameAndFollowBtn {
+    flex-wrap: wrap;
+    row-gap: 18px;
+  }
+  .profileContainer .profileInfo .profileNameAndFollowBtn h3 {
+    font-size: 8vw;
+  }
+}
+@media (max-width: 488px) {
+  .profileContainer .profileInfo .profileBio {
+    width: 100%;
+  }
+}
+@media (max-width: 400px) {
+  .profileContainer .profileInfo .profileInterests span {
+    font-size: 13px;
+  }
+  .followsContainer {
+    width: 90% !important;
+  }
+}/*# sourceMappingURL=profile.css.map */
