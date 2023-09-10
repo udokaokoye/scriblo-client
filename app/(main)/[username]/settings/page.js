@@ -9,7 +9,7 @@ import { useSession } from "next-auth/react";
 import { redirect, useRouter } from "next/navigation";
 import Loading from "../loading";
 function Settings({params}) {
-    const { data: session } = useSession()
+    const { data: session, update } = useSession()
     const [user, setuser] = useState({})
     const [settingsTab, setsettingsTab] = useState('account')
     const [popupActive, setpopupActive] = useState(false)
@@ -88,8 +88,7 @@ function Settings({params}) {
       };
 
     useEffect(() => {
-
-
+      console.log(session)
         getuserInfo()
     }, [session])
 
@@ -127,6 +126,7 @@ function Settings({params}) {
             profilePhotoRef.current = convertToS3Url(`${user?.email}_avatar`)
             // upload new profile picture
         }
+        newprofileData.username = newprofileData.username.replaceAll(" ", "");
         formData.append('action', 'updateProfile')
         formData.append("userId", session?.id)
         formData.append("name", newprofileData.name)
@@ -144,6 +144,14 @@ function Settings({params}) {
         const responseJson = await response.json()
         console.log(responseJson)
         // redirect(`/${user?.username}`)
+        await update({
+          ...session,
+          name: newprofileData.name,
+          username: newprofileData.username,
+          bio: newprofileData.bio,
+          url: newprofileData.url,
+          avatar: profilePhotoRef.current,
+        })
         setloading(false)
         alert('Profile Updated, refresh page to see changes')
         setpopupActive(false)

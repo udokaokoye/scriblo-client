@@ -5,7 +5,7 @@ import { Merriweather } from 'next/font/google'
 import Provider from '@/Components/Provider'
 import { AppContexProvider } from '../contex/store';
 import { usePathname } from 'next/navigation';
-
+import FeedBack from '@/Components/FeedBack';
 const merrweather = Merriweather({
   weight: ['300', '400', '700', '900'],
   subsets: ['latin'],
@@ -52,10 +52,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={merrweather.className}>
+      <body style={{position: 'relative'}} className={merrweather.className}>
         <AppContexProvider>
         <Provider>
         <Navigation />
+        <FeedBack />
         {children}
         </Provider>
         </AppContexProvider>

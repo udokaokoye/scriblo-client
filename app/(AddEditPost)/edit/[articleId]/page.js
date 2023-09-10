@@ -74,7 +74,7 @@ function ArticleEdit({ params }) {
       setsummary(data?.data?.summary);
       
       if(data?.data?.tags !== "") {
-        prevTags = data?.data?.tags
+        let prevTags = data?.data?.tags
         ?.split(",")
         .map((name) => ({ name, id: 0 }));
       settags(prevTags);

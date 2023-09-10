@@ -9,8 +9,10 @@ import { formatDate, limitText } from "@/public/util/helpers";
 import Link from "next/link";
 import Verified from "./Verified";
 import { pinArticle, unpinArticle } from "@/public/util/apiHelpers";
+import { useRouter } from "next/navigation";
 function ArticleCard({ article, fromProfilePage=false, session }) {
   const [showMoreMenu, setshowMoreMenu] = useState(false);
+  const router = useRouter()
   return (
     <article className={`articleCardContainer`}>
       <div className="articleCardHeader">
@@ -93,6 +95,7 @@ function ArticleCard({ article, fromProfilePage=false, session }) {
           <div className="moreMenu">
             <span className="moreMenuItem" onClick={() => {
               article?.pinned == 'true' ? unpinArticle(article?.id) : pinArticle(article?.id)
+              router.refresh()
               setshowMoreMenu(false)
             }}><PushPinOutlinedIcon className="pinIcon" /> {article?.pinned == 'true' ? 'Unpin' : 'Pin' }</span>
           </div>

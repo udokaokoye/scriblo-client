@@ -81,14 +81,7 @@ export const authOptions = {
       }
 
       if (trigger === "update" && token) {
-        console.log("Email: " + token?.id)
-        // const response = await fetch(
-        //   `${API_URL}/users/index.php?id=${token?.id}&with=token`);
-        // const responseJson = await response.json();
-        // if (responseJson.status !== 200) {
-        //   return token;
-        // }
-        // token = {...token, ...responseJson.data};
+        return {...token, ...session}
       }
       return token;
     },

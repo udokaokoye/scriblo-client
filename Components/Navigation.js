@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import SearchIcon from "@mui/icons-material/Search";
 import LoaderSpiral from "./LoaderSpiral";
 
+
 function Navigation() {
   const { data: session, update } = useSession();
   // console.log(session);
