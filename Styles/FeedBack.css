@@ -131,6 +131,9 @@
 
 @media (max-width: 398px) {
   .feedBackContainer .feedbackBtn {
+    position: absolute;
+    bottom: -80px !important;
+    right: 0;
     width: 20px;
   }
   .feedBackContainer .open {
