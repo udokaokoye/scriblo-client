@@ -7,7 +7,7 @@
 }
 .feedBackContainer .feedbackBtn {
   margin-left: auto;
-  width: 50px;
+  width: 30px;
   height: 100px;
   background: blue;
   border-radius: 15px;
@@ -131,7 +131,7 @@
 
 @media (max-width: 398px) {
   .feedBackContainer .feedbackBtn {
-    width: 30px;
+    width: 20px;
   }
   .feedBackContainer .open {
     right: 40px;
