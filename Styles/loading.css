@@ -1,4 +1,15 @@
 .loadingArea {
+  background-image: url("../public/images/loading.gif");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  z-index: 500;
+  width: 30%;
+  height: 100vh !important;
+}
+
+.loadingAreaOriginal {
   background: url("../public/images/loading.gif");
   background-color: "red";
   background-position: center;
