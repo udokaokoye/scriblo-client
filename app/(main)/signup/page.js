@@ -406,8 +406,8 @@ function Signup() {
             We sent a verification code to <span className="bold">{email}</span>
           </p>
           <p className="verificationInstructions">
-            Please check your inbox and enter the verification code below to
-            verify your email address. The code will expire in 15 mins
+            Please check your inbox/spam and enter the verification code below to
+            verify your email address. The code will expire in 15 mins. <b>make sure to check your spam folder too.</b>
           </p>
 
           {tokenError && <p className="tokenError">{tokenError}</p>}
