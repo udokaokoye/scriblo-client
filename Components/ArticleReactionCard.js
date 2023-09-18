@@ -77,7 +77,7 @@ function ArticleReactionCard({postId, userId, session, preview, authorUsername, 
             
             <div style={{display: showShareMenu ? 'block' : 'none'}} className="shareMenu">
                 <div onClick={() => {
-                  copyToClipboard(`${process.env.APP_URL}${authorUsername}/${slug}`)
+                  copyToClipboard(`${process.env.NEXT_PUBLIC_APP_URL}${authorUsername}/${slug}`)
                   alert("Copied to clipboard");
                 }} className="shareOption"><InsertLinkIcon /> Copy</div>
                 <div onClick={() => alert("Share to twitter is currently in development")} className="shareOption"><TwitterIcon /> Twitter</div>
