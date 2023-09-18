@@ -204,7 +204,7 @@ const [isToolBarSticky, setisToolBarSticky] = useState(false)
           inline: { inDropdown: true },
           list: { inDropdown: true },
           textAlign: { inDropdown: true },
-          link: { inDropdown: true },
+          link: { inDropdown: false, popupClassName: "editorPopups" },
           history: { inDropdown: true },
           emoji: {className: 'editorEmoji'},
           image: {
