@@ -197,6 +197,7 @@ const [isToolBarSticky, setisToolBarSticky] = useState(false)
             "textAlign",
             "history",
             "embedded",
+            "link",
             "emoji",
             "image",
           ],
