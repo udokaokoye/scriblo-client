@@ -5,7 +5,9 @@ import "../Styles/FeedBack.css";
 import { source_Sans_Pro } from "@/public/util/fonts";
 import moment from "moment";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 const FeedBack = () => {
+  const { data: session } = useSession()
   const [showFeedBackForm, setshowFeedBackForm] = useState(false);
   const [feedbackStage, setfeedbackStage] = useState(1);
   const [feedbacknature, setfeedbacknature] = useState("none");
@@ -27,6 +29,12 @@ const FeedBack = () => {
     formData.append('reproduction', feedbackReproduction)
     formData.append('date', moment().format("YYYY-MM-DD hh:mm:ss"))
     formData.append('page', pathName)
+
+    if (session) {
+      formData.append('email', session?.email)
+    } else {
+      formData.append('email', 'null')
+    }
     const response =  await fetch(`${process.env.NEXT_PUBLIC_API_URL}/utils/Feedback.php`, {
         method: "POST",
         body: formData
