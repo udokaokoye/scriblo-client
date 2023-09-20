@@ -18,6 +18,7 @@ export const authOptions = {
       name: "Credentials",
       async authorize(credentials) {
         const { email, token } = credentials;
+        // console.log("")
         const res = await fetch(
           `${API_URL}/users/index.php?email=${email}&with=token`,
           {
@@ -38,6 +39,7 @@ export const authOptions = {
   callbacks: {
     async signIn(user) {
       if (user.account.provider == "google") {
+        // console.log("got here")
         const res = await fetch(
           `${API_URL}/users/checkIfUserExists.php?email=${user?.user?.email}`
         );
@@ -45,6 +47,7 @@ export const authOptions = {
         if (resJson.message === false) {
           return `/signup?continue=true&email=${user?.user?.email}&name=${user?.user?.name}&image=${user?.user?.image}`;
         } 
+        // console.log("passsed here")
         // console.log("ResJson " + resJson.message)
         // else {
           // const response = await fetch(
@@ -70,6 +73,7 @@ export const authOptions = {
     jwt: async ({ token, user, trigger, session }) => {
       // console.log("USER: " + user)
       if (user) {
+        // console.log("did i reach here?")
         const response = await fetch(
           `${API_URL}/users/index.php?email=${user?.email}&with=token`);
         const responseJson = await response.json();
