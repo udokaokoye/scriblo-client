@@ -76,7 +76,7 @@ function ArticleCard({ article, fromProfilePage=false, session }) {
       </div>
 
       <div className="articleFooter">
-        <span className="articleReadTime">5 mins read time</span>
+        <span className="articleReadTime">{article?.readTime} mins read time</span>
         <div className="footerActionBtn">
           <span>
             <BookmarkBorderIcon />

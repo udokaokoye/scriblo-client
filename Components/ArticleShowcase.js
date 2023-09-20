@@ -12,7 +12,7 @@ function ArticleShowcase({ article }) {
         <div className="artileContent">
           <h1>{limitText(article.title, 6)}</h1>
           <p>{limitText(article.summary, 30)}</p>
-          <span>5 mins read time</span>
+          <span>{article?.readTime} mins read time</span>
         </div>
       </Link>
     </div>
