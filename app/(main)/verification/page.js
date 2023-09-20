@@ -1,49 +1,102 @@
-import React from 'react'
-import '@/Styles/verification.css'
-import { source_Sans_Pro } from '@/public/util/fonts'
+"use client";
+
+import React, { useState } from "react";
+import "@/Styles/verification.css";
+import { source_Sans_Pro } from "@/public/util/fonts";
 function Verification() {
+  const [email, setemail] = useState("");
+  const [username, setusername] = useState("");
+  const [additionalInformation, setadditionalInformation] = useState("");
+  const [requestRecived, setrequestRecived] = useState(false);
+  const [errorOccured, seterrorOccured] = useState(false)
+
+  const submitRequest = async () => {
+    if (email == "" || username == "") {
+      alert("Email and username is required");
+      return;
+    }
+    const formData = new FormData();
+
+    formData.append("email", email);
+    formData.append("username", username);
+    formData.append("additionalInformation", additionalInformation);
+
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/utils/verificationRequest.php`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+    const jsonResponse = await response.json();
+    if (jsonResponse.status == 201) {
+        setrequestRecived(true)
+    } else {
+        seterrorOccured(true)
+    }
+  };
   return (
     <div className={`verificationContainer ${source_Sans_Pro.className}`}>
-        <h3>Requirements to apply for a verified badge on Scriblo </h3>
+      {!requestRecived ? (
+        <>
+          <h1>Verification Application</h1>
+          <p>
+            Get help with your verification request for Scriblo. Information
+            shared will only be used to respond to your request.
+          </p>
 
-        <p>We appreciate your interest in becoming a verified user on our platform. Verification is a mark of authenticity and trustworthiness, enhancing your profile's credibility and distinguishing you as a respected member of our community. To ensure the integrity of our verification process, please review and meet the following requirements:</p>
+          {errorOccured && <p className="error">An Error Occurred, Try again.</p>}
 
-        <h5>1. Authenticity:</h5>
-        <ul>
-            <li>You must be a real individual, organization, or entity.</li>
-            <li>Avoid the use of fake names or impersonation of others.</li>
-        </ul>
+          <div className="field">
+            <span>
+              Email address <sup>*</sup>
+            </span>
+            <input
+              onChange={(e) => setemail(e.target.value)}
+              value={email}
+              type="email"
+            />
+          </div>
 
-        <h5>2. Profile Completeness:</h5>
-        <ul>
-            <li>Your profile should be informative and complete.</li>
-            <li>Include a profile picture, a bio or description, and relevant information about yourself or your organization.</li>
-        </ul>
+          <div className="field">
+            <span>
+              Username <sup>*</sup>
+            </span>
+            <input
+              onChange={(e) => setusername(e.target.value)}
+              value={username}
+              type="email"
+            />
+            <small>
+              The username can be found on an account's Scriblo profile.
+            </small>
+          </div>
 
-        <h5>3. Activity:</h5>
-        <ul>
-            <li>Maintain an active presence on our platform.</li>
-            <li>Consistently contribute to our community through posting and engagement.</li>
-        </ul>
+          <div className="field">
+            <span>Additional Information</span>
+            <textarea
+              onChange={(e) => setadditionalInformation(e.target.value)}
+              value={additionalInformation}
+              type="email"
+            />
+            <small>Any other information you'll like to share.</small>
+          </div>
 
-        <h5>4. Relevance:</h5>
-        <ul>
-            <li>Your presence and content should align with the niche or topic of our platform.</li>
-            <li>Your interests and contributions should be relevant to our community's focus.</li>
-        </ul>
-
-
-        <h5>5. Content Contribution:</h5>
-        <ul>
-            <li>Publish a minimum of 10 articles or have written at least 100 minutes worth of articles on our platform. Quality and relevance are key.</li>
-        </ul>
-
-        <h5>6.  Minimum of 50 Followers:</h5>
-        <ul>
-            <li>Build a following of at least 50 engaged users who find value in your contributions.</li>
-        </ul>
+          <button onClick={submitRequest}>Submit Request</button>
+        </>
+      ) : (
+        <>
+        <br /><br /><br /><br />
+          <div className="confirmImage">✅</div>
+          <h1>Request Recieved!</h1>
+          <p>
+            Our dedicated team will carefully review your application to ensure
+            it aligns with our verification criteria. You should get a response within 3-5 days.
+          </p>
+        </>
+      )}
     </div>
-  )
+  );
 }
 
-export default Verification
+export default Verification;

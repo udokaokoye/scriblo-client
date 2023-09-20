@@ -31,7 +31,9 @@ function ProfileHeadCard({
       }
     }
   };
-  console.log(follows)
+
+  const verificationLink = 'https://www.myscriblo.com/scriblo_official/requirements-to-apply-for-a-verified-badge-on-scriblo-23/'
+  // console.log(follows)
   return (
     <div className="profileHeadCardContainer">
       {/* {showFollowList && <Popup popupContent={'followList'} closePopup={() => setshowFollowList(false)} />} */}
@@ -49,7 +51,7 @@ function ProfileHeadCard({
       ></div>
       <div className="profileInfo">
         <div className="profileNameAndFollowBtn">
-          <h3>{profile?.name} {profile.verified == '1' && <Verified size={25} />}</h3>
+          <h3>{profile?.name} {profile.verified == '1' ? <Verified size={25} /> : (session && session.id == profile.id ? (<span style={{fontSize: 14}}><Link style={{textDecoration: 'underline'}} href={verificationLink}>get verified?</Link></span>) : "")}</h3>
           {session?.id !== profile?.id ? (
             <div className="followAndEmailBtn">
               <button
@@ -74,6 +76,7 @@ function ProfileHeadCard({
             </div>
           )}
         </div>
+        <span>@{profile?.username}</span>
 
 
 

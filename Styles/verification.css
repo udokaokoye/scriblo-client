@@ -1,9 +1,88 @@
 .verificationContainer {
-  width: 70%;
+  width: 30%;
   margin: 0 auto;
   margin-top: 10vh;
 }
-.verificationContainer h3 {
+.verificationContainer .confirmImage {
   text-align: center;
-  font-size: 28px;
+  font-size: 80px;
+}
+.verificationContainer .error {
+  font-size: 15px;
+  text-align: center;
+  color: red;
+}
+.verificationContainer h1,
+.verificationContainer p {
+  text-align: center;
+}
+.verificationContainer p {
+  margin-bottom: 20px;
+  color: rgba(0, 0, 0, 0.712);
+}
+.verificationContainer .field {
+  display: block;
+  margin-bottom: 15px;
+}
+.verificationContainer .field span {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+.verificationContainer .field sup {
+  font-weight: bold;
+  color: red;
+}
+.verificationContainer .field input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: 1px solid rgba(204, 204, 204, 0.631372549);
+  border-radius: 5px;
+}
+.verificationContainer .field textarea {
+  padding: 10px;
+  width: calc(100% - 20px);
+  height: 80px;
+  border: 1px solid rgba(204, 204, 204, 0.631372549);
+  border-radius: 5px;
+}
+.verificationContainer .field small {
+  color: rgba(0, 0, 0, 0.542);
+}
+.verificationContainer button {
+  width: 100%;
+  padding: 15px 0px;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  border: 1px solid transparent;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+.verificationContainer button:hover {
+  background-color: rgba(0, 0, 0, 0.87);
+}
+
+@media (max-width: 1152px) {
+  .verificationContainer {
+    width: 50%;
+  }
+}
+@media (max-width: 783px) {
+  .verificationContainer {
+    width: 70%;
+  }
+}
+@media (max-width: 562px) {
+  .verificationContainer {
+    width: 90%;
+  }
+  .verificationContainer h1 {
+    font-size: 28px;
+  }
+  .verificationContainer p {
+    font-size: 14px;
+    margin-top: 5px;
+  }
 }/*# sourceMappingURL=verification.css.map */
