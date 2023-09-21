@@ -1,0 +1,113 @@
+.adminContainer {
+  margin: 0 auto;
+  width: 70%;
+  margin-top: 10vh;
+}
+.adminContainer .adminHeader {
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid #e1e1e1;
+  display: flex;
+  gap: 20px;
+  padding: 5px 0px;
+  align-items: center;
+}
+.adminContainer .adminHeader span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 5px 20px;
+  background-color: black;
+  border-radius: 5px;
+  color: white;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.adminContainer .adminHeader span:hover {
+  background-color: rgba(0, 0, 0, 0.729);
+}
+.adminContainer .tab .metric {
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(204, 204, 204, 0.6078431373);
+  border-radius: 10px;
+  min-height: 100px;
+  height: auto;
+  margin-bottom: 20px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.adminContainer .tab .metric .subMetric {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0px;
+}
+.adminContainer .tab .metric .subMetric span {
+  font-size: 18px;
+  padding: 5px 12px;
+  border-radius: 10px;
+  background-color: orange;
+  color: white;
+}
+.adminContainer .tab .metric h3 {
+  font-size: 25px;
+}
+.adminContainer .tab .metric span {
+  font-size: 30px;
+  font-weight: 200;
+}
+.adminContainer .tab .feedbackType {
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid #e1e1e1;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.adminContainer .tab .feedbackType span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 5px 20px;
+  background-color: orange;
+  border-radius: 5px;
+  color: white;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.adminContainer .tab .feedbackType span:hover {
+  background-color: rgba(0, 0, 0, 0.729);
+}
+.adminContainer .tab .feedback {
+  width: 100%;
+  min-height: 100px;
+  height: auto;
+  background-color: rgba(204, 204, 204, 0.6078431373);
+  border-radius: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.adminContainer .tab .feedback span {
+  font-style: italic;
+  margin-right: 20px;
+}
+.adminContainer .tab .feedback .circle {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: black;
+}
+.adminContainer .tab .feedback button {
+  margin-top: 10px;
+  padding: 5px 18px;
+  border: 1px solid transparent;
+  background-color: rgb(43, 99, 6);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}/*# sourceMappingURL=Admin.css.map */
