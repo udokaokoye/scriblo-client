@@ -7,6 +7,7 @@ function HomepageShowcase() {
   return (
     <div className='homepageShowcaseContainer'>
         <h1 className='showcaseHeading'>Stay Curious. (Develop Branch)</h1>
+        <p>Triggerring a git push to refresh env variables</p>
         <div className="showcaseBannerImg"></div>
         <p className='showcaseMessage'> Discover stories, thinking, and expertise from writers on any topic</p>
         <Link href={'/#articles'}><button className='showcaseBtn'>Explore Articles <ArrowDropDownIcon /></button></Link>
