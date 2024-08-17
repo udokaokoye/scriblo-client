@@ -2,7 +2,7 @@ import HomepageShowcase from "@/Components/HomepageShowcase";
 import HomepageTrending from "@/Components/HomepageTrending";
 import "../../Styles/home.css";
 import RecentArticles from "@/Components/RecentArticles";
-import { source_Sans_Pro } from "../../public/util/fonts";
+import { inter, source_Sans_Pro } from "../../public/util/fonts";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../authentication/[...nextauth]/route";
 import RecommendedTopics from "@/Components/RecommendedTopics";
@@ -10,6 +10,7 @@ import { headers } from "next/headers";
 import { getTagID, getTagIDs } from "@/public/util/helpers";
 import PromoteScriblo from "@/Components/PromoteScriblo";
 import ReadOurBlogCTASide from "@/Components/ReadOurBlogCTASide";
+import SubscribeCTA from "@/Components/SubscribeCTA";
 // import next from "next/types";
 export default async function Home({ params, searchParams }) {
   const session = await getServerSession(authOptions);
@@ -38,6 +39,7 @@ export default async function Home({ params, searchParams }) {
       intrestIDs = getTagID(searchParams.category);
     }
 
+
     const res = await fetch(
       `${process.env.API_URL}/posts/index.php?categories=${intrestIDs}`,
       {
@@ -56,7 +58,7 @@ export default async function Home({ params, searchParams }) {
     // console.log(data)
   } else {
     const res = await fetch(
-      `${process.env.API_URL}/posts/index.php?categories=all`,
+      `${process.env.API_URL}/posts/index.php?trending=1`,
       { next: { revalidate: 20 } }
     );
     const data = await res.json();
@@ -76,9 +78,15 @@ export default async function Home({ params, searchParams }) {
               <br />
               <br />
               <HomepageTrending
-                source_Sans_Pro={source_Sans_Pro}
+                source_Sans_Pro={inter}
                 trends={feedArticle}
               />
+
+              <br />
+              <br />
+              <br />
+
+              <SubscribeCTA source_Sans_Pro={inter} />
               
             </>
           )}
@@ -89,13 +97,11 @@ export default async function Home({ params, searchParams }) {
       <br />
       <br />
       <br />
-      <br />
-      <br />
       <div className="mainContainer">
         {/* {session?.token} */}
         <div className="articleFeed">
           <RecentArticles
-            source_Sans_Pro={source_Sans_Pro}
+            source_Sans_Pro={inter}
             topics={topics}
             articles={feedArticle}
             session={session}

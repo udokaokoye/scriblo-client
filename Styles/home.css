@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -93,9 +94,20 @@
   font-size: 40px;
   font-weight: 400;
 }
+@media (max-width: 495px) {
+  .homepageTrendingContainer .homepageTrendingContainerWrapper .header .headerTexts h2 {
+    font-size: 32px !important;
+  }
+}
 .homepageTrendingContainer .homepageTrendingContainerWrapper .header .headerTexts p {
   font-size: 14px;
   margin-top: 5px;
+}
+@media (max-width: 495px) {
+  .homepageTrendingContainer .homepageTrendingContainerWrapper .header .headerTexts p {
+    font-size: 15px;
+    color: #ccc;
+  }
 }
 .homepageTrendingContainer .homepageTrendingContainerWrapper .header .headerBtn {
   width: 40px;
@@ -120,10 +132,25 @@
   height: auto;
 }
 .homepageTrendingContainer .homepageTrendingContainerWrapper .trends .trend .trendRank {
-  font-size: 20px;
+  font-size: 60px;
+}
+@media (max-width: 495px) {
+  .homepageTrendingContainer .homepageTrendingContainerWrapper .trends .trend .trendRank {
+    font-size: 50px;
+  }
 }
 .homepageTrendingContainer .homepageTrendingContainerWrapper .trends .trend .trendRank span {
   color: #ccc;
+}
+.homepageTrendingContainer .homepageTrendingContainerWrapper .trends .trend .firstPosition {
+  font-size: 80px;
+  font-family: "Rubik Doodle Shadow", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  color: gold;
+}
+.homepageTrendingContainer .homepageTrendingContainerWrapper .trends .trend .firstPosition span {
+  color: gold;
 }
 .homepageTrendingContainer .homepageTrendingContainerWrapper .trends .trend .trendArticleAuthor {
   width: 1005;
@@ -150,6 +177,11 @@
   line-height: 32px;
   margin-top: 10px;
 }
+@media (max-width: 495px) {
+  .homepageTrendingContainer .homepageTrendingContainerWrapper .trends .trend .articleTitle {
+    font-size: 24px;
+  }
+}
 .homepageTrendingContainer .homepageTrendingContainerWrapper .trends .trend .articleDateandReadTime {
   display: flex;
   gap: 10px;
@@ -157,6 +189,89 @@
   font-size: 13px;
   font-weight: 300;
   color: #ccc;
+}
+
+.subscribeCtaContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.subscribeCtaContainer h1 {
+  text-align: center;
+  font-size: 44px;
+  margin-bottom: 20px;
+}
+@media (max-width: 495px) {
+  .subscribeCtaContainer h1 {
+    font-size: 38px;
+  }
+}
+.subscribeCtaContainer p {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #323232;
+}
+.subscribeCtaContainer .subscribeForm {
+  padding: 5px;
+  border: 1.5px solid #ccc;
+  border-radius: 20px;
+  padding: 7px 10px;
+  display: flex;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.subscribeCtaContainer .subscribeForm input {
+  min-width: 220px;
+  width: auto;
+  padding: 10px;
+  height: 100%;
+  border: none;
+}
+.subscribeCtaContainer .subscribeForm input:focus {
+  outline: none;
+}
+.subscribeCtaContainer .subscribeForm button {
+  padding: 5px 32px;
+  background-color: black;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.subscribeCtaContainer .subscribeForm button:hover {
+  background-color: transparent;
+  border-color: black;
+  color: black;
+}
+.subscribeCtaContainer .successDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.subscribeCtaContainer .successDiv h3 {
+  color: #ff3a3a;
+  font-size: 30px;
+  text-align: center;
+}
+.subscribeCtaContainer .successDiv button {
+  padding: 10px 32px;
+  background-color: black;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-top: 10px;
+}
+.subscribeCtaContainer .successDiv button:hover {
+  background-color: transparent;
+  border-color: black;
+  color: black;
 }
 
 .recentArticlesContainer {
@@ -180,7 +295,7 @@
   width: fit-content;
   font-size: 12px;
   padding: 6px 14px;
-  background: #2563EB;
+  background: #2563eb;
   color: white;
   margin-top: 15px;
   border-radius: 4px;
@@ -189,28 +304,25 @@
 
 .articleShowcaseContainer {
   width: 100%;
-  height: 400px;
+  height: auto;
   margin: 0 auto;
-  background-position: top !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
+}
+.articleShowcaseContainer .articleCover {
+  width: 100%;
+  padding-bottom: 56.25%;
   position: relative;
 }
-.articleShowcaseContainer .artileContent {
-  width: inherit;
-  height: inherit;
-  position: absolute;
-  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.732), rgba(0, 0, 0, 0.167));
-  color: #fff;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-  flex-direction: column;
+.articleShowcaseContainer .articleAuthorandDate {
+  margin-top: 15px;
+}
+.articleShowcaseContainer .articleAuthorandDate span {
+  font-weight: 500;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.768627451);
 }
 .articleShowcaseContainer .artileContent h1,
 .articleShowcaseContainer .artileContent p,
 .articleShowcaseContainer .artileContent span {
-  margin-left: 20px;
   cursor: pointer;
 }
 .articleShowcaseContainer .artileContent span {
@@ -219,10 +331,36 @@
   font-size: 14px;
   font-weight: bold;
 }
+.articleShowcaseContainer .artileContent .title-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.articleShowcaseContainer .artileContent .title-arrow .arrowForward {
+  transform: rotate(300deg);
+}
 .articleShowcaseContainer .artileContent h1 {
-  font-weight: bold;
-  font-size: 35px;
-  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.articleShowcaseContainer .artileContent p {
+  font-size: 14px;
+  line-height: 24px;
+}
+.articleShowcaseContainer .articleTags {
+  display: flex;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  margin-top: 15px;
+}
+.articleShowcaseContainer .articleTags .tags {
+  padding: 4px 15px;
+  border: 1.5px solid #252525;
+  border-radius: 15px;
+  color: #252525;
+  font-size: 14px;
 }
 
 .recommendedTopicsContainer {
@@ -244,7 +382,7 @@
 .recommendedTopicsContainer .recTopics .recTopic {
   padding: 8px 20px;
   border-radius: 10px;
-  background-color: #2563EB;
+  background-color: #2563eb;
   color: white;
   font-size: 14px;
   font-weight: 300;
@@ -380,17 +518,11 @@
   }
 }
 @media (max-width: 594px) {
-  .articleShowcaseContainer {
-    height: 300px;
-  }
   .homepageShowcaseContainer .showcaseHeading {
     font-size: 70px;
   }
   .homepageShowcaseContainer .showcaseBannerImg {
     height: 400px;
-  }
-  .homepageTrendingContainer .homepageTrendingContainerWrapper .header .headerTexts h2 {
-    font-size: 30px;
   }
   .userCardContainer {
     width: 90%;
@@ -404,9 +536,6 @@
   }
 }
 @media (max-width: 450px) {
-  .articleShowcaseContainer {
-    height: 200px !important;
-  }
   .articleShowcaseContainer .artileContent h1 {
     width: 100%;
     display: -webkit-box; /* For Safari and older versions of iOS */
@@ -414,11 +543,7 @@
     -webkit-box-orient: vertical; /* Set vertical orientation */
     overflow: hidden; /* Hide any overflowing content */
     text-overflow: ellipsis;
-    margin: 0;
-    padding: 10px !important;
-  }
-  .articleShowcaseContainer .artileContent p {
-    display: none;
+    margin: 10px 0;
   }
   .homepageShowcaseContainer {
     height: 50vh !important;

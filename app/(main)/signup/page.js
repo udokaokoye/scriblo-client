@@ -197,6 +197,7 @@ function Signup() {
   }
 
   const handleSignup = async () => {
+    settokenError("")
     setloading(true)
     avatar == '' && avatarFile !== null && await uploadAvatarToS3(avatarFile);
     let uploadAvatar = ''
@@ -239,6 +240,7 @@ function Signup() {
   };
 
   const handleVerification = async () => {
+    settokenError("")
     setloading(true)
     const formData = new FormData();
     formData.append("email", email);

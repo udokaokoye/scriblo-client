@@ -64,9 +64,7 @@ function CommentDisplayCard({ comment, session, fetchCommnets, replies, nested=f
         </div>
       </div>
 
-      <div className="commentContent">
-        <p>{comment.content}</p>
-      </div>
+        <p className="commentText">{comment.content}</p>
       <div className="repliesActions">
         <span onClick={() =>  setshowReplies(!showReplies)} className="repliesBtn">{replies?.length} replies</span>
         <span

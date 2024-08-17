@@ -76,7 +76,7 @@ function ProfileHeadCard({
             </div>
           )}
         </div>
-        <span>@{profile?.username}</span>
+        <span className="username">@{profile?.username}</span>
 
 
 
@@ -103,7 +103,7 @@ function ProfileHeadCard({
             </span>
               </Link>
           ) : (
-            <Link href={`/${session?.username}/settings`}><span>
+            <Link href={`${session?.id == profile?.id ? `/${ session?.username}/settings` : `/${profile?.username}`} `}><span>
               <InsertLinkOutlinedIcon className="profileIcon" />{" "}
               {session?.id == profile?.id
                 ? "Add a link to your profile"

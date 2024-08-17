@@ -74,7 +74,9 @@ async function Article({ params }) {
     <div className="articleContainer">
       {post ? (
         <>
-        {post.coverImage !== '' && <div className="mobileCoverImageTop"><Image alt={post?.title} className="mobileCoverImg" src={post.coverImage} fill /></div>}
+        {post.coverImage !== '' && 
+        <div className="mobileCoverImageTop">
+          <Image alt={post?.title} className="mobileCoverImg" src={post.coverImage} fill /></div>}
           <h1>{post.title}</h1>
           <br />
           <ArticleInfoCard

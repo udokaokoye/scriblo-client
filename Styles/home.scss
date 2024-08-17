@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -102,10 +103,18 @@
         h2 {
           font-size: 40px;
           font-weight: 400;
+
+          @media (max-width: 495px) {
+            font-size: 32px !important;
+          }
         }
         p {
           font-size: 14px;
           margin-top: 5px;
+          @media (max-width: 495px) {
+            font-size: 15px;
+            color: #ccc;
+          }
         }
       }
 
@@ -134,10 +143,28 @@
         height: auto;
         // border: 1px solid #fff;
 
+        // &:first-child {
+        //   transform: scale(160%);
+        // }
+
         .trendRank {
-          font-size: 20px;
+          font-size: 60px;
+          @media (max-width: 495px) {
+            font-size: 50px;
+          }
           span {
             color: #ccc;
+            
+          }
+        }
+        .firstPosition {
+          font-size: 80px;
+          font-family: "Rubik Doodle Shadow", system-ui;
+          font-weight: 400;
+          font-style: normal;
+          color: gold;
+          span {
+            color: gold;
           }
         }
 
@@ -169,6 +196,11 @@
           font-weight: 500;
           line-height: 32px;
           margin-top: 10px;
+          @media (max-width: 495px) {
+            font-size: 24px;
+          }
+
+
         }
 
         .articleDateandReadTime {
@@ -181,6 +213,97 @@
         }
       }
     }
+  }
+}
+
+.subscribeCtaContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    text-align: center;
+    font-size: 44px;
+    margin-bottom: 20px;
+
+    @media (max-width: 495px) {
+      font-size: 38px;
+    }
+  }
+  p {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #323232;
+  }
+
+  .subscribeForm {
+    padding: 5px;
+    border: 1.5px solid #ccc;
+    border-radius: 20px;
+    padding: 7px 10px;
+    display: flex;
+    column-gap: 10px;
+    input {
+      min-width: 220px;
+      width: auto;
+      padding: 10px;
+      height: 100%;
+      border: none;
+
+      &:focus {
+        outline: none;
+      }
+
+    }
+    button {
+      padding: 5px 32px;
+      background-color: black;
+      color: white;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        background-color: transparent;
+        border-color: black;
+        color: black;
+      }
+    }
+
+
+  }
+
+  .successDiv {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+    h3 {
+      color: #ff3a3a;
+      font-size: 30px;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 32px;
+      background-color: black;
+      color: white;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      margin-top: 10px;
+
+      &:hover {
+        background-color: transparent;
+        border-color: black;
+        color: black;
+      
+    }
+  }
   }
 }
 
@@ -206,7 +329,7 @@
     width: fit-content;
     font-size: 12px;
     padding: 6px 14px;
-    background: #2563EB;
+    background: #2563eb;
     color: white;
     margin-top: 15px;
     border-radius: 4px;
@@ -216,33 +339,33 @@
 
 .articleShowcaseContainer {
   width: 100%;
-  height: 400px;
+  height: auto;
   margin: 0 auto;
-  // background: url("https://scriblo.s3.us-east-2.amazonaws.com/drafts/hello-this-is-levi_0.jpg");
-  background-position: top !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  position: relative;
+  // position: relative;
+
+  .articleCover {
+    width: 100%;
+    padding-bottom: 56.25%;
+    position: relative;
+  }
+
+  .articleAuthorandDate {
+    margin-top: 15px;
+    span {
+      font-weight: 500;
+      font-size: 14px;
+      color: #000000c4;
+    }
+  }
 
   .artileContent {
-    width: inherit;
-    height: inherit;
-    position: absolute;
-    background-image: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.732),
-      rgba(0, 0, 0, 0.167)
-    );
-    color: #fff;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    flex-direction: column;
+    // border: 1px solid black;
+
 
     h1,
     p,
     span {
-      margin-left: 20px;
+      // margin-left: 20px;
       cursor: pointer;
     }
     span {
@@ -252,10 +375,41 @@
       font-weight: bold;
     }
 
+    .title-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .arrowForward {
+        transform: rotate(300deg);
+      }
+    }
+
     h1 {
-      font-weight: bold;
-      font-size: 35px;
-      margin-bottom: 15px;
+      // border: 1px solid black;
+      font-weight: 600;
+      font-size: 24px;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 24px;
+    }
+  }
+
+  .articleTags {
+    display: flex;
+    column-gap: 20px;
+    margin-top: 15px;
+
+    .tags {
+      padding: 4px 15px;
+      border: 1.5px solid #252525;
+      border-radius: 15px;
+      color: #252525;
+      font-size: 14px;
     }
   }
 }
@@ -282,7 +436,7 @@
       padding: 8px 20px;
       border-radius: 10px;
       // background: #f2f2f2
-      background-color: #2563EB;
+      background-color: #2563eb;
       // color: black;
       color: white;
       font-size: 14px;
@@ -444,9 +598,6 @@
 }
 
 @media (max-width: 594px) {
-  .articleShowcaseContainer {
-    height: 300px;
-  }
 
   .homepageShowcaseContainer {
     .showcaseHeading {
@@ -461,15 +612,13 @@
     .homepageTrendingContainerWrapper {
       .header {
         .headerTexts {
-          h2 {
-            font-size: 30px;
-          }
+          
         }
       }
     }
   }
 
-  .userCardContainer{
+  .userCardContainer {
     width: 90%;
     padding: 10px;
 
@@ -485,7 +634,6 @@
 
 @media (max-width: 450px) {
   .articleShowcaseContainer {
-    height: 200px !important;
     .artileContent {
       h1 {
         width: 100%;
@@ -494,11 +642,11 @@
         -webkit-box-orient: vertical; /* Set vertical orientation */
         overflow: hidden; /* Hide any overflowing content */
         text-overflow: ellipsis;
-        margin: 0;
-        padding: 10px !important;
+        margin: 10px 0;
+        // padding: 10px !important;
       }
       p {
-        display: none;
+        // display: none;
       }
     }
   }

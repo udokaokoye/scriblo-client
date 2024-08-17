@@ -3,12 +3,17 @@ import React from 'react'
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import { formatDate } from '@/public/util/helpers';
 import Link from 'next/link';
+import Verified from './Verified';
+import Head from 'next/head';
 function HomepageTrending({trends, source_Sans_Pro}) {
   return (
+
     <div className={`homepageTrendingContainer ${source_Sans_Pro.className}`}>
+
         <div className="homepageTrendingContainerWrapper">
         <div className="header">
             <div className="headerTexts">
+                
             <h2>Trending on Scriblo</h2>
             <p>Discover trending stroies from writers on any topic</p>
             </div>
@@ -18,10 +23,10 @@ function HomepageTrending({trends, source_Sans_Pro}) {
         <div className="trends">
             {trends?.length >=6 ? trends.slice(0,5).map((trend, index) => (
                 <div key={index} className="trend">
-                    <div className="trendRank"><span>#</span>{index+1}</div>
+                    <div className={`trendRank ${index ==0 && 'firstPosition'}`}><span>#</span>{index+1}</div>
                     <Link href={`/${trend.authorUsername}`}><div className="trendArticleAuthor">
                         <div style={{background: `url(${trend.authorAvatar})`}} className="authorAvatar"></div>
-                        <span className="authorName">{trend.authorName}</span>
+                        <span className="authorName">{trend.authorName} {trend.authorVerified == 1 && <Verified size={18} />}</span>
                     </div>
                     </Link>
                     <Link href={`/${trend.authorUsername}/${trend.slug}`}><h3 className="articleTitle">{trend.title}</h3></Link>

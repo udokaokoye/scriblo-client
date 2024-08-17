@@ -99,6 +99,15 @@
   border: 1px solid #7d7d7d;
   color: black;
 }
+.profileHeadCardContainer .profileInfo .username {
+  text-decoration: underline;
+}
+@media (max-width: 495px) {
+  .profileHeadCardContainer .profileInfo .username {
+    display: block;
+    margin-top: 15px;
+  }
+}
 .profileHeadCardContainer .profileInfo .follows {
   display: flex;
   align-items: center;
