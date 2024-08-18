@@ -258,7 +258,7 @@ function Signup() {
         signIn("credentials", {
           email,
           token: json.token,
-          callbackUrl: process.env.NEXT_PUBLIC_APP_URL,
+          callbackUrl: '/',
         });
         // console.log(json);
       } else {
