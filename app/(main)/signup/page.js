@@ -382,7 +382,7 @@ function Signup() {
               <button
                 onClick={() =>
                   signIn("google", {
-                    callbackUrl: process.env.NEXT_PUBLIC_APP_URL,
+                    callbackUrl: '/',
                   })
                 }
                 className="socialbutton"
