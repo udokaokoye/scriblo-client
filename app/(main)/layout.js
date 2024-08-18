@@ -56,7 +56,7 @@ export default function RootLayout({ children }) {
         <AppContexProvider>
         <Provider>
         <Navigation />
-        <FeedBack />
+        {/* <FeedBack /> */}
         {children}
         </Provider>
         </AppContexProvider>
