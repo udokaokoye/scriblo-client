@@ -45,7 +45,7 @@ export const authOptions = {
         );
         const resJson = await res.json();
         if (resJson.message === false) {
-          return `${NEXT_PUBLIC_APP_URL}/signup?continue=true&email=${user?.user?.email}&name=${user?.user?.name}&image=${user?.user?.image}`;
+          return `${APP_URL}/signup?continue=true&email=${user?.user?.email}&name=${user?.user?.name}&image=${user?.user?.image}`;
         } 
           return true;
       }
