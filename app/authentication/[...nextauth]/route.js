@@ -3,6 +3,7 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 const API_URL = process.env.API_URL;
+const APP_URL = process.env.APP_URL;
 
 export const authOptions = {
   session: {
