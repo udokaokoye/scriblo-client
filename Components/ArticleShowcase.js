@@ -12,7 +12,7 @@ function ArticleShowcase({ article }) {
       // style={{ background: `url(${article?.coverImage})` }}
     >
       <div className="articleCover">
-    <Image src={article?.coverImage} fill={true}  alt={`IMAGE - ${article?.title}`}  />
+    <Image src={article?.coverImage} fill={true}  alt={`IMAGE - ${article?.title}`} className="img"  />
       </div>
       <div className="articleAuthorandDate">
         <span>{article?.authorName}</span> • <span>{formatDate(article.createdAt)}</span>
@@ -20,7 +20,7 @@ function ArticleShowcase({ article }) {
       <Link href={`/${article?.authorUsername}/${article?.slug}`}>
         <div className="artileContent">
           <div className="title-arrow">
-          <h1>{limitText(article.title, 6)}</h1>
+          <h1>{limitText(article.title, 18)}</h1>
           <ArrowForward className="arrowForward" />
           </div>
           <p>{limitText(article.summary, 20)}</p>

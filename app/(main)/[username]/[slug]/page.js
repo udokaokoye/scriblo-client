@@ -77,7 +77,7 @@ async function Article({ params }) {
         {post.coverImage !== '' && 
         <div className="mobileCoverImageTop">
           <Image alt={post?.title} className="mobileCoverImg" src={post.coverImage} fill /></div>}
-          <h1>{post.title}</h1>
+          <h1 className="articleTItle" >{post.title}</h1>
           <br />
           <ArticleInfoCard
             authorAvatar={post.authorAvatar}

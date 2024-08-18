@@ -422,6 +422,7 @@ function Signup() {
                 onChange={(e) => handleChange(index, e.target.value)}
                 onKeyDown={(e) => handleBackspace(index, e)}
                 ref={(ref) => (verficationcodeRefs.current[index] = ref)}
+                pattern="\d*"
               />
             ))}
           </div>

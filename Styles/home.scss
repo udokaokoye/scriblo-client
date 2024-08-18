@@ -347,6 +347,10 @@ align-items: center;
     width: 100%;
     padding-bottom: 56.25%;
     position: relative;
+
+    .img {
+      object-fit: cover;
+    }
   }
 
   .articleAuthorandDate {

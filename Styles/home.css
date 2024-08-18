@@ -312,6 +312,10 @@
   padding-bottom: 56.25%;
   position: relative;
 }
+.articleShowcaseContainer .articleCover .img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 .articleShowcaseContainer .articleAuthorandDate {
   margin-top: 15px;
 }
