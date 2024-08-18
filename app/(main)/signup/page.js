@@ -197,7 +197,6 @@ function Signup() {
   }
 
   const handleSignup = async () => {
-    settokenError("")
     setloading(true)
     avatar == '' && avatarFile !== null && await uploadAvatarToS3(avatarFile);
     let uploadAvatar = ''
@@ -240,7 +239,6 @@ function Signup() {
   };
 
   const handleVerification = async () => {
-    settokenError("")
     setloading(true)
     const formData = new FormData();
     formData.append("email", email);
@@ -260,7 +258,7 @@ function Signup() {
         signIn("credentials", {
           email,
           token: json.token,
-          callbackUrl: process.env.NEXT_PUBLIC_APP_URL,
+          callbackUrl: "/",
         });
         // console.log(json);
       } else {
@@ -382,7 +380,7 @@ function Signup() {
               <button
                 onClick={() =>
                   signIn("google", {
-                    callbackUrl: '/',
+                    callbackUrl: "http://localhost:3000/",
                   })
                 }
                 className="socialbutton"

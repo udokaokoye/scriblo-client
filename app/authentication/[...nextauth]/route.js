@@ -3,7 +3,6 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 const API_URL = process.env.API_URL;
-const APP_URL = process.env.APP_URL;
 
 export const authOptions = {
   session: {
@@ -46,9 +45,26 @@ export const authOptions = {
         );
         const resJson = await res.json();
         if (resJson.message === false) {
-          return `${APP_URL}/signup?continue=true&email=${user?.user?.email}&name=${user?.user?.name}&image=${user?.user?.image}`;
+          return `/signup?continue=true&email=${user?.user?.email}&name=${user?.user?.name}&image=${user?.user?.image}`;
         } 
+        // console.log("passsed here")
+        // console.log("ResJson " + resJson.message)
+        // else {
+          // const response = await fetch(
+          //   `${API_URL}/users/index.php?email=${user?.user?.email}&with=token`,
+          //   {
+          //     method: "GET",
+          //     headers: {
+          //       Authorization: "Bearer " + resJson.token,
+          //     },
+          //   }
+          // );
+          // const responseJson = await response.json();
+          // if (responseJson.status !== 200) {
+          //   return false;
+          // }
           return true;
+        // }
       }
       return {
         hello: "world"
