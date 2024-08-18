@@ -260,7 +260,7 @@ function Signup() {
         signIn("credentials", {
           email,
           token: json.token,
-          callbackUrl: "/",
+          callbackUrl: process.env.NEXT_PUBLIC_APP_URL,
         });
         // console.log(json);
       } else {

@@ -45,26 +45,9 @@ export const authOptions = {
         );
         const resJson = await res.json();
         if (resJson.message === false) {
-          return `/signup?continue=true&email=${user?.user?.email}&name=${user?.user?.name}&image=${user?.user?.image}`;
+          return `${NEXT_PUBLIC_APP_URL}/signup?continue=true&email=${user?.user?.email}&name=${user?.user?.name}&image=${user?.user?.image}`;
         } 
-        // console.log("passsed here")
-        // console.log("ResJson " + resJson.message)
-        // else {
-          // const response = await fetch(
-          //   `${API_URL}/users/index.php?email=${user?.user?.email}&with=token`,
-          //   {
-          //     method: "GET",
-          //     headers: {
-          //       Authorization: "Bearer " + resJson.token,
-          //     },
-          //   }
-          // );
-          // const responseJson = await response.json();
-          // if (responseJson.status !== 200) {
-          //   return false;
-          // }
           return true;
-        // }
       }
       return {
         hello: "world"
