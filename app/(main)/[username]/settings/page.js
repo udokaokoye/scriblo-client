@@ -192,6 +192,10 @@ function Settings({params}) {
             <div className="settingsContent">
                 {settingsTab === 'account' && 
                 <>
+                <button onClick={() => {
+                  setpopupContent('editProfile')
+                  setpopupActive(true)
+                }} className="btn" style={{marginBottom: 10, width: 100}}>Edit Profile</button>
                 <div onClick={() => {
                     setpopupContent('editProfile')
                     setpopupActive(true)

@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import '@/Styles/loading.css'
 function Loading() {

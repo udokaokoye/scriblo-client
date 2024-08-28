@@ -258,7 +258,7 @@ function Signup() {
         signIn("credentials", {
           email,
           token: json.token,
-          callbackUrl: "/",
+          callbackUrl: '/',
         });
         // console.log(json);
       } else {
@@ -422,6 +422,7 @@ function Signup() {
                 onChange={(e) => handleChange(index, e.target.value)}
                 onKeyDown={(e) => handleBackspace(index, e)}
                 ref={(ref) => (verficationcodeRefs.current[index] = ref)}
+                pattern="\d*"
               />
             ))}
           </div>

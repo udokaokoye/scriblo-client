@@ -23,13 +23,16 @@ function AboutAuthorCard({author, session, doesSignedInUserFollowAuthor}) {
           <div className="authorInfo">
             <Link href={`/${author.username}`}><p className="authorName">{author.name} {author.verified == '1' && <Verified />}</p></Link>
             <p className="authorBio">{author.bio}</p>
+            <div className="aboutbtns">
+
             {session?.email && !SignedInUserFollowAuthor && author.id !== session?.id ? (
-              <button className='btn' onClick={() => handleFollowUser()}>Follow +</button>
-            ) : (<button className='btn'>Message</button>)}
+              <button className='aboutbtn' onClick={() => handleFollowUser()}>Follow +</button>
+            ) : (<button className='aboutbtn'>Message</button>)}
 
             {!session?.email && (
-              <Link href='/signup'><button className='btn'>Follow +</button></Link>
+              <Link href='/signup'><button className='aboutbtn'>Follow +</button></Link>
             )}
+            </div>
           </div>
         </div>
     </div>

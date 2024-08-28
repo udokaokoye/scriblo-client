@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { merrweather } from "../public/util/fonts";
+import { inter, merrweather } from "../public/util/fonts";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import PushPinOutlinedIcon from "@mui/icons-material/PushPinOutlined";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
@@ -51,7 +51,7 @@ function ArticleCard({ article, fromProfilePage=false, session }) {
               ))}
           </div>
           <Link href={`/${article.authorUsername}/${article.slug}`}>
-            <p className={`articleCardSummary ${merrweather.className}`}>
+            <p className={`articleCardSummary ${inter.className}`}>
               {limitText(article.summary, 35)}
             </p>
           </Link>
@@ -79,13 +79,13 @@ function ArticleCard({ article, fromProfilePage=false, session }) {
         <span className="articleReadTime">{article?.readTime} mins read time</span>
         <div className="footerActionBtn">
           <span>
-            <BookmarkBorderIcon />
+            <BookmarkBorderIcon className="ftIcon" />
           </span>{" "}
           <span>
-            <ShareIcon />
+            <ShareIcon className="ftIcon" />
           </span>
           <span onClick={() => setshowMoreMenu(!showMoreMenu)}>
-            <MoreHorizIcon />
+            <MoreHorizIcon className="ftIcon" />
           </span>
         </div>
       </div>

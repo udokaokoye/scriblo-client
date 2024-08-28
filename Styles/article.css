@@ -2,7 +2,7 @@
   width: 40%;
   min-height: 100vh;
   margin: 0 auto;
-  margin-top: 16vh;
+  margin-top: 11vh;
   overflow-x: hidden;
 }
 .articleContainer .mobileCoverImageTop {
@@ -11,14 +11,14 @@
 .articleContainer .coverImageContainer {
   width: 100%;
   height: 300px;
-  background: red;
 }
 .articleContainer .coverImageContainer .coverImage {
   width: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
-  -o-object-position: top;
-     object-position: top;
+  padding-bottom: 56.25%;
+  position: relative;
+}
+.articleContainer .articleTItle {
+  line-height: 50px;
 }
 .articleContainer article {
   margin: 15px 0px;
@@ -77,6 +77,10 @@
 .articleContainer article iframe[src*="instagram.com"] {
   width: 320px !important;
   height: 700px !important;
+}
+.articleContainer article a {
+  text-decoration: underline;
+  font-weight: bold;
 }
 .articleContainer .articleTags {
   display: flex;
@@ -227,10 +231,30 @@
   font-size: 16px;
   color: #6a6a6a;
 }
-.aboutAuthorCard .authorContainer .authorInfo .btn {
-  margin-top: 10px;
+.aboutAuthorCard .authorContainer .authorInfo .aboutbtns {
+  padding: 0;
+  margin: 0;
+}
+.aboutAuthorCard .authorContainer .authorInfo .aboutbtn {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  border: none;
   width: 180px;
   height: 32px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+@media (max-width: 495px) {
+  .aboutAuthorCard .authorContainer .authorInfo .aboutbtn {
+    width: 150px;
+    margin-top: 10px;
+  }
+}
+@media (max-width: 415px) {
+  .aboutAuthorCard .authorContainer .authorInfo .aboutbtn {
+    width: 110px;
+  }
 }
 
 .commentsContainer h1 {
@@ -318,7 +342,7 @@
 
 .commentDisplayCardContainer {
   width: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 .commentDisplayCardContainer .commentDisplayHeader {
   width: 100%;
@@ -381,17 +405,10 @@
 .commentDisplayCardContainer .commentDisplayHeader .deleteMenu {
   color: rgb(213, 2, 2);
 }
-.commentDisplayCardContainer .commentContent {
-  width: calc(100% - 80px);
-  padding: 20px 15px;
-  background: #eeeeee;
-  border-radius: 10px;
-  margin-left: 60px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-.commentDisplayCardContainer .commentContent p {
-  font-size: 14px;
+.commentDisplayCardContainer .commentText {
+  font-size: 16px;
+  margin-left: 65px;
+  margin-bottom: 5px;
 }
 .commentDisplayCardContainer .repliesActions {
   width: calc(100% - 60px);
@@ -402,19 +419,23 @@
 }
 .commentDisplayCardContainer .repliesBtn {
   cursor: pointer;
+  font-size: 13px;
+  color: rgb(63, 62, 62);
 }
 .commentDisplayCardContainer .repliesBtn:hover {
   text-decoration: underline;
 }
 .commentDisplayCardContainer .replyBtn {
-  font-size: 14px;
+  font-size: 13px;
   margin-left: 60px;
   display: flex;
   align-items: center;
   gap: 5px;
   cursor: pointer;
+  color: rgb(63, 62, 62);
 }
 .commentDisplayCardContainer .replyBtn .replyIcon {
+  font-size: 20px;
   color: rgb(63, 62, 62);
 }
 .commentDisplayCardContainer .replyCommentContainer {
@@ -441,9 +462,10 @@
   .articleContainer .mobileCoverImageTop {
     display: block;
     width: 100%;
-    height: 300px;
     position: relative;
     margin-bottom: 20px;
+    width: 100%;
+    padding-bottom: 56.25%;
   }
   .articleContainer .mobileCoverImageTop .mobileCoverImg {
     -o-object-fit: cover;
@@ -461,16 +483,5 @@
   }
   .aboutAuthorCard .authorContainer .authorInfo {
     width: auto;
-  }
-}
-@media (max-width: 450px) {
-  .articleContainer .mobileCoverImageTop {
-    height: 200px;
-    position: relative;
-    margin-bottom: 20px;
-  }
-  .articleContainer .mobileCoverImageTop .mobileCoverImg {
-    -o-object-fit: cover;
-       object-fit: cover;
   }
 }/*# sourceMappingURL=article.css.map */

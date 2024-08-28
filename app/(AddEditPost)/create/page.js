@@ -1,6 +1,6 @@
 "use client";
 import "../../../Styles/create.css";
-import TextEditor from "@/Components/TextEditor";
+// import TextEditor from "@/Components/TextEditor";
 import React, { useState, useRef, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
@@ -17,6 +17,10 @@ import { v4 as uuidv4 } from 'uuid';
 import Popup from "@/Components/Popup";
 import { copyToClipboard } from "@/public/util/helpers";
 import Loading from "@/Components/Loading";
+import dynamic from "next/dynamic";
+const TextEditor = dynamic(() => import('@/Components/TextEditor'), {
+  ssr: false,
+})
 function Create() {
   const router = useRouter();
   const fileInputRef = useRef(null);
@@ -39,9 +43,11 @@ function Create() {
   const [previewArticleDetails, setpreviewArticleDetails] = useState({code: "00000", url:'processing...'})
   const [loading, setloading] = useState(false)
 
-  useEffect(() => {
-    alert("Tips For Creating Articles. \n - Use Optimized Images \n - Avoid 3rd party extentions like grammarly. \n The app isn't optimized to handle large images, using large image file might freeze the app or take longer to upload.")
-  }, [])
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     alert("Tips For Creating Articles. \n - Use Optimized Images \n - Avoid 3rd party extentions like grammarly. \n The app isn't optimized to handle large images, using large image file might freeze the app or take longer to upload.")
+  //   }
+  // }, [])
   
   // console.log(session.token)
   const stripReplaceSpacesWithDashes = (text) => {

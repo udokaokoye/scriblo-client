@@ -121,6 +121,15 @@ $profile-Avatar-offset: 40px;
 
     }
 
+    .username {
+        text-decoration: underline;
+        @media (max-width: 495px) {
+        display: block;
+        margin-top: 15px;
+          }
+
+    }
+
     .follows {
         display: flex;
         align-items: center;

@@ -36,7 +36,7 @@ useEffect(() => {
 
   return (
     <div className={`commentsContainer ${source_Sans_Pro.className}`}>
-      <h1>Comments ({allComments?.length})</h1>
+      <h1>Comments {allComments?.length > 0 && `(${allComments?.length})`}</h1>
       {allComments == null && (
         <div className="noComment">
         <p>There are no comments for this article</p>

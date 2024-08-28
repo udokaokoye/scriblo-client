@@ -4,8 +4,8 @@ import { Merriweather } from 'next/font/google'
 // import localFont from 'next/font/local'
 import Provider from '@/Components/Provider'
 import { AppContexProvider } from '../contex/store';
-import { usePathname } from 'next/navigation';
 import FeedBack from '@/Components/FeedBack';
+
 const merrweather = Merriweather({
   weight: ['300', '400', '700', '900'],
   subsets: ['latin'],
@@ -56,7 +56,7 @@ export default function RootLayout({ children }) {
         <AppContexProvider>
         <Provider>
         <Navigation />
-        <FeedBack />
+        {/* <FeedBack /> */}
         {children}
         </Provider>
         </AppContexProvider>

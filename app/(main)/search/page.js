@@ -1,4 +1,5 @@
-import React, { use } from "react";
+
+import React from "react";
 import { source_Sans_Pro } from "@/public/util/fonts";
 import "../../../Styles/home.css";
 import "../../../Styles/search.css";
@@ -14,17 +15,17 @@ async function Search({ searchParams }) {
 
   const query = searchParams.q;
   const searchClass = searchParams.class;
-  const res = await fetch(
-    `${process.env.API_URL}/posts/index.php?search=${query}&class=${searchClass}`,  {next: {revalidate: 20}}
+  console.log("API_URL: " + process.env.API_URL)
+  const res = await fetch(`${process.env.API_URL}/posts/index.php?search=${query}&class=${searchClass}`,  {next: {revalidate: 20}}
   );
 
   const data = await res.json();
-  console.log("HEllo")
+  // console.log("HEllo")
   console.log(data.data)
   searchResult = data.data;
 
   return (
-    <div className={`${source_Sans_Pro.className} searchContainer`}>
+<div className={`${source_Sans_Pro.className} searchContainer`}>
       <div className="searchResultContainer">
         <h1>
           Search Results For <span>{query}</span>
