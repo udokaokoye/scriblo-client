@@ -69,8 +69,8 @@ function ArticleCard({ article, fromProfilePage=false, session }) {
           .split(",")
           .slice(0, 3)
           .map((categorie, index) => (
-            <Link key={index} href={`/search/?q=${categorie}&class=articles`}>
-              <span key={categorie}>{categorie}</span>
+            <Link  key={index} href={`/search/?q=${categorie}&class=articles`}>
+              <span  key={categorie}>{categorie}</span>
             </Link>
           ))}
       </div>

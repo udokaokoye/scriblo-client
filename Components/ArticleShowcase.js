@@ -30,7 +30,7 @@ function ArticleShowcase({ article }) {
 
       <div className="articleTags">
         {article?.tags?.split(',').length >= 1 ? article?.tags?.split(',').slice(0,3).map((tg, index) => (
-          <a className="tags" href={`/search/?q=${tg}&class=tags`} key={index}>{tg}</a>
+          <a className={`tags ${tg?.length > 9 ? 'ellipsis' : ''}`} href={`/search/?q=${tg}&class=tags`} key={index}>{tg}</a>
         )) : <span>no tag</span>}
       </div>
     </div>

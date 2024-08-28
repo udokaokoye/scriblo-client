@@ -360,11 +360,19 @@
   margin-top: 15px;
 }
 .articleShowcaseContainer .articleTags .tags {
-  padding: 4px 15px;
+  padding: 4px 10px;
   border: 1.5px solid #252525;
   border-radius: 15px;
   color: #252525;
   font-size: 14px;
+  text-align: center;
+}
+@media (max-width: 460px) {
+  .articleShowcaseContainer .articleTags .ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 .recommendedTopicsContainer {
