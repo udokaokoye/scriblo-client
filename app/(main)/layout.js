@@ -5,6 +5,7 @@ import { Merriweather } from 'next/font/google'
 import Provider from '@/Components/Provider'
 import { AppContexProvider } from '../contex/store';
 import FeedBack from '@/Components/FeedBack';
+import Link from 'next/link';
 
 const merrweather = Merriweather({
   weight: ['300', '400', '700', '900'],
@@ -53,6 +54,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body style={{position: 'relative'}} className={merrweather.className}>
+      <Link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<Link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<Link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <AppContexProvider>
         <Provider>
         <Navigation />
