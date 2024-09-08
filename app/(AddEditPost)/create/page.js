@@ -116,7 +116,7 @@ function Create() {
           const fileUid = uuidv4();
           const fileToUpload = uploadImages.filter((img) => img.localSrc == item.data.src)[0].file
           item.data.src = convertToS3Url(`${generateSlug(title)}_${index}_${fileUid}`);
-          item.data.alt = "HELLO"
+          item.data.alt = "Error Loading Image - " + title;
           const result = await uploadToS3(
             fileToUpload,
             `${index}_${fileUid}`,
@@ -129,6 +129,9 @@ function Create() {
     })
 
     const processCoverImage = new Promise(async (resolve, reject) => {
+      // Check if the selected cover image is already part of the images in the post, if true? no need to upload another version to S3
+      // Just set coverImage to the generatedS3 url for that image.
+      // But if false then proceed with normal upload to s3
       if (coverImage !== '') {
         const fileUid = uuidv4();
         formData.append('coverImage', convertToS3Url(`${generateSlug(title)}_cover_${fileUid}`))
