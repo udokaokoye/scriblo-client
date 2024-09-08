@@ -6,7 +6,7 @@ import Provider from '@/Components/Provider'
 import { AppContexProvider } from '../contex/store';
 import FeedBack from '@/Components/FeedBack';
 import Link from 'next/link';
-
+import { Analytics } from "@vercel/analytics/react"
 const merrweather = Merriweather({
   weight: ['300', '400', '700', '900'],
   subsets: ['latin'],
@@ -62,6 +62,7 @@ export default function RootLayout({ children }) {
         <Navigation />
         {/* <FeedBack /> */}
         {children}
+        <Analytics />
         </Provider>
         </AppContexProvider>
         </body>
