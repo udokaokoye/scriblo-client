@@ -37,6 +37,10 @@ async function Profile({ params }) {
     console.log(ServerdoesSignedInUserFollowProfile)
   }
 
+  const handleDelete = (id) => {
+    userPosts = userPosts.filter((post) => post.id !== id);
+  }
+
 
 
 
@@ -58,7 +62,7 @@ async function Profile({ params }) {
             {userPosts?.length > 0 ? (
               userPosts.map((post, index) => (
               <>
-              <ArticleCard key={index} article={post} fromProfilePage={true} session={session} />
+              <ArticleCard  key={index} article={post} fromProfilePage={true} session={session} />
               <br />
               </>
                 ))

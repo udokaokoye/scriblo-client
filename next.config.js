@@ -5,6 +5,7 @@
 // const API_URL = 'https://api.myscriblo.com/api'
 const API_URL = process.env.API_URL;
 const nextConfig = {
+  reactStrictMode: false,
   trailingSlash: true,
   images: {
     remotePatterns: [
@@ -26,11 +27,11 @@ const nextConfig = {
         destination: `${API_URL}/:slug*`,
         permanent: true,
       },
-      {
-        source: '/:path((?!construction).*)',
-        destination: '/construction', 
-        permanent: false,
-      },
+      // {
+      //   source: '/:path((?!construction).*)',
+      //   destination: '/construction', 
+      //   permanent: false,
+      // },
     ];
   },
   // cssLoaderOptions: {
