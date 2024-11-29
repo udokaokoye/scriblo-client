@@ -58,7 +58,7 @@ async function Profile({ params }) {
             {userPosts?.length > 0 ? (
               userPosts.map((post, index) => (
               <>
-              <ArticleCard key={index} article={post} fromProfilePage={true} session={session} />
+              <ArticleCard key={index} article={post} fromProfilePage={true} session={session} userPosts={userPosts} />
               <br />
               </>
                 ))

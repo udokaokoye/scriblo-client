@@ -110,7 +110,7 @@ function Create() {
   const processPost = async (preview=false, fromViewLivePreview) => {
     const formData = new FormData();
     const processRawEntity = new Promise((resolve, reject) => {
-      Object.values(rawEntityContent.entityMap).map(async (item, index) => {
+      Object?.values(rawEntityContent.entityMap).map(async (item, index) => {
         if (item.type == "IMAGE") {
           // console.log(item)
           const fileUid = uuidv4();
@@ -244,8 +244,10 @@ function Create() {
     //   }
     // })
     // return;
+    // console.log(rawEntityContent)
+    // return;
     isHidden.current = 1
-    if (!title || !rawEntityContent) {
+    if (!title || Object.keys(rawEntityContent).length === 0) {
       alert("Please fill in a title and content before saving");
       return;
     }

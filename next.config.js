@@ -26,11 +26,11 @@ const nextConfig = {
         destination: `${API_URL}/:slug*`,
         permanent: true,
       },
-      {
-        source: '/:path((?!construction).*)',
-        destination: '/construction', 
-        permanent: false,
-      },
+      // {
+      //   source: '/:path((?!construction).*)',
+      //   destination: '/construction', 
+      //   permanent: false,
+      // },
     ];
   },
   // cssLoaderOptions: {
