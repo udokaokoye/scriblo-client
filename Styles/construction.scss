@@ -1,0 +1,29 @@
+.constructionContainer {
+    margin-top: 10vh;
+    text-align: center;
+
+    h1 {
+        text-align: center;
+    }
+    h3 {
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 300;
+
+        span {
+            font-weight: bold;
+        }
+    }
+
+    button {
+        text-align: center;
+        background: #000;
+        color: white;
+        padding: 15px 30px;
+        border-radius: 10px;
+        border-color: transparent;
+        font-size: 14px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+}
