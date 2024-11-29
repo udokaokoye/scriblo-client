@@ -16,7 +16,7 @@ import { ContentState, convertToRaw } from "draft-js";
 import { DeleteObjectCommand, S3Client } from "@aws-sdk/client-s3";
 // import htmlToDraft from "html-to-draftjs";
 
-function ArticleCard({ article, fromProfilePage=false, session,userPosts }) {
+function ArticleCard({ article, fromProfilePage=false, session,handleDelete }) {
   const [showMoreMenu, setshowMoreMenu] = useState(false);
   const [loading, setloading] = useState(false)
   const router = useRouter()
@@ -85,9 +85,9 @@ let blocksFromHTML;
       await deletePost(postId, session?.token);
       setloading(false);
 
-     alert("Deleted")
-
-     userPosts = userPosts.filter((post) => post.id !== postId)
+    //  alert("Deleted")
+     setshowMoreMenu(false)
+     router.refresh()
     }
   };
   return (
