@@ -7,8 +7,11 @@ import { authOptions } from "@/app/authentication/[...nextauth]/route";
 import ProfilePinnedArticles from "@/Components/ProfilePinnedArticles";
 import NotFound from "@/Components/NotFound";
 import ArticleCard from "@/Components/ArticleCard";
+
+
 async function Profile({ params }) {
   const session = await getServerSession(authOptions);
+
 
   const userResponse = await fetch(
     `${process.env.API_URL}/users/actions.php?action=getUser&username=${params.username}`
@@ -20,8 +23,8 @@ async function Profile({ params }) {
     `${process.env.API_URL}/posts/actions.php?data=posts_username&username=${params.username}`
   );
   const userPostsData = await userPostsResponse.json();
-  const userPosts = userPostsData.data?.filter((pst) => pst.isHidden !== '1' && pst.pinned !== 'true');
-  const pinnedArticles = userPostsData.data?.filter((pst) => pst.isHidden !== '1' && pst.pinned !== 'false');
+  let userPosts = userPostsData.data?.filter((pst) => pst.isHidden !== '1' && pst.pinned !== 'true');
+  let pinnedArticles = userPostsData.data?.filter((pst) => pst.isHidden !== '1' && pst.pinned !== 'false');
 
 
   const userFollowsResponse = await fetch(`${process.env.API_URL}/users/actions.php?action=getUserFollows&userId=${user?.id}`)
@@ -33,6 +36,9 @@ async function Profile({ params }) {
     ServerdoesSignedInUserFollowProfile = userFollows.followers.some((userFollow) => userFollow.user_id == session?.id)
     console.log(ServerdoesSignedInUserFollowProfile)
   }
+
+
+
 
 
   // }

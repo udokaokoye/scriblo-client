@@ -1,0 +1,26 @@
+.constructionContainer {
+  margin-top: 10vh;
+  text-align: center;
+}
+.constructionContainer h1 {
+  text-align: center;
+}
+.constructionContainer h3 {
+  text-align: center;
+  margin-top: 5px;
+  font-weight: 300;
+}
+.constructionContainer h3 span {
+  font-weight: bold;
+}
+.constructionContainer button {
+  text-align: center;
+  background: #000;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 10px;
+  border-color: transparent;
+  font-size: 14px;
+  margin-top: 10px;
+  cursor: pointer;
+}/*# sourceMappingURL=construction.css.map */
