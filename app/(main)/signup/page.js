@@ -337,7 +337,7 @@ function Signup() {
             writers
           </p>
           <div className="signupForm">
-            <label className="signupEmailLabel">Enter email address</label>
+            {/* <label className="signupEmailLabel">Enter email address</label>
             <input
               type="email"
               name="email"
@@ -363,7 +363,7 @@ function Signup() {
               <div className="dash"></div>
               or
               <div className="dash"></div>
-            </div>
+            </div> */}
 
             <div className="socialLoginButtons">
               {/* <button className="socialbutton">
